@@ -1,4 +1,15 @@
 ### Create the function to create horizontal barplots for the threat status of ecosystem function groups (efgs)
+#' Title
+#'
+#' @param DAT
+#' @param X
+#' @param Y
+#' @param FILL
+#'
+#' @return
+#' @export
+#'
+#' @examples
 thr_efg_plot <-function(DAT, X, Y, FILL )
 
 {
@@ -20,6 +31,17 @@ thr_efg_plot <-function(DAT, X, Y, FILL )
 }
 
 ### Create the function for the donut plots for the threat status of the ecosystem types
+#' Title
+#'
+#' @param data
+#' @param ymax
+#' @param ymin
+#' @param fill
+#'
+#' @return
+#' @export
+#'
+#' @examples
 thr_donut_plot <-function(data, ymax, ymin, fill)
 
 {
@@ -35,6 +57,17 @@ thr_donut_plot <-function(data, ymax, ymin, fill)
 }
 
 ### Create the function to create horizontal barplots for the threat status of ecosystem function groups (efgs)
+#' Title
+#'
+#' @param data
+#' @param ymax
+#' @param ymin
+#' @param fill
+#'
+#' @return
+#' @export
+#'
+#' @examples
 prot_donut_plt <-function(data, ymax, ymin, fill)
 
 {
@@ -51,6 +84,17 @@ prot_donut_plt <-function(data, ymax, ymin, fill)
 }
 
 ### Create the function to create horizontal barplots for the protection of ecosystem function groups (efgs)
+#' Title
+#'
+#' @param DAT
+#' @param X
+#' @param Y
+#' @param FILL
+#'
+#' @return
+#' @export
+#'
+#' @examples
 prot_efg_plot <-function(DAT, X, Y, FILL )
 
 {
