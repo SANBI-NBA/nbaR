@@ -42,15 +42,15 @@ thr_efg_plot <-function(DAT, X, Y, FILL )
 #' @export
 #'
 #' @examples
-thr_donut_plot <-function(data, ymax, ymin, fill)
+thr_donut_plot <-function(DAT, YMAX, YMIN, FILL)
 
 {
-  ggplot(data, aes(ymax=ymax, ymin=ymin, xmax=4, xmin=3, fill=Threat_status_2023)) +
+  ggplot(DAT, aes(ymax=YMAX, ymin=YMIN, xmax=4, xmin=3, fill=FILL)) +
     geom_rect() +
     geom_text(aes(x = 3.5, y = (ymin + ymax) / 2, label = Frequency), color = "black", size = 5)+  ## Add this line to include values
     coord_polar(theta="y") + ## try to remove that to understand how the chart is built initially
     xlim(c(2, 4)) + ## try to remove that to see how to make a pie chart
-    scale_fill_manual(values = freq_df$Cols, breaks = freq_df$Threat_status_2023) +
+    scale_fill_manual(values = DAT$Cols, breaks = DAT$Threat_status_2023) +
     labs(fill = "Threat Status") +
     theme_void() ## removes the lines around chart and grey background
 
@@ -68,16 +68,16 @@ thr_donut_plot <-function(data, ymax, ymin, fill)
 #' @export
 #'
 #' @examples
-prot_donut_plt <-function(data, ymax, ymin, fill)
+prot_donut_plt <-function(DAT, YMAX, YMIN, FILL)
 
 {
 
-  ggplot(freq_df2, aes(ymax=ymax, ymin=ymin, xmax=4, xmin=3, fill=Protection_level_2023)) +
+  ggplot(DAT, aes(ymax=YMAX, ymin=YMIN, xmax=4, xmin=3, fill=FILL)) +
     geom_rect() +
     geom_text(aes(x = 3.5, y = (ymin + ymax) / 2, label = Frequency), color = "black", size = 5)+  ## Add this line to include values
     coord_polar(theta="y") + ## try to remove that to understand how the chart is built initially
     xlim(c(2, 4)) + ## try to remove that to see how to make a pie chart
-    scale_fill_manual(values = freq_df2$Cols, breaks = freq_df2$Protection_level_2023) +
+    scale_fill_manual(values = DAT$Cols, breaks = DAT$Protection_level_2023) +
     labs(fill = "Protection Levels") +
     theme_void() ## removes the lines around chart and grey background
 
