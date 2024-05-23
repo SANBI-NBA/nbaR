@@ -4,7 +4,7 @@
 \alias{thr_donut_plot}
 \title{Title}
 \usage{
-thr_donut_plot(data, ymax, ymin, fill)
+thr_donut_plot(DAT, YMAX, YMIN, FILL)
 }
 \arguments{
 \item{fill}{}

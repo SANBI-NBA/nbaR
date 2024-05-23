@@ -4,7 +4,7 @@
 \alias{prot_donut_plt}
 \title{Title}
 \usage{
-prot_donut_plt(data, ymax, ymin, fill)
+prot_donut_plt(DAT, YMAX, YMIN, FILL)
 }
 \arguments{
 \item{fill}{}
