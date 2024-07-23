@@ -10,7 +10,7 @@
 #' @param X The groups
 #' @param Y The protection level percentages
 #' @param FILL The protection level categories
-#' @param COUNTS The frequency counts of the number of ecosystems within each protection level
+#' @param COUNT The frequency counts of the number of ecosystems within each protection level
 #'
 #' @return Returns a bar graph of protection level
 #'
@@ -33,12 +33,12 @@
 #' @export
 #'
 #'
-prot_efg <-function(DF, X, Y, FILL, COUNTS) {
+prot_efg <-function(DF, X, Y, FILL, COUNT) {
 
 
   ggplot2::ggplot(DF, aes(y = Y, x = X, fill = FILL)) +
     ggplot2::geom_bar(stat = "identity", width = 0.5) + ## change width of bars
-    ggplot2::geom_text(aes(label = COUNTS), position = position_stack(vjust = 0.5), # add count labels to the bars and adjust "vjust" value to place text at the beginning, centre or end of bars
+    ggplot2::geom_text(aes(label = COUNT), position = position_stack(vjust = 0.5), # add count labels to the bars and adjust "vjust" value to place text at the beginning, centre or end of bars
               size = 3, color = "black", show.legend = FALSE) + # adjust size of labels with no legend being shown
     ggplot2::scale_fill_manual(values = c("#a4a3a3", "#d5dec3", "#80a952", "#466a31")) +  # order the colours of the bars in the reversed order
     ggplot2::ylab("Percentage of ecosystem functional types") +
@@ -67,7 +67,7 @@ prot_efg <-function(DF, X, Y, FILL, COUNTS) {
 #' @param X The groups
 #' @param Y The threat status percentages
 #' @param FILL The threat status categories
-#' @param COUNTS The frequency counts of the number of ecosystems within each protection level
+#' @param COUNT The frequency counts of the number of ecosystems within each protection level
 #'
 #' @return Returns a bar graph of threat status
 #'
@@ -88,12 +88,12 @@ prot_efg <-function(DF, X, Y, FILL, COUNTS) {
 #' @examples
 #' #test <- thr_efg(mydata, ecosystem_functional_grps, percentages, threat_status)
 #' @export
-thr_efg <-function(DF, X, Y, FILL, COUNTS)
+thr_efg <-function(DF, X, Y, FILL, COUNT)
 
 {
-  ggplot2::ggplot(DF, aes(y = Y, x = X, fill = FILL)) +
+  ggplot2::ggplot(DF, aes(y = DF$Y, x = DF$X, fill = DF$FILL)) +
     ggplot2::geom_bar(stat = "identity", width = 0.5) + # change width of bars
-    ggplot2::geom_text(aes(label = COUNTS), position = position_stack(vjust = 0.5), # add count labels to the bars and adjust "vjust" value to place text at the beginning, centre or end of bars
+    ggplot2::geom_text(aes(label = DF$COUNT), position = position_stack(vjust = 0.5), # add count labels to the bars and adjust "vjust" value to place text at the beginning, centre or end of bars
               size = 3, color = "black", show.legend = FALSE) + # adjust size of labels with no legend being shown
     ggplot2::scale_fill_manual(values = c("#b1d798", "#eeeea3", "#fff02a", "#f97835", "#e9302c")) +  # order the colours of the bars in the reversed order
     ggplot2::ylab("Percentage of ecosystem functional types") +
@@ -123,7 +123,7 @@ thr_efg <-function(DF, X, Y, FILL, COUNTS)
 #' @param YMAX The threat status percentages
 #' @param FILL The threat status categories
 #' @param COLOUR colour for the threat status
-#' @param COUNTS The frequency counts of the number of ecosystems within each threat status
+#' @param COUNT The frequency counts of the number of ecosystems within each threat status
 #'
 #' @return Returns a bar donut plot of threat status
 #'
@@ -143,11 +143,11 @@ thr_efg <-function(DF, X, Y, FILL, COUNTS)
 #' @examples
 #' #test <- thr_donut_plot(mydata, ecosystem_functional_grps, percentages, threat_status)
 #'
-thr_donut_plot <-function(DF, YMAX, YMIN, FILL, COLOUR, COUNTS)
+thr_donut_plot <-function(DF, YMAX, YMIN, FILL, COLOUR, COUNT)
 {
   ggplot2::ggplot(DF, aes(ymax=YMAX, ymin=YMIN, xmax=4, xmin=3, fill=FILL)) +
     ggplot2::geom_rect() +
-    ggplot2::geom_text(aes(x = 3.5, y = (ymin + ymax) / 2, label = COUNTS), color = "black", size = 5)+  ## Add this line to include values
+    ggplot2::geom_text(aes(x = 3.5, y = (ymin + ymax) / 2, label = COUNT), color = "black", size = 5)+  ## Add this line to include values
     ggplot2::coord_polar(theta="y") + ## try to remove that to understand how the chart is built initially
     ggplot2::xlim(c(2, 4)) + ## try to remove that to see how to make a pie chart
     ggplot2::scale_fill_manual(values = COLOUR, breaks = FILL) +
@@ -170,7 +170,7 @@ thr_donut_plot <-function(DF, YMAX, YMIN, FILL, COLOUR, COUNTS)
 #' @param YMAX The protection level percentages
 #' @param FILL The protection level categories
 #' @param COLOUR colour for the protection level
-#' @param COUNTS The frequency counts of the number of ecosystems within each protection level
+#' @param COUNT The frequency counts of the number of ecosystems within each protection level
 #'
 #' @return Returns a bar donut plot of protection level
 #'
@@ -191,11 +191,11 @@ thr_donut_plot <-function(DF, YMAX, YMIN, FILL, COLOUR, COUNTS)
 #' @examples
 #' #test <- pro_donut_plot(mydata, ecosystem_functional_grps, percentages, threat_status)
 #'
-pro_donut_plot <-function(DF, YMAX, YMIN, FILL, COLOUR, COUNTS)
+pro_donut_plot <-function(DF, YMAX, YMIN, FILL, COLOUR, COUNT)
 {
   ggplot2::ggplot(DF, aes(ymax = YMAX, ymin = YMIN, xmax = 4, xmin = 3, fill = FILL)) +
     ggplot2::geom_rect() +
-    ggplot2::geom_text(aes(x = 3.5, y = (YMIN + YMAX) / 2, label = COUNTS), color = "black", size = 5) +  # Add this line to include values
+    ggplot2::geom_text(aes(x = 3.5, y = (YMIN + YMAX) / 2, label = COUNT), color = "black", size = 5) +  # Add this line to include values
     ggplot2::coord_polar(theta = "y") + # convert to polar coordinates
     ggplot2::xlim(c(2, 4)) + # limit x-axis to create a donut chart
     ggplot2::scale_fill_manual(values = COLOUR, breaks = FILL) +
