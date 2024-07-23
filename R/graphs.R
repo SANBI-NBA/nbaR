@@ -2,7 +2,7 @@
 
 
 
-#' Protection level
+#' Protection level bar plot
 #'
 #' Horizontal barplots for the protection level of ecosystem function groups (efgs)
 #'
@@ -28,6 +28,8 @@
 #' @importFrom ggplot2  coord_flip
 #'
 #'@examples
+#'#test <- prot_efg(mydata, ecosystem_functional_grps, percentages, threat_status)
+#'
 #' @export
 #'
 #'
@@ -57,7 +59,7 @@ prot_efg <-function(DF, X, Y, FILL, LABEL) {
 
 #######################################################################################################
 ###
-#' Threat status
+#' Threat status bar plot
 #'
 #' Horizontal barplots for the threat status of ecosystem function groups (efgs)
 #'
@@ -111,8 +113,10 @@ thr_efg <-function(DAT, X, Y, FILL, LABEL)
 }
 
 #######################################################################################################
-### Create the function for the donut plots for the threat status of the ecosystem types
-#' Title
+###
+#' Threat status donut plot
+#'
+#' Donut plots for the threat status of the ecosystem types
 #'
 #' @param DF The data frame that contains the information on threat status
 #' @param YMIN The groups
@@ -136,6 +140,8 @@ thr_efg <-function(DAT, X, Y, FILL, LABEL)
 #' @export
 #'
 #' @examples
+#' #test <- thr_donut_plot(mydata, ecosystem_functional_grps, percentages, threat_status)
+#'
 thr_donut_plot <-function(DF, YMAX, YMIN, FILL, COLOUR)
 {
   ggplot2::ggplot(DF, aes(ymax=YMAX, ymin=YMIN, xmax=4, xmin=3, fill=FILL)) +
@@ -153,16 +159,18 @@ thr_donut_plot <-function(DF, YMAX, YMIN, FILL, COLOUR)
 }
 
 #######################################################################################################
-### Create the function for the donut plot for the protection level of the ecosystem types
-#' Title
+###
+#' Protection level donut plot
 #'
-#' @param DF The data frame that contains the information on threat status
+#' Donut plot for the protection level of the ecosystem types
+#'
+#' @param DF The data frame that contains the information on protection level
 #' @param YMIN The groups
-#' @param YMAX The threat status percentages
-#' @param FILL The threat status categories
-#' @param COLOUR colour for the threat status
+#' @param YMAX The protection level percentages
+#' @param FILL The protection level categories
+#' @param COLOUR colour for the protection level
 #'
-#' @return Returns a bar donut plot of threat status
+#' @return Returns a bar donut plot of protection level
 #'
 #'
 #' @importFrom ggplot2  ggplot
@@ -179,6 +187,8 @@ thr_donut_plot <-function(DF, YMAX, YMIN, FILL, COLOUR)
 #' @export
 #'
 #' @examples
+#' #test <- pro_donut_plot(mydata, ecosystem_functional_grps, percentages, threat_status)
+#'
 pro_donut_plot <-function(DF, YMAX, YMIN, FILL, COLOUR, LABEL)
 {
   ggplot2::ggplot(DF, aes(ymax = YMAX, ymin = YMIN, xmax = 4, xmin = 3, fill = FILL)) +
