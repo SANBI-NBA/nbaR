@@ -166,11 +166,7 @@ thr_donut_plot <-function(DF, YMAX, YMIN, FILL, COLOUR, COUNT)
 #' Donut plot for the protection level of the ecosystem types
 #'
 #' @param DF The data frame that contains the information on protection level
-#' @param YMIN The groups
-#' @param YMAX The protection level percentages
 #' @param FILL The protection level categories
-#' @param COLOUR colour for the protection level
-#' @param COUNT The frequency counts of the number of ecosystems within each protection level
 #'
 #' @return Returns a bar donut plot of protection level
 #'
@@ -184,27 +180,50 @@ thr_donut_plot <-function(DF, YMAX, YMIN, FILL, COLOUR, COUNT)
 #' @importFrom ggplot2  labs
 #' @importFrom ggplot2  theme_void
 #' @importFrom ggplot2  theme
+#' @importFrom dplyr count
+#' @importFrom dplyr arrange
+#' @importFrom dplyr mutate
 #'
 #'
 #' @export
 #'
 #' @examples
-#' #test <- pro_donut_plot(mydata, ecosystem_functional_grps, percentages, threat_status)
+#' #test <- pro_donut_plot(mydata, ecosystem_functional_grps)
 #'
-pro_donut_plot <-function(DF, YMAX, YMIN, FILL, COLOUR, COUNT)
+pro_donut_plot_test <-function(DF, FILL)
 {
-  ggplot2::ggplot(DF, aes(ymax = {{YMAX}}, ymin = {{YMIN}}, xmax = 4, xmin = 3, fill = {{FILL}})) +
+
+  ### generate a frequency table for the categorical data
+  df <- dplyr::count(DF, {{FILL}})
+
+
+  ### define the order of the protection levels
+  ord <- c("Well Protected", "Moderately Protected", "Poorly Protected", "No Protection")
+
+  # Prepare the data frame by arranging and setting colors
+  df <- df %>%
+    dplyr::arrange(factor({{FILL}}, levels = ord))
+
+  df <- df %>%
+    dplyr::mutate(ymax = cumsum(n)) %>%
+    dplyr::mutate(ymin = ymax -n)
+
+
+  cols <- c("#466a31","#80a952","#d5dec3","#a4a3a3")
+  breaks <- c("Well Protected","Moderately Protected","Poorly Protected","No Protection")
+
+  ggplot2::ggplot(df, aes(ymax = ymax, ymin = ymin, xmax = 4, xmin = 3, fill = {{FILL}})) +
     ggplot2::geom_rect() +
-    ggplot2::geom_text(aes(x = 3.5, y = ({{YMIN}} + {{YMAX}}) / 2, label = {{COUNT}}), color = "black", size = 5) +  # Add this line to include values
+    ggplot2::geom_text(aes(x = 3.5, y = (ymin + ymax) / 2, label = n), color = "black", size = 5) +  # Add this line to include values
     ggplot2::coord_polar(theta = "y") + # convert to polar coordinates
     ggplot2::xlim(c(2, 4)) + # limit x-axis to create a donut chart
-    ggplot2::scale_fill_manual(values = {{COLOUR}}, breaks = {{FILL}}) +
+    ggplot2::scale_fill_manual(values = cols, breaks = breaks) +
     ggplot2::labs(fill = "Protection Levels") +
     ggplot2::theme_void() + # removes the lines around chart and grey background
     ggplot2::theme(
       panel.background = element_rect(fill = "white", color = NA),  # set panel background to white
       plot.background = element_rect(fill = "white", color = NA)  # set plot background to white
-  )
+    )
 }
 
 
