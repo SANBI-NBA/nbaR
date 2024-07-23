@@ -1,8 +1,10 @@
-### Create the function to create horizontal barplots for the protection of ecosystem function groups (efgs)
+
+
+
 
 #' Protection level
 #'
-#' Create the function to create horizontal barplots for the protection of ecosystem function groups (efgs)
+#' Horizontal barplots for the protection level of ecosystem function groups (efgs)
 #'
 #' @param DF The data frame that contains the information on protection level
 #' @param X The groups
@@ -54,27 +56,42 @@ prot_efg <-function(DF, X, Y, FILL, LABEL) {
 }
 
 #######################################################################################################
-### Create the function to create horizontal barplots for the protection of ecosystem function groups (efgs)
-#' Title
+###
+#' Threat status
 #'
-#' @param DAT
-#' @param X
-#' @param Y
-#' @param FILL
+#' Horizontal barplots for the threat status of ecosystem function groups (efgs)
 #'
-#' @return
-#'@importFrom ggplot2  ggplot
-#'@importFrom ggplot2  geom_bar
+#' @param DF The data frame that contains the information on threat status
+#' @param X The groups
+#' @param Y The threat status percentages
+#' @param FILL The threat status categories
+#' @param LABEL The frequency counts of the number of ecosystems within each protection level
+#'
+#' @return Returns a bar graph of threat status
+#'
+#'
+#' @importFrom ggplot2  ggplot
+#' @importFrom ggplot2  geom_bar
+#' @importFrom ggplot2  geom_text
+#' @importFrom ggplot2  scale_fill_manual
+#' @importFrom ggplot2  ylab
+#' @importFrom ggplot2  xlab
+#' @importFrom ggplot2  guides
+#' @importFrom ggplot2  labs
+#' @importFrom ggplot2  scale_y_continuous
+#' @importFrom ggplot2  theme_minimal
+#' @importFrom ggplot2  theme
+#' @importFrom ggplot2  coord_flip
 #'
 #' @examples
 #' #test <- thr_efg(mydata, ecosystem_functional_grps, percentages, threat_status)
 #' @export
-thr_efg <-function(DAT, X, Y, FILL)
+thr_efg <-function(DAT, X, Y, FILL, LABEL)
 
 {
   ggplot2::ggplot(DATA, aes(y = Y, x = X, fill = FILL)) +
     ggplot2::geom_bar(stat = "identity", width = 0.5) + # change width of bars
-    ggplot2::geom_text(aes(label = count), position = position_stack(vjust = 0.5), # add count labels to the bars and adjust "vjust" value to place text at the beginning, centre or end of bars
+    ggplot2::geom_text(aes(label = LABEL), position = position_stack(vjust = 0.5), # add count labels to the bars and adjust "vjust" value to place text at the beginning, centre or end of bars
               size = 3, color = "black", show.legend = FALSE) + # adjust size of labels with no legend being shown
     ggplot2::scale_fill_manual(values = c("#b1d798", "#eeeea3", "#fff02a", "#f97835", "#e9302c")) +  # order the colours of the bars in the reversed order
     ggplot2::ylab("Percentage of ecosystem functional types") +
@@ -97,26 +114,39 @@ thr_efg <-function(DAT, X, Y, FILL)
 ### Create the function for the donut plots for the threat status of the ecosystem types
 #' Title
 #'
-#' @param DAT
-#' @param X
-#' @param Y
-#' @param FILL
+#' @param DF The data frame that contains the information on threat status
+#' @param YMIN The groups
+#' @param YMAX The threat status percentages
+#' @param FILL The threat status categories
+#' @param COLOUR colour for the threat status
 #'
-#' @return
+#' @return Returns a bar donut plot of threat status
+#'
+#'
+#' @importFrom ggplot2  ggplot
+#' @importFrom ggplot2  geom_rect
+#' @importFrom ggplot2  geom_text
+#' @importFrom ggplot2  coord_polar
+#' @importFrom ggplot2  xlim
+#' @importFrom ggplot2  scale_fill_manual
+#' @importFrom ggplot2  labs
+#' @importFrom ggplot2  theme_void
+#' @importFrom ggplot2  theme
+#'
 #' @export
 #'
 #' @examples
-thr_donut_plot <-function(DAT, YMAX, YMIN, FILL)
+thr_donut_plot <-function(DF, YMAX, YMIN, FILL, COLOUR)
 {
-  ggplot2::ggplot(DAT, aes(ymax=YMAX, ymin=YMIN, xmax=4, xmin=3, fill=FILL)) +
+  ggplot2::ggplot(DF, aes(ymax=YMAX, ymin=YMIN, xmax=4, xmin=3, fill=FILL)) +
     ggplot2::geom_rect() +
     ggplot2::geom_text(aes(x = 3.5, y = (ymin + ymax) / 2, label = Frequency), color = "black", size = 5)+  ## Add this line to include values
     ggplot2::coord_polar(theta="y") + ## try to remove that to understand how the chart is built initially
     ggplot2::xlim(c(2, 4)) + ## try to remove that to see how to make a pie chart
-    ggplot2::scale_fill_manual(values = DAT$Cols, breaks = DAT$Threat_status_2023) +
+    ggplot2::scale_fill_manual(values = COLOUR, breaks = FILL) +
     ggplot2::labs(fill = "Threat Status") +
     ggplot2::theme_void() # removes the chart grid lines and  and grey background
-  ggplot2::theme(
+    ggplot2::theme(
     panel.background = element_rect(fill = "white", color = NA),  # set panel background to white
     plot.background = element_rect(fill = "white", color = NA)  # set plot background to white
     )
@@ -126,14 +156,24 @@ thr_donut_plot <-function(DAT, YMAX, YMIN, FILL)
 ### Create the function for the donut plot for the protection level of the ecosystem types
 #' Title
 #'
-#' @param DF
-#' @param X
-#' @param Y
-#' @param FILL the protection level categories
-#' @param COLOUR colour for the protection level
-#' @param LABEL The frequency counts of the number of ecosystems within each protection level
+#' @param DF The data frame that contains the information on threat status
+#' @param YMIN The groups
+#' @param YMAX The threat status percentages
+#' @param FILL The threat status categories
+#' @param COLOUR colour for the threat status
 #'
-#' @return Returns a donut graph
+#' @return Returns a bar donut plot of threat status
+#'
+#'
+#' @importFrom ggplot2  ggplot
+#' @importFrom ggplot2  geom_rect
+#' @importFrom ggplot2  geom_text
+#' @importFrom ggplot2  coord_polar
+#' @importFrom ggplot2  xlim
+#' @importFrom ggplot2  scale_fill_manual
+#' @importFrom ggplot2  labs
+#' @importFrom ggplot2  theme_void
+#' @importFrom ggplot2  theme
 #'
 #'
 #' @export
