@@ -4,7 +4,7 @@
 \alias{pro_donut_plot}
 \title{Protection level donut plot}
 \usage{
-pro_donut_plot(DF, YMAX, YMIN, FILL, COLOUR, COUNTS)
+pro_donut_plot(DF, YMAX, YMIN, FILL, COLOUR, COUNT)
 }
 \arguments{
 \item{DF}{The data frame that contains the information on protection level}
@@ -17,7 +17,7 @@ pro_donut_plot(DF, YMAX, YMIN, FILL, COLOUR, COUNTS)
 
 \item{COLOUR}{colour for the protection level}
 
-\item{COUNTS}{The frequency counts of the number of ecosystems within each protection level}
+\item{COUNT}{The frequency counts of the number of ecosystems within each protection level}
 }
 \value{
 Returns a bar donut plot of protection level

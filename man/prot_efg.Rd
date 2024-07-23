@@ -4,7 +4,7 @@
 \alias{prot_efg}
 \title{Protection level bar plot}
 \usage{
-prot_efg(DF, X, Y, FILL, COUNTS)
+prot_efg(DF, X, Y, FILL, COUNT)
 }
 \arguments{
 \item{DF}{The data frame that contains the information on protection level}
@@ -15,7 +15,7 @@ prot_efg(DF, X, Y, FILL, COUNTS)
 
 \item{FILL}{The protection level categories}
 
-\item{COUNTS}{The frequency counts of the number of ecosystems within each protection level}
+\item{COUNT}{The frequency counts of the number of ecosystems within each protection level}
 }
 \value{
 Returns a bar graph of protection level

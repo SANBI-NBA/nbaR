@@ -4,7 +4,7 @@
 \alias{thr_donut_plot}
 \title{Threat status donut plot}
 \usage{
-thr_donut_plot(DF, YMAX, YMIN, FILL, COLOUR, COUNTS)
+thr_donut_plot(DF, YMAX, YMIN, FILL, COLOUR, COUNT)
 }
 \arguments{
 \item{DF}{The data frame that contains the information on threat status}
@@ -17,7 +17,7 @@ thr_donut_plot(DF, YMAX, YMIN, FILL, COLOUR, COUNTS)
 
 \item{COLOUR}{colour for the threat status}
 
-\item{COUNTS}{The frequency counts of the number of ecosystems within each threat status}
+\item{COUNT}{The frequency counts of the number of ecosystems within each threat status}
 }
 \value{
 Returns a bar donut plot of threat status
