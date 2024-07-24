@@ -120,10 +120,6 @@ thr_efg <-function(DF, X, Y, FILL, COUNT)
 #'
 #' @param DF The data frame that contains the information on threat status
 #' @param YMIN The groups
-#' @param YMAX The threat status percentages
-#' @param FILL The threat status categories
-#' @param COLOUR colour for the threat status
-#' @param COUNT The frequency counts of the number of ecosystems within each threat status
 #'
 #' @return Returns a bar donut plot of threat status
 #'
@@ -143,19 +139,37 @@ thr_efg <-function(DF, X, Y, FILL, COUNT)
 #' @examples
 #' #test <- thr_donut_plot(mydata, ecosystem_functional_grps, percentages, threat_status)
 #'
-thr_donut_plot <-function(DF, YMAX, YMIN, FILL, COLOUR, COUNT)
+thr_donut_plot_test <-function(DF, FILL)
 {
-  ggplot2::ggplot(DF, aes(ymax={{YMAX}}, ymin={{YMIN}}, xmax=4, xmin=3, fill={{FILL}})) +
+
+  ### generate a frequency table for the categorical data
+  df <- dplyr::count(DF, {{FILL}})
+
+  ### define the order of the protection levels
+  ord <- c("Critically Endangered", "Endangered", "Vulnerable", "Near Threatened", "Least Concern")
+
+  ## Prepare the data frame by arranging and setting colors
+  df <- df %>%
+    dplyr::arrange(factor({{FILL}}, levels = ord))
+
+  df <- df %>%
+    dplyr::mutate(ymax = cumsum(n)) %>%
+    dplyr::mutate(ymin = ymax -n)
+
+  cols <- c("#e9302c","#f97835","#fff02a","#eeeea3","#b1d798")
+  breaks <- c("Critically Endangered", "Endangered", "Vulnerable", "Near Threatened", "Least Concern")
+
+  ggplot2::ggplot(df, aes(ymax = ymax, ymin = ymin, xmax = 4, xmin = 3, fill = {{FILL}})) +
     ggplot2::geom_rect() +
-    ggplot2::geom_text(aes(x = 3.5, y = ({{YMIN}} + {{YMAX}}) / 2, label = {{COUNT}}), color = "black", size = 5)+  ## Add this line to include values
-    ggplot2::coord_polar(theta="y") + ## try to remove that to understand how the chart is built initially
-    ggplot2::xlim(c(2, 4)) + ## try to remove that to see how to make a pie chart
-    ggplot2::scale_fill_manual(values = {{COLOUR}}, breaks = {{FILL}}) +
+    ggplot2::geom_text(aes(x = 3.5, y = (ymin + ymax) / 2, label = n), color = "black", size = 5) +  ## Add this line to include count values
+    ggplot2::coord_polar(theta = "y") + ## convert to polar coordinates
+    ggplot2::xlim(c(2, 4)) + ## limit x-axis to create a donut chart
+    ggplot2::scale_fill_manual(values = cols, breaks = breaks) +
     ggplot2::labs(fill = "Threat Status") +
-    ggplot2::theme_void() # removes the chart grid lines and  and grey background
+    ggplot2::theme_void() + ## removes the lines around chart and grey background
     ggplot2::theme(
-    panel.background = element_rect(fill = "white", color = NA),  # set panel background to white
-    plot.background = element_rect(fill = "white", color = NA)  # set plot background to white
+      panel.background = element_rect(fill = "white", color = NA),  ## set panel background to white
+      plot.background = element_rect(fill = "white", color = NA)  ## set plot background to white
     )
 }
 
