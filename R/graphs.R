@@ -120,10 +120,6 @@ thr_efg <-function(DF, X, Y, FILL, COUNT)
 #'
 #' @param DF The data frame that contains the information on threat status
 #' @param YMIN The groups
-#' @param YMAX The threat status percentages
-#' @param FILL The threat status categories
-#' @param COLOUR colour for the threat status
-#' @param COUNT The frequency counts of the number of ecosystems within each threat status
 #'
 #' @return Returns a bar donut plot of threat status
 #'
