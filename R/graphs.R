@@ -115,7 +115,7 @@ thr_efg <-function(DF, X, Y, FILL, COUNT)
 #' Donut plots for the threat status of the ecosystem types
 #'
 #' @param DF The data frame that contains the information on threat status
-#' @param YMIN The groups
+#' @param FILL The groups
 #'
 #' @return Returns a bar donut plot of threat status
 #'
