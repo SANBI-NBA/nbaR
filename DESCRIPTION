@@ -16,6 +16,7 @@ Suggests:
 Config/testthat/edition: 3
 Imports: 
     ggplot2,
-    dplyr
+    dplyr,
+    kableExtra
 URL: https://github.com/TashBes/NBA.package
 BugReports: https://github.com/TashBes/NBA.package/issues
