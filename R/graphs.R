@@ -1,7 +1,3 @@
-
-
-
-
 #' Protection level bar plot
 #'
 #' Horizontal barplots for the protection level of ecosystem function groups (efgs)
