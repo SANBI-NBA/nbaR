@@ -31,12 +31,16 @@
 #'
 prot_efg <-function(DF, X, Y, FILL, COUNT) {
 
+  cols <- c("#466a31","#80a952","#d5dec3","#a4a3a3")
+  breaks <- c("Well Protected","Moderately Protected","Poorly Protected","No Protection")
+
 
   ggplot2::ggplot(DF, aes(y = {{Y}}, x = {{X}}, fill = {{FILL}})) +
     ggplot2::geom_bar(stat = "identity", width = 0.5) + ## change width of bars
     ggplot2::geom_text(aes(label = {{COUNT}}), position = position_stack(vjust = 0.5), # add count labels to the bars and adjust "vjust" value to place text at the beginning, centre or end of bars
               size = 3, color = "black", show.legend = FALSE) + # adjust size of labels with no legend being shown
-    ggplot2::scale_fill_manual(values = c("#a4a3a3", "#d5dec3", "#80a952", "#466a31")) +  # order the colours of the bars in the reversed order
+    ggplot2::scale_fill_manual(values = cols,
+                               breaks = breaks) +  # order the colours of the bars in the reversed order
     ggplot2::ylab("Percentage of ecosystem functional types") +
     ggplot2::xlab("") +
     ggplot2::guides(fill = guide_legend(reverse = TRUE, nrow = 2)) +  # display legend in 2 rows
