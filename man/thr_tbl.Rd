@@ -2,20 +2,20 @@
 % Please edit documentation in R/tables.R
 \name{thr_tbl}
 \alias{thr_tbl}
-\title{Threat status table}
+\title{Protection level table}
 \usage{
 thr_tbl(DF, COL)
 }
 \arguments{
 \item{DF}{The data frame that contains the data}
 
-\item{COL}{the column containing the threat status categories}
+\item{COL}{the column containing the Protection level categories}
 }
 \description{
 A basic table with a purple heading bar and coloured blocks around the
-threat status categories
+Protection level categories
 }
 \examples{
-#test <- thr_tbl(bird_data, Status)
+#test <- thr_tbl(bird_data, Protection_level)
 
 }

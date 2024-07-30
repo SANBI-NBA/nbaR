@@ -18,12 +18,19 @@ prot_efg(DF, X, Y, FILL, COUNT)
 \item{COUNT}{The frequency counts of the number of ecosystems within each protection level}
 }
 \value{
-Returns a bar graph of protection level
+Returns a bar graph of protection level per functional group or taxa
 }
 \description{
-Horizontal barplots for the protection level of ecosystem function groups (efgs)
+Horizontal barplots for the protection level.
+This function requires a dataframe that contains a columns of the
+the ecosystem functional groups or taxa, the protection level,
+and the number and percentage of ecosystems or species that fall within that
+protection level.
+}
+\details{
+The colours and axis titels are created within the function.
 }
 \examples{
-#test <- prot_efg(mydata, ecosystem_functional_grps, percentages, threat_status)
+#test <- prot_efg(mydata, ecosystem_functional_grps, percentages, protection level, number_of_ecosystems)
 
 }

@@ -1,6 +1,13 @@
 #' Protection level bar plot
 #'
-#' Horizontal barplots for the protection level of ecosystem function groups (efgs)
+#' Horizontal barplots for the protection level.
+#' This function requires a dataframe that contains a columns of the
+#' the ecosystem functional groups or taxa, the protection level,
+#' and the number and percentage of ecosystems or species that fall within that
+#' protection level.
+#'
+#' The colours and axis titels are created within the function.
+#'
 #'
 #' @param DF The data frame that contains the information on protection level
 #' @param X The groups
@@ -8,7 +15,7 @@
 #' @param FILL The protection level categories
 #' @param COUNT The frequency counts of the number of ecosystems within each protection level
 #'
-#' @return Returns a bar graph of protection level
+#' @return Returns a bar graph of protection level per functional group or taxa
 #'
 #' @importFrom ggplot2  ggplot
 #' @importFrom ggplot2  geom_bar
@@ -24,7 +31,7 @@
 #' @importFrom ggplot2  coord_flip
 #'
 #'@examples
-#'#test <- prot_efg(mydata, ecosystem_functional_grps, percentages, threat_status)
+#'#test <- prot_efg(mydata, ecosystem_functional_grps, percentages, protection level, number_of_ecosystems)
 #'
 #' @export
 #'
@@ -61,7 +68,13 @@ prot_efg <-function(DF, X, Y, FILL, COUNT) {
 ###
 #' Threat status bar plot
 #'
-#' Horizontal barplots for the threat status of ecosystem function groups (efgs)
+#' Horizontal barplots for the Threat status.
+#' This function requires a dataframe that contains a columns of the
+#' the ecosystem functional groups or taxa, the Threat status,
+#' and the number and percentage of ecosystems or species that fall within that
+#' Threat status.
+#'
+#' The colours and axis titels are created within the function.
 #'
 #' @param DF The data frame that contains the information on threat status
 #' @param X The groups
@@ -69,7 +82,7 @@ prot_efg <-function(DF, X, Y, FILL, COUNT) {
 #' @param FILL The threat status categories
 #' @param COUNT The frequency counts of the number of ecosystems within each protection level
 #'
-#' @return Returns a bar graph of threat status
+#' @return Returns a bar graph of threat status per functional group or taxa
 #'
 #'
 #' @importFrom ggplot2  ggplot
@@ -86,7 +99,7 @@ prot_efg <-function(DF, X, Y, FILL, COUNT) {
 #' @importFrom ggplot2  coord_flip
 #'
 #' @examples
-#' #test <- thr_efg(mydata, ecosystem_functional_grps, percentages, threat_status)
+#' #test <- thr_efg(mydata, ecosystem_functional_grps, percentages, threat_status, number_of_ecosystems)
 #' @export
 thr_efg <-function(DF, X, Y, FILL, COUNT)
 
@@ -116,7 +129,14 @@ thr_efg <-function(DF, X, Y, FILL, COUNT)
 ###
 #' Threat status donut plot
 #'
-#' Donut plots for the threat status of the ecosystem types
+#' Donut plots for the threat status.
+#' This function requires a dataframe that contains a columns of the
+#' the ecosystem function groups or taxa, ecosystem types or species, and their threat status.
+#'
+#' The function will group the ecosystem types or species by the functional
+#' group or taxa and threat status, and calculate the number of ecosystem types or species within each functional
+#' group or taxa with that threat status.
+#' It will also create the colours and axis titles.
 #'
 #' @param DF The data frame that contains the information on threat status
 #' @param FILL The groups
@@ -137,7 +157,7 @@ thr_efg <-function(DF, X, Y, FILL, COUNT)
 #' @export
 #'
 #' @examples
-#' #test <- thr_donut_plot(mydata, ecosystem_functional_grps, percentages, threat_status)
+#' #test <- thr_donut_plot(mydata, threat_status)
 #'
 thr_donut_plot_test <-function(DF, FILL)
 {
@@ -177,7 +197,14 @@ thr_donut_plot_test <-function(DF, FILL)
 ###
 #' Protection level donut plot
 #'
-#' Donut plot for the protection level of the ecosystem types
+#' Donut plot for the protection level.
+#' This function requires a dataframe that contains a columns of the
+#' the ecosystem function groups or taxa, ecosystem types or species, and their protection level.
+#'
+#' The function will group the ecosystem types or species by the functional
+#' group or taxa and protection level, and calculate the number of ecosystem types or species within each functional
+#' group or taxa with that protection level.
+#' It will also create the colours and axis titles.
 #'
 #' @param DF The data frame that contains the information on protection level
 #' @param FILL The protection level categories

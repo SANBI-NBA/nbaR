@@ -15,9 +15,17 @@ thr_donut_plot_test(DF, FILL)
 Returns a bar donut plot of threat status
 }
 \description{
-Donut plots for the threat status of the ecosystem types
+Donut plots for the threat status.
+This function requires a dataframe that contains a columns of the
+the ecosystem function groups or taxa, ecosystem types or species, and their threat status.
+}
+\details{
+The function will group the ecosystem types or species by the functional
+group or taxa and threat status, and calculate the number of ecosystem types or species within each functional
+group or taxa with that threat status.
+It will also create the colours and axis titles.
 }
 \examples{
-#test <- thr_donut_plot(mydata, ecosystem_functional_grps, percentages, threat_status)
+#test <- thr_donut_plot(mydata, threat_status)
 
 }

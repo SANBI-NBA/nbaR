@@ -1,6 +1,7 @@
 #' Basic table
 #'
-#' A basic table with a purple heading bar
+#' A basic table with a purple heading bar.
+#'
 #'
 #' @param DF The data frame that contains the data
 #'
@@ -31,13 +32,13 @@ basic_tbl <- function(DF){
 }
 
 ################################################################################
-#' Threat status table
+#' Protection level table
 #'
 #' A basic table with a purple heading bar and coloured blocks around the
-#' threat status categories
+#' Protection level categories
 #'
 #' @param DF The data frame that contains the data
-#' @param COL the column containing the threat status categories
+#' @param COL the column containing the Protection level categories
 #'
 #' @importFrom kableExtra  kable
 #' @importFrom kableExtra  kable_styling
@@ -48,7 +49,7 @@ basic_tbl <- function(DF){
 #' @importFrom dplyr  mutate
 #'
 #'@examples
-#'#test <- thr_tbl(bird_data, Status)
+#'#test <- thr_tbl(bird_data, Protection_level)
 #'
 #' @export
 #'
@@ -57,11 +58,10 @@ thr_tbl <- function(DF, COL) {
 
   color_cell <- function(COL) {
     color <- dplyr::case_when(
-      COL == "Least Concern" ~ "#b1d798",
-      COL == "Near Threatened" ~ "#eeeea3",
-      COL == "Vulnerable" ~ "#fff02a",
-      COL == "Endangered" ~ "#f97835",
-      COL == "Critically Endangered" ~ "#e9302c",
+      COL == "Well Protected" ~ "#466a31",
+      COL == "Moderately Protected" ~ "#80a952",
+      COL == "Poorly Protected" ~ "#d5dec3",
+      COL == "No Protection" ~ "#a4a3a3",
       TRUE ~ "white"
     )
 

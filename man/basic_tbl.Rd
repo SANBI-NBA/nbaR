@@ -10,7 +10,7 @@ basic_tbl(DF)
 \item{DF}{The data frame that contains the data}
 }
 \description{
-A basic table with a purple heading bar
+A basic table with a purple heading bar.
 }
 \examples{
 #test <- basic_tbl(bird_data)

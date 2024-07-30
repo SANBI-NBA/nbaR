@@ -18,11 +18,18 @@ thr_efg(DF, X, Y, FILL, COUNT)
 \item{COUNT}{The frequency counts of the number of ecosystems within each protection level}
 }
 \value{
-Returns a bar graph of threat status
+Returns a bar graph of threat status per functional group or taxa
 }
 \description{
-Horizontal barplots for the threat status of ecosystem function groups (efgs)
+Horizontal barplots for the Threat status.
+This function requires a dataframe that contains a columns of the
+the ecosystem functional groups or taxa, the Threat status,
+and the number and percentage of ecosystems or species that fall within that
+Threat status.
+}
+\details{
+The colours and axis titels are created within the function.
 }
 \examples{
-#test <- thr_efg(mydata, ecosystem_functional_grps, percentages, threat_status)
+#test <- thr_efg(mydata, ecosystem_functional_grps, percentages, threat_status, number_of_ecosystems)
 }
