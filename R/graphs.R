@@ -101,14 +101,17 @@ prot_efg <-function(DF, X, Y, FILL, COUNT) {
 #' @examples
 #' #test <- thr_efg(mydata, ecosystem_functional_grps, percentages, threat_status, number_of_ecosystems)
 #' @export
-thr_efg <-function(DF, X, Y, FILL, COUNT)
+thr_efg <-function(DF, X, Y, FILL, COUNT){
 
-{
+  cols <- c("#b1d798", "#eeeea3", "#fff02a", "#f97835", "#e9302c")
+  breaks <- c("Least Concern","Vulnerable", "Endangered", "Critically Endangered")
+
+
   ggplot2::ggplot(DF, aes(y = {{Y}}, x = {{X}}, fill = {{FILL}})) +
     ggplot2::geom_bar(stat = "identity", width = 0.5) + # change width of bars
     ggplot2::geom_text(aes(label = {{COUNT}}), position = position_stack(vjust = 0.5), # add count labels to the bars and adjust "vjust" value to place text at the beginning, centre or end of bars
               size = 3, color = "black", show.legend = FALSE) + # adjust size of labels with no legend being shown
-    ggplot2::scale_fill_manual(values = c("#b1d798", "#eeeea3", "#fff02a", "#f97835", "#e9302c")) +  # order the colours of the bars in the reversed order
+    ggplot2::scale_fill_manual(values = cols, breaks = breaks) +  # order the colours of the bars in the reversed order
     ggplot2::ylab("Percentage of ecosystem functional types") +
     ggplot2::xlab("") + ## remove the heading for the y-axis
     ggplot2::guides(fill = guide_legend(reverse = TRUE, nrow = 2)) +  # display legend in 2 rows
