@@ -1,19 +1,22 @@
 Package: NBA.package
 Title: NBA theme package
-Version: 0.0.0.9000
+Version: 0.2.0
 Authors@R: 
     person("Natasha", "Besseling", , "tashbes@gmail.com", role = c("aut", "cre"))
     person("Lauryn", "Bull", , "l.bull@sanbi.org.za", role = c("aut", "cre"))
     person("Maphale", "Monyeki", , "seithati.neoza@gmail.com", role = c("aut", "cre"))
-Description: Creates standard themes for graphical outputs of the NBA
+    person("Shae-Lynn", "Hendricks", , "Shaelynnsampson4@gmail.com", role = c("aut", "cre"))
+Description: Creates standard themes for graphical outputs of the NBA.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.1
+RoxygenNote: 7.3.2
 Suggests: 
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
 Imports: 
-    ggplot2
+    ggplot2,
+    dplyr,
+    kableExtra
 URL: https://github.com/TashBes/NBA.package
 BugReports: https://github.com/TashBes/NBA.package/issues
