@@ -200,8 +200,8 @@ pro_donut_plot <-function(DF, YMAX, YMIN, FILL, COLOUR, LABEL)
     ggplot2::labs(fill = "Protection Levels") +
     ggplot2::theme_void() + # removes the lines around chart and grey background
     ggplot2::theme(
-      ggplot2::panel.background = element_rect(fill = "white", color = NA),  # set panel background to white
-      ggplot2::plot.background = element_rect(fill = "white", color = NA)  # set plot background to white
+      panel.background = element_rect(fill = "white", color = NA),  # set panel background to white
+      plot.background = element_rect(fill = "white", color = NA)  # set plot background to white
   )
 }
 

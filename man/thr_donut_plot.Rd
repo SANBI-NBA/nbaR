@@ -2,13 +2,28 @@
 % Please edit documentation in R/graphs.R
 \name{thr_donut_plot}
 \alias{thr_donut_plot}
-\title{Title}
+\title{Threat status donut plot}
 \usage{
-thr_donut_plot(DAT, YMAX, YMIN, FILL)
+thr_donut_plot(DF, YMAX, YMIN, FILL, COLOUR)
 }
 \arguments{
-\item{fill}{}
+\item{DF}{The data frame that contains the information on threat status}
+
+\item{YMAX}{The threat status percentages}
+
+\item{YMIN}{The groups}
+
+\item{FILL}{The threat status categories}
+
+\item{COLOUR}{colour for the threat status}
+}
+\value{
+Returns a bar donut plot of threat status
 }
 \description{
-Title
+Donut plots for the threat status of the ecosystem types
+}
+\examples{
+#test <- thr_donut_plot(mydata, ecosystem_functional_grps, percentages, threat_status)
+
 }
