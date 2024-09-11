@@ -4,17 +4,37 @@
 \alias{thr_efg}
 \title{Threat status bar plot}
 \usage{
+<<<<<<< HEAD
+thr_efg(DAT, X, Y, FILL, LABEL)
+}
+\arguments{
+=======
 thr_efg(DF, X, Y, FILL, COUNT)
 }
 \arguments{
 \item{DF}{The data frame that contains the information on threat status}
 
+>>>>>>> 1c8e15fed1f267e21b7e4e1955cf66a0657946cc
 \item{X}{The groups}
 
 \item{Y}{The threat status percentages}
 
 \item{FILL}{The threat status categories}
 
+<<<<<<< HEAD
+\item{LABEL}{The frequency counts of the number of ecosystems within each protection level}
+
+\item{DF}{The data frame that contains the information on threat status}
+}
+\value{
+Returns a bar graph of threat status
+}
+\description{
+Horizontal barplots for the threat status of ecosystem function groups (efgs)
+}
+\examples{
+#test <- thr_efg(mydata, ecosystem_functional_grps, percentages, threat_status)
+=======
 \item{COUNT}{The frequency counts of the number of ecosystems within each protection level}
 }
 \value{
@@ -32,4 +52,5 @@ The colours and axis titels are created within the function.
 }
 \examples{
 #test <- thr_efg(mydata, ecosystem_functional_grps, percentages, threat_status, number_of_ecosystems)
+>>>>>>> 1c8e15fed1f267e21b7e4e1955cf66a0657946cc
 }

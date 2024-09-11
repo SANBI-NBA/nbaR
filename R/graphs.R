@@ -267,7 +267,9 @@ pro_donut_plot <-function(DF, FILL)
     ggplot2::theme(
       panel.background = element_rect(fill = "white", color = NA),  # set panel background to white
       plot.background = element_rect(fill = "white", color = NA)  # set plot background to white
-    )
+
+  )
+
 }
 
 
