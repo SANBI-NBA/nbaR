@@ -301,9 +301,24 @@ pro_donut_plot <-function(DF, FILL)
 #' @importFrom ggplot2  labs
 #' @importFrom ggplot2  theme_void
 #' @importFrom ggplot2  theme
+#' @importFrom ggplot2  geom_bar
+#' @importFrom ggplot2  ylab
+#' @importFrom ggplot2  xlab
+#' @importFrom ggplot2  guides
+#' @importFrom ggplot2  labs
+#' @importFrom ggplot2  scale_y_continuous
+#' @importFrom ggplot2  theme_minimal
+#' @importFrom ggplot2  theme
+#' @importFrom ggplot2  coord_flip
 #' @importFrom dplyr count
 #' @importFrom dplyr arrange
 #' @importFrom dplyr mutate
+#' @importFrom tidyr pivot_longer
+#' @importFrom dplyr group_by
+#' @importFrom dplyr summarise
+#' @importFrom dplyr ungroup
+#' @importFrom dplyr mutate
+#'
 #'
 #'
 #' @export
@@ -370,13 +385,13 @@ NBA_plot <- function(DF, GROUPS, COLS, CHRT = c("bar", "donut"), NUM = FALSE, LA
 
       ## Prepare the data frame by arranging and setting colors
       dat <- DF %>%
-        dplyr::pivot_longer({{COLS}}, names_to = "FILL", values_to = "COUNT")%>%
+        tidyr::pivot_longer({{COLS}}, names_to = "FILL", values_to = "COUNT")%>%
         dplyr::group_by(FILL) %>%
         dplyr::summarise(COUNT = sum(COUNT, na.rm = T))  %>%
         dplyr::mutate(FILL = factor(FILL, levels = breaks))%>%
         dplyr::mutate(ymax = cumsum(COUNT)) %>%
         dplyr::mutate(ymin = ymax -COUNT) %>%
-        ungroup()
+        dplyr::ungroup()
 
 
       plot <- ggplot2::ggplot(dat, aes(ymax = ymax, ymin = ymin,xmax = 4, xmin = 3,  fill = FILL)) +
@@ -399,7 +414,7 @@ NBA_plot <- function(DF, GROUPS, COLS, CHRT = c("bar", "donut"), NUM = FALSE, LA
 
       ## Prepare the data frame by arranging and setting colors
       dat <- DF %>%
-        dplyr::pivot_longer({{COLS}}, names_to = "FILL", values_to = "COUNT")%>%
+        tidyr::pivot_longer({{COLS}}, names_to = "FILL", values_to = "COUNT")%>%
         dplyr::mutate(TOT = sum(COUNT, na.rm = T), .by = {{GROUPS}} )%>%
         dplyr::mutate(PERCENTAGE = (COUNT/TOT)*100)%>%
         dplyr::mutate(FILL = factor(FILL, levels = breaks))%>%
@@ -430,7 +445,7 @@ NBA_plot <- function(DF, GROUPS, COLS, CHRT = c("bar", "donut"), NUM = FALSE, LA
       dplyr::pull({{GROUPS}})
 
     dat <- DF %>%
-      dplyr::pivot_longer({{COLS}}, names_to = "FILL", values_to = "COUNT")%>%
+      tidyr::pivot_longer({{COLS}}, names_to = "FILL", values_to = "COUNT")%>%
       dplyr::mutate(TOT = sum(COUNT, na.rm = T), .by = {{GROUPS}} )%>%
       dplyr::mutate(PERCENTAGE = (COUNT/TOT)*100)%>%
       dplyr::mutate(across(COUNT, ~na_if(., 0))) %>%
