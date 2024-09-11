@@ -497,3 +497,61 @@ NBA_plot <- function(DF, GROUPS, COLS, CHRT = c("bar", "donut"), NUM = FALSE, LA
 
 
 #######################################################################################################
+###
+#' RLI_plot
+#'
+#'
+#'
+#' @param DF The data frame that contains the information on protection level
+#' @param YEAR The protection level categories
+#' @param RLI The protection level categories
+#' @param min The protection level categories
+#' @param max The protection level categories
+#' @param GRP The protection level categories
+#'
+#' @return Returns a RLI plot
+#'
+#'
+#' @importFrom ggplot2  ggplot
+#' @importFrom ggplot2  geom_line
+#' @importFrom ggplot2  geom_ribbon
+#' @importFrom ggplot2  theme_classic
+#' @importFrom ggplot2  ylim
+#' @importFrom ggplot2  scale_fill_manual
+#' @importFrom ggplot2  labs
+#' @importFrom ggplot2  theme_void
+#' @importFrom ggplot2  theme
+#' @importFrom dplyr count
+#' @importFrom dplyr arrange
+#' @importFrom dplyr mutate
+#'
+#'
+#' @export
+#'
+#' @examples
+#' #test <- pro_donut_plot(mydata, ecosystem_functional_grps)
+#'
+RLI_plot <- function(DF,YEAR, RLI, min, max, GRP = FALSE){
+
+if(GRP == TRUE){
+
+  ggplot2::ggplot(DF, aes(x = {{YEAR}}, y = {{RLI}}, group = {{GROUP}}, color = {{GROUP}})) +
+    ggplot2::geom_line(linetype="dashed") +
+    ggplot2::geom_ribbon(aes(ymin = {{min}}, ymax = {{max}}), fill = "grey", alpha = .2, colour = NA)+
+    ggplot2::theme_classic()+
+    ggplot2::ylim(0.7,1)
+
+}
+else {
+
+  ggplot2::ggplot(DF, aes(x = {{YEAR}}, y = {{RLI}})) +
+    ggplot2::geom_line(aes(y = {{RLI}})) +
+    ggplot2::geom_ribbon(aes(ymin = {{min}}, ymax = {{max}}),alpha = .3, colour = NA)+
+    ggplot2::theme_classic()+
+    ggplot2::ylim(0.7,1)
+
+
+}
+}
+
+#######################################################################################################
