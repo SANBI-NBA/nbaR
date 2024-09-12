@@ -4,26 +4,28 @@
 \alias{pro_donut_plot}
 \title{Protection level donut plot}
 \usage{
-pro_donut_plot(DF, YMAX, YMIN, FILL, COLOUR, LABEL)
+pro_donut_plot(DF, FILL)
 }
 \arguments{
 \item{DF}{The data frame that contains the information on protection level}
 
-\item{YMAX}{The protection level percentages}
-
-\item{YMIN}{The groups}
-
 \item{FILL}{The protection level categories}
-
-\item{COLOUR}{colour for the protection level}
 }
 \value{
 Returns a bar donut plot of protection level
 }
 \description{
-Donut plot for the protection level of the ecosystem types
+Donut plot for the protection level.
+This function requires a dataframe that contains a columns of the
+the ecosystem function groups or taxa, ecosystem types or species, and their protection level.
+}
+\details{
+The function will group the ecosystem types or species by the functional
+group or taxa and protection level, and calculate the number of ecosystem types or species within each functional
+group or taxa with that protection level.
+It will also create the colours and axis titles.
 }
 \examples{
-#test <- pro_donut_plot(mydata, ecosystem_functional_grps, percentages, threat_status)
+#test <- pro_donut_plot(mydata, ecosystem_functional_grps)
 
 }

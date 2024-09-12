@@ -4,26 +4,28 @@
 \alias{thr_donut_plot}
 \title{Threat status donut plot}
 \usage{
-thr_donut_plot(DF, YMAX, YMIN, FILL, COLOUR)
+thr_donut_plot(DF, FILL)
 }
 \arguments{
 \item{DF}{The data frame that contains the information on threat status}
 
-\item{YMAX}{The threat status percentages}
-
-\item{YMIN}{The groups}
-
-\item{FILL}{The threat status categories}
-
-\item{COLOUR}{colour for the threat status}
+\item{FILL}{The groups}
 }
 \value{
 Returns a bar donut plot of threat status
 }
 \description{
-Donut plots for the threat status of the ecosystem types
+Donut plots for the threat status.
+This function requires a dataframe that contains a columns of the
+the ecosystem function groups or taxa, ecosystem types or species, and their threat status.
+}
+\details{
+The function will group the ecosystem types or species by the functional
+group or taxa and threat status, and calculate the number of ecosystem types or species within each functional
+group or taxa with that threat status.
+It will also create the colours and axis titles.
 }
 \examples{
-#test <- thr_donut_plot(mydata, ecosystem_functional_grps, percentages, threat_status)
+#test <- thr_donut_plot(mydata, threat_status)
 
 }
