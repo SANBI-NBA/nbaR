@@ -37,6 +37,13 @@ Returns a plot
 }
 \description{
 NBA plots for protection level, threat status, and condition.
+The function expects that the groups are in a column, with one
+group per row, and the protection level, threat status, or condition
+categories are the headings of each colunm. Please look at the example
+data example_NBA_data to see the correct structure for the data. The
+name of the groups column is irrelevant, but the caterogries must be
+spelt correctly (there is a list of the standard spellings/ cases
+of NBA_categories named NBA_categories, which can be accessed for reference).
 }
 \examples{
 #test <- NBA_plot(Fig1a,OVERALL_types,2:5,CHRT = "bar",NUM = TRUE,LAB = "Percentage of ecosystem types",SAVE = "Fig1a")
