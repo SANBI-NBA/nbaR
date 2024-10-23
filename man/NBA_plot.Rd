@@ -16,15 +16,15 @@ NBA_plot(
 )
 }
 \arguments{
-\item{DF}{The data frame that contains the information on protection level}
+\item{DF}{The data frame that contains the information}
 
-\item{GROUPS}{The variables to graph (ecosystem type, taxa, etc)}
+\item{GROUPS}{The categorized variables (ecosystem functional group, taxa, etc)}
 
-\item{COLS}{The categories to describe the groups (protection level, threat status, condition, etc)}
+\item{COLS}{The categories to describe the variables (protection level, threat status, condition, etc). You can use any tidyselect method to select these columns e.g. 2:4/ Endangered:Vulnerable/ c(Well Protected,Moderately Protected,Poorly Protected,Not Protected) etc}
 
 \item{CHRT}{A choice of either "bar" or "donut" plot}
 
-\item{NUM}{A choice to show numbers in the plot, Flase for no numbers}
+\item{NUM}{A choice to show numbers in the plot, False to show no numbers}
 
 \item{LAB}{The x axis label of the plot}
 
@@ -39,13 +39,37 @@ Returns a plot
 NBA plots for protection level, threat status, and condition.
 The function expects that the groups are in a column, with one
 group per row, and the protection level, threat status, or condition
-categories are the headings of each colunm. Please look at the example
-data example_NBA_data to see the correct structure for the data. The
-name of the groups column is irrelevant, but the caterogries must be
-spelt correctly (there is a list of the standard spellings/ cases
-of NBA_categories named NBA_categories, which can be accessed for reference).
+categories are the headings of each column. Please look at the example
+data NBA_example_bar_plot and NBA_example_donut_plot to see the correct
+structure for the data.
+This function will plot the data as either a bar or donut plot
+depending on what you require. You can also decide if you want the donut
+plot to be split by ecosystem functional group or not and choose if
+you want the number of ecosystems to be displayed within the plot.
+}
+\details{
+The name of the groups column is irrelevant, but the categories must be
+spelled correctly (there is a list of the standard spellings/ cases
+of NBA categories named NBA_categories in this package,
+which can be accessed for reference).
 }
 \examples{
-#test <- NBA_plot(Fig1a,OVERALL_types,2:5,CHRT = "bar",NUM = TRUE,LAB = "Percentage of ecosystem types",SAVE = "Fig1a")
+#bar_plot <- NBA_plot(Fig1a,
+#                   OVERALL_types,
+#                   2:5,
+#                   CHRT = "bar",
+#                   NUM = TRUE,
+#                   LAB = "Percentage of ecosystem types",
+#                   SAVE = "Fig1a")
+#
+#donut_plot <- NBA_plot(Fig61mapinset,
+#                        OVERALL_types,
+#                         COLS = 2:5,
+#                         NUM = T,
+#                         GRP = T,
+#                         CHRT = "donut",
+#                         LAB = "Protection level",
+#                         SAVE = "Fig61mapinset")
+
 
 }

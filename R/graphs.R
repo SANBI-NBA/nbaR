@@ -6,18 +6,25 @@
 #' The function expects that the groups are in a column, with one
 #' group per row, and the protection level, threat status, or condition
 #' categories are the headings of each column. Please look at the example
-#' data example_NBA_data to see the correct structure for the data. The
-#' name of the groups column is irrelevant, but the categories must be
+#' data NBA_example_bar_plot and NBA_example_donut_plot to see the correct
+#' structure for the data.
+#' This function will plot the data as either a bar or donut plot
+#' depending on what you require. You can also decide if you want the donut
+#' plot to be split by ecosystem functional group or not and choose if
+#' you want the number of ecosystems to be displayed within the plot.
+#'
+#' The name of the groups column is irrelevant, but the categories must be
 #' spelled correctly (there is a list of the standard spellings/ cases
-#' of NBA_categories named NBA_categories, which can be accessed for reference).
+#' of NBA categories named NBA_categories in this package,
+#' which can be accessed for reference).
 #'
 #'
 #'
-#' @param DF The data frame that contains the information on protection level
-#' @param GROUPS The variables to graph (ecosystem type, taxa, etc)
-#' @param COLS The categories to describe the groups (protection level, threat status, condition, etc)
+#' @param DF The data frame that contains the information
+#' @param GROUPS The categorized variables (ecosystem functional group, taxa, etc)
+#' @param COLS The categories to describe the variables (protection level, threat status, condition, etc). You can use any tidyselect method to select these columns e.g. 2:4/ Endangered:Vulnerable/ c(Well Protected,Moderately Protected,Poorly Protected,Not Protected) etc
 #' @param CHRT A choice of either "bar" or "donut" plot
-#' @param NUM A choice to show numbers in the plot, False for no numbers
+#' @param NUM A choice to show numbers in the plot, False to show no numbers
 #' @param LAB The x axis label of the plot
 #' @param GRP A choice of whether or not to plot the donut graphs by group, TRUE will plot a donut plot for each group.
 #' @param SAVE The name of the output file that will be saved to the output folder. If you do not have an outputs folder you will be prompted to make one.
@@ -43,6 +50,15 @@
 #' @importFrom ggplot2  theme_minimal
 #' @importFrom ggplot2  theme
 #' @importFrom ggplot2  coord_flip
+#' @importFrom ggplot2  aes
+#' @importFrom ggplot2  element_rect
+#' @importFrom ggplot2  vars
+#' @importFrom ggplot2  position_stack
+#' @importFrom ggplot2  guide_legend
+#' @importFrom ggplot2  element_blank
+#' @importFrom ggplot2  element_text
+#' @importFrom ggplot2  margin
+#' @importFrom ggplot2  ggsave
 #' @importFrom dplyr count
 #' @importFrom dplyr arrange
 #' @importFrom dplyr mutate
@@ -51,13 +67,31 @@
 #' @importFrom dplyr summarise
 #' @importFrom dplyr ungroup
 #' @importFrom dplyr mutate
+#' @importFrom dplyr across
+#' @importFrom magrittr "%>%"
 #'
 #'
 #'
 #' @export
 #'
 #' @examples
-#' #test <- NBA_plot(Fig1a,OVERALL_types,2:5,CHRT = "bar",NUM = TRUE,LAB = "Percentage of ecosystem types",SAVE = "Fig1a")
+#' #bar_plot <- NBA_plot(Fig1a,
+#'#                   OVERALL_types,
+#'#                   2:5,
+#'#                   CHRT = "bar",
+#'#                   NUM = TRUE,
+#'#                   LAB = "Percentage of ecosystem types",
+#'#                   SAVE = "Fig1a")
+#'#
+#' #donut_plot <- NBA_plot(Fig61mapinset,
+#'#                        OVERALL_types,
+#'#                         COLS = 2:5,
+#'#                         NUM = T,
+#'#                         GRP = T,
+#'#                         CHRT = "donut",
+#'#                         LAB = "Protection level",
+#'#                         SAVE = "Fig61mapinset")
+#'
 #'
 
 NBA_plot <- function(DF, GROUPS, COLS, CHRT = c("bar", "donut"), NUM = FALSE, LAB, GRP = TRUE, SAVE){
@@ -181,7 +215,7 @@ NBA_plot <- function(DF, GROUPS, COLS, CHRT = c("bar", "donut"), NUM = FALSE, LA
       tidyr::pivot_longer({{COLS}}, names_to = "FILL", values_to = "COUNT")%>%
       dplyr::mutate(TOT = sum(COUNT, na.rm = T), .by = {{GROUPS}} )%>%
       dplyr::mutate(PERCENTAGE = (COUNT/TOT)*100)%>%
-      dplyr::mutate(across(COUNT, ~na_if(., 0))) %>%
+      dplyr::mutate(dplyr::across(COUNT, ~na_if(., 0))) %>%
       dplyr::mutate(FILL = factor(FILL, levels = breaks))
 
     if(NUM == TRUE){
@@ -248,14 +282,14 @@ NBA_plot <- function(DF, GROUPS, COLS, CHRT = c("bar", "donut"), NUM = FALSE, LA
 ###
 #' RLI_plot
 #'
-#'
+#'This function will create a Redlist index plot
 #'
 #' @param DF The data frame that contains the information on protection level
-#' @param YEAR The protection level categories
-#' @param RLI The protection level categories
-#' @param min The protection level categories
-#' @param max The protection level categories
-#' @param GRP The protection level categories
+#' @param YEAR The years
+#' @param RLI The Redlist index
+#' @param min The minimum values
+#' @param max The maximum values
+#' @param GRP A choice to group the plot, TRUE will group if, FALSE will not.
 #'
 #' @return Returns a RLI plot
 #'
@@ -277,7 +311,7 @@ NBA_plot <- function(DF, GROUPS, COLS, CHRT = c("bar", "donut"), NUM = FALSE, LA
 #' @export
 #'
 #' @examples
-#' #test <- pro_donut_plot(mydata, ecosystem_functional_grps)
+#' #test(Fig6, Years, RLI, min, max)
 #'
 RLI_plot <- function(DF,YEAR, RLI, min, max, GRP = FALSE){
 

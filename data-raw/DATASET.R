@@ -37,14 +37,14 @@ NBA_example_RLI_plot <- read_excel(
 
 
 ## donut
-NBA_example_donut_plot <- read_excel(
-  dir("data",
-      "Fig55mapinset_graph.xlsx",
+NBA_example_donut_plot <- Fig61mapinset <- read_excel(
+  dir("data-raw",
+      "Fig61mapinset_graph.xlsx",
       full.names = T,
       recursive = T))%>%
   slice_head(n =8)%>%
   mutate(across(2:5, as.numeric)) %>%
-  select(1:5)
+  dplyr::select(1:5)
 
 
 ##threat status/ protection level categories

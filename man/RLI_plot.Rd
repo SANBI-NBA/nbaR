@@ -9,23 +9,23 @@ RLI_plot(DF, YEAR, RLI, min, max, GRP = FALSE)
 \arguments{
 \item{DF}{The data frame that contains the information on protection level}
 
-\item{YEAR}{The protection level categories}
+\item{YEAR}{The years}
 
-\item{RLI}{The protection level categories}
+\item{RLI}{The Redlist index}
 
-\item{min}{The protection level categories}
+\item{min}{The minimum values}
 
-\item{max}{The protection level categories}
+\item{max}{The maximum values}
 
-\item{GRP}{The protection level categories}
+\item{GRP}{A choice to group the plot, TRUE will group if, FALSE will not.}
 }
 \value{
 Returns a RLI plot
 }
 \description{
-RLI_plot
+This function will create a Redlist index plot
 }
 \examples{
-#test <- pro_donut_plot(mydata, ecosystem_functional_grps)
+#test(Fig6, Years, RLI, min, max)
 
 }
