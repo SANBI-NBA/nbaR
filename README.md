@@ -1,6 +1,4 @@
 
-<!-- README.md is generated from README.Rmd. Please edit that file -->
-
 # NBA.package
 
 <!-- badges: start -->
@@ -19,6 +17,3 @@ You can install the development version of NBA.package from
 # install.packages("devtools")
 devtools::install_github("TashBes/NBA.package")
 ```
-
-You’ll still need to render `README.Rmd` regularly, to keep `README.md`
-up-to-date. `devtools::build_readme()` is handy for this.

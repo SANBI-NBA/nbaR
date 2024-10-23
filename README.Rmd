@@ -2,7 +2,6 @@
 output: github_document
 ---
 
-<!-- README.md is generated from README.Rmd. Please edit that file -->
 
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
@@ -28,10 +27,5 @@ You can install the development version of NBA.package from [GitHub](https://git
 # install.packages("devtools")
 devtools::install_github("TashBes/NBA.package")
 ```
-
-
-
-You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date. `devtools::build_readme()` is handy for this.
-
 
 
