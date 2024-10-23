@@ -23,7 +23,9 @@ RLI_plot(DF, YEAR, RLI, min, max, GRP = FALSE)
 Returns a RLI plot
 }
 \description{
-This function will create a Redlist index plot
+This function will create a Redlist index plot.
+There is an example dataset (NBA_example_RLI_plot), available for users
+to refernce if needed.
 }
 \examples{
 #test(Fig6, Years, RLI, min, max)

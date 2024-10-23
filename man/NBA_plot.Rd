@@ -41,7 +41,9 @@ The function expects that the groups are in a column, with one
 group per row, and the protection level, threat status, or condition
 categories are the headings of each column. Please look at the example
 data NBA_example_bar_plot and NBA_example_donut_plot to see the correct
-structure for the data.
+structure for the data. Please note that both of these datasets have the
+same structure, whether it will be used to make a bar or donut plot is
+irrelevant.
 This function will plot the data as either a bar or donut plot
 depending on what you require. You can also decide if you want the donut
 plot to be split by ecosystem functional group or not and choose if
