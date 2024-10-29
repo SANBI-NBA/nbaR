@@ -7,11 +7,11 @@
 RLI_plot(DF, YEAR, RLI, min, max, GRP = FALSE)
 }
 \arguments{
-\item{DF}{The data frame that contains the information on protection level}
+\item{DF}{The data frame that contains the information on the Red List Index}
 
 \item{YEAR}{The years}
 
-\item{RLI}{The Redlist index}
+\item{RLI}{The Red List Index}
 
 \item{min}{The minimum values}
 
@@ -23,9 +23,14 @@ RLI_plot(DF, YEAR, RLI, min, max, GRP = FALSE)
 Returns a RLI plot
 }
 \description{
-This function will create a Redlist index plot.
+This function will create a line graph indicating the Red list index per period/year.
+Additionally, depending on the graph requirements it further creates a multiple line graph
+grouping the plot according to species,
+and creates a buffer parallel to the RLI line using the minimum and maximum values.
+Note: The graph can be used on other datasets as well, as long as it contains the same
+data structure as the Red List Index.
 There is an example dataset (NBA_example_RLI_plot), available for users
-to refernce if needed.
+to reference if needed.
 }
 \examples{
 #test(Fig6, Years, RLI, min, max)

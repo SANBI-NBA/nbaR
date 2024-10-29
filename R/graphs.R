@@ -284,13 +284,18 @@ NBA_plot <- function(DF, GROUPS, COLS, CHRT = c("bar", "donut"), NUM = FALSE, LA
 ###
 #' RLI_plot
 #'
-#'This function will create a Redlist index plot.
+#'This function will create a line graph indicating the Red list index per period/year.
+#'Additionally, depending on the graph requirements it further creates a multiple line graph
+#'grouping the plot according to species,
+#'and creates a buffer parallel to the RLI line using the minimum and maximum values.
+#'Note: The graph can be used on other datasets as well, as long as it contains the same
+#'data structure as the Red List Index.
 #'There is an example dataset (NBA_example_RLI_plot), available for users
-#'to refernce if needed.
+#'to reference if needed.
 #'
-#' @param DF The data frame that contains the information on protection level
+#' @param DF The data frame that contains the information on the Red List Index
 #' @param YEAR The years
-#' @param RLI The Redlist index
+#' @param RLI The Red List Index
 #' @param min The minimum values
 #' @param max The maximum values
 #' @param GRP A choice to group the plot, TRUE will group if, FALSE will not.
