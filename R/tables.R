@@ -1,6 +1,7 @@
 #' Basic table
 #'
 #' A basic table with a purple heading bar.
+#' This data should be in the same fomat as for the plot functions
 #'
 #'
 #' @param DF The data frame that contains the data
@@ -36,6 +37,7 @@ basic_tbl <- function(DF){
 #'
 #' A basic table with a purple heading bar and coloured blocks around the
 #' categories
+#' This data should be in the same fomat as for the plot functions
 #'
 #' @param DF The data frame that contains the data
 #' @param COL the column containing the categories

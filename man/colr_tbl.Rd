@@ -14,6 +14,7 @@ colr_tbl(DF, COL)
 \description{
 A basic table with a purple heading bar and coloured blocks around the
 categories
+This data should be in the same fomat as for the plot functions
 }
 \examples{
 #test <- thr_tbl(bird_data, Protection_level)

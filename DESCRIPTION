@@ -18,6 +18,10 @@ Imports:
     ggplot2,
     dplyr,
     kableExtra,
-    tidyr
+    tidyr,
+    magrittr
 URL: https://github.com/TashBes/NBA.package
 BugReports: https://github.com/TashBes/NBA.package/issues
+Depends: 
+    R (>= 2.10)
+LazyData: true

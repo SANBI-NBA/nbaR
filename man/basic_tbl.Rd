@@ -11,6 +11,7 @@ basic_tbl(DF)
 }
 \description{
 A basic table with a purple heading bar.
+This data should be in the same fomat as for the plot functions
 }
 \examples{
 #test <- basic_tbl(bird_data)

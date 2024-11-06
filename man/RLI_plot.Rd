@@ -7,25 +7,32 @@
 RLI_plot(DF, YEAR, RLI, min, max, GRP = FALSE)
 }
 \arguments{
-\item{DF}{The data frame that contains the information on protection level}
+\item{DF}{The data frame that contains the information on the Red List Index}
 
-\item{YEAR}{The protection level categories}
+\item{YEAR}{The years}
 
-\item{RLI}{The protection level categories}
+\item{RLI}{The Red List Index}
 
-\item{min}{The protection level categories}
+\item{min}{The minimum values}
 
-\item{max}{The protection level categories}
+\item{max}{The maximum values}
 
-\item{GRP}{The protection level categories}
+\item{GRP}{A choice to group the plot, TRUE will group if, FALSE will not.}
 }
 \value{
 Returns a RLI plot
 }
 \description{
-RLI_plot
+This function will create a line graph indicating the Red list index per period/year.
+Additionally, depending on the graph requirements it further creates a multiple line graph
+grouping the plot according to species,
+and creates a buffer parallel to the RLI line using the minimum and maximum values.
+Note: The graph can be used on other datasets as well, as long as it contains the same
+data structure as the Red List Index.
+There is an example dataset (NBA_example_RLI_plot), available for users
+to reference if needed.
 }
 \examples{
-#test <- pro_donut_plot(mydata, ecosystem_functional_grps)
+#test(Fig6, Years, RLI, min, max)
 
 }
