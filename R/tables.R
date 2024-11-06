@@ -32,13 +32,13 @@ basic_tbl <- function(DF){
 }
 
 ################################################################################
-#' Protection level table
+#' Coloured table
 #'
 #' A basic table with a purple heading bar and coloured blocks around the
-#' Protection level categories
+#' categories
 #'
 #' @param DF The data frame that contains the data
-#' @param COL the column containing the Protection level categories
+#' @param COL the column containing the categories
 #'
 #' @importFrom kableExtra  kable
 #' @importFrom kableExtra  kable_styling
@@ -54,7 +54,7 @@ basic_tbl <- function(DF){
 #' @export
 #'
 #'
-thr_tbl <- function(DF, COL) {
+colr_tbl <- function(DF, COL) {
 
   color_cell <- function(COL) {
     color <- dplyr::case_when(
@@ -62,6 +62,26 @@ thr_tbl <- function(DF, COL) {
       COL == "Moderately Protected" ~ "#80a952",
       COL == "Poorly Protected" ~ "#d5dec3",
       COL == "No Protection" ~ "#a4a3a3",
+      COL == "Natural" ~ "#6e9fd4",
+      COL == "Natural/near-natural" ~ "#6e9fd4",
+      COL == "Near-natural" ~ "#a5c5c7",
+      COL == "Moderately modified" ~ "#81aba7",
+      COL == "Heavily modified" ~ "#88814e",
+      COL == "Severely/critically modified" ~ "#88812e",
+      COL == "Not Protected" ~ "#a4a3a3",
+      COL == "Extinct" ~ "black",
+      COL == "Critically Endangered" ~ "#e9302c",
+      COL == "Endangered" ~ "#f97835",
+      COL == "Vulnerable" ~ "#fff02a",
+      COL == "Near Threatened" ~ "#eeeea3",
+      COL == "Data Deficient" ~ "brown",
+      COL == "Rare" ~  "grey",
+      COL == "Least Concern" ~ "#b1d798",
+      COL == "Cropland" ~ "#DB7D15",
+      COL == "Plantation" ~ "#B36611",
+      COL == "Built up" ~ "#808080",
+      COL == "Mine" ~ "#F5C592",
+      COL == "Artificial waterbody" ~ "#0071C0",
       TRUE ~ "white"
     )
 
