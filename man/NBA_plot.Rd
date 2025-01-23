@@ -12,7 +12,7 @@ NBA_plot(
   NUM = FALSE,
   LAB,
   GRP = TRUE,
-  SAVE
+  SAVE = NULL
 )
 }
 \arguments{

@@ -96,7 +96,7 @@
 #'
 #'
 
-NBA_plot <- function(DF, GROUPS, COLS, CHRT = c("bar", "donut"), NUM = FALSE, LAB, GRP = TRUE, SAVE){
+NBA_plot <- function(DF, GROUPS, COLS, CHRT = c("bar", "donut"), NUM = FALSE, LAB, GRP = TRUE, SAVE = NULL){
 
   cols <- c("#6e9fd4",
             "#6e9fd4",
