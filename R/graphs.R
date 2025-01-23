@@ -428,12 +428,12 @@ NBA_plot_comb <- function(DF,
   for (m in METRICS) {
 
     figure <- NBA_plot(DF = DF %>%
-                      dplyr::filter({{METRIC_COL}}== m),
-                       GROUPS=`OVERALL types`,
-                       COLS = 3:6,
-                       CHRT = "bar",
-                       NUM = FALSE,
-                       LAB = paste("Percentage of ecosystem", m),
+                         filter({{METRIC_COL}}== m),
+                       GROUPS= {{GROUPS}},
+                       COLS = COLS,
+                       CHRT = CHRT,
+                       NUM = NUM,
+                       LAB = paste(LAB, m),
                        SAVE=NULL)
 
     plot_list2[[i]] <- figure
