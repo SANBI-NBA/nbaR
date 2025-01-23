@@ -345,6 +345,109 @@ else {
 }
 }
 
+#######################################################################
+#' NBA multi plot function
+#'
+#' NBA plots for multiple plots of protection level, threat status,
+#' and condition on the same grid.
+#' The function expects that the groups are in a column, with one
+#' group per row, and the protection level, threat status, or condition
+#' categories are the headings of each column. Please look at the example
+#' data NBA_example_bar_plot and NBA_example_donut_plot to see the correct
+#' structure for the data. Please note that both of these datasets have the
+#' same structure, whether it will be used to make a bar or donut plot is
+#' irrelevant.
+#' This function will plot the data as either a bar or donut plot
+#' depending on what you require. You can also decide if you want the donut
+#' plot to be split by ecosystem functional group or not and choose if
+#' you want the number of ecosystems to be displayed within the plot.
+#'
+#' The name of the groups column is irrelevant, but the categories must be
+#' spelled correctly (there is a list of the standard spellings/ cases
+#' of NBA categories named NBA_categories in this package,
+#' which can be accessed for reference).
+#'
+#' The nameing of the plots is automatically alphabetical and lower case.
+#' The ordering of the plots is also automatic.
+#' The legend is assumed to be the same and added to the bottom
+#' of the plots.
+#'
+#'
+#'
+#' @param DF The data frame that contains the information
+#' @param GROUPS The categorized variables (ecosystem functional group, taxa, etc)
+#' @param METRIC_COL The column that differentiates which rows belong to which plots
+#' @param METRICS a list of the identifiers for each plot
+#' @param COLS The categories to describe the variables (protection level, threat status, condition, etc). You can use any tidyselect method to select these columns e.g. 2:4/ Endangered:Vulnerable/ c(Well Protected,Moderately Protected,Poorly Protected,Not Protected) etc
+#' @param CHRT A choice of either "bar" or "donut" plot
+#' @param NUM A choice to show numbers in the plot, False to show no numbers
+#' @param LAB The x axis label of the plot
+#' @param GRP A choice of whether or not to plot the donut graphs by group, TRUE will plot a donut plot for each group.
+#' @param SAVE The name of the output file that will be saved to the output folder. If you do not have an outputs folder you will be prompted to make one.
+#'
+#' @return Returns a plot
+#'
+#'
+#' @importFrom ggpubr ggarrange
+#' @importFrom ggplot2  ggsave
+#' @importFrom dplyr filter
+#' @importFrom magrittr "%>%"
+#'
+#' @export
+#'
+#' @examples
+#' #bar_plot <- NBA_plot_comb(
+#'#               c_ets,
+#'#                GROUPS=OVERALL_types,
+#'#                METRIC_COL = metric,
+#'#                METRICS = c("types", "extent"),
+#'#                COLS = 3:6,
+#'#                CHRT = "bar",
+#'#                NUM = FALSE,
+#'#                LAB = "Percentage of ecosystem",
+#'#                SAVE=NULL
+#'#
+#'
+#'
 
+NBA_plot_comb <- function(DF,
+                          GROUPS,
+                          METRIC_COL,
+                          METRICS,
+                          COLS,
+                          CHRT = c("bar", "donut"),
+                          NUM = FALSE,
+                          LAB,
+                          GRP = TRUE,
+                          SAVE = NULL) {
+
+
+  plot_list2 <- list()
+  i <- 1
+
+  for (m in METRICS) {
+
+    figure <- NBA_plot(DF = DF %>%
+                      dplyr::filter({{METRIC_COL}}== m),
+                       GROUPS=`OVERALL types`,
+                       COLS = 3:6,
+                       CHRT = "bar",
+                       NUM = FALSE,
+                       LAB = paste("Percentage of ecosystem", m),
+                       SAVE=NULL)
+
+    plot_list2[[i]] <- figure
+    i <- i + 1
+  }
+
+  plot <- ggpubr::ggarrange(plotlist =  plot_list2,
+                    labels = c("auto"),
+                    common.legend = T,
+                    legend = "bottom")
+
+  ggplot2::ggsave(paste0("outputs/", SAVE, ".png"), height = 10, width = 16, units = 'cm', bg="white")
+
+  plot
+}
 
 #######################################################################################################

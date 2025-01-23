@@ -19,7 +19,8 @@ Imports:
     dplyr,
     kableExtra,
     tidyr,
-    magrittr
+    magrittr,
+    ggpubr
 URL: https://github.com/TashBes/NBA.package
 BugReports: https://github.com/TashBes/NBA.package/issues
 Depends: 
