@@ -176,7 +176,8 @@ NBA_plot <- function(DF, GROUPS, COLS, CHRT = c("bar", "donut"), NUM = FALSE, LA
         ggplot2::theme_void() + ## removes the lines around chart and grey background
         ggplot2::theme(
           panel.background = element_rect(fill = "white", color = NA),  ## set panel background to white
-          plot.background = element_rect(fill = "white", color = NA)  ## set plot background to white
+          plot.background = element_rect(fill = "white", color = NA),
+          title = element_text(size = 5)## set plot background to white
         )
 
       }
@@ -195,7 +196,8 @@ NBA_plot <- function(DF, GROUPS, COLS, CHRT = c("bar", "donut"), NUM = FALSE, LA
           ggplot2::theme_void() + ## removes the lines around chart and grey background
           ggplot2::theme(
             panel.background = element_rect(fill = "white", color = NA),  ## set panel background to white
-            plot.background = element_rect(fill = "white", color = NA)  ## set plot background to white
+            plot.background = element_rect(fill = "white", color = NA),
+            title = element_text(size = 5)  ## set plot background to white
           )
 
       }
@@ -218,7 +220,7 @@ NBA_plot <- function(DF, GROUPS, COLS, CHRT = c("bar", "donut"), NUM = FALSE, LA
 
       plot <-ggplot2::ggplot(dat, aes(ymax = ymax, ymin = ymin,xmax = 4, xmin = 3,  fill = FILL)) +
         ggplot2::geom_rect() +
-        ggplot2::facet_wrap(vars({{GROUPS}}))+
+        ggplot2::facet_wrap(vars({{GROUPS}}), labeller = "")+
         #ggplot2::geom_text(aes(x = 3.5, y = (ymin + ymax) / 2, label = COUNT), color = "black", size = 3) +  ## Add this line to include count values
         ggplot2::coord_polar(theta = "y") + ## convert to polar coordinates
         ggplot2::xlim(c(2, 4)) + ## limit x-axis to create a donut chart
@@ -228,7 +230,8 @@ NBA_plot <- function(DF, GROUPS, COLS, CHRT = c("bar", "donut"), NUM = FALSE, LA
         ggplot2::theme_void() + ## removes the lines around chart and grey background
         ggplot2::theme(
           panel.background = element_rect(fill = "white", color = NA),  ## set panel background to white
-          plot.background = element_rect(fill = "white", color = NA)  ## set plot background to white
+          plot.background = element_rect(fill = "white", color = NA),
+          title = element_text(size = 5)  ## set plot background to white
         )
       }
 
@@ -247,7 +250,8 @@ NBA_plot <- function(DF, GROUPS, COLS, CHRT = c("bar", "donut"), NUM = FALSE, LA
           ggplot2::theme_void() + ## removes the lines around chart and grey background
           ggplot2::theme(
             panel.background = element_rect(fill = "white", color = NA),  ## set panel background to white
-            plot.background = element_rect(fill = "white", color = NA)  ## set plot background to white
+            plot.background = element_rect(fill = "white", color = NA),
+            title = element_text(size = 5)  ## set plot background to white
           )
 
       }
