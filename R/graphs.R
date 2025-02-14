@@ -152,7 +152,7 @@ NBA_plot <- function(DF, GROUPS, COLS, CHRT = c("bar", "donut"), NUM = FALSE, LA
 
     if(GRP == FALSE) {
 
-      ## Prepare the data frame by arranging and setting colors
+ ## Prepare the data frame by arranging and setting colors
       dat <- DF %>%
         tidyr::pivot_longer({{COLS}}, names_to = "FILL", values_to = "COUNT")%>%
         dplyr::group_by(FILL) %>%
@@ -162,26 +162,49 @@ NBA_plot <- function(DF, GROUPS, COLS, CHRT = c("bar", "donut"), NUM = FALSE, LA
         dplyr::mutate(ymin = ymax -COUNT) %>%
         dplyr::ungroup()
 
+      if(NUM == FALSE){
+
 
       plot <- ggplot2::ggplot(dat, aes(ymax = ymax, ymin = ymin,xmax = 4, xmin = 3,  fill = FILL)) +
         ggplot2::geom_rect() +
-        ggplot2::geom_text(aes(x = 3.5, y = (ymin + ymax) / 2, label = COUNT), color = "black", size = 5) +  ## Add this line to include count values
+        #ggplot2::geom_text(aes(x = 3.5, y = (ymin + ymax) / 2, label = COUNT), color = "black", size = 5) +  ## Add this line to include count values
         ggplot2::coord_polar(theta = "y") + ## convert to polar coordinates
         ggplot2::xlim(c(2, 4)) + ## limit x-axis to create a donut chart
         ggplot2::scale_fill_manual(values = cols, breaks = breaks) +
-        ggplot2::labs(fill = LAB) +
+        ggplot2::xlab(LAB)+
+        #ggplot2::labs(fill = LAB) + #this is the legend label
         ggplot2::theme_void() + ## removes the lines around chart and grey background
         ggplot2::theme(
           panel.background = element_rect(fill = "white", color = NA),  ## set panel background to white
           plot.background = element_rect(fill = "white", color = NA)  ## set plot background to white
         )
 
+      }
+
+      #if NUm is true
+      else{
+
+        plot <- ggplot2::ggplot(dat, aes(ymax = ymax, ymin = ymin,xmax = 4, xmin = 3,  fill = FILL)) +
+          ggplot2::geom_rect() +
+          ggplot2::geom_text(aes(x = 3.5, y = (ymin + ymax) / 2, label = COUNT), color = "black", size = 5) +  ## Add this line to include count values
+          ggplot2::coord_polar(theta = "y") + ## convert to polar coordinates
+          ggplot2::xlim(c(2, 4)) + ## limit x-axis to create a donut chart
+          ggplot2::scale_fill_manual(values = cols, breaks = breaks) +
+          #ggplot2::labs(fill = LAB) +
+          ggplot2::xlab(LAB)+
+          ggplot2::theme_void() + ## removes the lines around chart and grey background
+          ggplot2::theme(
+            panel.background = element_rect(fill = "white", color = NA),  ## set panel background to white
+            plot.background = element_rect(fill = "white", color = NA)  ## set plot background to white
+          )
+
+      }
     }
 
+    #if grp is true
     else {
 
-
-      ## Prepare the data frame by arranging and setting colors
+ ## Prepare the data frame by arranging and setting colors
       dat <- DF %>%
         tidyr::pivot_longer({{COLS}}, names_to = "FILL", values_to = "COUNT")%>%
         dplyr::mutate(TOT = sum(COUNT, na.rm = T), .by = {{GROUPS}} )%>%
@@ -190,19 +213,45 @@ NBA_plot <- function(DF, GROUPS, COLS, CHRT = c("bar", "donut"), NUM = FALSE, LA
         dplyr::mutate(ymax = cumsum(PERCENTAGE), .by = {{GROUPS}}) %>%
         dplyr::mutate(ymin = ymax -PERCENTAGE)
 
+      if(NUM == FALSE){
+
+
       plot <-ggplot2::ggplot(dat, aes(ymax = ymax, ymin = ymin,xmax = 4, xmin = 3,  fill = FILL)) +
         ggplot2::geom_rect() +
         ggplot2::facet_wrap(vars({{GROUPS}}))+
-        ggplot2::geom_text(aes(x = 3.5, y = (ymin + ymax) / 2, label = COUNT), color = "black", size = 3) +  ## Add this line to include count values
+        #ggplot2::geom_text(aes(x = 3.5, y = (ymin + ymax) / 2, label = COUNT), color = "black", size = 3) +  ## Add this line to include count values
         ggplot2::coord_polar(theta = "y") + ## convert to polar coordinates
         ggplot2::xlim(c(2, 4)) + ## limit x-axis to create a donut chart
         ggplot2::scale_fill_manual(values = cols, breaks = breaks) +
-        ggplot2::labs(fill = LAB) +
+        #ggplot2::labs(fill = LAB) +
+        ggplot2::xlab(LAB)+
         ggplot2::theme_void() + ## removes the lines around chart and grey background
         ggplot2::theme(
           panel.background = element_rect(fill = "white", color = NA),  ## set panel background to white
           plot.background = element_rect(fill = "white", color = NA)  ## set plot background to white
         )
+      }
+
+      #if Num is true
+      else{
+
+        plot <-ggplot2::ggplot(dat, aes(ymax = ymax, ymin = ymin,xmax = 4, xmin = 3,  fill = FILL)) +
+          ggplot2::geom_rect() +
+          ggplot2::facet_wrap(vars({{GROUPS}}))+
+          ggplot2::geom_text(aes(x = 3.5, y = (ymin + ymax) / 2, label = COUNT), color = "black", size = 3) +  ## Add this line to include count values
+          ggplot2::coord_polar(theta = "y") + ## convert to polar coordinates
+          ggplot2::xlim(c(2, 4)) + ## limit x-axis to create a donut chart
+          ggplot2::scale_fill_manual(values = cols, breaks = breaks) +
+          #ggplot2::labs(fill = LAB) +
+          ggplot2::xlab(LAB)+
+          ggplot2::theme_void() + ## removes the lines around chart and grey background
+          ggplot2::theme(
+            panel.background = element_rect(fill = "white", color = NA),  ## set panel background to white
+            plot.background = element_rect(fill = "white", color = NA)  ## set plot background to white
+          )
+
+      }
+
     }
   }
 
