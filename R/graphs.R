@@ -171,8 +171,8 @@ NBA_plot <- function(DF, GROUPS, COLS, CHRT = c("bar", "donut"), NUM = FALSE, LA
         ggplot2::coord_polar(theta = "y") + ## convert to polar coordinates
         ggplot2::xlim(c(2, 4)) + ## limit x-axis to create a donut chart
         ggplot2::scale_fill_manual(values = cols, breaks = breaks) +
-        ggplot2::xlab(LAB)+
-        #ggplot2::labs(fill = LAB) + #this is the legend label
+        #ggplot2::ggtitle(LAB)+
+        ggplot2::labs(fill = "", title = LAB) + #this is the legend label
         ggplot2::theme_void() + ## removes the lines around chart and grey background
         ggplot2::theme(
           panel.background = element_rect(fill = "white", color = NA),  ## set panel background to white
@@ -190,7 +190,7 @@ NBA_plot <- function(DF, GROUPS, COLS, CHRT = c("bar", "donut"), NUM = FALSE, LA
           ggplot2::coord_polar(theta = "y") + ## convert to polar coordinates
           ggplot2::xlim(c(2, 4)) + ## limit x-axis to create a donut chart
           ggplot2::scale_fill_manual(values = cols, breaks = breaks) +
-          #ggplot2::labs(fill = LAB) +
+          ggplot2::labs(fill = "", title = LAB)+
           ggplot2::xlab(LAB)+
           ggplot2::theme_void() + ## removes the lines around chart and grey background
           ggplot2::theme(
@@ -223,7 +223,7 @@ NBA_plot <- function(DF, GROUPS, COLS, CHRT = c("bar", "donut"), NUM = FALSE, LA
         ggplot2::coord_polar(theta = "y") + ## convert to polar coordinates
         ggplot2::xlim(c(2, 4)) + ## limit x-axis to create a donut chart
         ggplot2::scale_fill_manual(values = cols, breaks = breaks) +
-        #ggplot2::labs(fill = LAB) +
+        ggplot2::labs(fill = "", title = LAB)+
         ggplot2::xlab(LAB)+
         ggplot2::theme_void() + ## removes the lines around chart and grey background
         ggplot2::theme(
@@ -242,7 +242,7 @@ NBA_plot <- function(DF, GROUPS, COLS, CHRT = c("bar", "donut"), NUM = FALSE, LA
           ggplot2::coord_polar(theta = "y") + ## convert to polar coordinates
           ggplot2::xlim(c(2, 4)) + ## limit x-axis to create a donut chart
           ggplot2::scale_fill_manual(values = cols, breaks = breaks) +
-          #ggplot2::labs(fill = LAB) +
+          ggplot2::labs(fill = "", title = LAB)+
           ggplot2::xlab(LAB)+
           ggplot2::theme_void() + ## removes the lines around chart and grey background
           ggplot2::theme(
