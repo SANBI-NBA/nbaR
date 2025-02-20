@@ -52,5 +52,5 @@ citation("NBA.package")
 
 ```
 
-
+With a Zenodo. doi: 10.5281/zenodo.14899427.
 
