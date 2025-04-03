@@ -155,8 +155,7 @@ NBA_plot <- function(DF, GROUPS, COLS, CHRT = c("bar", "donut"), NUM = FALSE, LA
  ## Prepare the data frame by arranging and setting colors
       dat <- DF %>%
         tidyr::pivot_longer({{COLS}}, names_to = "FILL", values_to = "COUNT")%>%
-        dplyr::group_by(FILL) %>%
-        dplyr::summarise(COUNT = sum(COUNT, na.rm = T))  %>%
+        dplyr::summarise(COUNT = sum(COUNT, na.rm = T), .by = FILL)  %>%
         dplyr::mutate(FILL = factor(FILL, levels = breaks))%>%
         dplyr::mutate(ymax = cumsum(COUNT)) %>%
         dplyr::mutate(ymin = ymax -COUNT) %>%
