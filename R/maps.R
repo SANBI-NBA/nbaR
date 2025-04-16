@@ -24,7 +24,7 @@
 #' @param CAP The caption for the map (will be place at the bottom left of the plot)
 #' @param FILL The column that contains the categories to colour the ecosystems by (e.g. protection level, threat status, or condition)
 #'
-#' @return Returns a plot
+#' @return Returns a map
 #'
 #'
 #' @importFrom ggplot2  ggplot

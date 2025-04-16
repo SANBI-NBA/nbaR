@@ -18,7 +18,7 @@ NBA_map(DF, COLS, GEOM, CAP, FILL)
 \item{FILL}{The column that contains the categories to colour the ecosystems by (e.g. protection level, threat status, or condition)}
 }
 \value{
-Returns a plot
+Returns a map
 }
 \description{
 NBA maps for protection level, threat status, and condition.

@@ -507,3 +507,60 @@ NBA_plot_comb <- function(DF,
 }
 
 #######################################################################################################
+###
+#' NBA_theme
+#'
+#'This function will create a theme for all ggplot graphs to align them to the
+#'NBA "look". All NBA functions already use this theme.
+#'
+
+#' @return Returns a NBA_theme
+#'
+#'
+#' @importFrom ggplot2  ggplot
+#' @importFrom ggplot2  theme
+#' @importFrom ggplot2  element_rect
+#' @importFrom ggplot2  element_blank
+#' @importFrom ggplot2  element_text
+#' @importFrom ggplot2  element_line
+#' @importFrom ggplot2  margin
+#'
+#'
+#' @export
+#'
+#' @examples
+#' #plot <- ggplot()+
+#' #            geom_hist()+
+#' #            NBA_theme()
+#'
+
+NBA_theme <- function() {
+  ggplot2::theme(
+    # add border 1)
+    panel.border = ggplot2::element_rect(colour = "grey", fill = NA, linetype = 2),
+    # color background 2)
+    panel.background = ggplot2::element_blank(),
+    # modify grid 3)
+    panel.grid.minor = ggplot2::element_blank(), # remove grid lines on every second x-axis value
+    panel.grid.major.y = ggplot2::element_blank(), # remove the horizontal lines only on 1st , 3rd and 5 ... x-axis
+    # modify text, axis and colour
+    axis.text = ggplot2::element_text(colour = "black", face = "italic", family = "Times New Roman"),
+    axis.title = ggplot2::element_text(colour = "black", face = "bold",family = "Times New Roman"),
+    axis.ticks = ggplot2::element_line(colour = "black"),
+    axis.line = ggplot2::element_blank(), # remove all x-axis grid lines
+    # legend at the bottom 6)
+    legend.position = "bottom",
+    legend.text = ggplot2::element_text(size = 8), # change legend text size
+    #plot margin
+    plot.margin = ggplot2::margin(10, 10, 10, 10)
+  )
+}
+
+
+
+
+
+
+
+
+###################################################################################################
