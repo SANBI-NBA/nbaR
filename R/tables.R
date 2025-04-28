@@ -11,6 +11,7 @@
 #' @importFrom kableExtra  row_spec
 #' @importFrom kableExtra  column_spec
 #' @importFrom kableExtra  add_header_above
+#' @importFrom magrittr "%>%"
 #'
 #'@examples
 #'#test <- basic_tbl(bird_data)
@@ -49,6 +50,7 @@ basic_tbl <- function(DF){
 #' @importFrom kableExtra  add_header_above
 #' @importFrom dplyr  case_when
 #' @importFrom dplyr  mutate
+#' @importFrom magrittr "%>%"
 #'
 #'@examples
 #'#test <- thr_tbl(bird_data, Protection_level)
@@ -111,4 +113,87 @@ colr_tbl <- function(DF, COL) {
     kableExtra::row_spec(0, background = "#899be1", color = "black", bold = TRUE, extra_css = "border: 1px solid black")
   table
 
+}
+
+
+#########################################
+# Function to apply gt styling to table #
+#########################################
+#' gt table theme
+#'
+#' Function to apply gt styling to table
+#'
+#' @param GT_TBL The data frame that contains the data
+#'
+#' @importFrom gt tab_style
+#' @importFrom gt cell_fill
+#' @importFrom gt cell_borders
+#' @importFrom gt px
+#' @importFrom gt cell_text
+#' @importFrom gt cells_column_labels
+#' @importFrom gt cells_body
+#' @importFrom magrittr "%>%"
+#'
+#'@examples
+#'test <- NBA_example_bar_plot |>
+#'gt::gt() |>
+#'NBA.package::gt_theme_nba()
+#'
+#' @export
+#'
+#'
+
+gt_theme_nba <- function(GT_TBL) {
+  last_row <- nrow(GT_TBL[["_data"]])
+
+  GT_TBL %>%
+    # 1. Header shading and borders
+    gt::tab_style(
+      style = list(
+        gt::cell_fill(color = "lightgray"),
+        gt::cell_borders(
+          sides = c("top", "bottom"),
+          color = "black",
+          weight = gt::px(2),
+          style = "solid"
+        ),
+        gt::cell_borders(
+          sides = c("left", "right"),
+          color = "lightgray"
+        ),
+        gt::cell_text(weight = "bold")
+      ),
+      locations = gt::cells_column_labels()
+    ) %>%
+
+    # 2. Data row borders (dotted top and bottom, no vertical)
+    gt::tab_style(
+      style = gt::cell_borders(
+        sides = c("top", "bottom"),
+        color = "gray50",
+        weight = gt::px(1),
+        style = "dotted"
+      ),
+      locations = gt::cells_body()
+    ) %>%
+
+    # 3. Remove all vertical borders
+    gt::tab_style(
+      style = gt::cell_borders(
+        sides = c("left", "right"),
+        color = "transparent"
+      ),
+      locations = gt::cells_body()
+    ) %>%
+
+    # 4. Bottom border for whole table
+    gt::tab_style(
+      style = gt::cell_borders(
+        sides = "bottom",
+        color = "black",
+        weight = gt::px(2),
+        style = "solid"
+      ),
+      locations = gt::cells_body(rows = last_row)  # last row only
+    )
 }
