@@ -71,7 +71,7 @@
 #' @importFrom dplyr mutate
 #' @importFrom dplyr across
 #' @importFrom magrittr "%>%"
-@importFrom dplyr na_if
+#' @importFrom dplyr na_if
 #'
 #'
 #' @export
