@@ -71,7 +71,7 @@
 #' @importFrom dplyr mutate
 #' @importFrom dplyr across
 #' @importFrom magrittr "%>%"
-#'
+@importFrom dplyr na_if
 #'
 #'
 #' @export
@@ -273,7 +273,7 @@ NBA_plot <- function(DF, GROUPS, COLS, CHRT = c("bar", "donut"), NUM = FALSE, LA
       tidyr::pivot_longer({{COLS}}, names_to = "FILL", values_to = "COUNT")%>%
       dplyr::mutate(TOT = sum(COUNT, na.rm = T), .by = {{GROUPS}} )%>%
       dplyr::mutate(PERCENTAGE = (COUNT/TOT)*100)%>%
-      dplyr::mutate(dplyr::across(COUNT, ~na_if(., 0))) %>%
+      dplyr::mutate(dplyr::across(COUNT, ~ dplyr::na_if(., 0))) %>%
       dplyr::mutate(FILL = factor(FILL, levels = breaks))
 
     if(NUM == TRUE){
