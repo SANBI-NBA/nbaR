@@ -1,5 +1,6 @@
 url: https://sanbi-nba.github.io/NBA.package/
 template:
   bootstrap: 5
+  light-switch: true
   bslib:
     danger: "#A6081A"
