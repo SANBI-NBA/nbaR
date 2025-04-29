@@ -10,7 +10,7 @@ Authors@R: c(
     )
 Description: Creation of standard themes for graphical outputs of the NBA.
 License: MIT + file LICENSE
-URL: https://github.com/TashBes/NBA.package
+URL: https://github.com/TashBes/NBA.package, https://sanbi-nba.github.io/NBA.package/
 BugReports: https://github.com/TashBes/NBA.package/issues
 Depends: 
     R (>= 2.10)
