@@ -15,7 +15,7 @@ You can install the development version of NBA.package from
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("TashBes/NBA.package")
+#devtools::install_github("SANBI-NBA/NBA.package")
 ```
 
 ## Data
@@ -37,3 +37,31 @@ spelling and cases as the functions are case sensitive.
 If you find any issues with the package or functions, or if you have any
 suggestions for improvements to the package please go to the git
 repository and log an issue so it can be dealt with.
+
+## How to cite this package
+
+You can cite this package like this “tables and figures were produced
+using the NBA.package R package (Besseling et al., 2024)”. Here is the
+full bibliographic reference to include in your reference list (don’t
+forget to update the ‘last accessed’ date):
+
+    #> To cite package 'NBA.package' in publications use:
+    #> 
+    #>   al. NBe (2024). "Package for creation of the NBA." _NA_, *1*(1), 1.
+    #>   doi:Zenodo. doi: 10.5281/zenodo.14899427
+    #>   <https://doi.org/Zenodo.%20doi%3A%2010.5281/zenodo.14899427>.
+    #> 
+    #> A BibTeX entry for LaTeX users is
+    #> 
+    #>   @Article{,
+    #>     title = {Package for creation of the NBA},
+    #>     author = {Natasha Besseling et al.},
+    #>     journal = {NA},
+    #>     year = {2024},
+    #>     volume = {1},
+    #>     number = {1},
+    #>     pages = {1},
+    #>     doi = {Zenodo. doi: 10.5281/zenodo.14899427},
+    #>   }
+
+With a Zenodo. doi: 10.5281/zenodo.14899427.
