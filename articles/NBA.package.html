@@ -110,7 +110,7 @@ plots.</p>
 <li>bar plot</li>
 </ol>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">dat</span> <span class="op">&lt;-</span> <span class="va">NBA_example_thr_data</span></span>
+<code class="sourceCode R"><span><span class="va">NBA_example_thr_data</span> <span class="op">&lt;-</span> <span class="va">NBA_example_thr_data</span></span>
 <span></span>
 <span></span>
 <span><span class="va">bar_plot</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/NBA_plot.html">NBA_plot</a></span><span class="op">(</span><span class="va">NBA_example_thr_data</span>,</span>
@@ -123,6 +123,75 @@ plots.</p>
 <span></span>
 <span><span class="va">bar_plot</span></span></code></pre></div>
 <p><img src="NBA.package_files/figure-html/unnamed-chunk-2-1.png" width="700"></p>
+<ol start="2" style="list-style-type: decimal">
+<li>donut plot</li>
+</ol>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">NBA_example_pro_data</span> <span class="op">&lt;-</span> <span class="va">NBA_example_pro_data</span></span>
+<span></span>
+<span></span>
+<span><span class="va">donut_plot</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/NBA_plot.html">NBA_plot</a></span><span class="op">(</span><span class="va">NBA_example_pro_data</span>,</span>
+<span>                  <span class="va">`OVERALL types`</span>,</span>
+<span>                  <span class="fl">2</span><span class="op">:</span><span class="fl">5</span>,</span>
+<span>                 CHRT <span class="op">=</span> <span class="st">"donut"</span>,</span>
+<span>                 NUM <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                 LAB <span class="op">=</span> <span class="st">"Percentage of ecosystem types"</span>,</span>
+<span>                 GRP <span class="op">=</span> <span class="cn">F</span>,</span>
+<span>                SAVE <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">donut_plot</span></span></code></pre></div>
+<p><img src="NBA.package_files/figure-html/unnamed-chunk-3-1.png" width="700"></p>
+<ol start="3" style="list-style-type: decimal">
+<li>Combined bar plot</li>
+</ol>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">NBA_example_pro_data</span> <span class="op">&lt;-</span> <span class="va">NBA_example_pro_data</span></span>
+<span><span class="va">NBA_example_thr_data</span> <span class="op">&lt;-</span> <span class="va">NBA_example_thr_data</span></span>
+<span><span class="va">NBA_example_comb_data</span> <span class="op">&lt;-</span> <span class="va">NBA_example_comb_data</span></span>
+<span></span>
+<span></span>
+<span><span class="va">bar_plot_comb</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/NBA_plot_comb.html">NBA_plot_comb</a></span><span class="op">(</span></span>
+<span>               <span class="va">NBA_example_comb_data</span>,</span>
+<span>                GROUPS<span class="op">=</span> <span class="va">`OVERALL types`</span>,</span>
+<span>                METRIC_COL <span class="op">=</span> <span class="va">metric</span>,</span>
+<span>               METRICS <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"protection_level"</span>, <span class="st">"threat_status"</span><span class="op">)</span>,</span>
+<span>                COLS <span class="op">=</span> <span class="fl">3</span><span class="op">:</span><span class="fl">10</span>,</span>
+<span>                CHRT <span class="op">=</span> <span class="st">"bar"</span>,</span>
+<span>                NUM <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>               LAB <span class="op">=</span> <span class="st">"Percentage of ecosystem"</span>,</span>
+<span>                SAVE<span class="op">=</span><span class="cn">NULL</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">bar_plot_comb</span></span></code></pre></div>
+<p><img src="NBA.package_files/figure-html/unnamed-chunk-4-1.png" width="700"></p>
+<ol start="4" style="list-style-type: decimal">
+<li>RLI plot</li>
+</ol>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">NBA_example_RLI_data</span> <span class="op">&lt;-</span> <span class="va">NBA_example_RLI_data</span></span>
+<span></span>
+<span></span>
+<span><span class="va">RLI_plot</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/RLI_plot.html">RLI_plot</a></span><span class="op">(</span><span class="va">NBA_example_RLI_data</span>,</span>
+<span>                 <span class="va">Years</span>, </span>
+<span>                 <span class="va">RLI</span>, </span>
+<span>                 <span class="va">min</span>, </span>
+<span>                 <span class="va">max</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">RLI_plot</span></span></code></pre></div>
+<p><img src="NBA.package_files/figure-html/unnamed-chunk-5-1.png" width="700"></p>
+<ol start="5" style="list-style-type: decimal">
+<li>NBA ggplot theme</li>
+</ol>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
+<span><span class="va">NBA_example_pro_data</span> <span class="op">&lt;-</span> <span class="va">NBA_example_pro_data</span></span>
+<span></span>
+<span></span>
+<span><span class="va">gg_plot</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">NBA_example_pro_data</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">`OVERALL types`</span>, y <span class="op">=</span> <span class="va">`Well Protected`</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu"><a href="../reference/NBA_theme.html">NBA_theme</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">gg_plot</span></span></code></pre></div>
+<p><img src="NBA.package_files/figure-html/unnamed-chunk-6-1.png" width="700"></p>
   </main>
 </div>
 
