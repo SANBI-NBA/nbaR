@@ -74,6 +74,35 @@
     
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/TashBes/NBA.package" class="external-link">NBA.package</a></span><span class="op">)</span></span></code></pre></div>
+<p>This Vignette is to help users become familiar with the NBA package
+and get the most use out of its functions.</p>
+<p>This package was create to help create the figures, plots, tables,
+and maps for the NBA. The functions are split into those used to make
+graphs, those used to makes tables, and those used to make maps.</p>
+<p>The graph functions consist of one main plot funcion called NBA_plot
+that will create either a bar or donut plot and colour the graph by
+matching the category words (such as endangered, well protected, natural
+etc) with their set colours. There is then a complimentary function
+called NBA_comp which is used if you want to plot two plots together
+using gg_arrange as the underlying code, and NBA_theme that is a ggplot
+theme with all the NBA presets that can be applied to any ggplot object
+to ensure the graph maintains the NBA ‘look’.</p>
+<p>The table functions consist of NBA_tbl which makes a basic tabe for a
+quarto document outputting to an html, NBA_colr_tbl which makes a basic
+table with a purple heading bar and colours the category names by their
+preset colours. There is also a complimentary NBA_gt_theme function that
+styles any gt table with the NBA’s preset styling.</p>
+<p>The map functions currently only consist of one function NBA_map,
+made using ggplot 2 and recreates the maps in the marine technical
+report 2018.</p>
+<p>There are then three example datasets that can be accessed to test
+the functions and see the required format of the data to use the
+functions, which are: NBA_example_thr_data, NBA_example_pro_data, and
+NBA_example_RLI_data. There is also a list of the category names
+(NBA_categories) that are recognised by the function so that you can
+make sure you are using the correct naming convention. The functions
+<strong>are</strong> case sensitive so you must be careful when naming
+your categories.</p>
   </main>
 </div>
 
@@ -84,7 +113,7 @@
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.2.</p>
 </div>
 
     </footer>
