@@ -102,7 +102,37 @@ bar_plot_comb
 
 ```
 
+4. RLI plot
 
+```{r warning=FALSE}
+NBA_example_RLI_data <- NBA_example_RLI_data
+
+
+RLI_plot <- RLI_plot(NBA_example_RLI_data,
+                 Years, 
+                 RLI, 
+                 min, 
+                 max)
+
+RLI_plot
+
+
+```
+
+5. NBA ggplot theme
+
+```{r warning=FALSE}
+NBA_example_pro_data <- NBA_example_pro_data
+
+
+gg_plot <- ggplot(NBA_example_pro_data, aes(x = `OVERALL types`, y = `Well Protected`))+
+  ggplot2::geom_point()+
+  NBA_theme()
+
+gg_plot
+
+
+```
 
 
 
