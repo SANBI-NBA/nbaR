@@ -45,23 +45,17 @@ using the NBA.package R package (Besseling et al., 2024)”. Here is the
 full bibliographic reference to include in your reference list (don’t
 forget to update the ‘last accessed’ date):
 
-    #> To cite package 'NBA.package' in publications use:
-    #> 
-    #>   al. NBe (2024). "Package for creation of the NBA." _NA_, *1*(1), 1.
-    #>   doi:Zenodo. doi: 10.5281/zenodo.14899427
-    #>   <https://doi.org/Zenodo.%20doi%3A%2010.5281/zenodo.14899427>.
-    #> 
-    #> A BibTeX entry for LaTeX users is
-    #> 
-    #>   @Article{,
-    #>     title = {Package for creation of the NBA},
-    #>     author = {Natasha Besseling et al.},
-    #>     journal = {NA},
-    #>     year = {2024},
-    #>     volume = {1},
-    #>     number = {1},
-    #>     pages = {1},
-    #>     doi = {Zenodo. doi: 10.5281/zenodo.14899427},
-    #>   }
+To cite package ‘NBA.package’ in publications use:
 
-With a Zenodo. doi: 10.5281/zenodo.14899427.
+Besseling N, Bull L, Monyeki M, Hendricks S, von Staden L (2024).
+“Package for creation of the NBA.” *NA*, *1*(1), 1. <doi:Zenodo>. doi:
+10.5281/zenodo.14899427
+<https://doi.org/Zenodo.%20doi%3A%2010.5281/zenodo.14899427>.
+
+A BibTeX entry for LaTeX users is
+
+@Article{, title = {Package for creation of the NBA}, author = {Natasha
+Besseling and Lauryn Bull and Maphale Monyeki and Shae-Lynn Hendricks
+and Lize {von Staden}}, journal = {NA}, year = {2024}, volume = {1},
+number = {1}, pages = {1}, doi = {Zenodo. doi: 10.5281/zenodo.14899427},
+}
