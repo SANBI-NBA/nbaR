@@ -48,7 +48,7 @@ You can cite this package like this "tables and figures were produced using the 
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
 
-citation("NBA.package")
+print(citation("NBA.package"))
 
 ```
 
