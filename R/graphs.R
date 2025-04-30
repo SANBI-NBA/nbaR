@@ -329,7 +329,14 @@ NBA_plot <- function(DF, GROUPS, COLS, CHRT = c("bar", "donut"), NUM = FALSE, LA
     }
   }
 
-  ggsave(paste0("outputs/", SAVE, ".png"), height = 10, width = 16, units = 'cm')
+  if (!is.null(SAVE)) {
+
+    ggsave(paste0("outputs/", SAVE, ".png"), height = 10, width = 16, units = 'cm')
+
+    }
+
+
+
 
   plot
 

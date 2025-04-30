@@ -31,6 +31,28 @@ The map functions currently only consist of one function NBA_map, made using ggp
 There are then three example datasets that can be accessed to test the functions and see the required format of the data to use the functions, which are: NBA_example_thr_data, NBA_example_pro_data, and NBA_example_RLI_data. There is also a list of the category names (NBA_categories) that are recognised by the function so that you can make sure you are using the correct naming convention. The functions **are** case sensitive so you must be careful when naming your categories.
 
 
+##Graph functions
+
+Load the example data and use the variouse functions to create NBA plots. 
+
+1. bar plot
+
+```{r warning=FALSE}
+dat <- NBA_example_thr_data
+
+
+bar_plot <- NBA_plot(NBA_example_thr_data,
+                  `OVERALL types`,
+                  2:5,
+                 CHRT = "bar",
+                 NUM = TRUE,
+                 LAB = "Percentage of ecosystem types",
+                SAVE = NULL)
+
+bar_plot
+
+
+```
 
 
 
