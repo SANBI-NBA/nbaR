@@ -38,7 +38,7 @@ Load the example data and use the variouse functions to create NBA plots.
 1. bar plot
 
 ```{r warning=FALSE}
-dat <- NBA_example_thr_data
+NBA_example_thr_data <- NBA_example_thr_data
 
 
 bar_plot <- NBA_plot(NBA_example_thr_data,
@@ -50,6 +50,54 @@ bar_plot <- NBA_plot(NBA_example_thr_data,
                 SAVE = NULL)
 
 bar_plot
+
+
+```
+
+2. donut plot
+
+```{r warning=FALSE}
+NBA_example_pro_data <- NBA_example_pro_data
+
+
+donut_plot <- NBA_plot(NBA_example_pro_data,
+                  `OVERALL types`,
+                  2:5,
+                 CHRT = "donut",
+                 NUM = TRUE,
+                 LAB = "Percentage of ecosystem types",
+                 GRP = F,
+                SAVE = NULL)
+
+donut_plot
+
+
+```
+
+3. Combined bar plot
+
+```{r warning=FALSE}
+NBA_example_pro_data <- NBA_example_pro_data
+NBA_example_thr_data <- NBA_example_thr_data
+NBA_example_comb_data <- NBA_example_pro_data %>% 
+  mutate(metric = "protection_level") %>% 
+  dplyr::bind_rows(NBA_example_thr_data %>% 
+               mutate(metric = "threat_status")) %>% 
+  dplyr::select(`OVERALL types`, metric, dplyr::everything())
+
+
+bar_plot_comb <- NBA_plot_comb(
+               NBA_example_comb_data,
+                GROUPS= `OVERALL types`,
+                METRIC_COL = metric,
+               METRICS = c("protection_level", "threat_status"),
+                COLS = 3:10,
+                CHRT = "bar",
+                NUM = FALSE,
+               LAB = "Percentage of ecosystem",
+                SAVE=NULL)
+
+bar_plot_comb
 
 
 ```

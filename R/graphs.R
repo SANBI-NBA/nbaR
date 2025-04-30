@@ -508,7 +508,13 @@ NBA_plot_comb <- function(DF,
                     common.legend = T,
                     legend = "bottom")
 
-  ggplot2::ggsave(paste0("outputs/", SAVE, ".png"), height = 10, width = 16, units = 'cm', bg="white")
+  if (!is.null(SAVE)) {
+
+    ggplot2::ggsave(paste0("outputs/", SAVE, ".png"), height = 10, width = 16, units = 'cm', bg="white")
+
+  }
+
+
 
   plot
 }
