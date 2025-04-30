@@ -103,6 +103,26 @@ NBA_example_RLI_data. There is also a list of the category names
 make sure you are using the correct naming convention. The functions
 <strong>are</strong> case sensitive so you must be careful when naming
 your categories.</p>
+<p>##Graph functions</p>
+<p>Load the example data and use the variouse functions to create NBA
+plots.</p>
+<ol style="list-style-type: decimal">
+<li>bar plot</li>
+</ol>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">dat</span> <span class="op">&lt;-</span> <span class="va">NBA_example_thr_data</span></span>
+<span></span>
+<span></span>
+<span><span class="va">bar_plot</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/NBA_plot.html">NBA_plot</a></span><span class="op">(</span><span class="va">NBA_example_thr_data</span>,</span>
+<span>                  <span class="va">`OVERALL types`</span>,</span>
+<span>                  <span class="fl">2</span><span class="op">:</span><span class="fl">5</span>,</span>
+<span>                 CHRT <span class="op">=</span> <span class="st">"bar"</span>,</span>
+<span>                 NUM <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                 LAB <span class="op">=</span> <span class="st">"Percentage of ecosystem types"</span>,</span>
+<span>                SAVE <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">bar_plot</span></span></code></pre></div>
+<p><img src="NBA.package_files/figure-html/unnamed-chunk-2-1.png" width="700"></p>
   </main>
 </div>
 
