@@ -48,14 +48,13 @@ forget to update the ‘last accessed’ date):
 To cite package ‘NBA.package’ in publications use:
 
 Besseling N, Bull L, Monyeki M, Hendricks S, von Staden L (2024).
-“Package for creation of the NBA.” *NA*, *1*(1), 1. <doi:Zenodo>. doi:
-10.5281/zenodo.14899427
-<https://doi.org/Zenodo.%20doi%3A%2010.5281/zenodo.14899427>.
+“Package for creation of the NBA.” *NA*, *1*(1), 1.
+<doi:10.5281/zenodo.15310061> <https://doi.org/10.5281/zenodo.15310061>.
 
 A BibTeX entry for LaTeX users is
 
 @Article{, title = {Package for creation of the NBA}, author = {Natasha
 Besseling and Lauryn Bull and Maphale Monyeki and Shae-Lynn Hendricks
 and Lize {von Staden}}, journal = {NA}, year = {2024}, volume = {1},
-number = {1}, pages = {1}, doi = {Zenodo. doi: 10.5281/zenodo.14899427},
-}
+number = {1}, pages = {1}, doi =
+{<https://doi.org/10.5281/zenodo.15310061>}, }
