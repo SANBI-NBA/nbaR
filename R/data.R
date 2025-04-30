@@ -18,7 +18,7 @@
 #'This data is used to make a bar plot of threat status of ecosystems within a functional group.
 #'This dataset has a totals column, but this is not necessary.
 #'
-#' @format ## `NBA_example_bar_plot`
+#' @format ## `NBA_example_thr_data`
 #' A data frame with 8 rows and 6 columns:
 #' \describe{
 #'   \item{OVERALL types}{Ecosystem functional group name}
@@ -27,14 +27,14 @@
 #'   ...
 #' }
 #' @source SANBI
-"NBA_example_bar_plot"
+"NBA_example_thr_data"
 
 #' NBA ecosystem type protection level data
 #'
 #'This data is used to make a donut plot of protection level of ecosystems
 #'within a functional group.
 #'
-#' @format ## `NBA_example_donut_plot`
+#' @format ## `NBA_example_pro_data`
 #' A data frame with 8 rows and 5 columns:
 #' \describe{
 #'   \item{OVERALL types}{Ecosystem functional group name}
@@ -42,14 +42,14 @@
 #'   ...
 #' }
 #' @source SANBI
-"NBA_example_donut_plot"
+"NBA_example_pro_data"
 
 
 #' NBA Redlist index data
 #'
 #'This data is used to make a line plot of the redlist index across a number of years
 #'
-#' @format ## `NBA_example_RLI_plot`
+#' @format ## `NBA_example_RLI_data`
 #' A data frame with 26 rows and 4 columns:
 #' \describe{
 #'   \item{Years}{years}
@@ -59,7 +59,7 @@
 #'   ...
 #' }
 #' @source SANBI
-"NBA_example_RLI_plot"
+"NBA_example_RLI_data"
 
 #' NBA category words/ phrases used in threat status/ protection level/ and condition
 #' categorisation

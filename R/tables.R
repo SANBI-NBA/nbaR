@@ -14,12 +14,12 @@
 #' @importFrom magrittr "%>%"
 #'
 #'@examples
-#'#test <- basic_tbl(bird_data)
+#'test <- NBA_tbl(NBA_example_bar_plot)
 #'
 #' @export
 #'
 #'
-basic_tbl <- function(DF){
+NBA_tbl <- function(DF){
 
   table <- kableExtra::kable(DF, "html", escape = FALSE) %>%
     kableExtra::kable_styling(
@@ -53,12 +53,12 @@ basic_tbl <- function(DF){
 #' @importFrom magrittr "%>%"
 #'
 #'@examples
-#'#test <- thr_tbl(bird_data, Protection_level)
+#'#test <- NBA_colr_tbl(NBA_example_bar_plot, Protection_level)
 #'
 #' @export
 #'
 #'
-colr_tbl <- function(DF, COL) {
+NBA_colr_tbl <- function(DF, COL) {
 
   color_cell <- function(COL) {
     color <- dplyr::case_when(
@@ -137,13 +137,13 @@ colr_tbl <- function(DF, COL) {
 #'@examples
 #'test <- NBA_example_bar_plot |>
 #'gt::gt() |>
-#'NBA.package::gt_theme_nba()
+#'NBA.package::NBA_gt_theme()
 #'
 #' @export
 #'
 #'
 
-gt_theme_nba <- function(GT_TBL) {
+NBA_gt_theme <- function(GT_TBL) {
   last_row <- nrow(GT_TBL[["_data"]])
 
   GT_TBL %>%
