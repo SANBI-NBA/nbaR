@@ -18,7 +18,7 @@ library(readxl)
 ### load data
 
 
-## bar graph
+## threat status graph
 NBA_example_thr_data <- read_excel(
   dir("data-raw",
       "Fig1a_graph.xlsx",
@@ -36,7 +36,7 @@ NBA_example_RLI_data <- read_excel(
   select(-c(5:6))
 
 
-## donut
+## protection level
 NBA_example_pro_data <- read_excel(
   dir("data-raw",
       "Fig61mapinset_graph.xlsx",
@@ -45,6 +45,13 @@ NBA_example_pro_data <- read_excel(
   slice_head(n =8)%>%
   mutate(across(2:5, as.numeric)) %>%
   dplyr::select(1:5)
+
+##combined plots
+NBA_example_comb_data <- NBA_example_pro_data %>%
+  mutate(metric = "protection_level") %>%
+  dplyr::bind_rows(NBA_example_thr_data %>%
+                     mutate(metric = "threat_status")) %>%
+  dplyr::select(`OVERALL types`, metric, dplyr::everything())
 
 
 ##threat status/ protection level categories
@@ -78,6 +85,7 @@ NBA_categories <- c("Natural",
 usethis::use_data(NBA_example_thr_data)
 usethis::use_data(NBA_example_RLI_data)
 usethis::use_data(NBA_example_pro_data)
+usethis::use_data(NBA_example_comb_data)
 usethis::use_data(NBA_categories)
 
 ##create a folder for this script

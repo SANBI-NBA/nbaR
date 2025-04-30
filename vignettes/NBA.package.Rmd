@@ -79,11 +79,7 @@ donut_plot
 ```{r warning=FALSE}
 NBA_example_pro_data <- NBA_example_pro_data
 NBA_example_thr_data <- NBA_example_thr_data
-NBA_example_comb_data <- NBA_example_pro_data %>% 
-  mutate(metric = "protection_level") %>% 
-  dplyr::bind_rows(NBA_example_thr_data %>% 
-               mutate(metric = "threat_status")) %>% 
-  dplyr::select(`OVERALL types`, metric, dplyr::everything())
+NBA_example_comb_data <- NBA_example_comb_data
 
 
 bar_plot_comb <- NBA_plot_comb(
@@ -122,6 +118,7 @@ RLI_plot
 5. NBA ggplot theme
 
 ```{r warning=FALSE}
+library(ggplot2)
 NBA_example_pro_data <- NBA_example_pro_data
 
 

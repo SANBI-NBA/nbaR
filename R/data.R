@@ -73,3 +73,20 @@
 #' @source SANBI
 "NBA_categories"
 
+#' NBA combined ecosystem type protection level and threat level example data
+#'
+#'This data is used to make a combined plot of protection level and threat status of ecosystems
+#'within a functional group.
+#'
+#' @format ## `NBA_example_comb_data`
+#' A data frame with 16 rows and 11 columns:
+#' \describe{
+#'   \item{OVERALL types}{Ecosystem functional group name}
+#'   \item{Well Protected,Moderately Protected,Poorly Protected,Not Protected}{Protection levels}
+#'   \item{Critically Endangered,Endangered,Vulnerable,Least Concern}{Threat status}
+#'   \item{TOT}{Total number of ecosystems}
+#'   \item{metric}{Column to differentiate rows into groups}
+#'   ...
+#' }
+#' @source SANBI
+"NBA_example_comb_data"
