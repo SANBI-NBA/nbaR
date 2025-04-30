@@ -1,8 +1,8 @@
 ---
-title: "Using-the-NBA-package"
+title: "NBA.package"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Using-the-NBA-package}
+  %\VignetteIndexEntry{NBA.package}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

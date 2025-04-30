@@ -25,7 +25,7 @@ You can install the development version of NBA.package from [GitHub](https://git
 
 ```{r}
 # install.packages("devtools")
-devtools::install_github("TashBes/NBA.package")
+devtools::install_github("SANBI-NBA/NBA.package")
 ```
 
 ## Data
