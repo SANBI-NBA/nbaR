@@ -1,4 +1,4 @@
-#' Basic table
+#' Basic NBA table
 #'
 #' A basic table with a purple heading bar.
 #' This data should be in the same fomat as for the plot functions
@@ -14,9 +14,9 @@
 #' @importFrom magrittr "%>%"
 #'
 #'@examples
-#'test <- NBA_tbl(NBA_example_bar_plot)
+#'#test <- NBA_tbl(NBA_example_bar_plot)
 #'
-#' @export
+#' @export NBA_tbl
 #'
 #'
 NBA_tbl <- function(DF){
@@ -55,7 +55,7 @@ NBA_tbl <- function(DF){
 #'@examples
 #'#test <- NBA_colr_tbl(NBA_example_bar_plot, Protection_level)
 #'
-#' @export
+#' @export NBA_colr_tbl
 #'
 #'
 NBA_colr_tbl <- function(DF, COL) {
@@ -135,11 +135,11 @@ NBA_colr_tbl <- function(DF, COL) {
 #' @importFrom magrittr "%>%"
 #'
 #'@examples
-#'test <- NBA_example_bar_plot |>
-#'gt::gt() |>
-#'NBA.package::NBA_gt_theme()
+#'#test <- NBA_example_bar_plot |>
+#'#gt::gt() |>
+#'#NBA.package::NBA_gt_theme()
 #'
-#' @export
+#' @export NBA_gt_theme
 #'
 #'
 

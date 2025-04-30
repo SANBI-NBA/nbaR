@@ -77,23 +77,23 @@
 #' @export
 #'
 #' @examples
-#' bar_plot <- NBA_plot(NBA_example_thr_data,
-#'                   `OVERALL types`,
-#'                   2:5,
-#'                  CHRT = "bar",
-#'                  NUM = TRUE,
-#'                  LAB = "Percentage of ecosystem types",
-#'                  SAVE = "Fig1a")
+#' #bar_plot <- NBA_plot(NBA_example_thr_data,
+#' #                  `OVERALL types`,
+#' #                  2:5,
+#'  #                CHRT = "bar",
+#' #                 NUM = TRUE,
+#' #                 LAB = "Percentage of ecosystem types",
+#' #                 SAVE = "Fig1a")
 #'
-#' donut_plot <- NBA_plot(NBA_example_thr_data,
-#'                        `OVERALL types`,
-#'                        COLS = 2:5,
-#'                        NUM = T,
-#'                        GRP = T,
-#'                        CHRT = "donut",
-#'                        LAB = "Protection level",
-#'                       SAVE = "Fig61mapinset")
-#'
+#' #donut_plot <- NBA_plot(NBA_example_thr_data,
+#' #                       `OVERALL types`,
+#' #                       COLS = 2:5,
+#' #                       NUM = T,
+#' #                       GRP = T,
+#' #                       CHRT = "donut",
+#' #                       LAB = "Protection level",
+#' #                      SAVE = "Fig61mapinset")
+#'#
 #'
 
 NBA_plot <- function(DF, GROUPS, COLS, CHRT = c("bar", "donut"), NUM = FALSE, LAB, GRP = TRUE, SAVE = NULL){

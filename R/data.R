@@ -68,7 +68,7 @@
 #'standard format for their headings.
 #'
 #' @format ## `NBA_categories`
-#' A vector of names:
+#' A vector of category names:
 
 #' @source SANBI
 "NBA_categories"

@@ -19,8 +19,8 @@ library(readxl)
 
 
 ## bar graph
-NBA_example_bar_plot <- read_excel(
-  dir("data",
+NBA_example_thr_data <- read_excel(
+  dir("data-raw",
       "Fig1a_graph.xlsx",
       full.names = T,
       recursive = T))%>%
@@ -28,8 +28,8 @@ NBA_example_bar_plot <- read_excel(
   mutate(across(2:6, as.numeric))
 
 ##RLI graph
-NBA_example_RLI_plot <- read_excel(
-  dir("data",
+NBA_example_RLI_data <- read_excel(
+  dir("data-raw",
       "Fig6_graph_part.xlsx",
       full.names = T,
       recursive = T))%>%
@@ -37,7 +37,7 @@ NBA_example_RLI_plot <- read_excel(
 
 
 ## donut
-NBA_example_donut_plot <- Fig61mapinset <- read_excel(
+NBA_example_pro_data <- read_excel(
   dir("data-raw",
       "Fig61mapinset_graph.xlsx",
       full.names = T,
@@ -75,9 +75,9 @@ NBA_categories <- c("Natural",
                     "Artificial waterbody")
 
 ### turn into correct format
-usethis::use_data(NBA_example_bar_plot)
-usethis::use_data(NBA_example_RLI_plot)
-usethis::use_data(NBA_example_donut_plot)
+usethis::use_data(NBA_example_thr_data)
+usethis::use_data(NBA_example_RLI_data)
+usethis::use_data(NBA_example_pro_data)
 usethis::use_data(NBA_categories)
 
 ##create a folder for this script

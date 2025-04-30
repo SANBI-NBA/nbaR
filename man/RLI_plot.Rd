@@ -33,6 +33,6 @@ There is an example dataset (NBA_example_RLI_plot), available for users
 to reference if needed.
 }
 \examples{
-#test(Fig6, Years, RLI, min, max)
+test <- RLI_plot(NBA_example_RLI_data, Years, RLI, min, max)
 
 }

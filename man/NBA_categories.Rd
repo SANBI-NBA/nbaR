@@ -8,7 +8,7 @@ categorisation}
 \format{
 \subsection{\code{NBA_categories}}{
 
-A vector of names:
+A vector of category names:
 }
 }
 \source{

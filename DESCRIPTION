@@ -13,7 +13,7 @@ License: MIT + file LICENSE
 URL: https://github.com/TashBes/NBA.package, https://sanbi-nba.github.io/NBA.package/
 BugReports: https://github.com/TashBes/NBA.package/issues
 Depends: 
-    R (>= 2.10)
+    R (>= 3.5)
 Imports: 
     dplyr,
     ggplot2,

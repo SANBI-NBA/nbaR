@@ -56,22 +56,22 @@ of NBA categories named NBA_categories in this package,
 which can be accessed for reference).
 }
 \examples{
-#bar_plot <- NBA_plot(Fig1a,
-#                   OVERALL_types,
-#                   2:5,
-#                   CHRT = "bar",
-#                   NUM = TRUE,
-#                   LAB = "Percentage of ecosystem types",
-#                   SAVE = "Fig1a")
-#
-#donut_plot <- NBA_plot(Fig61mapinset,
-#                        OVERALL_types,
-#                         COLS = 2:5,
-#                         NUM = T,
-#                         GRP = T,
-#                         CHRT = "donut",
-#                         LAB = "Protection level",
-#                         SAVE = "Fig61mapinset")
+#bar_plot <- NBA_plot(NBA_example_thr_data,
+#                  `OVERALL types`,
+#                  2:5,
+ #                CHRT = "bar",
+#                 NUM = TRUE,
+#                 LAB = "Percentage of ecosystem types",
+#                 SAVE = "Fig1a")
 
+#donut_plot <- NBA_plot(NBA_example_thr_data,
+#                       `OVERALL types`,
+#                       COLS = 2:5,
+#                       NUM = T,
+#                       GRP = T,
+#                       CHRT = "donut",
+#                       LAB = "Protection level",
+#                      SAVE = "Fig61mapinset")
+#
 
 }
