@@ -95,14 +95,14 @@ styles any gt table with the NBA’s preset styling.</p>
 <p>The map functions currently only consist of one function NBA_map,
 made using ggplot 2 and recreates the maps in the marine technical
 report 2018.</p>
-<p>There are then three example datasets that can be accessed to test
-the functions and see the required format of the data to use the
-functions, which are: NBA_example_thr_data, NBA_example_pro_data, and
-NBA_example_RLI_data. There is also a list of the category names
-(NBA_categories) that are recognised by the function so that you can
-make sure you are using the correct naming convention. The functions
-<strong>are</strong> case sensitive so you must be careful when naming
-your categories.</p>
+<p>There are then four example datasets that can be accessed to test the
+functions and see the required format of the data to use the functions,
+which are: NBA_example_thr_data, NBA_example_pro_data,
+NBA_example_RLI_data, and NBA_example_map_data. There is also a list of
+the category names (NBA_categories) that are recognised by the function
+so that you can make sure you are using the correct naming convention.
+The functions <strong>are</strong> case sensitive so you must be careful
+when naming your categories.</p>
 <div class="section level2">
 <h2 id="graph-functions">Graph functions<a class="anchor" aria-label="anchor" href="#graph-functions"></a>
 </h2>
@@ -1360,7 +1360,13 @@ Not Protected
 maps in the marine technical report 2018.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
-<span><span class="co">#map &lt;- NBA_map(mem)</span></span></code></pre></div>
+<span><span class="va">map</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/NBA_map.html">NBA_map</a></span><span class="op">(</span>DF <span class="op">=</span> <span class="va">NBA_example_map_data</span>,</span>
+<span>               GEOM <span class="op">=</span> <span class="va">geometry</span>, </span>
+<span>               CAP <span class="op">=</span> <span class="st">"Figure 1. A map of the protection level of marine pelagic ecosystem types in South Africa"</span>, </span>
+<span>               FILL <span class="op">=</span> <span class="va">protection_level</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">map</span></span></code></pre></div>
+<p><img src="NBA.package_files/figure-html/unnamed-chunk-10-1.png" width="700"></p>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>
