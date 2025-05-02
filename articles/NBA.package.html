@@ -20,7 +20,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">NBA.package</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.1.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -78,8 +78,8 @@
 and get the most use out of its functions.</p>
 <p>This package was create to help create the figures, plots, tables,
 and maps for the NBA. The functions are split into those used to make
-graphs, those used to makes tables, and those used to make maps.</p>
-<p>The graph functions consist of one main plot funcion called NBA_plot
+plots, those used to makes tables, and those used to make maps.</p>
+<p>The plot functions consist of one main plot funcion called NBA_plot
 that will create either a bar or donut plot and colour the graph by
 matching the category words (such as endangered, well protected, natural
 etc) with their set colours. There is then a complimentary function
@@ -87,24 +87,24 @@ called NBA_comp which is used if you want to plot two plots together
 using gg_arrange as the underlying code, and NBA_theme that is a ggplot
 theme with all the NBA presets that can be applied to any ggplot object
 to ensure the graph maintains the NBA ‘look’.</p>
-<p>The table functions consist of NBA_tbl which makes a basic tabe for a
-quarto document outputting to an html, NBA_colr_tbl which makes a basic
+<p>The table functions consist of NBA_tbl which makes a basic table for
+a quarto document outputting to an html, NBA_bl_colr which makes a basic
 table with a purple heading bar and colours the category names by their
-preset colours. There is also a complimentary NBA_gt_theme function that
-styles any gt table with the NBA’s preset styling.</p>
+preset colours. There is also a complimentary NBA_tbl_theme function
+that styles any gt table with the NBA’s preset styling.</p>
 <p>The map functions currently only consist of one function NBA_map,
 made using ggplot 2 and recreates the maps in the marine technical
 report 2018.</p>
-<p>There are then four example datasets that can be accessed to test the
+<p>There are then five example datasets that can be accessed to test the
 functions and see the required format of the data to use the functions,
 which are: NBA_example_thr_data, NBA_example_pro_data,
-NBA_example_RLI_data, and NBA_example_map_data. There is also a list of
-the category names (NBA_categories) that are recognised by the function
-so that you can make sure you are using the correct naming convention.
-The functions <strong>are</strong> case sensitive so you must be careful
-when naming your categories.</p>
+NBA_example_comb_data, NBA_example_RLI_data, and NBA_example_map_data.
+There is also a list of the category names (NBA_categories) that are
+recognised by the function so that you can make sure you are using the
+correct naming convention. The functions <strong>are</strong> case
+sensitive so you must be careful when naming your categories.</p>
 <div class="section level2">
-<h2 id="graph-functions">Graph functions<a class="anchor" aria-label="anchor" href="#graph-functions"></a>
+<h2 id="plot-functions">Plot functions<a class="anchor" aria-label="anchor" href="#plot-functions"></a>
 </h2>
 <p>Load the example data and use the variouse functions to create NBA
 plots.</p>
@@ -164,7 +164,7 @@ plots.</p>
 <code class="sourceCode R"><span><span class="va">NBA_example_RLI_data</span> <span class="op">&lt;-</span> <span class="va">NBA_example_RLI_data</span></span>
 <span></span>
 <span></span>
-<span><span class="va">RLI_plot</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/RLI_plot.html">RLI_plot</a></span><span class="op">(</span><span class="va">NBA_example_RLI_data</span>,</span>
+<span><span class="va">RLI_plot</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/NBA_plot_RLI.html">NBA_plot_RLI</a></span><span class="op">(</span><span class="va">NBA_example_RLI_data</span>,</span>
 <span>                 <span class="va">Years</span>, </span>
 <span>                 <span class="va">RLI</span>, </span>
 <span>                 <span class="va">min</span>, </span>
@@ -180,7 +180,7 @@ plots.</p>
 <span></span>
 <span><span class="va">gg_plot</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">NBA_example_pro_data</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">`OVERALL types`</span>, y <span class="op">=</span> <span class="va">`Well Protected`</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
 <span>  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span></span>
-<span>  <span class="fu"><a href="../reference/NBA_theme.html">NBA_theme</a></span><span class="op">(</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="../reference/NBA_plot_theme.html">NBA_plot_theme</a></span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">gg_plot</span></span></code></pre></div>
 <p><img src="NBA.package_files/figure-html/unnamed-chunk-6-1.png" width="700"></p>
@@ -375,7 +375,7 @@ Terrestrial
 <span></span>
 <span><span class="va">tbl</span> <span class="op">&lt;-</span> <span class="va">NBA_example_pro_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html" class="external-link">pivot_longer</a></span><span class="op">(</span><span class="fl">2</span><span class="op">:</span><span class="fl">5</span>, names_to <span class="op">=</span> <span class="st">"protection_level"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="../reference/NBA_colr_tbl.html">NBA_colr_tbl</a></span><span class="op">(</span>COL <span class="op">=</span> <span class="va">protection_level</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="../reference/NBA_tbl_colr.html">NBA_tbl_colr</a></span><span class="op">(</span>COL <span class="op">=</span> <span class="va">protection_level</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">tbl</span></span></code></pre></div>
 <table class="table table table-striped table-hover" style="font-size: 12px; width: auto !important; margin-left: auto; margin-right: auto;">
@@ -823,7 +823,7 @@ Not Protected
 <span></span>
 <span><span class="va">gt_tbl</span> <span class="op">&lt;-</span> <span class="va">NBA_example_thr_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://gt.rstudio.com/reference/gt.html" class="external-link">gt</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="../reference/NBA_gt_theme.html">NBA_gt_theme</a></span><span class="op">(</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="../reference/NBA_tbl_theme.html">NBA_tbl_theme</a></span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">gt_tbl</span></span></code></pre></div>
 <div id="mwlefoodfi" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
