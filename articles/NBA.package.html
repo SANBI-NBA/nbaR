@@ -59,7 +59,7 @@
 
 
 
-
+<script src="NBA.package_files/kePrint-0.0.1/kePrint.js"></script><link href="NBA.package_files/lightable-0.0.1/lightable.css" rel="stylesheet">
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
 
@@ -103,12 +103,12 @@ NBA_example_RLI_data. There is also a list of the category names
 make sure you are using the correct naming convention. The functions
 <strong>are</strong> case sensitive so you must be careful when naming
 your categories.</p>
-<p>##Graph functions</p>
+<div class="section level2">
+<h2 id="graph-functions">Graph functions<a class="anchor" aria-label="anchor" href="#graph-functions"></a>
+</h2>
 <p>Load the example data and use the variouse functions to create NBA
 plots.</p>
-<ol style="list-style-type: decimal">
-<li>bar plot</li>
-</ol>
+<p><strong>1. bar plot</strong></p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">NBA_example_thr_data</span> <span class="op">&lt;-</span> <span class="va">NBA_example_thr_data</span></span>
 <span></span>
@@ -123,9 +123,7 @@ plots.</p>
 <span></span>
 <span><span class="va">bar_plot</span></span></code></pre></div>
 <p><img src="NBA.package_files/figure-html/unnamed-chunk-2-1.png" width="700"></p>
-<ol start="2" style="list-style-type: decimal">
-<li>donut plot</li>
-</ol>
+<p><strong>2. donut plot</strong></p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">NBA_example_pro_data</span> <span class="op">&lt;-</span> <span class="va">NBA_example_pro_data</span></span>
 <span></span>
@@ -141,9 +139,7 @@ plots.</p>
 <span></span>
 <span><span class="va">donut_plot</span></span></code></pre></div>
 <p><img src="NBA.package_files/figure-html/unnamed-chunk-3-1.png" width="700"></p>
-<ol start="3" style="list-style-type: decimal">
-<li>Combined bar plot</li>
-</ol>
+<p><strong>3. Combined bar plot</strong></p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">NBA_example_pro_data</span> <span class="op">&lt;-</span> <span class="va">NBA_example_pro_data</span></span>
 <span><span class="va">NBA_example_thr_data</span> <span class="op">&lt;-</span> <span class="va">NBA_example_thr_data</span></span>
@@ -163,9 +159,7 @@ plots.</p>
 <span></span>
 <span><span class="va">bar_plot_comb</span></span></code></pre></div>
 <p><img src="NBA.package_files/figure-html/unnamed-chunk-4-1.png" width="700"></p>
-<ol start="4" style="list-style-type: decimal">
-<li>RLI plot</li>
-</ol>
+<p><strong>4. RLI plot</strong></p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">NBA_example_RLI_data</span> <span class="op">&lt;-</span> <span class="va">NBA_example_RLI_data</span></span>
 <span></span>
@@ -178,9 +172,7 @@ plots.</p>
 <span></span>
 <span><span class="va">RLI_plot</span></span></code></pre></div>
 <p><img src="NBA.package_files/figure-html/unnamed-chunk-5-1.png" width="700"></p>
-<ol start="5" style="list-style-type: decimal">
-<li>NBA ggplot theme</li>
-</ol>
+<p><strong>5. NBA ggplot theme</strong></p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
 <span><span class="va">NBA_example_pro_data</span> <span class="op">&lt;-</span> <span class="va">NBA_example_pro_data</span></span>
@@ -192,7 +184,1183 @@ plots.</p>
 <span></span>
 <span><span class="va">gg_plot</span></span></code></pre></div>
 <p><img src="NBA.package_files/figure-html/unnamed-chunk-6-1.png" width="700"></p>
-  </main>
+</div>
+<div class="section level2">
+<h2 id="table-functions">Table functions<a class="anchor" aria-label="anchor" href="#table-functions"></a>
+</h2>
+<p>Please note that these are designed to render on html outputs and so
+may not appear correct in the vignette examples.</p>
+<p><strong>6. Basic table</strong></p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="va">tbl</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/NBA_tbl.html">NBA_tbl</a></span><span class="op">(</span><span class="va">NBA_example_pro_data</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">tbl</span></span></code></pre></div>
+<table class="table table table-striped table-hover" style="font-size: 1px; width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="5">
+</th>
+</tr>
+<tr>
+<th style="text-align:left;font-weight: bold;color: black !important;background-color: rgba(137, 155, 225, 255) !important;border: 1px solid black">
+OVERALL types
+</th>
+<th style="text-align:right;font-weight: bold;color: black !important;background-color: rgba(137, 155, 225, 255) !important;border: 1px solid black">
+Well Protected
+</th>
+<th style="text-align:right;font-weight: bold;color: black !important;background-color: rgba(137, 155, 225, 255) !important;border: 1px solid black">
+Moderately Protected
+</th>
+<th style="text-align:right;font-weight: bold;color: black !important;background-color: rgba(137, 155, 225, 255) !important;border: 1px solid black">
+Poorly Protected
+</th>
+<th style="text-align:right;font-weight: bold;color: black !important;background-color: rgba(137, 155, 225, 255) !important;border: 1px solid black">
+Not Protected
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+subAntarctic
+</td>
+<td style="text-align:right;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+15
+</td>
+<td style="text-align:right;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+14
+</td>
+<td style="text-align:right;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+1
+</td>
+<td style="text-align:right;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+Coastal
+</td>
+<td style="text-align:right;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+65
+</td>
+<td style="text-align:right;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+28
+</td>
+<td style="text-align:right;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+52
+</td>
+<td style="text-align:right;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+41
+</td>
+</tr>
+<tr>
+<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+Estuarine
+</td>
+<td style="text-align:right;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+4
+</td>
+<td style="text-align:right;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+8
+</td>
+<td style="text-align:right;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+7
+</td>
+<td style="text-align:right;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+Marine
+</td>
+<td style="text-align:right;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+47
+</td>
+<td style="text-align:right;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+62
+</td>
+<td style="text-align:right;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+22
+</td>
+<td style="text-align:right;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+19
+</td>
+</tr>
+<tr>
+<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+Wetland
+</td>
+<td style="text-align:right;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+8
+</td>
+<td style="text-align:right;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+4
+</td>
+<td style="text-align:right;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+41
+</td>
+<td style="text-align:right;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+82
+</td>
+</tr>
+<tr>
+<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+River
+</td>
+<td style="text-align:right;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+29
+</td>
+<td style="text-align:right;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+33
+</td>
+<td style="text-align:right;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+66
+</td>
+<td style="text-align:right;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+94
+</td>
+</tr>
+<tr>
+<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+Inland Aquatic
+</td>
+<td style="text-align:right;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+37
+</td>
+<td style="text-align:right;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+37
+</td>
+<td style="text-align:right;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+107
+</td>
+<td style="text-align:right;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+176
+</td>
+</tr>
+<tr>
+<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+Terrestrial
+</td>
+<td style="text-align:right;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+118
+</td>
+<td style="text-align:right;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+59
+</td>
+<td style="text-align:right;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+166
+</td>
+<td style="text-align:right;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+115
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>7. Coloured table</strong></p>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Attaching package: 'dplyr'</span></span>
+<span><span class="co">#&gt; The following objects are masked from 'package:stats':</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;     filter, lag</span></span>
+<span><span class="co">#&gt; The following objects are masked from 'package:base':</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;     intersect, setdiff, setequal, union</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org" class="external-link">tidyr</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">tbl</span> <span class="op">&lt;-</span> <span class="va">NBA_example_pro_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html" class="external-link">pivot_longer</a></span><span class="op">(</span><span class="fl">2</span><span class="op">:</span><span class="fl">5</span>, names_to <span class="op">=</span> <span class="st">"protection_level"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="../reference/NBA_colr_tbl.html">NBA_colr_tbl</a></span><span class="op">(</span>COL <span class="op">=</span> <span class="va">protection_level</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">tbl</span></span></code></pre></div>
+<table class="table table table-striped table-hover" style="font-size: 12px; width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="3">
+</th>
+</tr>
+<tr>
+<th style="text-align:left;font-weight: bold;color: black !important;background-color: rgba(137, 155, 225, 255) !important;border: 1px solid black">
+OVERALL types
+</th>
+<th style="text-align:left;font-weight: bold;color: black !important;background-color: rgba(137, 155, 225, 255) !important;border: 1px solid black">
+protection_level
+</th>
+<th style="text-align:right;font-weight: bold;color: black !important;background-color: rgba(137, 155, 225, 255) !important;border: 1px solid black">
+value
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+subAntarctic
+</td>
+<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+<div style="background-color:#466a31; color: black; padding: 5px;">
+Well Protected
+</div>
+</td>
+<td style="text-align:right;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+15
+</td>
+</tr>
+<tr>
+<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+subAntarctic
+</td>
+<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+<div style="background-color:#80a952; color: black; padding: 5px;">
+Moderately Protected
+</div>
+</td>
+<td style="text-align:right;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+14
+</td>
+</tr>
+<tr>
+<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+subAntarctic
+</td>
+<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+<div style="background-color:#d5dec3; color: black; padding: 5px;">
+Poorly Protected
+</div>
+</td>
+<td style="text-align:right;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+subAntarctic
+</td>
+<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+<div style="background-color:#a4a3a3; color: black; padding: 5px;">
+Not Protected
+</div>
+</td>
+<td style="text-align:right;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+Coastal
+</td>
+<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+<div style="background-color:#466a31; color: black; padding: 5px;">
+Well Protected
+</div>
+</td>
+<td style="text-align:right;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+65
+</td>
+</tr>
+<tr>
+<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+Coastal
+</td>
+<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+<div style="background-color:#80a952; color: black; padding: 5px;">
+Moderately Protected
+</div>
+</td>
+<td style="text-align:right;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+28
+</td>
+</tr>
+<tr>
+<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+Coastal
+</td>
+<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+<div style="background-color:#d5dec3; color: black; padding: 5px;">
+Poorly Protected
+</div>
+</td>
+<td style="text-align:right;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+52
+</td>
+</tr>
+<tr>
+<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+Coastal
+</td>
+<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+<div style="background-color:#a4a3a3; color: black; padding: 5px;">
+Not Protected
+</div>
+</td>
+<td style="text-align:right;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+41
+</td>
+</tr>
+<tr>
+<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+Estuarine
+</td>
+<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+<div style="background-color:#466a31; color: black; padding: 5px;">
+Well Protected
+</div>
+</td>
+<td style="text-align:right;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+Estuarine
+</td>
+<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+<div style="background-color:#80a952; color: black; padding: 5px;">
+Moderately Protected
+</div>
+</td>
+<td style="text-align:right;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+Estuarine
+</td>
+<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+<div style="background-color:#d5dec3; color: black; padding: 5px;">
+Poorly Protected
+</div>
+</td>
+<td style="text-align:right;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+7
+</td>
+</tr>
+<tr>
+<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+Estuarine
+</td>
+<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+<div style="background-color:#a4a3a3; color: black; padding: 5px;">
+Not Protected
+</div>
+</td>
+<td style="text-align:right;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+Marine
+</td>
+<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+<div style="background-color:#466a31; color: black; padding: 5px;">
+Well Protected
+</div>
+</td>
+<td style="text-align:right;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+47
+</td>
+</tr>
+<tr>
+<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+Marine
+</td>
+<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+<div style="background-color:#80a952; color: black; padding: 5px;">
+Moderately Protected
+</div>
+</td>
+<td style="text-align:right;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+62
+</td>
+</tr>
+<tr>
+<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+Marine
+</td>
+<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+<div style="background-color:#d5dec3; color: black; padding: 5px;">
+Poorly Protected
+</div>
+</td>
+<td style="text-align:right;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+22
+</td>
+</tr>
+<tr>
+<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+Marine
+</td>
+<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+<div style="background-color:#a4a3a3; color: black; padding: 5px;">
+Not Protected
+</div>
+</td>
+<td style="text-align:right;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+19
+</td>
+</tr>
+<tr>
+<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+Wetland
+</td>
+<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+<div style="background-color:#466a31; color: black; padding: 5px;">
+Well Protected
+</div>
+</td>
+<td style="text-align:right;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+Wetland
+</td>
+<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+<div style="background-color:#80a952; color: black; padding: 5px;">
+Moderately Protected
+</div>
+</td>
+<td style="text-align:right;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+Wetland
+</td>
+<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+<div style="background-color:#d5dec3; color: black; padding: 5px;">
+Poorly Protected
+</div>
+</td>
+<td style="text-align:right;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+41
+</td>
+</tr>
+<tr>
+<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+Wetland
+</td>
+<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+<div style="background-color:#a4a3a3; color: black; padding: 5px;">
+Not Protected
+</div>
+</td>
+<td style="text-align:right;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+82
+</td>
+</tr>
+<tr>
+<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+River
+</td>
+<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+<div style="background-color:#466a31; color: black; padding: 5px;">
+Well Protected
+</div>
+</td>
+<td style="text-align:right;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+29
+</td>
+</tr>
+<tr>
+<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+River
+</td>
+<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+<div style="background-color:#80a952; color: black; padding: 5px;">
+Moderately Protected
+</div>
+</td>
+<td style="text-align:right;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+33
+</td>
+</tr>
+<tr>
+<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+River
+</td>
+<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+<div style="background-color:#d5dec3; color: black; padding: 5px;">
+Poorly Protected
+</div>
+</td>
+<td style="text-align:right;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+66
+</td>
+</tr>
+<tr>
+<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+River
+</td>
+<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+<div style="background-color:#a4a3a3; color: black; padding: 5px;">
+Not Protected
+</div>
+</td>
+<td style="text-align:right;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+94
+</td>
+</tr>
+<tr>
+<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+Inland Aquatic
+</td>
+<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+<div style="background-color:#466a31; color: black; padding: 5px;">
+Well Protected
+</div>
+</td>
+<td style="text-align:right;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+37
+</td>
+</tr>
+<tr>
+<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+Inland Aquatic
+</td>
+<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+<div style="background-color:#80a952; color: black; padding: 5px;">
+Moderately Protected
+</div>
+</td>
+<td style="text-align:right;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+37
+</td>
+</tr>
+<tr>
+<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+Inland Aquatic
+</td>
+<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+<div style="background-color:#d5dec3; color: black; padding: 5px;">
+Poorly Protected
+</div>
+</td>
+<td style="text-align:right;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+107
+</td>
+</tr>
+<tr>
+<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+Inland Aquatic
+</td>
+<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+<div style="background-color:#a4a3a3; color: black; padding: 5px;">
+Not Protected
+</div>
+</td>
+<td style="text-align:right;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+176
+</td>
+</tr>
+<tr>
+<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+Terrestrial
+</td>
+<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+<div style="background-color:#466a31; color: black; padding: 5px;">
+Well Protected
+</div>
+</td>
+<td style="text-align:right;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+118
+</td>
+</tr>
+<tr>
+<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+Terrestrial
+</td>
+<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+<div style="background-color:#80a952; color: black; padding: 5px;">
+Moderately Protected
+</div>
+</td>
+<td style="text-align:right;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+59
+</td>
+</tr>
+<tr>
+<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+Terrestrial
+</td>
+<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+<div style="background-color:#d5dec3; color: black; padding: 5px;">
+Poorly Protected
+</div>
+</td>
+<td style="text-align:right;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+166
+</td>
+</tr>
+<tr>
+<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+Terrestrial
+</td>
+<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+<div style="background-color:#a4a3a3; color: black; padding: 5px;">
+Not Protected
+</div>
+</td>
+<td style="text-align:right;background-color: white !important;border-left:1px solid;border-right:1px solid;">
+115
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>8. gt table theme</strong></p>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://gt.rstudio.com" class="external-link">gt</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
+<span></span>
+<span></span>
+<span><span class="va">gt_tbl</span> <span class="op">&lt;-</span> <span class="va">NBA_example_thr_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://gt.rstudio.com/reference/gt.html" class="external-link">gt</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="../reference/NBA_gt_theme.html">NBA_gt_theme</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">gt_tbl</span></span></code></pre></div>
+<div id="mwlefoodfi" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#mwlefoodfi table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#mwlefoodfi thead, #mwlefoodfi tbody, #mwlefoodfi tfoot, #mwlefoodfi tr, #mwlefoodfi td, #mwlefoodfi th {
+  border-style: none;
+}
+
+#mwlefoodfi p {
+  margin: 0;
+  padding: 0;
+}
+
+#mwlefoodfi .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#mwlefoodfi .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#mwlefoodfi .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#mwlefoodfi .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#mwlefoodfi .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#mwlefoodfi .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#mwlefoodfi .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#mwlefoodfi .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#mwlefoodfi .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#mwlefoodfi .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#mwlefoodfi .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#mwlefoodfi .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#mwlefoodfi .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#mwlefoodfi .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#mwlefoodfi .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#mwlefoodfi .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#mwlefoodfi .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#mwlefoodfi .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#mwlefoodfi .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mwlefoodfi .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#mwlefoodfi .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#mwlefoodfi .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#mwlefoodfi .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mwlefoodfi .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#mwlefoodfi .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#mwlefoodfi .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#mwlefoodfi .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mwlefoodfi .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#mwlefoodfi .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#mwlefoodfi .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#mwlefoodfi .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#mwlefoodfi .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#mwlefoodfi .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mwlefoodfi .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#mwlefoodfi .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mwlefoodfi .gt_left {
+  text-align: left;
+}
+
+#mwlefoodfi .gt_center {
+  text-align: center;
+}
+
+#mwlefoodfi .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#mwlefoodfi .gt_font_normal {
+  font-weight: normal;
+}
+
+#mwlefoodfi .gt_font_bold {
+  font-weight: bold;
+}
+
+#mwlefoodfi .gt_font_italic {
+  font-style: italic;
+}
+
+#mwlefoodfi .gt_super {
+  font-size: 65%;
+}
+
+#mwlefoodfi .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#mwlefoodfi .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#mwlefoodfi .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#mwlefoodfi .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#mwlefoodfi .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#mwlefoodfi .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#mwlefoodfi .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#mwlefoodfi .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#mwlefoodfi div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+<table class="table gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead><tr class="gt_col_headings">
+<th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="background-color: #D3D3D3; border-top-width: 2px; border-top-style: solid; border-top-color: black; border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: black; border-left-width: 1px; border-left-style: solid; border-left-color: lightgray; border-right-width: 1px; border-right-style: solid; border-right-color: lightgray; font-weight: bold;" scope="col" id="OVERALL-types">OVERALL types</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="background-color: #D3D3D3; border-top-width: 2px; border-top-style: solid; border-top-color: black; border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: black; border-left-width: 1px; border-left-style: solid; border-left-color: lightgray; border-right-width: 1px; border-right-style: solid; border-right-color: lightgray; font-weight: bold;" scope="col" id="Critically-Endangered">Critically Endangered</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="background-color: #D3D3D3; border-top-width: 2px; border-top-style: solid; border-top-color: black; border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: black; border-left-width: 1px; border-left-style: solid; border-left-color: lightgray; border-right-width: 1px; border-right-style: solid; border-right-color: lightgray; font-weight: bold;" scope="col" id="Endangered">Endangered</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="background-color: #D3D3D3; border-top-width: 2px; border-top-style: solid; border-top-color: black; border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: black; border-left-width: 1px; border-left-style: solid; border-left-color: lightgray; border-right-width: 1px; border-right-style: solid; border-right-color: lightgray; font-weight: bold;" scope="col" id="Vulnerable">Vulnerable</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="background-color: #D3D3D3; border-top-width: 2px; border-top-style: solid; border-top-color: black; border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: black; border-left-width: 1px; border-left-style: solid; border-left-color: lightgray; border-right-width: 1px; border-right-style: solid; border-right-color: lightgray; font-weight: bold;" scope="col" id="Least-Concern">Least Concern</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="background-color: #D3D3D3; border-top-width: 2px; border-top-style: solid; border-top-color: black; border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: black; border-left-width: 1px; border-left-style: solid; border-left-color: lightgray; border-right-width: 1px; border-right-style: solid; border-right-color: lightgray; font-weight: bold;" scope="col" id="TOT">TOT</th>
+    </tr></thead>
+<tbody class="gt_table_body">
+<tr>
+<td headers="OVERALL types" class="gt_row gt_left" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">Sub-Antarctic</td>
+<td headers="Critically Endangered" class="gt_row gt_right" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">0</td>
+<td headers="Endangered" class="gt_row gt_right" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">1</td>
+<td headers="Vulnerable" class="gt_row gt_right" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">5</td>
+<td headers="Least Concern" class="gt_row gt_right" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">28</td>
+<td headers="TOT" class="gt_row gt_right" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">34</td>
+</tr>
+<tr>
+<td headers="OVERALL types" class="gt_row gt_left" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">Coastal</td>
+<td headers="Critically Endangered" class="gt_row gt_right" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">21</td>
+<td headers="Endangered" class="gt_row gt_right" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">37</td>
+<td headers="Vulnerable" class="gt_row gt_right" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">54</td>
+<td headers="Least Concern" class="gt_row gt_right" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">74</td>
+<td headers="TOT" class="gt_row gt_right" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">186</td>
+</tr>
+<tr>
+<td headers="OVERALL types" class="gt_row gt_left" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">Estuarine</td>
+<td headers="Critically Endangered" class="gt_row gt_right" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">2</td>
+<td headers="Endangered" class="gt_row gt_right" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">10</td>
+<td headers="Vulnerable" class="gt_row gt_right" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">7</td>
+<td headers="Least Concern" class="gt_row gt_right" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">3</td>
+<td headers="TOT" class="gt_row gt_right" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">22</td>
+</tr>
+<tr>
+<td headers="OVERALL types" class="gt_row gt_left" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">Marine</td>
+<td headers="Critically Endangered" class="gt_row gt_right" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">2</td>
+<td headers="Endangered" class="gt_row gt_right" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">22</td>
+<td headers="Vulnerable" class="gt_row gt_right" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">51</td>
+<td headers="Least Concern" class="gt_row gt_right" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">75</td>
+<td headers="TOT" class="gt_row gt_right" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">150</td>
+</tr>
+<tr>
+<td headers="OVERALL types" class="gt_row gt_left" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">Wetland</td>
+<td headers="Critically Endangered" class="gt_row gt_right" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">83</td>
+<td headers="Endangered" class="gt_row gt_right" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">12</td>
+<td headers="Vulnerable" class="gt_row gt_right" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">12</td>
+<td headers="Least Concern" class="gt_row gt_right" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">28</td>
+<td headers="TOT" class="gt_row gt_right" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">135</td>
+</tr>
+<tr>
+<td headers="OVERALL types" class="gt_row gt_left" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">River</td>
+<td headers="Critically Endangered" class="gt_row gt_right" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">95</td>
+<td headers="Endangered" class="gt_row gt_right" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">42</td>
+<td headers="Vulnerable" class="gt_row gt_right" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">5</td>
+<td headers="Least Concern" class="gt_row gt_right" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">80</td>
+<td headers="TOT" class="gt_row gt_right" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">222</td>
+</tr>
+<tr>
+<td headers="OVERALL types" class="gt_row gt_left" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">Inland Aquatic</td>
+<td headers="Critically Endangered" class="gt_row gt_right" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">178</td>
+<td headers="Endangered" class="gt_row gt_right" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">54</td>
+<td headers="Vulnerable" class="gt_row gt_right" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">17</td>
+<td headers="Least Concern" class="gt_row gt_right" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">108</td>
+<td headers="TOT" class="gt_row gt_right" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">357</td>
+</tr>
+<tr>
+<td headers="OVERALL types" class="gt_row gt_left" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: black; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">Terrestrial</td>
+<td headers="Critically Endangered" class="gt_row gt_right" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: black; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">35</td>
+<td headers="Endangered" class="gt_row gt_right" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: black; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">39</td>
+<td headers="Vulnerable" class="gt_row gt_right" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: black; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">29</td>
+<td headers="Least Concern" class="gt_row gt_right" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: black; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">355</td>
+<td headers="TOT" class="gt_row gt_right" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: black; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">458</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section level2">
+<h2 id="map-functions">Map functions<a class="anchor" aria-label="anchor" href="#map-functions"></a>
+</h2>
+<p><strong>9. Basic map</strong> Please note this was modeled after the
+maps in the marine technical report 2018.</p>
+</div>
+  </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
+    </nav></aside>
 </div>
 
 
