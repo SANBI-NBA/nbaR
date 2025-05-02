@@ -160,16 +160,25 @@ of the plots.</p>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co">#bar_plot &lt;- NBA_plot_comb(</span></span></span>
-<span class="r-in"><span><span class="co">#               c_ets,</span></span></span>
-<span class="r-in"><span><span class="co">#                GROUPS=OVERALL_types,</span></span></span>
-<span class="r-in"><span><span class="co">#                METRIC_COL = metric,</span></span></span>
-<span class="r-in"><span><span class="co">#                METRICS = c("types", "extent"),</span></span></span>
-<span class="r-in"><span><span class="co">#                COLS = 3:6,</span></span></span>
-<span class="r-in"><span><span class="co">#                CHRT = "bar",</span></span></span>
-<span class="r-in"><span><span class="co">#                NUM = FALSE,</span></span></span>
-<span class="r-in"><span><span class="co">#                LAB = "Percentage of ecosystem",</span></span></span>
-<span class="r-in"><span><span class="co">#                SAVE=NULL</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">bar_plot_comb</span> <span class="op">&lt;-</span> <span class="fu">NBA_plot_comb</span><span class="op">(</span></span></span>
+<span class="r-in"><span><span class="va">NBA_example_comb_data</span>,</span></span>
+<span class="r-in"><span>GROUPS<span class="op">=</span> <span class="va">`OVERALL types`</span>,</span></span>
+<span class="r-in"><span>METRIC_COL <span class="op">=</span> <span class="va">metric</span>,</span></span>
+<span class="r-in"><span>METRICS <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"protection_level"</span>, <span class="st">"threat_status"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>COLS <span class="op">=</span> <span class="fl">3</span><span class="op">:</span><span class="fl">10</span>,</span></span>
+<span class="r-in"><span>CHRT <span class="op">=</span> <span class="st">"bar"</span>,</span></span>
+<span class="r-in"><span>NUM <span class="op">=</span> <span class="cn">FALSE</span>,</span></span>
+<span class="r-in"><span>LAB <span class="op">=</span> <span class="st">"Percentage of ecosystem"</span>,</span></span>
+<span class="r-in"><span>SAVE<span class="op">=</span><span class="cn">NULL</span><span class="op">)</span></span></span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Removed 32 rows containing missing values or values outside the scale range</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> (`geom_bar()`).</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Removed 32 rows containing missing values or values outside the scale range</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> (`geom_bar()`).</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Removed 32 rows containing missing values or values outside the scale range</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> (`geom_bar()`).</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">bar_plot_comb</span></span></span>
+<span class="r-plt img"><img src="NBA_plot_comb-1.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span><span class="co">#</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>

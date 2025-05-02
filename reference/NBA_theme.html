@@ -61,9 +61,13 @@ NBA "look". All NBA functions already use this theme.</p>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co">#plot &lt;- ggplot()+</span></span></span>
-<span class="r-in"><span><span class="co">#            geom_hist()+</span></span></span>
-<span class="r-in"><span><span class="co">#            NBA_theme()</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co">#library(ggplot2)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">#gg_plot &lt;- ggplot(NBA_example_pro_data, aes(x = `OVERALL types`, y = `Well Protected`))+</span></span></span>
+<span class="r-in"><span><span class="co">#  ggplot2::geom_point()+</span></span></span>
+<span class="r-in"><span><span class="co">#  NBA_theme()</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">#gg_plot</span></span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
