@@ -4,3 +4,30 @@ template:
   light-switch: true
   bslib:
     danger: "#A6081A"
+
+reference:
+- title: Plot functions
+  contents:
+  - NBA_plot
+  - NBA_plot_comb
+  - NBA_plot_RLI
+  - NBA_plot_theme
+
+
+- title: Table functions
+  contents:
+  - NBA_tbl
+  - NBA_tbl_colr
+  - NBA_tbl_theme
+
+- title: Map functions
+  contents:
+  - NBA_map
+
+- title: Built in datasets
+  contents:
+  - NBA_example_thr_data
+  - NBA_example_pro_data
+  - NBA_example_RLI_data
+  - NBA_example_map_data.
+  - NBA_categories

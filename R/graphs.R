@@ -351,7 +351,7 @@ NBA_plot <- function(DF, GROUPS, COLS, CHRT = c("bar", "donut"), NUM = FALSE, LA
 
 #######################################################################################################
 ###
-#' RLI_plot
+#' NBA_plot_RLI
 #'
 #'This function will create a line graph indicating the Red list index per period/year.
 #'Additionally, depending on the graph requirements it further creates a multiple line graph
@@ -389,7 +389,7 @@ NBA_plot <- function(DF, GROUPS, COLS, CHRT = c("bar", "donut"), NUM = FALSE, LA
 #' @export
 #'
 #' @examples
-#' RLI_plot <- RLI_plot(NBA_example_RLI_data,
+#' RLI_plot <- NBA_plot_RLI(NBA_example_RLI_data,
 #' Years,
 #' RLI,
 #' min,
@@ -398,7 +398,7 @@ NBA_plot <- function(DF, GROUPS, COLS, CHRT = c("bar", "donut"), NUM = FALSE, LA
 #' RLI_plot
 #'
 #'
-RLI_plot <- function(DF,YEAR, RLI, min, max, GRP = FALSE){
+NBA_plot_RLI <- function(DF,YEAR, RLI, min, max, GRP = FALSE){
 
 if(GRP == TRUE){
 
@@ -536,7 +536,7 @@ NBA_plot_comb <- function(DF,
 
 #######################################################################################################
 ###
-#' NBA_theme
+#' NBA_plot_theme
 #'
 #'This function will create a theme for all ggplot graphs to align them to the
 #'NBA "look". All NBA functions already use this theme.
@@ -561,12 +561,12 @@ NBA_plot_comb <- function(DF,
 #'
 #'#gg_plot <- ggplot(NBA_example_pro_data, aes(x = `OVERALL types`, y = `Well Protected`))+
 #'#  ggplot2::geom_point()+
-#'#  NBA_theme()
+#'#  NBA_plot_theme()
 #'
 #'#gg_plot
 #'
 
-NBA_theme <- function() {
+NBA_plot_theme <- function() {
   ggplot2::theme(
     # add border 1)
     panel.border = ggplot2::element_rect(colour = "grey", fill = NA, linetype = 2),

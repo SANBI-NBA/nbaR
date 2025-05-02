@@ -60,14 +60,14 @@ NBA_tbl <- function(DF){
 #'
 #'tbl <- NBA_example_pro_data %>%
 #'  pivot_longer(2:5, names_to = "protection_level") %>%
-#'  NBA_colr_tbl(COL = protection_level)
+#'  NBA_tbl_colr(COL = protection_level)
 #'
 #'tbl
 #'
-#' @export NBA_colr_tbl
+#' @export NBA_tbl_colr
 #'
 #'
-NBA_colr_tbl <- function(DF, COL) {
+NBA_tbl_colr <- function(DF, COL) {
 
   color_cell <- function(COL) {
     color <- dplyr::case_when(
@@ -150,15 +150,15 @@ NBA_colr_tbl <- function(DF, COL) {
 #'
 #'gt_tbl <- NBA_example_thr_data %>%
 #'  gt() %>%
-#' NBA_gt_theme()
+#' NBA_tbl_theme()
 #'
 #'gt_tbl
 #'
-#' @export NBA_gt_theme
+#' @export NBA_tbl_theme
 #'
 #'
 
-NBA_gt_theme <- function(GT_TBL) {
+NBA_tbl_theme <- function(GT_TBL) {
   last_row <- nrow(GT_TBL[["_data"]])
 
   GT_TBL %>%
