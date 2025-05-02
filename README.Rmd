@@ -12,10 +12,10 @@ knitr::opts_chunk$set(
 )
 ```
 
-# NBA.package
+# NBA.package NBA.package <a href="https://sanbi-nba.github.io/NBA.package/"><img src="man/figures/logo.png" align="right" height="139" alt="NBA.package website" /></a>
+
 
 <!-- badges: start -->
-NBA.package <a href="https://sanbi-nba.github.io/NBA.package/"><img src="man/figures/logo.png" align="right" height="139" alt="NBA.package website" /></a>
 <!-- badges: end -->
 
 The goal of the NBA.package is to allow all graphs/ plots/ and maps created for the NBA to be created easily with targeted functions that enable ease of use and standardisation of results.

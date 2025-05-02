@@ -1,5 +1,7 @@
 
-# NBA.package
+# NBA.package NBA.package <a href="https://sanbi-nba.github.io/NBA.package/"><img src="man/figures/logo.png" align="right" height="139" alt="NBA.package website" /></a>
+
+------------------------------------------------------------------------
 
 <!-- badges: start -->
 <!-- badges: end -->
