@@ -95,7 +95,7 @@
 #'
 #'This data is used to make a map of marine pelagic ecosystems and their protection level
 #'
-#' @format ## `mem_2023`
+#' @format ## `NBA_example_map_data`
 #' A data frame with 13 rows and 3 columns:
 #' \describe{
 #'   \item{P_EcosysType}{Ecosystem name}
@@ -104,4 +104,4 @@
 #'   ...
 #' }
 #' @source SANBI
-"mem_2023"
+"NBA_example_map_data"

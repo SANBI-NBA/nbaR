@@ -84,7 +84,7 @@ NBA_categories <- c("Natural",
 
 ##map
 
-mem_2023 <- sf::st_read(dir("data-raw",
+NBA_example_map_data <- sf::st_read(dir("data-raw",
                    "Marine_Ecosystem_Map_2023_final_pelagic_only.gpkg",
                    full.names = T,
                    recursive = T))%>%
@@ -116,7 +116,7 @@ usethis::use_data(NBA_example_RLI_data)
 usethis::use_data(NBA_example_pro_data)
 usethis::use_data(NBA_example_comb_data)
 usethis::use_data(NBA_categories)
-usethis::use_data(mem_2023, overwrite = TRUE)
+usethis::use_data(NBA_example_map_data, overwrite = TRUE)
 
 ##create a folder for this script
 #usethis::use_data_raw()

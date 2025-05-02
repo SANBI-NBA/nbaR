@@ -185,7 +185,7 @@ Please note this was modeled after the maps in the marine technical report 2018.
 
 ```{r}
 
- 
+#map <- NBA_map(mem)
 
 
 ```
