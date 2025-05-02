@@ -28,7 +28,7 @@ The table functions consist of NBA_tbl which makes a basic table for a quarto do
 
 The map functions currently only consist of one function NBA_map, made using ggplot 2 and recreates the maps in the marine technical report 2018. 
 
-There are then four example datasets that can be accessed to test the functions and see the required format of the data to use the functions, which are: NBA_example_thr_data, NBA_example_pro_data, NBA_example_RLI_data, and NBA_example_map_data. There is also a list of the category names (NBA_categories) that are recognised by the function so that you can make sure you are using the correct naming convention. The functions **are** case sensitive so you must be careful when naming your categories.
+There are then five example datasets that can be accessed to test the functions and see the required format of the data to use the functions, which are: NBA_example_thr_data, NBA_example_pro_data, NBA_example_comb_data, NBA_example_RLI_data, and NBA_example_map_data. There is also a list of the category names (NBA_categories) that are recognised by the function so that you can make sure you are using the correct naming convention. The functions **are** case sensitive so you must be careful when naming your categories.
 
 
 ## Plot functions
