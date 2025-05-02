@@ -1,3 +1,5 @@
-# NBA.package 0.10.2
+# NBA.package (development version)
 
-* Initial CRAN submission.
+## NBA.package 0.10.2
+
+There are currently 9 functions and five example datasets.
