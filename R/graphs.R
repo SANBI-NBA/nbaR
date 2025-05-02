@@ -77,24 +77,30 @@
 #' @export
 #'
 #' @examples
-#' #bar_plot <- NBA_plot(NBA_example_thr_data,
-#' #                  `OVERALL types`,
-#' #                  2:5,
-#'  #                CHRT = "bar",
-#' #                 NUM = TRUE,
-#' #                 LAB = "Percentage of ecosystem types",
-#' #                 SAVE = "Fig1a")
 #'
-#' #donut_plot <- NBA_plot(NBA_example_thr_data,
-#' #                       `OVERALL types`,
-#' #                       COLS = 2:5,
-#' #                       NUM = T,
-#' #                       GRP = T,
-#' #                       CHRT = "donut",
-#' #                       LAB = "Protection level",
-#' #                      SAVE = "Fig61mapinset")
-#'#
+#' bar_plot <- NBA_plot(NBA_example_thr_data,
+#'`OVERALL types`,
+#'2:5,
+#'CHRT = "bar",
+#'NUM = TRUE,
+#'LAB = "Percentage of ecosystem types",
+#'SAVE = NULL)
 #'
+#'bar_plot
+#'
+#'donut_plot <- NBA_plot(NBA_example_pro_data,
+#'`OVERALL types`,
+#'2:5,
+#'CHRT = "donut",
+#'NUM = TRUE,
+#'LAB = "Percentage of ecosystem types",
+#'GRP = FALSE,
+#'SAVE = NULL)
+#'
+#'donut_plot
+#'
+
+
 
 NBA_plot <- function(DF, GROUPS, COLS, CHRT = c("bar", "donut"), NUM = FALSE, LAB, GRP = TRUE, SAVE = NULL){
 
@@ -383,7 +389,14 @@ NBA_plot <- function(DF, GROUPS, COLS, CHRT = c("bar", "donut"), NUM = FALSE, LA
 #' @export
 #'
 #' @examples
-#' test <- RLI_plot(NBA_example_RLI_data, Years, RLI, min, max)
+#' RLI_plot <- RLI_plot(NBA_example_RLI_data,
+#' Years,
+#' RLI,
+#' min,
+#' max)
+#'
+#' RLI_plot
+#'
 #'
 RLI_plot <- function(DF,YEAR, RLI, min, max, GRP = FALSE){
 
@@ -459,16 +472,18 @@ else {
 #' @export
 #'
 #' @examples
-#' #bar_plot <- NBA_plot_comb(
-#'#               c_ets,
-#'#                GROUPS=OVERALL_types,
-#'#                METRIC_COL = metric,
-#'#                METRICS = c("types", "extent"),
-#'#                COLS = 3:6,
-#'#                CHRT = "bar",
-#'#                NUM = FALSE,
-#'#                LAB = "Percentage of ecosystem",
-#'#                SAVE=NULL
+#' bar_plot_comb <- NBA_plot_comb(
+#'NBA_example_comb_data,
+#'GROUPS= `OVERALL types`,
+#'METRIC_COL = metric,
+#'METRICS = c("protection_level", "threat_status"),
+#'COLS = 3:10,
+#'CHRT = "bar",
+#'NUM = FALSE,
+#'LAB = "Percentage of ecosystem",
+#'SAVE=NULL)
+#'
+#'bar_plot_comb
 #'#
 #'
 #'
@@ -542,9 +557,13 @@ NBA_plot_comb <- function(DF,
 #' @export
 #'
 #' @examples
-#' #plot <- ggplot()+
-#' #            geom_hist()+
-#' #            NBA_theme()
+#'#library(ggplot2)
+#'
+#'#gg_plot <- ggplot(NBA_example_pro_data, aes(x = `OVERALL types`, y = `Well Protected`))+
+#'#  ggplot2::geom_point()+
+#'#  NBA_theme()
+#'
+#'#gg_plot
 #'
 
 NBA_theme <- function() {

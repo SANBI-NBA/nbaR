@@ -14,6 +14,8 @@ A basic table with a purple heading bar.
 This data should be in the same fomat as for the plot functions
 }
 \examples{
-#test <- NBA_tbl(NBA_example_bar_plot)
+tbl <- NBA_tbl(NBA_example_pro_data)
+
+tbl
 
 }

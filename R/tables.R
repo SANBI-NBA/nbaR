@@ -14,7 +14,9 @@
 #' @importFrom magrittr "%>%"
 #'
 #'@examples
-#'#test <- NBA_tbl(NBA_example_bar_plot)
+#'tbl <- NBA_tbl(NBA_example_pro_data)
+#'
+#'tbl
 #'
 #' @export NBA_tbl
 #'
@@ -53,7 +55,14 @@ NBA_tbl <- function(DF){
 #' @importFrom magrittr "%>%"
 #'
 #'@examples
-#'#test <- NBA_colr_tbl(NBA_example_bar_plot, Protection_level)
+#'library(dplyr)
+#'library(tidyr)
+#'
+#'tbl <- NBA_example_pro_data %>%
+#'  pivot_longer(2:5, names_to = "protection_level") %>%
+#'  NBA_colr_tbl(COL = protection_level)
+#'
+#'tbl
 #'
 #' @export NBA_colr_tbl
 #'
@@ -135,9 +144,15 @@ NBA_colr_tbl <- function(DF, COL) {
 #' @importFrom magrittr "%>%"
 #'
 #'@examples
-#'#test <- NBA_example_bar_plot |>
-#'#gt::gt() |>
-#'#NBA.package::NBA_gt_theme()
+#'library(gt)
+#'library(dplyr)
+#'
+#'
+#'gt_tbl <- NBA_example_thr_data %>%
+#'  gt() %>%
+#' NBA_gt_theme()
+#'
+#'gt_tbl
 #'
 #' @export NBA_gt_theme
 #'

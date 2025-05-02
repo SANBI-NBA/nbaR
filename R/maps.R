@@ -53,12 +53,12 @@
 #'
 #' @examples
 #'
-#'#map <- NBA_map(
-#'#DF = mem_2023,
-#'#COLS = c(ecosystem_type, protection_level_30, threat_status, eco_poly_colour),
-#'#GEOM = geometry,
-#'#CAP = "Figure 1. Map of the distribution of the ecosystems threat status",
-#'#FILL = threat_status)
+#'map <- NBA_map(DF = NBA_example_map_data,
+#'               GEOM = geometry,
+#'               CAP = "Figure 1. A map of the protection level of marine pelagic ecosystem types in South Africa",
+#'               FILL = protection_level)
+#'
+#'map
 #'
 #'#map
 #'

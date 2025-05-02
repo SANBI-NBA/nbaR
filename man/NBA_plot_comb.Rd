@@ -68,16 +68,18 @@ The legend is assumed to be the same and added to the bottom
 of the plots.
 }
 \examples{
-#bar_plot <- NBA_plot_comb(
-#               c_ets,
-#                GROUPS=OVERALL_types,
-#                METRIC_COL = metric,
-#                METRICS = c("types", "extent"),
-#                COLS = 3:6,
-#                CHRT = "bar",
-#                NUM = FALSE,
-#                LAB = "Percentage of ecosystem",
-#                SAVE=NULL
+bar_plot_comb <- NBA_plot_comb(
+NBA_example_comb_data,
+GROUPS= `OVERALL types`,
+METRIC_COL = metric,
+METRICS = c("protection_level", "threat_status"),
+COLS = 3:10,
+CHRT = "bar",
+NUM = FALSE,
+LAB = "Percentage of ecosystem",
+SAVE=NULL)
+
+bar_plot_comb
 #
 
 

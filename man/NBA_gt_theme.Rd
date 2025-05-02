@@ -13,8 +13,14 @@ NBA_gt_theme(GT_TBL)
 Function to apply gt styling to table
 }
 \examples{
-#test <- NBA_example_bar_plot |>
-#gt::gt() |>
-#NBA.package::NBA_gt_theme()
+library(gt)
+library(dplyr)
+
+
+gt_tbl <- NBA_example_thr_data \%>\%
+ gt() \%>\%
+NBA_gt_theme()
+
+gt_tbl
 
 }

@@ -17,6 +17,13 @@ categories
 This data should be in the same fomat as for the plot functions
 }
 \examples{
-#test <- NBA_colr_tbl(NBA_example_bar_plot, Protection_level)
+library(dplyr)
+library(tidyr)
+
+tbl <- NBA_example_pro_data \%>\%
+ pivot_longer(2:5, names_to = "protection_level") \%>\%
+ NBA_colr_tbl(COL = protection_level)
+
+tbl
 
 }

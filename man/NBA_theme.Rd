@@ -14,8 +14,12 @@ This function will create a theme for all ggplot graphs to align them to the
 NBA "look". All NBA functions already use this theme.
 }
 \examples{
-#plot <- ggplot()+
-#            geom_hist()+
-#            NBA_theme()
+#library(ggplot2)
+
+#gg_plot <- ggplot(NBA_example_pro_data, aes(x = `OVERALL types`, y = `Well Protected`))+
+#  ggplot2::geom_point()+
+#  NBA_theme()
+
+#gg_plot
 
 }
