@@ -102,7 +102,7 @@ NBA_example_map_data <- sf::st_read(dir("data-raw",
     P_EcosysType== "Stable Agulhas Current Water" ~ "Moderately Protected",
     P_EcosysType== "Stable Indian Ocean Water" ~ "Poorly Protected",
     P_EcosysType== "Stable Southeast Atlantic Water" ~ "Poorly Protected",
-    P_EcosysType== "Upwelled Agulhas Current Margin Water" ~ "Well Protected",
+    P_EcosysType== "Upwelled Agulhas Current Margin Water" ~ "Not Protected",
     P_EcosysType== "Variable Agulhas current core" ~ "Moderately Protected",
     P_EcosysType== "Variable Indo-Atlantic Water" ~ "Well Protected",
     P_EcosysType== "Warm Stable Indian Ocean Water" ~ "Well Protected"

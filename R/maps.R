@@ -65,15 +65,23 @@
 #'
 
 
-NBA_map <- function(DF, COLS, GEOM, CAP, FILL){
+NBA_map <- function(DF, COLS = NULL, GEOM, CAP, FILL){
+
+  if (!is.null(COLS)) {
+
+    dat <- DF %>%
+      dplyr::group_by(dplyr::pick({{COLS}}))%>%
+      dplyr::summarise(geometry = sf::st_union({{GEOM}})) %>%
+      dplyr::filter(sf::st_geometry_type(geometry) %in% c("POLYGON", "MULTIPOLYGON")) %>%
+      dplyr::ungroup()
+
+  }
+  else {
+
+    dat <- DF
+  }
 
 
-
-  dat <- DF %>%
-    dplyr::group_by(dplyr::pick({{COLS}}))%>%
-    dplyr::summarise(geometry = sf::st_union({{GEOM}})) %>%
-    dplyr::filter(sf::st_geometry_type(geometry) %in% c("POLYGON", "MULTIPOLYGON")) %>%
-    dplyr::ungroup()
 
 
 
@@ -152,10 +160,10 @@ NBA_map <- function(DF, COLS, GEOM, CAP, FILL){
 
     ggspatial::annotation_north_arrow(location = "bl",                 #location of arrow (br = bottom right)
                                       which_north = "true",            #points to the north pole
-                                      height = unit(0.8, "cm"),
-                                      width = unit(0.8, "cm"),
-                                      pad_x = unit(0.1, "in"),        #margin between arrow and map edge
-                                      pad_y = unit(0.3, "in"),         #margin between arrow and map edge
+                                      height = ggplot2::unit(0.8, "cm"),
+                                      width = ggplot2::unit(0.8, "cm"),
+                                      pad_x = ggplot2::unit(0.1, "in"),        #margin between arrow and map edge
+                                      pad_y = ggplot2::unit(0.3, "in"),         #margin between arrow and map edge
                                       style = ggspatial::north_arrow_orienteering(text_size = 8)) +
 
     ggplot2::theme(legend.key.size = ggplot2::unit(0.5,"line"),

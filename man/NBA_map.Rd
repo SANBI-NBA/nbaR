@@ -4,7 +4,7 @@
 \alias{NBA_map}
 \title{NBA map function}
 \usage{
-NBA_map(DF, COLS, GEOM, CAP, FILL)
+NBA_map(DF, COLS = NULL, GEOM, CAP, FILL)
 }
 \arguments{
 \item{DF}{The data frame that contains the information}
