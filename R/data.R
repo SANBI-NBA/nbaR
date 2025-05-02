@@ -90,3 +90,18 @@
 #' }
 #' @source SANBI
 "NBA_example_comb_data"
+
+#' NBA map example data, mem (marine ecosystem map) 2023
+#'
+#'This data is used to make a map of marine pelagic ecosystems and their protection level
+#'
+#' @format ## `mem_2023`
+#' A data frame with 13 rows and 3 columns:
+#' \describe{
+#'   \item{P_EcosysType}{Ecosystem name}
+#'   \item{geometry}{polygons}
+#'   \item{protection_level}{protection_level}
+#'   ...
+#' }
+#' @source SANBI
+"mem_2023"

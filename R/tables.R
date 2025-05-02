@@ -99,7 +99,7 @@ NBA_colr_tbl <- function(DF, COL) {
 
   # Apply the HTML function to the Status column
   DF_col <- DF %>%
-    dplyr::mutate(Status = sapply({{COL}}, color_cell))
+    dplyr::mutate({{COL}} := sapply({{COL}}, color_cell))
 
   table <- kableExtra::kable(DF_col, "html", escape = FALSE) %>%
     kableExtra::kable_styling(

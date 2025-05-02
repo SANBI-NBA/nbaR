@@ -14,6 +14,7 @@
 ###libraries
 library(tidyverse)
 library(readxl)
+library(sf)
 
 ### load data
 
@@ -81,12 +82,41 @@ NBA_categories <- c("Natural",
                     "Mine",
                     "Artificial waterbody")
 
+##map
+
+mem_2023 <- sf::st_read(dir("data-raw",
+                   "Marine_Ecosystem_Map_2023_final_pelagic_only.gpkg",
+                   full.names = T,
+                   recursive = T))%>%
+  group_by(P_EcosysType)%>%
+  summarise(geometry = st_union(geom)) %>%
+  filter(st_geometry_type(geometry) %in% c("POLYGON", "MULTIPOLYGON")) %>%
+  ungroup() %>%
+  mutate(protection_level = case_when(
+    P_EcosysType== "Agulhas Retroflection and South Ocean Transitional Water" ~ "Well Protected",
+    P_EcosysType== "Cold Southeast Atlantic Water" ~ "Well Protected",
+    P_EcosysType== "Indian Ocean Frontal Margin Water" ~ "Moderately Protected",
+    P_EcosysType== "Indian Ocean Frontal Water" ~ "Moderately Protected",
+    P_EcosysType== "South Atlantic Productive Margin Water" ~ "Poorly Protected",
+    P_EcosysType== "South Atlantic-Benguela Transitional Waters" ~ "Well Protected",
+    P_EcosysType== "Stable Agulhas Current Water" ~ "Moderately Protected",
+    P_EcosysType== "Stable Indian Ocean Water" ~ "Poorly Protected",
+    P_EcosysType== "Stable Southeast Atlantic Water" ~ "Poorly Protected",
+    P_EcosysType== "Upwelled Agulhas Current Margin Water" ~ "Well Protected",
+    P_EcosysType== "Variable Agulhas current core" ~ "Moderately Protected",
+    P_EcosysType== "Variable Indo-Atlantic Water" ~ "Well Protected",
+    P_EcosysType== "Warm Stable Indian Ocean Water" ~ "Well Protected"
+
+  ))
+
+
 ### turn into correct format
 usethis::use_data(NBA_example_thr_data)
 usethis::use_data(NBA_example_RLI_data)
 usethis::use_data(NBA_example_pro_data)
 usethis::use_data(NBA_example_comb_data)
 usethis::use_data(NBA_categories)
+usethis::use_data(mem_2023, overwrite = TRUE)
 
 ##create a folder for this script
 #usethis::use_data_raw()

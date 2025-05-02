@@ -31,11 +31,11 @@ The map functions currently only consist of one function NBA_map, made using ggp
 There are then three example datasets that can be accessed to test the functions and see the required format of the data to use the functions, which are: NBA_example_thr_data, NBA_example_pro_data, and NBA_example_RLI_data. There is also a list of the category names (NBA_categories) that are recognised by the function so that you can make sure you are using the correct naming convention. The functions **are** case sensitive so you must be careful when naming your categories.
 
 
-##Graph functions
+## Graph functions
 
 Load the example data and use the variouse functions to create NBA plots. 
 
-1. bar plot
+**1. bar plot**
 
 ```{r warning=FALSE}
 NBA_example_thr_data <- NBA_example_thr_data
@@ -54,7 +54,7 @@ bar_plot
 
 ```
 
-2. donut plot
+**2. donut plot**
 
 ```{r warning=FALSE}
 NBA_example_pro_data <- NBA_example_pro_data
@@ -74,7 +74,7 @@ donut_plot
 
 ```
 
-3. Combined bar plot
+**3. Combined bar plot**
 
 ```{r warning=FALSE}
 NBA_example_pro_data <- NBA_example_pro_data
@@ -98,7 +98,7 @@ bar_plot_comb
 
 ```
 
-4. RLI plot
+**4. RLI plot**
 
 ```{r warning=FALSE}
 NBA_example_RLI_data <- NBA_example_RLI_data
@@ -115,7 +115,7 @@ RLI_plot
 
 ```
 
-5. NBA ggplot theme
+**5. NBA ggplot theme**
 
 ```{r warning=FALSE}
 library(ggplot2)
@@ -130,6 +130,71 @@ gg_plot
 
 
 ```
+
+
+## Table functions
+Please note that these are designed to render on html outputs and so may not appear correct in the vignette examples. 
+
+
+
+**6. Basic table**
+```{r}
+
+tbl <- NBA_tbl(NBA_example_pro_data)
+
+tbl
+
+```
+
+**7. Coloured table**
+
+```{r}
+
+library(dplyr)
+library(tidyr)
+
+tbl <- NBA_example_pro_data %>% 
+  pivot_longer(2:5, names_to = "protection_level") %>% 
+  NBA_colr_tbl(COL = protection_level)
+
+tbl
+```
+
+
+**8. gt table theme**
+
+```{r}
+library(gt)
+library(dplyr)
+
+
+gt_tbl <- NBA_example_thr_data %>% 
+  gt() %>% 
+  NBA_gt_theme()
+
+gt_tbl
+  
+```
+
+
+## Map functions
+
+
+**9. Basic map**
+Please note this was modeled after the maps in the marine technical report 2018.
+
+```{r}
+
+
+
+
+```
+
+
+
+
+
+
 
 
 
