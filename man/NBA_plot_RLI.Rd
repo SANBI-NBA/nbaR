@@ -2,7 +2,7 @@
 % Please edit documentation in R/graphs.R
 \name{NBA_plot_RLI}
 \alias{NBA_plot_RLI}
-\title{NBA_plot_RLI}
+\title{NBA Redlist index plot function}
 \usage{
 NBA_plot_RLI(DF, YEAR, RLI, min, max, GRP = FALSE)
 }
@@ -25,11 +25,13 @@ Returns a RLI plot
 \description{
 This function will create a line graph indicating the Red list index per period/year.
 Additionally, depending on the graph requirements it further creates a multiple line graph
-grouping the plot according to species,
-and creates a buffer parallel to the RLI line using the minimum and maximum values.
+grouping the plot according to species, and creates a buffer parallel to the RLI
+line using the minimum and maximum values.
+}
+\details{
 Note: The graph can be used on other datasets as well, as long as it contains the same
 data structure as the Red List Index.
-There is an example dataset (NBA_example_RLI_plot), available for users
+There is an example dataset (NBA_example_RLI_data), available for users
 to reference if needed.
 }
 \examples{

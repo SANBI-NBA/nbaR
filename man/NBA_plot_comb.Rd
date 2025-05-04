@@ -42,21 +42,17 @@ NBA_plot_comb(
 Returns a plot
 }
 \description{
-NBA plots for multiple plots of protection level, threat status,
-and condition on the same grid.
-The function expects that the groups are in a column, with one
-group per row, and the protection level, threat status, or condition
-categories are the headings of each column. Please look at the example
-data NBA_example_bar_plot and NBA_example_donut_plot to see the correct
-structure for the data. Please note that both of these datasets have the
-same structure, whether it will be used to make a bar or donut plot is
-irrelevant.
-This function will plot the data as either a bar or donut plot
-depending on what you require. You can also decide if you want the donut
-plot to be split by ecosystem functional group or not and choose if
-you want the number of ecosystems to be displayed within the plot.
+A function to plot multiple plots created by the NBA_plot function in one grid.
 }
 \details{
+The function expects that the groups are in a column, with one
+group per row, and the protection level, threat status, or condition
+categories are the headings of each column as well as a column to identify which
+rows should be plotted together (i.e which rows represent extent and which represent
+number). Please look at the example data NBA_example_comb_data to see the correct structure for the data.
+Please note that whether it will be used to make a bar or donut plot is
+irrelevant.
+
 The name of the groups column is irrelevant, but the categories must be
 spelled correctly (there is a list of the standard spellings/ cases
 of NBA categories named NBA_categories in this package,

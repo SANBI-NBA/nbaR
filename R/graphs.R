@@ -2,18 +2,24 @@
 ###
 #' NBA plot function
 #'
-#' NBA plots for protection level, threat status, and condition.
-#' The function expects that the groups are in a column, with one
-#' group per row, and the protection level, threat status, or condition
-#' categories are the headings of each column. Please look at the example
-#' data NBA_example_bar_plot and NBA_example_donut_plot to see the correct
+#' A function to create horizontal bar plots and donut plots.
+#' The function expects that there is a coloumn of groups (e.g. ecosystem function groups,
+#' taxa etc), with one
+#' group value per row, and then several columns of the protection level,
+#' threat status, or condition of the groups with values representing either the number
+#' or percentage/ extent of groups within each category. These columns should be named
+#' according the to conventions in the NBA_categories example list.
+#'
+#' Please look at the example datasets NBA_example_thr_plot and
+#' NBA_example_pro_plot to see the correct
 #' structure for the data. Please note that both of these datasets have the
 #' same structure, whether it will be used to make a bar or donut plot is
 #' irrelevant.
 #' This function will plot the data as either a bar or donut plot
 #' depending on what you require. You can also decide if you want the donut
-#' plot to be split by ecosystem functional group or not and choose if
-#' you want the number of ecosystems to be displayed within the plot.
+#' plot to be split by ecosystem functional group or not (e.g one donut plot per
+#' functional group) and choose ifyou want the number of ecosystems to be
+#' displayed within the plot.
 #'
 #' The name of the groups column is irrelevant, but the categories must be
 #' spelled correctly (there is a list of the standard spellings/ cases
@@ -351,15 +357,16 @@ NBA_plot <- function(DF, GROUPS, COLS, CHRT = c("bar", "donut"), NUM = FALSE, LA
 
 #######################################################################################################
 ###
-#' NBA_plot_RLI
+#' NBA Redlist index plot function
 #'
 #'This function will create a line graph indicating the Red list index per period/year.
 #'Additionally, depending on the graph requirements it further creates a multiple line graph
-#'grouping the plot according to species,
-#'and creates a buffer parallel to the RLI line using the minimum and maximum values.
+#'grouping the plot according to species, and creates a buffer parallel to the RLI
+#'line using the minimum and maximum values.
+#'
 #'Note: The graph can be used on other datasets as well, as long as it contains the same
 #'data structure as the Red List Index.
-#'There is an example dataset (NBA_example_RLI_plot), available for users
+#'There is an example dataset (NBA_example_RLI_data), available for users
 #'to reference if needed.
 #'
 #' @param DF The data frame that contains the information on the Red List Index
@@ -424,19 +431,15 @@ else {
 #######################################################################
 #' NBA multi plot function
 #'
-#' NBA plots for multiple plots of protection level, threat status,
-#' and condition on the same grid.
+#' A function to plot multiple plots created by the NBA_plot function in one grid.
+#'
 #' The function expects that the groups are in a column, with one
 #' group per row, and the protection level, threat status, or condition
-#' categories are the headings of each column. Please look at the example
-#' data NBA_example_bar_plot and NBA_example_donut_plot to see the correct
-#' structure for the data. Please note that both of these datasets have the
-#' same structure, whether it will be used to make a bar or donut plot is
+#' categories are the headings of each column as well as a column to identify which
+#' rows should be plotted together (i.e which rows represent extent and which represent
+#' number). Please look at the example data NBA_example_comb_data to see the correct structure for the data.
+#' Please note that whether it will be used to make a bar or donut plot is
 #' irrelevant.
-#' This function will plot the data as either a bar or donut plot
-#' depending on what you require. You can also decide if you want the donut
-#' plot to be split by ecosystem functional group or not and choose if
-#' you want the number of ecosystems to be displayed within the plot.
 #'
 #' The name of the groups column is irrelevant, but the categories must be
 #' spelled correctly (there is a list of the standard spellings/ cases
@@ -536,13 +539,13 @@ NBA_plot_comb <- function(DF,
 
 #######################################################################################################
 ###
-#' NBA_plot_theme
+#' NBA theme for a ggplot object
 #'
 #'This function will create a theme for all ggplot graphs to align them to the
 #'NBA "look". All NBA functions already use this theme.
 #'
 
-#' @return Returns a NBA_theme
+#' @return Returns a ggplot object with the NBA_theme styling
 #'
 #'
 #' @importFrom ggplot2  ggplot

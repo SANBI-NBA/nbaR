@@ -2,12 +2,12 @@
 % Please edit documentation in R/graphs.R
 \name{NBA_plot_theme}
 \alias{NBA_plot_theme}
-\title{NBA_plot_theme}
+\title{NBA theme for a ggplot object}
 \usage{
 NBA_plot_theme()
 }
 \value{
-Returns a NBA_theme
+Returns a ggplot object with the NBA_theme styling
 }
 \description{
 This function will create a theme for all ggplot graphs to align them to the

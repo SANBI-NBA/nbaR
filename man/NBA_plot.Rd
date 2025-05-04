@@ -36,20 +36,26 @@ NBA_plot(
 Returns a plot
 }
 \description{
-NBA plots for protection level, threat status, and condition.
-The function expects that the groups are in a column, with one
-group per row, and the protection level, threat status, or condition
-categories are the headings of each column. Please look at the example
-data NBA_example_bar_plot and NBA_example_donut_plot to see the correct
+A function to create horizontal bar plots and donut plots.
+The function expects that there is a coloumn of groups (e.g. ecosystem function groups,
+taxa etc), with one
+group value per row, and then several columns of the protection level,
+threat status, or condition of the groups with values representing either the number
+or percentage/ extent of groups within each category. These columns should be named
+according the to conventions in the NBA_categories example list.
+}
+\details{
+Please look at the example datasets NBA_example_thr_plot and
+NBA_example_pro_plot to see the correct
 structure for the data. Please note that both of these datasets have the
 same structure, whether it will be used to make a bar or donut plot is
 irrelevant.
 This function will plot the data as either a bar or donut plot
 depending on what you require. You can also decide if you want the donut
-plot to be split by ecosystem functional group or not and choose if
-you want the number of ecosystems to be displayed within the plot.
-}
-\details{
+plot to be split by ecosystem functional group or not (e.g one donut plot per
+functional group) and choose ifyou want the number of ecosystems to be
+displayed within the plot.
+
 The name of the groups column is irrelevant, but the categories must be
 spelled correctly (there is a list of the standard spellings/ cases
 of NBA categories named NBA_categories in this package,

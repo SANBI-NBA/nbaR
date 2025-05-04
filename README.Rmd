@@ -12,13 +12,13 @@ knitr::opts_chunk$set(
 )
 ```
 
-# NBA.package NBA.package <a href="https://sanbi-nba.github.io/NBA.package/"><img src="man/figures/logo.png" align="right" height="139" alt="NBA.package website" /></a>
+# NBA.package <a href="https://sanbi-nba.github.io/NBA.package/"><img src="man/figures/logo.png" align="right" height="139" alt="NBA.package website" /></a>
 
 
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of the NBA.package is to allow all graphs/ plots/ and maps created for the NBA to be created easily with targeted functions that enable ease of use and standardisation of results.
+The goal of the NBA.package is to allow all graphs, plots, and maps created for the NBA to be created easily with targeted functions that enable ease of use and standardisation of results.
 
 ## Installation
 
@@ -29,15 +29,18 @@ You can install the development version of NBA.package from [GitHub](https://git
 #devtools::install_github("SANBI-NBA/NBA.package")
 ```
 
+## Usage
+
+The package is intended for use in r and quarto by the NBA team to assist with the creation of the NBA website pages and reports. The goal of the functions is to simplify the processes of cretaing plots, tables, and maps in the reports and to standardise the outputs of all realms. 
+
+
+
 ## Data
 
-All data should be in a standard format where the groups/variables (e.g. Functional
-ecosystem types/ taxa) are listed in the first column, and the threat status/ protection
-level ect categories are in subsequent columns. There is no need to have a totals column. 
-Having extra columns in not a problem, as long as you have the columns mentioned. 
+The data used should be read in from csv's, excel documents, or sql (or created within r). The data structure accepted by the functions are explained in the help files of each function. There are also a number of example datasets to help users understand and visually see the required data structure. Please refer to the help files and vignettes for these example datasets. 
+Having extra columns in not a problem for the functions as they are mostly bulit with the ability to select the columns you wish to use in the function. 
 
-There are three example datasets in this package that can be use as references (NBA_example_bar_plot, NBA_example_RLI_plot, and NBA_example_donut_plot) as well as
-a list of all possible names to be used in the categories columns (NBA_categories), please pay attention to spelling and cases as the functions are case sensitive.
+Along with the example datasets there is a list of all possible names to be used in the categories columns (**NBA_categories**), please pay attention to spelling and cases as the functions are case sensitive. The categories examples are 'Well Protected' or 'Least Concern', and are used to assign the correct colours to the correct categories.  
 
 ## Issues
 
