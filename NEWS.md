@@ -1,3 +1,6 @@
+# NBA.package 1.1.1
+updated the documentation of the functions
+
 # NBA.package 1.1.0
 changed the names of some functions to follow the convention: NBA_ followed by its purpose (plot/tbl/map) followed by any other identifiyer.
 
