@@ -23,7 +23,7 @@
 
     <a class="navbar-brand me-2" href="index.html">NBA.package</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.1.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.1.1</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -63,12 +63,13 @@
 <div class="row">
   <main id="main" class="col-md-9"><div class="section level1">
 <div class="page-header">
-<img src="logo.png" class="logo" alt=""><h1 id="nbapackage-nbapackage-">NBA.package NBA.package 
-<a class="anchor" aria-label="anchor" href="#nbapackage-nbapackage-"></a>
+<img src="logo.png" class="logo" alt=""><h1 id="nbapackage-">NBA.package 
+<a class="anchor" aria-label="anchor" href="#nbapackage-"></a>
 </h1>
 </div>
-<hr>
-<!-- badges: start --><!-- badges: end --><p>The goal of the NBA.package is to allow all graphs/ plots/ and maps created for the NBA to be created easily with targeted functions that enable ease of use and standardisation of results.</p>
+<!-- badges: start -->
+<!-- badges: end -->
+<p>The goal of the NBA.package is to allow all graphs, plots, and maps created for the NBA to be created easily with targeted functions that enable ease of use and standardisation of results.</p>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
@@ -78,10 +79,15 @@
 <span><span class="co">#devtools::install_github("SANBI-NBA/NBA.package")</span></span></code></pre></div>
 </div>
 <div class="section level2">
+<h2 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a>
+</h2>
+<p>The package is intended for use in r and quarto by the NBA team to assist with the creation of the NBA website pages and reports. The goal of the functions is to simplify the processes of cretaing plots, tables, and maps in the reports and to standardise the outputs of all realms.</p>
+</div>
+<div class="section level2">
 <h2 id="data">Data<a class="anchor" aria-label="anchor" href="#data"></a>
 </h2>
-<p>All data should be in a standard format where the groups/variables (e.g. Functional ecosystem types/ taxa) are listed in the first column, and the threat status/ protection level ect categories are in subsequent columns. There is no need to have a totals column. Having extra columns in not a problem, as long as you have the columns mentioned.</p>
-<p>There are three example datasets in this package that can be use as references (NBA_example_bar_plot, NBA_example_RLI_plot, and NBA_example_donut_plot) as well as a list of all possible names to be used in the categories columns (NBA_categories), please pay attention to spelling and cases as the functions are case sensitive.</p>
+<p>The data used should be read in from csv’s, excel documents, or sql (or created within r). The data structure accepted by the functions are explained in the help files of each function. There are also a number of example datasets to help users understand and visually see the required data structure. Please refer to the help files and vignettes for these example datasets. Having extra columns in not a problem for the functions as they are mostly bulit with the ability to select the columns you wish to use in the function.</p>
+<p>Along with the example datasets there is a list of all possible names to be used in the categories columns (<strong>NBA_categories</strong>), please pay attention to spelling and cases as the functions are case sensitive. The categories examples are ‘Well Protected’ or ‘Least Concern’, and are used to assign the correct colours to the correct categories.</p>
 </div>
 <div class="section level2">
 <h2 id="issues">Issues<a class="anchor" aria-label="anchor" href="#issues"></a>
