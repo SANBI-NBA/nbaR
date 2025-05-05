@@ -19,6 +19,7 @@ reference:
   - NBA_tbl
   - NBA_tbl_colr
   - NBA_tbl_theme
+  - NBA_tbl_comb
 
 - title: Map functions
   contents:
