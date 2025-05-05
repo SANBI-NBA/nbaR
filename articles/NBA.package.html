@@ -1352,13 +1352,185 @@ Not Protected
 </tbody>
 </table>
 </div>
+<p><strong>9. Threatend ecosystems protection level table</strong></p>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">thr_pro_tbl</span> <span class="op">&lt;-</span> <span class="va">NBA_example_map_data</span> <span class="op">|&gt;</span></span>
+<span><span class="fu">sf</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html" class="external-link">st_drop_geometry</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span><span class="fu"><a href="../reference/NBA_tbl_comb.html">NBA_tbl_comb</a></span><span class="op">(</span>GROUP <span class="op">=</span> <span class="va">P_EcosysType</span>,</span>
+<span>THR <span class="op">=</span> <span class="va">threat_status</span>,</span>
+<span>PRO <span class="op">=</span> <span class="va">protection_level</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">thr_pro_tbl</span></span></code></pre></div>
+<table class="table table table-striped table-hover" style="font-size: 16px; width: auto !important; margin-left: auto; margin-right: auto;">
+<thead><tr>
+<th style="text-align:left;color: black !important;background-color: lightgrey !important;border-top: 2px solid black; border-bottom: 2px solid black; text-align: left; font-weight: normal;text-align: left; writing-mode: vertical-rl; transform: rotate(180deg); white-space: nowrap; height: 170px;">
+</th>
+<th style="text-align:right;color: black !important;background-color: lightgrey !important;border-top: 2px solid black; border-bottom: 2px solid black; text-align: left; font-weight: normal;text-align: left; writing-mode: vertical-rl; transform: rotate(180deg); white-space: nowrap; height: 170px;background-color: rgba(164, 163, 163, 255) !important;">
+Not Protected
+</th>
+<th style="text-align:right;color: black !important;background-color: lightgrey !important;border-top: 2px solid black; border-bottom: 2px solid black; text-align: left; font-weight: normal;text-align: left; writing-mode: vertical-rl; transform: rotate(180deg); white-space: nowrap; height: 170px;background-color: rgba(213, 222, 195, 255) !important;">
+Poorly Protected
+</th>
+<th style="text-align:right;color: black !important;background-color: lightgrey !important;border-top: 2px solid black; border-bottom: 2px solid black; text-align: left; font-weight: normal;text-align: left; writing-mode: vertical-rl; transform: rotate(180deg); white-space: nowrap; height: 170px;background-color: rgba(128, 169, 82, 255) !important;">
+Moderately Protected
+</th>
+<th style="text-align:right;color: black !important;background-color: lightgrey !important;border-top: 2px solid black; border-bottom: 2px solid black; text-align: left; font-weight: normal;text-align: left; writing-mode: vertical-rl; transform: rotate(180deg); white-space: nowrap; height: 170px;background-color: rgba(70, 106, 49, 255) !important;">
+Well Protected
+</th>
+<th style="text-align:right;color: black !important;background-color: lightgrey !important;border-top: 2px solid black; border-bottom: 2px solid black; text-align: left; font-weight: normal;text-align: left; writing-mode: vertical-rl; transform: rotate(180deg); white-space: nowrap; height: 170px;">
+Total
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;background-color: white !important;background-color: rgba(233, 48, 44, 255) !important;">
+Critically Endangered
+</td>
+<td style="text-align:right;background-color: white !important;background-color: rgba(233, 48, 44, 255) !important;background-color: rgba(164, 163, 163, 255) !important;background-color: white !important;">
+0
+</td>
+<td style="text-align:right;background-color: white !important;background-color: rgba(233, 48, 44, 255) !important;background-color: rgba(213, 222, 195, 255) !important;background-color: white !important;">
+1
+</td>
+<td style="text-align:right;background-color: white !important;background-color: rgba(233, 48, 44, 255) !important;background-color: rgba(128, 169, 82, 255) !important;background-color: white !important;">
+1
+</td>
+<td style="text-align:right;background-color: white !important;background-color: rgba(233, 48, 44, 255) !important;background-color: rgba(70, 106, 49, 255) !important;background-color: white !important;">
+1
+</td>
+<td style="text-align:right;background-color: white !important;background-color: rgba(233, 48, 44, 255) !important;background-color: white !important;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;background-color: white !important;background-color: rgba(249, 120, 53, 255) !important;">
+Endangered
+</td>
+<td style="text-align:right;background-color: white !important;background-color: rgba(249, 120, 53, 255) !important;background-color: rgba(164, 163, 163, 255) !important;background-color: white !important;">
+0
+</td>
+<td style="text-align:right;background-color: white !important;background-color: rgba(249, 120, 53, 255) !important;background-color: rgba(213, 222, 195, 255) !important;background-color: white !important;">
+1
+</td>
+<td style="text-align:right;background-color: white !important;background-color: rgba(249, 120, 53, 255) !important;background-color: rgba(128, 169, 82, 255) !important;background-color: white !important;">
+0
+</td>
+<td style="text-align:right;background-color: white !important;background-color: rgba(249, 120, 53, 255) !important;background-color: rgba(70, 106, 49, 255) !important;background-color: white !important;">
+1
+</td>
+<td style="text-align:right;background-color: white !important;background-color: rgba(249, 120, 53, 255) !important;background-color: white !important;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;background-color: white !important;background-color: rgba(255, 240, 42, 255) !important;">
+Vulnerable
+</td>
+<td style="text-align:right;background-color: white !important;background-color: rgba(255, 240, 42, 255) !important;background-color: rgba(164, 163, 163, 255) !important;background-color: white !important;">
+1
+</td>
+<td style="text-align:right;background-color: white !important;background-color: rgba(255, 240, 42, 255) !important;background-color: rgba(213, 222, 195, 255) !important;background-color: white !important;">
+0
+</td>
+<td style="text-align:right;background-color: white !important;background-color: rgba(255, 240, 42, 255) !important;background-color: rgba(128, 169, 82, 255) !important;background-color: white !important;">
+1
+</td>
+<td style="text-align:right;background-color: white !important;background-color: rgba(255, 240, 42, 255) !important;background-color: rgba(70, 106, 49, 255) !important;background-color: white !important;">
+1
+</td>
+<td style="text-align:right;background-color: white !important;background-color: rgba(255, 240, 42, 255) !important;background-color: white !important;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;background-color: white !important;background-color: rgba(238, 238, 163, 255) !important;">
+Near Threatened
+</td>
+<td style="text-align:right;background-color: white !important;background-color: rgba(238, 238, 163, 255) !important;background-color: rgba(164, 163, 163, 255) !important;background-color: white !important;">
+0
+</td>
+<td style="text-align:right;background-color: white !important;background-color: rgba(238, 238, 163, 255) !important;background-color: rgba(213, 222, 195, 255) !important;background-color: white !important;">
+0
+</td>
+<td style="text-align:right;background-color: white !important;background-color: rgba(238, 238, 163, 255) !important;background-color: rgba(128, 169, 82, 255) !important;background-color: white !important;">
+1
+</td>
+<td style="text-align:right;background-color: white !important;background-color: rgba(238, 238, 163, 255) !important;background-color: rgba(70, 106, 49, 255) !important;background-color: white !important;">
+1
+</td>
+<td style="text-align:right;background-color: white !important;background-color: rgba(238, 238, 163, 255) !important;background-color: white !important;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;background-color: white !important;background-color: rgba(177, 215, 152, 255) !important;">
+Least Concern
+</td>
+<td style="text-align:right;background-color: white !important;background-color: rgba(177, 215, 152, 255) !important;background-color: rgba(164, 163, 163, 255) !important;background-color: white !important;">
+0
+</td>
+<td style="text-align:right;background-color: white !important;background-color: rgba(177, 215, 152, 255) !important;background-color: rgba(213, 222, 195, 255) !important;background-color: white !important;">
+1
+</td>
+<td style="text-align:right;background-color: white !important;background-color: rgba(177, 215, 152, 255) !important;background-color: rgba(128, 169, 82, 255) !important;background-color: white !important;">
+1
+</td>
+<td style="text-align:right;background-color: white !important;background-color: rgba(177, 215, 152, 255) !important;background-color: rgba(70, 106, 49, 255) !important;background-color: white !important;">
+1
+</td>
+<td style="text-align:right;background-color: white !important;background-color: rgba(177, 215, 152, 255) !important;background-color: white !important;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;background-color: white !important;color: black !important;background-color: lightgrey !important;border-top: 2px solid black; border-bottom: 2px solid blackbackground-color: lightgrey !important;">
+Total (n)
+</td>
+<td style="text-align:right;background-color: white !important;color: black !important;background-color: lightgrey !important;border-top: 2px solid black; border-bottom: 2px solid blackbackground-color: rgba(164, 163, 163, 255) !important;background-color: white !important;background-color: lightgrey !important;">
+1
+</td>
+<td style="text-align:right;background-color: white !important;color: black !important;background-color: lightgrey !important;border-top: 2px solid black; border-bottom: 2px solid blackbackground-color: rgba(213, 222, 195, 255) !important;background-color: white !important;background-color: lightgrey !important;">
+3
+</td>
+<td style="text-align:right;background-color: white !important;color: black !important;background-color: lightgrey !important;border-top: 2px solid black; border-bottom: 2px solid blackbackground-color: rgba(128, 169, 82, 255) !important;background-color: white !important;background-color: lightgrey !important;">
+4
+</td>
+<td style="text-align:right;background-color: white !important;color: black !important;background-color: lightgrey !important;border-top: 2px solid black; border-bottom: 2px solid blackbackground-color: rgba(70, 106, 49, 255) !important;background-color: white !important;background-color: lightgrey !important;">
+5
+</td>
+<td style="text-align:right;background-color: white !important;color: black !important;background-color: lightgrey !important;border-top: 2px solid black; border-bottom: 2px solid blackbackground-color: white !important;background-color: lightgrey !important;">
+13
+</td>
+</tr>
+<tr>
+<td style="text-align:left;background-color: white !important;color: black !important;background-color: lightgrey !important;border-top: 2px solid black; border-bottom: 2px solid black;background-color: lightgrey !important;">
+Percentage (%)
+</td>
+<td style="text-align:right;background-color: white !important;color: black !important;background-color: lightgrey !important;border-top: 2px solid black; border-bottom: 2px solid black;background-color: rgba(164, 163, 163, 255) !important;background-color: white !important;background-color: lightgrey !important;">
+8
+</td>
+<td style="text-align:right;background-color: white !important;color: black !important;background-color: lightgrey !important;border-top: 2px solid black; border-bottom: 2px solid black;background-color: rgba(213, 222, 195, 255) !important;background-color: white !important;background-color: lightgrey !important;">
+23
+</td>
+<td style="text-align:right;background-color: white !important;color: black !important;background-color: lightgrey !important;border-top: 2px solid black; border-bottom: 2px solid black;background-color: rgba(128, 169, 82, 255) !important;background-color: white !important;background-color: lightgrey !important;">
+31
+</td>
+<td style="text-align:right;background-color: white !important;color: black !important;background-color: lightgrey !important;border-top: 2px solid black; border-bottom: 2px solid black;background-color: rgba(70, 106, 49, 255) !important;background-color: white !important;background-color: lightgrey !important;">
+38
+</td>
+<td style="text-align:right;background-color: white !important;color: black !important;background-color: lightgrey !important;border-top: 2px solid black; border-bottom: 2px solid black;background-color: white !important;background-color: lightgrey !important;">
+100
+</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="section level2">
 <h2 id="map-functions">Map functions<a class="anchor" aria-label="anchor" href="#map-functions"></a>
 </h2>
 <p><strong>9. Basic map</strong> Please note this was modeled after the
 maps in the marine technical report 2018.</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="va">map</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/NBA_map.html">NBA_map</a></span><span class="op">(</span>DF <span class="op">=</span> <span class="va">NBA_example_map_data</span>,</span>
 <span>               GEOM <span class="op">=</span> <span class="va">geometry</span>, </span>
@@ -1366,7 +1538,7 @@ maps in the marine technical report 2018.</p>
 <span>               FILL <span class="op">=</span> <span class="va">protection_level</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">map</span></span></code></pre></div>
-<p><img src="NBA.package_files/figure-html/unnamed-chunk-10-1.png" width="700"></p>
+<p><img src="NBA.package_files/figure-html/unnamed-chunk-11-1.png" width="700"></p>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>
