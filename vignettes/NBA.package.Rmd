@@ -176,6 +176,19 @@ gt_tbl
   
 ```
 
+**9. Threatend ecosystems protection level table**
+
+```{r}
+thr_pro_tbl <- NBA_example_map_data |>
+sf::st_drop_geometry() |>
+NBA_tbl_comb(GROUP = P_EcosysType,
+THR = threat_status,
+PRO = protection_level)
+
+thr_pro_tbl
+```
+
+
 
 ## Map functions
 
