@@ -1,3 +1,6 @@
+# NBA.package 1.2.0
+Added a new function
+
 # NBA.package 1.1.1
 updated the documentation of the functions
 

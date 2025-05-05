@@ -1,6 +1,6 @@
 Package: NBA.package
 Title: NBA theme package
-Version: 1.1.1
+Version: 1.2.0
 Authors@R: c(
     person("Natasha", "Besseling", , "tashbes@gmail.com", role = c("aut", "cre")),
     person("Lauryn", "Bull", , "l.bull@sanbi.org.za", role = c("aut")),
