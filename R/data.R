@@ -100,7 +100,8 @@
 #' \describe{
 #'   \item{P_EcosysType}{Ecosystem name}
 #'   \item{geometry}{polygons}
-#'   \item{protection_level}{protection_level}
+#'   \item{protection_level}{protection level}
+#'   \item{threat_status}{threat statis}
 #'   ...
 #' }
 #' @source SANBI

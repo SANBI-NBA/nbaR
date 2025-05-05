@@ -107,7 +107,24 @@ NBA_example_map_data <- sf::st_read(dir("data-raw",
     P_EcosysType== "Variable Indo-Atlantic Water" ~ "Well Protected",
     P_EcosysType== "Warm Stable Indian Ocean Water" ~ "Well Protected"
 
+  ))%>%
+  dplyr::mutate(threat_status = dplyr::case_when(
+    P_EcosysType== "Agulhas Retroflection and South Ocean Transitional Water" ~ "Critically Endangered",
+    P_EcosysType== "Cold Southeast Atlantic Water" ~ "Endangered",
+    P_EcosysType== "Indian Ocean Frontal Margin Water" ~ "Vulnerable",
+    P_EcosysType== "Indian Ocean Frontal Water" ~ "Near Threatened",
+    P_EcosysType== "South Atlantic Productive Margin Water" ~ "Least Concern",
+    P_EcosysType== "South Atlantic-Benguela Transitional Waters" ~ "Vulnerable",
+    P_EcosysType== "Stable Agulhas Current Water" ~ "Critically Endangered",
+    P_EcosysType== "Stable Indian Ocean Water" ~ "Critically Endangered",
+    P_EcosysType== "Stable Southeast Atlantic Water" ~ "Endangered",
+    P_EcosysType== "Upwelled Agulhas Current Margin Water" ~ "Vulnerable",
+    P_EcosysType== "Variable Agulhas current core" ~ "Least Concern",
+    P_EcosysType== "Variable Indo-Atlantic Water" ~ "Least Concern",
+    P_EcosysType== "Warm Stable Indian Ocean Water" ~ "Near Threatened"
+
   ))
+
 
 
 ### turn into correct format

@@ -11,7 +11,8 @@ A data frame with 13 rows and 3 columns:
 \describe{
 \item{P_EcosysType}{Ecosystem name}
 \item{geometry}{polygons}
-\item{protection_level}{protection_level}
+\item{protection_level}{protection level}
+\item{threat_status}{threat statis}
 ...
 }
 }
