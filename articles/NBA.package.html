@@ -20,7 +20,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">NBA.package</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.2.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.3.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -172,8 +172,22 @@ plots.</p>
 <span></span>
 <span><span class="va">RLI_plot</span></span></code></pre></div>
 <p><img src="NBA.package_files/figure-html/unnamed-chunk-5-1.png" width="700"></p>
-<p><strong>5. NBA ggplot theme</strong></p>
+<p><strong>5. NBA bubble plot</strong></p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">NBA_example_bubble_data</span> <span class="op">&lt;-</span> <span class="va">NBA_example_bubble_data</span></span>
+<span></span>
+<span></span>
+<span> <span class="va">bubble_plot</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/NBA_plot_bubble.html">NBA_plot_bubble</a></span><span class="op">(</span>DF <span class="op">=</span> <span class="va">NBA_example_bubble_data</span>,</span>
+<span>                        GROUP <span class="op">=</span> <span class="va">taxon_group</span>,</span>
+<span>                       CAT <span class="op">=</span> <span class="va">pressure</span>,</span>
+<span>                       SUB_CAT <span class="op">=</span> <span class="va">sub_pressure</span>,</span>
+<span>                        VALUE <span class="op">=</span> <span class="va">perc_concern_under_press</span>,</span>
+<span>                          SAVE <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span>
+<span>                         </span>
+<span> <span class="va">bubble_plot</span></span></code></pre></div>
+<p><img src="NBA.package_files/figure-html/unnamed-chunk-6-1.png" width="700"></p>
+<p><strong>6. NBA ggplot theme</strong></p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
 <span><span class="va">NBA_example_pro_data</span> <span class="op">&lt;-</span> <span class="va">NBA_example_pro_data</span></span>
 <span></span>
@@ -183,15 +197,15 @@ plots.</p>
 <span>  <span class="fu"><a href="../reference/NBA_plot_theme.html">NBA_plot_theme</a></span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">gg_plot</span></span></code></pre></div>
-<p><img src="NBA.package_files/figure-html/unnamed-chunk-6-1.png" width="700"></p>
+<p><img src="NBA.package_files/figure-html/unnamed-chunk-7-1.png" width="700"></p>
 </div>
 <div class="section level2">
 <h2 id="table-functions">Table functions<a class="anchor" aria-label="anchor" href="#table-functions"></a>
 </h2>
 <p>Please note that these are designed to render on html outputs and so
 may not appear correct in the vignette examples.</p>
-<p><strong>6. Basic table</strong></p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<p><strong>7. Basic table</strong></p>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="va">tbl</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/NBA_tbl.html">NBA_tbl</a></span><span class="op">(</span><span class="va">NBA_example_pro_data</span><span class="op">)</span></span>
 <span></span>
@@ -359,8 +373,8 @@ Terrestrial
 </tr>
 </tbody>
 </table>
-<p><strong>7. Coloured table</strong></p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<p><strong>8. Coloured table</strong></p>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
@@ -815,8 +829,8 @@ Not Protected
 </tr>
 </tbody>
 </table>
-<p><strong>8. gt table theme</strong></p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<p><strong>9. gt table theme</strong></p>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://gt.rstudio.com" class="external-link">gt</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
 <span></span>
@@ -1352,8 +1366,8 @@ Not Protected
 </tbody>
 </table>
 </div>
-<p><strong>9. Threatend ecosystems protection level table</strong></p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<p><strong>10. Threatened ecosystems protection level table</strong></p>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">thr_pro_tbl</span> <span class="op">&lt;-</span> <span class="va">NBA_example_map_data</span> <span class="op">|&gt;</span></span>
 <span><span class="fu">sf</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html" class="external-link">st_drop_geometry</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span><span class="fu"><a href="../reference/NBA_tbl_comb.html">NBA_tbl_comb</a></span><span class="op">(</span>GROUP <span class="op">=</span> <span class="va">P_EcosysType</span>,</span>
@@ -1528,9 +1542,10 @@ Percentage (%)
 <div class="section level2">
 <h2 id="map-functions">Map functions<a class="anchor" aria-label="anchor" href="#map-functions"></a>
 </h2>
-<p><strong>9. Basic map</strong> Please note this was modeled after the
-maps in the marine technical report 2018.</p>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<p><strong>11. Basic map</strong></p>
+<p>Please note this was modeled after the maps in the marine technical
+report 2018.</p>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="va">map</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/NBA_map.html">NBA_map</a></span><span class="op">(</span>DF <span class="op">=</span> <span class="va">NBA_example_map_data</span>,</span>
 <span>               GEOM <span class="op">=</span> <span class="va">geometry</span>, </span>
@@ -1538,7 +1553,7 @@ maps in the marine technical report 2018.</p>
 <span>               FILL <span class="op">=</span> <span class="va">protection_level</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">map</span></span></code></pre></div>
-<p><img src="NBA.package_files/figure-html/unnamed-chunk-11-1.png" width="700"></p>
+<p><img src="NBA.package_files/figure-html/unnamed-chunk-12-1.png" width="700"></p>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>
