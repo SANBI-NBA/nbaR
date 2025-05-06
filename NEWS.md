@@ -1,4 +1,5 @@
 # NBA.package 1.3.0
+Added a new bubble plot function
 
 # NBA.package 1.2.0
 Added a new function
