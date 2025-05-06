@@ -544,7 +544,7 @@ NBA_plot_comb <- function(DF,
 #'This function will create a theme for all ggplot graphs to align them to the
 #'NBA "look". All NBA functions already use this theme.
 #'
-
+#'
 #' @return Returns a ggplot object with the NBA_theme styling
 #'
 #'
@@ -592,8 +592,131 @@ NBA_plot_theme <- function() {
 }
 
 
+#######################################################################################################
+###
+#' Bubble plot
+#'
+#'This function will create bubble plot intended for creation of the
+#'percentage of taxa of ecological concern impacted by various pressures
+#'
+#'Please use the example dataset NBA_bubble_plot_example_data to see how
+#'the data should be formatted.
+#'
+#' @param DF The data frame that contains the information
+#' @param GROUP The grouping variables (taxa group, etc)
+#' @param CAT The overall pressure category
+#' @param SUB_CAT The sub pressure category
+#' @param VALUE The percentage of taxa of ecological concern impacted by the pressure
+#' @param SAVE The name of the output file that will be saved to the output folder. If you do not have an outputs folder you will be prompted to make one.
+#'
+#' @return Returns a bubble plot
+#'
+#'
+#' @importFrom ggplot2  ggplot
+#' @importFrom ggplot2  theme
+#' @importFrom ggplot2  element_rect
+#' @importFrom ggplot2  element_blank
+#' @importFrom ggplot2  element_text
+#' @importFrom ggplot2  element_line
+#' @importFrom ggplot2  aes
+#' @importFrom ggplot2  geom_point
+#' @importFrom ggplot2  geom_text
+#' @importFrom ggplot2  ggsave
+#' @importFrom ggplot2  labeller
+#' @importFrom ggplot2  label_wrap_gen
+#' @importFrom ggplot2  scale_size
+#' @importFrom ggplot2  scale_x_discrete
+#' @importFrom ggplot2  scale_fill_brewer
+#' @importFrom ggplot2  scale_colour_brewer
+#' @importFrom ggplot2  ylab
+#' @importFrom ggplot2  xlab
+#' @importFrom ggplot2  unit
+#' @importFrom ggplot2  guide_axis
+#' @importFrom ggh4x facet_grid2
+#' @importFrom ggh4x strip_themed
+#' @importFrom RColorBrewer brewer.pal
+#' @importFrom dplyr select
+#' @importFrom magrittr "%>%"
+#'
+#'
+#' @export
+#'
+#' @examples
+#' bubble_plot <- NBA_plot_bubble(DF = NBA_example_bubble_data,
+#'                         GROUP = taxon_group,
+#'                        CAT = pressure,
+#'                        SUB_CAT = sub_pressure,
+#'                        VALUE = perc_concern_under_press,
+#'                         SAVE = NULL)
+#'
+#' bubble_plot
+#'
 
 
+NBA_plot_bubble <- function(DF, GROUP, CAT, SUB_CAT, VALUE, SAVE = NULL){
+
+
+  # Create a named color palette for pressures
+  cat <- DF %>%
+    dplyr::select({{CAT}}) %>%
+    unique() %>%
+    as.data.frame()
+  cat <- cat[,1]
+
+  pal.y <- setNames(RColorBrewer::brewer.pal(length(cat), "BrBG"), cat)
+
+
+  # Create strip background and text style lists
+  strip_bg <- lapply(pal.y, function(col) ggplot2::element_rect(fill = col, colour = col))
+  strip_text <- lapply(pal.y, function(col) ggplot2::element_text(colour = "black"))  # or custom color
+
+  # Build strip object
+  my_strips <- ggh4x::strip_themed(
+    background_y = strip_bg,
+    text_y = strip_text
+  )
+
+
+  p <- DF %>%
+    ggplot2::ggplot(ggplot2::aes({{GROUP}}, {{SUB_CAT}}, size = {{VALUE}},
+               fill = {{CAT}}, colour = {{CAT}})) +
+    ggplot2::geom_point(shape = 21) +
+    ggplot2::geom_text(ggplot2::aes(label = {{VALUE}}),
+                       parse = TRUE,
+                       size = 2,
+                       colour = "black") +
+    ggh4x::facet_grid2(
+      pressure ~ ., scales = "free", space = "free",
+      labeller = ggplot2::labeller(pressure = ggplot2::label_wrap_gen(width = 20)),
+      strip = my_strips
+    ) +
+    ggplot2::scale_size(range = c(.1, 15)) +
+    ggplot2::scale_x_discrete(position = "top", guide = ggplot2::guide_axis(n.dodge = 2)) +
+    ggplot2::scale_fill_brewer(palette = "BrBG") +
+    ggplot2::scale_colour_brewer(palette = "BrBG") +
+    ggplot2::ylab("") +
+    ggplot2::xlab("") +
+    ggplot2::theme(
+      legend.position = "none",
+      panel.background = ggplot2::element_blank(),
+      panel.spacing = ggplot2::unit(0, "cm"),
+      strip.text.y = ggplot2::element_text(angle = 0),
+      panel.grid.major.y = ggplot2::element_line(colour = "lightgrey"),
+      panel.grid.major.x = ggplot2::element_line(colour = "lightgrey"),
+      axis.ticks.y = ggplot2::element_blank(),
+      axis.line.y = ggplot2::element_line(size = 0.5, linetype = "solid", colour = "black"),
+      axis.line.x = ggplot2::element_line(size = 0.5, linetype = "solid", colour = "black"))
+
+
+
+  if(!is.null(SAVE)){
+
+    ggplot2::ggsave(paste0("outputs/", SAVE, ".png"), plot = p, height = 10, width = 16, units = 'cm', dpi = 300)
+
+
+  }
+  p
+}
 
 
 

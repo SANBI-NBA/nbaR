@@ -1,0 +1,67 @@
+taxon_group,pressure,sub_pressure,perc_concern_under_press
+birds,Agriculture and aquaculture,Marine and freshwater aquaculture,
+birds,Biological resource use ,Fishing and harvesting aquatic resources,56
+birds,Climate change,Droughts,
+birds,Climate change,Habitat shifting and alteration,
+birds,Climate change,Other impacts,18
+birds,Climate change,Temperature extemes,9
+birds,Energy production and mining,Oil and gas drilling,
+birds,Human intrusions and disturbance,Recreational activities,
+birds,Human intrusions and disturbance,Work and other activites,
+birds,"Invasive and other problamatic species, genes and diseases",Invasive and non-native/alien species/diseases,49
+birds,"Invasive and other problamatic species, genes and diseases",Problematic native species/diseases,33
+linefish (bony),Agriculture and aquaculture,Marine and freshwater aquaculture,6
+linefish (bony),Biological resource use ,Fishing and harvesting aquatic resources,100
+linefish (bony),Climate change,Droughts,
+linefish (bony),Climate change,Habitat shifting and alteration,23
+linefish (bony),Climate change,Other impacts,
+linefish (bony),Climate change,Temperature extemes,
+linefish (bony),Energy production and mining,Oil and gas drilling,
+linefish (bony),Human intrusions and disturbance,Recreational activities,
+linefish (bony),Human intrusions and disturbance,Work and other activites,
+linefish (bony),"Invasive and other problamatic species, genes and diseases",Invasive and non-native/alien species/diseases,
+linefish (bony),"Invasive and other problamatic species, genes and diseases",Problematic native species/diseases,
+mammals,Agriculture and aquaculture,Marine and freshwater aquaculture,
+mammals,Biological resource use ,Fishing and harvesting aquatic resources,68
+mammals,Climate change,Droughts,
+mammals,Climate change,Habitat shifting and alteration,60
+mammals,Climate change,Other impacts,
+mammals,Climate change,Temperature extemes,
+mammals,Energy production and mining,Oil and gas drilling,
+mammals,Human intrusions and disturbance,Recreational activities,
+mammals,Human intrusions and disturbance,Work and other activites,
+mammals,"Invasive and other problamatic species, genes and diseases",Invasive and non-native/alien species/diseases,
+mammals,"Invasive and other problamatic species, genes and diseases",Problematic native species/diseases,
+reptiles,Agriculture and aquaculture,Marine and freshwater aquaculture,20
+reptiles,Biological resource use ,Fishing and harvesting aquatic resources,100
+reptiles,Climate change,Droughts,
+reptiles,Climate change,Habitat shifting and alteration,
+reptiles,Climate change,Other impacts,20
+reptiles,Climate change,Temperature extemes,20
+reptiles,Energy production and mining,Oil and gas drilling,20
+reptiles,Human intrusions and disturbance,Recreational activities,40
+reptiles,Human intrusions and disturbance,Work and other activites,20
+reptiles,"Invasive and other problamatic species, genes and diseases",Invasive and non-native/alien species/diseases,
+reptiles,"Invasive and other problamatic species, genes and diseases",Problematic native species/diseases,20
+linefish (cartilaginous),Agriculture and aquaculture,Marine and freshwater aquaculture,
+linefish (cartilaginous),Biological resource use ,Fishing and harvesting aquatic resources,94
+linefish (cartilaginous),Climate change,Droughts,
+linefish (cartilaginous),Climate change,Habitat shifting and alteration,
+linefish (cartilaginous),Climate change,Other impacts,
+linefish (cartilaginous),Climate change,Temperature extemes,
+linefish (cartilaginous),Energy production and mining,Oil and gas drilling,
+linefish (cartilaginous),Human intrusions and disturbance,Recreational activities,13
+linefish (cartilaginous),Human intrusions and disturbance,Work and other activites,
+linefish (cartilaginous),"Invasive and other problamatic species, genes and diseases",Invasive and non-native/alien species/diseases,
+linefish (cartilaginous),"Invasive and other problamatic species, genes and diseases",Problematic native species/diseases,
+seabreams,Agriculture and aquaculture,Marine and freshwater aquaculture,
+seabreams,Biological resource use ,Fishing and harvesting aquatic resources,94
+seabreams,Climate change,Droughts,6
+seabreams,Climate change,Habitat shifting and alteration,11
+seabreams,Climate change,Other impacts,
+seabreams,Climate change,Temperature extemes,6
+seabreams,Energy production and mining,Oil and gas drilling,
+seabreams,Human intrusions and disturbance,Recreational activities,5
+seabreams,Human intrusions and disturbance,Work and other activites,
+seabreams,"Invasive and other problamatic species, genes and diseases",Invasive and non-native/alien species/diseases,
+seabreams,"Invasive and other problamatic species, genes and diseases",Problematic native species/diseases,

@@ -125,6 +125,13 @@ NBA_example_map_data <- sf::st_read(dir("data-raw",
 
   ))
 
+##bubble plot
+
+NBA_example_bubble_data <- read.csv(
+  dir("data-raw",
+      "nba_bubble_plot_example_data.csv",
+      full.names = T,
+      recursive = T))
 
 
 ### turn into correct format
@@ -134,6 +141,7 @@ usethis::use_data(NBA_example_pro_data)
 usethis::use_data(NBA_example_comb_data)
 usethis::use_data(NBA_categories)
 usethis::use_data(NBA_example_map_data, overwrite = TRUE)
+usethis::use_data(NBA_example_bubble_data, overwrite = TRUE)
 
 ##create a folder for this script
 #usethis::use_data_raw()

@@ -25,9 +25,10 @@ Imports:
     tidyselect,
     sf,
     ggspatial,
-    gt
+    gt,
+    RColorBrewer,
+    ggh4x
 Suggests: 
-    knitr,
     rmarkdown,
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
