@@ -54,6 +54,8 @@ bar_plot
 
 ```
 
+
+
 **2. donut plot**
 
 ```{r warning=FALSE}
@@ -73,6 +75,8 @@ donut_plot
 
 
 ```
+
+
 
 **3. Combined bar plot**
 
@@ -98,6 +102,8 @@ bar_plot_comb
 
 ```
 
+
+
 **4. RLI plot**
 
 ```{r warning=FALSE}
@@ -115,7 +121,29 @@ RLI_plot
 
 ```
 
-**5. NBA ggplot theme**
+
+
+**5. NBA bubble plot**
+
+```{r warning=FALSE}
+NBA_example_bubble_data <- NBA_example_bubble_data
+
+
+ bubble_plot <- NBA_plot_bubble(DF = NBA_example_bubble_data,
+                        GROUP = taxon_group,
+                       CAT = pressure,
+                       SUB_CAT = sub_pressure,
+                        VALUE = perc_concern_under_press,
+                          SAVE = NULL)
+                         
+ bubble_plot
+
+
+```
+
+
+
+**6. NBA ggplot theme**
 
 ```{r warning=FALSE}
 library(ggplot2)
@@ -133,11 +161,12 @@ gg_plot
 
 
 ## Table functions
+
 Please note that these are designed to render on html outputs and so may not appear correct in the vignette examples. 
 
 
 
-**6. Basic table**
+**7. Basic table**
 ```{r}
 
 tbl <- NBA_tbl(NBA_example_pro_data)
@@ -146,7 +175,9 @@ tbl
 
 ```
 
-**7. Coloured table**
+
+
+**8. Coloured table**
 
 ```{r}
 
@@ -161,7 +192,9 @@ tbl
 ```
 
 
-**8. gt table theme**
+
+
+**9. gt table theme**
 
 ```{r}
 library(gt)
@@ -176,7 +209,9 @@ gt_tbl
   
 ```
 
-**9. Threatend ecosystems protection level table**
+
+
+**10. Threatened ecosystems protection level table**
 
 ```{r}
 thr_pro_tbl <- NBA_example_map_data |>
@@ -193,7 +228,8 @@ thr_pro_tbl
 ## Map functions
 
 
-**9. Basic map**
+**11. Basic map**
+
 Please note this was modeled after the maps in the marine technical report 2018.
 
 ```{r}

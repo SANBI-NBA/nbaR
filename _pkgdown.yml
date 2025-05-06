@@ -11,6 +11,7 @@ reference:
   - NBA_plot
   - NBA_plot_comb
   - NBA_plot_RLI
+  - NBA_plot_bubble
   - NBA_plot_theme
 
 
