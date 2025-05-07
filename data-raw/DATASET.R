@@ -89,12 +89,12 @@ NBA_colours <- c(
   "Critically Endangered" = rgb(216, 30, 5, maxColorValue = 255),
   "Endangered" = rgb(252, 127, 63, maxColorValue = 255),
   "Vulnerable" = rgb(249, 232, 20, maxColorValue = 255),
-  "Near Threatened" = rgb(0, 0, 0, maxColorValue = 255),
+  "Near Threatened" = rgb(204, 226, 38, maxColorValue = 255),
   "Least Concern" = rgb(180, 215, 158, maxColorValue = 255),
-  "Data Deficient" = rgb(0, 0, 0, maxColorValue = 255),
-  "Rare" = rgb(0, 0, 0, maxColorValue = 255),
+  "Data Deficient" = rgb(209, 209, 198, maxColorValue = 255),
+  "Rare" = rgb(193, 181, 165, maxColorValue = 255),
   "Extinct" = rgb(0, 0, 0, maxColorValue = 255),
-  "Extinct in the Wild" = rgb(0, 0, 0, maxColorValue = 255),
+  "Extinct in the Wild" = rgb(84, 35, 68, maxColorValue = 255),
 
   #Protection level
   "Not Protected" = rgb(166, 166, 166, maxColorValue = 255),
