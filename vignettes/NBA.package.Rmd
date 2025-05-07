@@ -78,7 +78,7 @@ donut_plot
 
 
 
-**3. Combined bar plot**
+**3. Combined plot**
 
 ```{r warning=FALSE}
 NBA_example_pro_data <- NBA_example_pro_data

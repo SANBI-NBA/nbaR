@@ -85,55 +85,78 @@ NBA_map <- function(DF, COLS = NULL, GEOM, CAP, FILL){
 
 
 
-  cols <- c("#6e9fd4",
-            "#6e9fd4",
-            "#a5c5c7",
-            "#81aba7",
-            "#88814e",
-            "#88812e",
-            "#466a31",
-            "#80a952",
-            "#d5dec3",
-            "#a4a3a3",
-            "#a4a3a3",
-            "black",
-            "#e9302c",
-            "#f97835",
-            "#fff02a",
-            "#eeeea3",
-            "brown",
-            "grey" ,
-            "#b1d798",
-            "#DB7D15",
-            "#B36611",
-            "#808080",
-            "#F5C592",
-            "#0071C0")
+  ##colour mapping
+  col_mapping <- c(
 
-  breaks <- c("Natural",
-              "Natural/near-natural",
-              "Near-natural",
-              "Moderately modified",
-              "Heavily modified",
-              "Severely/critically modified",
-              "Well Protected",
-              "Moderately Protected",
-              "Poorly Protected",
-              "No Protection",
-              "Not Protected",
-              "Extinct",
-              "Critically Endangered",
-              "Endangered",
-              "Vulnerable",
-              "Near Threatened",
-              "Data Deficient",
-              "Rare",
-              "Least Concern",
-              "Cropland",
-              "Plantation",
-              "Built up",
-              "Mine",
-              "Artificial waterbody")
+    ##Threat status
+    "Critically Endangered" = rgb(216, 30, 5, maxColorValue = 255),
+    "Endangered" = rgb(252, 127, 63, maxColorValue = 255),
+    "Vulnerable" = rgb(249, 232, 20, maxColorValue = 255),
+    "Near Threatened" = rgb(0, 0, 0, maxColorValue = 255),
+    "Least Concern" = rgb(180, 215, 158, maxColorValue = 255),
+    "Data Deficient" = rgb(0, 0, 0, maxColorValue = 255),
+    "Rare" = rgb(0, 0, 0, maxColorValue = 255),
+    "Extinct" = rgb(0, 0, 0, maxColorValue = 255),
+    "Extinct in the Wild" = rgb(0, 0, 0, maxColorValue = 255),
+
+    #Protection level
+    "Not Protected" = rgb(166, 166, 166, maxColorValue = 255),
+    "Poorly Protected" = rgb(213, 222, 196, maxColorValue = 255),
+    "Moderately Protected" = rgb(132, 171, 92, maxColorValue = 255),
+    "Well Protected" = rgb(75, 110, 0, maxColorValue = 255),
+
+    #Pressures
+    "Low" = rgb(223, 220, 199, maxColorValue = 255),
+    "Medium" = rgb(175, 168, 117, maxColorValue = 255),
+    "High" = rgb(122, 116, 70, maxColorValue = 255),
+    "Very high" = rgb(88, 82, 50, maxColorValue = 255),
+
+
+    "No threats" = rgb(48, 30, 6, maxColorValue = 255),
+    "Pollution" = rgb(97, 65, 56, maxColorValue = 255),
+    "Transportation & service corridors" = rgb(99, 76, 39, maxColorValue = 255),
+    "Agriculture" = rgb(133, 76, 13, maxColorValue = 255),
+    "Geological events" = rgb(153, 102, 0, maxColorValue = 255),
+    "Biological resource use" = rgb(180, 121, 42, maxColorValue = 255),
+    "Other threats" = rgb(231, 160, 54, maxColorValue = 255),
+    "Human intrusions & disturbance" = rgb(159, 134, 9, maxColorValue = 255),
+    "Climate change & severe weather" = rgb(178, 149, 78, maxColorValue = 255),
+    "Energy production & mining" = rgb(122, 116, 70, maxColorValue = 255),
+    "Natural system modifications" = rgb(88, 82, 50, maxColorValue = 255),
+    "Invasive and other problematic species, genes & diseases" = rgb(61, 69, 64, maxColorValue = 255),
+    "Residential & commercial development" = rgb(128, 128, 128, maxColorValue = 255),
+
+
+    # Condition
+    "Natural" = rgb(110, 159, 212, maxColorValue = 255),
+    "Natural / near natural" = rgb(110, 159, 212, maxColorValue = 255),
+    "Near natural" = rgb(110, 159, 212, maxColorValue = 255),
+    "Moderately modified" = rgb(165, 197, 199, maxColorValue = 255),
+    "Heavily / intensively modified" = rgb(129, 171, 167, maxColorValue = 255),
+    "Permanently / irreversibly modified" = rgb(136, 129, 78, maxColorValue = 255),
+
+
+    # Responses
+    "No response" = rgb(91, 66, 114, maxColorValue = 255),
+    "Some kind of response" = rgb(100, 103, 130, maxColorValue = 255),
+    "Gazetted" = rgb(117, 164, 179, maxColorValue = 255),
+    "Signed off" = rgb(117, 164, 179, maxColorValue = 255),
+
+
+    # Priority areas
+    "Land-based Protected Areas" = rgb(0, 60, 0, maxColorValue = 255),
+    "Marine Protected Areas" = rgb(0, 38, 115, maxColorValue = 255),
+    "Critical Biodiversity Areas" = rgb(67, 128, 0, maxColorValue = 255),
+    "Ecologically Sensitive Areas" = rgb(168, 168, 0, maxColorValue = 255),
+
+    # Built up areas
+    "Cropland"= rgb(0, 0, 0, maxColorValue = 255),
+    "Plantation"= rgb(0, 0, 0, maxColorValue = 255),
+    "Built up"= rgb(0, 0, 0, maxColorValue = 255),
+    "Mine"= rgb(0, 0, 0, maxColorValue = 255),
+    "Artificial waterbody" = rgb(0, 0, 0, maxColorValue = 255)
+
+  )
 
 
 
@@ -146,7 +169,7 @@ NBA_map <- function(DF, COLS = NULL, GEOM, CAP, FILL){
             color = "grey",
             lwd = 0.1) +  # plot protection level and separate each protectipn level category in grey boundaries
 
-    ggplot2::scale_fill_manual(values = cols, breaks = breaks) +
+    ggplot2::scale_fill_manual(values = col_mapping) +
     # theme_void() +
     ggplot2::labs(title = "",
          fill = "", ## legend title
