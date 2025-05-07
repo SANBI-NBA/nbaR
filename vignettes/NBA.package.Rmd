@@ -125,7 +125,7 @@ RLI_plot
 
 **5. NBA bubble plot**
 
-```{r warning=FALSE}
+```{r warning=FALSE, fig.width=9, fig.height=7}
 NBA_example_bubble_data <- NBA_example_bubble_data
 
 

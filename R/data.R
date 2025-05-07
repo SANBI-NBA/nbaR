@@ -73,6 +73,16 @@
 #' @source SANBI
 "NBA_categories"
 
+#' NBA colours for every category
+#'
+#'This data is used to enable users to use the standard colours for their figures
+#'
+#' @format ## `NBA_colours`
+#' A vector of category colours:
+
+#' @source SANBI
+"NBA_colours"
+
 #' NBA combined ecosystem type protection level and threat level example data
 #'
 #'This data is used to make a combined plot of protection level and threat status of ecosystems
