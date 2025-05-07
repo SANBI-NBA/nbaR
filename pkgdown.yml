@@ -3,7 +3,7 @@ pkgdown: 2.1.2
 pkgdown_sha: ~
 articles:
   NBA.package: NBA.package.html
-last_built: 2025-05-07T13:12Z
+last_built: 2025-05-07T15:00Z
 urls:
   reference: https://sanbi-nba.github.io/NBA.package/reference
   article: https://sanbi-nba.github.io/NBA.package/articles
