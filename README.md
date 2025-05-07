@@ -4,9 +4,9 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of the NBA.package is to allow all graphs, plots, and maps
-created for the NBA to be created easily with targeted functions that
-enable ease of use and standardisation of results.
+The NBA.package houses functions that enable easy creation of
+standardised graphs, plots and maps for SANBI’s National Biodiversity
+Assessment (NBA) content.
 
 ## Installation
 

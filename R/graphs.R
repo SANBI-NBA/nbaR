@@ -343,7 +343,7 @@ NBA_plot <- function(DF, GROUPS, COLS, CHRT = c("bar", "donut"), NUM = FALSE, LA
 
   if (!is.null(SAVE)) {
 
-    ggsave(paste0("outputs/", SAVE, ".png"), height = 10, width = 16, units = 'cm')
+    ggsave(paste0("outputs/", SAVE, ".png"), height = 10, width = 16, units = 'cm', dpi = 300)
 
     }
 
@@ -374,7 +374,9 @@ NBA_plot <- function(DF, GROUPS, COLS, CHRT = c("bar", "donut"), NUM = FALSE, LA
 #' @param RLI The Red List Index
 #' @param min The minimum values
 #' @param max The maximum values
-#' @param GRP A choice to group the plot, TRUE will group if, FALSE will not.
+#' @param GRP A choice to group the plot, TRUE will group if, FALSE will not
+#' @param SAVE The name of the output file that will be saved to the output folder. If you do not have an outputs folder you will be prompted to make one.
+#'
 #'
 #' @return Returns a RLI plot
 #'
@@ -405,7 +407,7 @@ NBA_plot <- function(DF, GROUPS, COLS, CHRT = c("bar", "donut"), NUM = FALSE, LA
 #' RLI_plot
 #'
 #'
-NBA_plot_RLI <- function(DF,YEAR, RLI, min, max, GRP = FALSE){
+NBA_plot_RLI <- function(DF,YEAR, RLI, min, max, GRP = FALSE, SAVE = NULL){
 
 if(GRP == TRUE){
 
@@ -426,6 +428,12 @@ else {
 
 
 }
+
+  if (!is.null(SAVE)) {
+
+    ggsave(paste0("outputs/", SAVE, ".png"), height = 10, width = 16, units = 'cm', dpi = 300)
+
+  }
 }
 
 #######################################################################
@@ -528,7 +536,7 @@ NBA_plot_comb <- function(DF,
 
   if (!is.null(SAVE)) {
 
-    ggplot2::ggsave(paste0("outputs/", SAVE, ".png"), height = 10, width = 16, units = 'cm', bg="white")
+    ggplot2::ggsave(paste0("outputs/", SAVE, ".png"), height = 10, width = 16, units = 'cm', bg="white" , dpi = 300)
 
   }
 
