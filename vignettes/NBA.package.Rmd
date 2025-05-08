@@ -41,7 +41,7 @@ Load the example data and use the variouse functions to create NBA plots.
 NBA_example_thr_data <- NBA_example_thr_data
 
 
-bar_plot <- NBA_plot(NBA_example_thr_data,
+bar_plot <- nba_plot(NBA_example_thr_data,
                   `OVERALL types`,
                   2:5,
                  CHRT = "bar",
@@ -62,7 +62,7 @@ bar_plot
 NBA_example_pro_data <- NBA_example_pro_data
 
 
-donut_plot <- NBA_plot(NBA_example_pro_data,
+donut_plot <- nba_plot(NBA_example_pro_data,
                   `OVERALL types`,
                   2:5,
                  CHRT = "donut",
@@ -86,7 +86,7 @@ NBA_example_thr_data <- NBA_example_thr_data
 NBA_example_comb_data <- NBA_example_comb_data
 
 
-bar_plot_comb <- NBA_plot_comb(
+bar_plot_comb <- nba_plot_comb(
                NBA_example_comb_data,
                 GROUPS= `OVERALL types`,
                 METRIC_COL = metric,
@@ -110,7 +110,7 @@ bar_plot_comb
 NBA_example_RLI_data <- NBA_example_RLI_data
 
 
-RLI_plot <- NBA_plot_RLI(NBA_example_RLI_data,
+RLI_plot <- nba_plot_RLI(NBA_example_RLI_data,
                  Years, 
                  RLI, 
                  min, 
@@ -129,7 +129,7 @@ RLI_plot
 NBA_example_bubble_data <- NBA_example_bubble_data
 
 
- bubble_plot <- NBA_plot_bubble(DF = NBA_example_bubble_data,
+ bubble_plot <- nba_plot_bubble(DF = NBA_example_bubble_data,
                         GROUP = taxon_group,
                        CAT = pressure,
                        SUB_CAT = sub_pressure,
@@ -152,7 +152,7 @@ NBA_example_pro_data <- NBA_example_pro_data
 
 gg_plot <- ggplot(NBA_example_pro_data, aes(x = `OVERALL types`, y = `Well Protected`))+
   ggplot2::geom_point()+
-  NBA_plot_theme()
+  nba_plot_theme()
 
 gg_plot
 
@@ -169,7 +169,7 @@ Please note that these are designed to render on html outputs and so may not app
 **7. Basic table**
 ```{r}
 
-tbl <- NBA_tbl(NBA_example_pro_data)
+tbl <- nba_tbl(NBA_example_pro_data)
 
 tbl
 
@@ -186,7 +186,7 @@ library(tidyr)
 
 tbl <- NBA_example_pro_data %>% 
   pivot_longer(2:5, names_to = "protection_level") %>% 
-  NBA_tbl_colr(COL = protection_level)
+  nba_tbl_colr(COL = protection_level)
 
 tbl
 ```
@@ -203,7 +203,7 @@ library(dplyr)
 
 gt_tbl <- NBA_example_thr_data %>% 
   gt() %>% 
-  NBA_tbl_theme()
+  nba_tbl_theme()
 
 gt_tbl
   
@@ -216,7 +216,7 @@ gt_tbl
 ```{r}
 thr_pro_tbl <- NBA_example_map_data |>
 sf::st_drop_geometry() |>
-NBA_tbl_comb(GROUP = P_EcosysType,
+nba_tbl_comb(GROUP = P_EcosysType,
 THR = threat_status,
 PRO = protection_level)
 
@@ -234,7 +234,7 @@ Please note this was modeled after the maps in the marine technical report 2018.
 
 ```{r}
 
-map <- NBA_map(DF = NBA_example_map_data,
+map <- nba_map(DF = NBA_example_map_data,
                GEOM = geometry, 
                CAP = "Figure 1. A map of the protection level of marine pelagic ecosystem types in South Africa", 
                FILL = protection_level)

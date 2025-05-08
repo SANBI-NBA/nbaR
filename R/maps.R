@@ -53,7 +53,7 @@
 #'
 #' @examples
 #'
-#'map <- NBA_map(DF = NBA_example_map_data,
+#'map <- nba_map(DF = NBA_example_map_data,
 #'               GEOM = geometry,
 #'               CAP = "Figure 1. A map of the protection level of marine pelagic ecosystem types in South Africa",
 #'               FILL = protection_level)
@@ -65,7 +65,7 @@
 #'
 
 
-NBA_map <- function(DF, COLS = NULL, GEOM, CAP, FILL){
+nba_map <- function(DF, COLS = NULL, GEOM, CAP, FILL){
 
   if (!is.null(COLS)) {
 
@@ -128,3 +128,5 @@ NBA_map <- function(DF, COLS = NULL, GEOM, CAP, FILL){
           plot.caption = ggplot2::element_text(hjust = 0))
 
 }
+
+

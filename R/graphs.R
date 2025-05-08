@@ -84,7 +84,7 @@
 #'
 #' @examples
 #'
-#' bar_plot <- NBA_plot(NBA_example_thr_data,
+#' bar_plot <- nba_plot(NBA_example_thr_data,
 #'`OVERALL types`,
 #'2:5,
 #'CHRT = "bar",
@@ -94,7 +94,7 @@
 #'
 #'bar_plot
 #'
-#'donut_plot <- NBA_plot(NBA_example_pro_data,
+#'donut_plot <- nba_plot(NBA_example_pro_data,
 #'`OVERALL types`,
 #'2:5,
 #'CHRT = "donut",
@@ -108,7 +108,7 @@
 
 
 
-NBA_plot <- function(DF, GROUPS, COLS, CHRT = c("bar", "donut"), NUM = FALSE, LAB, GRP = TRUE, SAVE = NULL){
+nba_plot <- function(DF, GROUPS, COLS, CHRT = c("bar", "donut"), NUM = FALSE, LAB, GRP = TRUE, SAVE = NULL){
 
 
 
@@ -350,7 +350,7 @@ NBA_plot <- function(DF, GROUPS, COLS, CHRT = c("bar", "donut"), NUM = FALSE, LA
 #' @export
 #'
 #' @examples
-#' RLI_plot <- NBA_plot_RLI(NBA_example_RLI_data,
+#' RLI_plot <- nba_plot_RLI(NBA_example_RLI_data,
 #' Years,
 #' RLI,
 #' min,
@@ -359,7 +359,7 @@ NBA_plot <- function(DF, GROUPS, COLS, CHRT = c("bar", "donut"), NUM = FALSE, LA
 #' RLI_plot
 #'
 #'
-NBA_plot_RLI <- function(DF,YEAR, RLI, min, max, GRP = FALSE, SAVE = NULL){
+nba_plot_RLI <- function(DF,YEAR, RLI, min, max, GRP = FALSE, SAVE = NULL){
 
 if(GRP == TRUE){
 
@@ -436,7 +436,7 @@ else {
 #' @export
 #'
 #' @examples
-#' bar_plot_comb <- NBA_plot_comb(
+#' bar_plot_comb <- nba_plot_comb(
 #'NBA_example_comb_data,
 #'GROUPS= `OVERALL types`,
 #'METRIC_COL = metric,
@@ -452,7 +452,7 @@ else {
 #'
 #'
 
-NBA_plot_comb <- function(DF,
+nba_plot_comb <- function(DF,
                           GROUPS,
                           METRIC_COL,
                           METRICS,
@@ -469,7 +469,7 @@ NBA_plot_comb <- function(DF,
 
   for (m in METRICS) {
 
-    figure <- NBA_plot(DF = DF %>%
+    figure <- nba_plot(DF = DF %>%
                          filter({{METRIC_COL}}== m),
                        GROUPS= {{GROUPS}},
                        COLS = COLS,
@@ -525,12 +525,12 @@ NBA_plot_comb <- function(DF,
 #'
 #'#gg_plot <- ggplot(NBA_example_pro_data, aes(x = `OVERALL types`, y = `Well Protected`))+
 #'#  ggplot2::geom_point()+
-#'#  NBA_plot_theme()
+#'#  nba_plot_theme()
 #'
 #'#gg_plot
 #'
 
-NBA_plot_theme <- function() {
+nba_plot_theme <- function() {
   ggplot2::theme(
     # add border 1)
     panel.border = ggplot2::element_rect(colour = "grey", fill = NA, linetype = 2),
@@ -602,7 +602,7 @@ NBA_plot_theme <- function() {
 #' @export
 #'
 #' @examples
-#' bubble_plot <- NBA_plot_bubble(DF = NBA_example_bubble_data,
+#' bubble_plot <- nba_plot_bubble(DF = NBA_example_bubble_data,
 #'                         GROUP = taxon_group,
 #'                        CAT = pressure,
 #'                        SUB_CAT = sub_pressure,
@@ -613,7 +613,7 @@ NBA_plot_theme <- function() {
 #'
 
 
-NBA_plot_bubble <- function(DF, GROUP, CAT, SUB_CAT, VALUE, SAVE = NULL){
+nba_plot_bubble <- function(DF, GROUP, CAT, SUB_CAT, VALUE, SAVE = NULL){
 
 
 

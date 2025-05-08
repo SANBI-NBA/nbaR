@@ -8,23 +8,23 @@ template:
 reference:
 - title: Plot functions
   contents:
-  - NBA_plot
-  - NBA_plot_comb
-  - NBA_plot_RLI
-  - NBA_plot_bubble
-  - NBA_plot_theme
+  - nba_plot
+  - nba_plot_comb
+  - nba_plot_RLI
+  - nba_plot_bubble
+  - nba_plot_theme
 
 
 - title: Table functions
   contents:
-  - NBA_tbl
-  - NBA_tbl_colr
-  - NBA_tbl_theme
-  - NBA_tbl_comb
+  - nba_tbl
+  - nba_tbl_colr
+  - nba_tbl_theme
+  - nba_tbl_comb
 
 - title: Map functions
   contents:
-  - NBA_map
+  - nba_map
 
 - title: Built in datasets
   contents:

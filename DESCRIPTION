@@ -26,7 +26,6 @@ Imports:
     sf,
     ggspatial,
     gt,
-    RColorBrewer,
     ggh4x
 Suggests: 
     rmarkdown,

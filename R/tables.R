@@ -14,14 +14,14 @@
 #' @importFrom magrittr "%>%"
 #'
 #'@examples
-#'tbl <- NBA_tbl(NBA_example_pro_data)
+#'tbl <- nba_tbl(NBA_example_pro_data)
 #'
 #'tbl
 #'
-#' @export NBA_tbl
+#' @export nba_tbl
 #'
 #'
-NBA_tbl <- function(DF){
+nba_tbl <- function(DF){
 
   table <- kableExtra::kable(DF, "html", escape = FALSE) %>%
     kableExtra::kable_styling(
@@ -60,14 +60,14 @@ NBA_tbl <- function(DF){
 #'
 #'tbl <- NBA_example_pro_data %>%
 #'  pivot_longer(2:5, names_to = "protection_level") %>%
-#'  NBA_tbl_colr(COL = protection_level)
+#'  nba_tbl_colr(COL = protection_level)
 #'
 #'tbl
 #'
-#' @export NBA_tbl_colr
+#' @export nba_tbl_colr
 #'
 #'
-NBA_tbl_colr <- function(DF, COL) {
+nba_tbl_colr <- function(DF, COL) {
 
 
 
@@ -127,15 +127,15 @@ NBA_tbl_colr <- function(DF, COL) {
 #'
 #'gt_tbl <- NBA_example_thr_data %>%
 #'  gt() %>%
-#' NBA_tbl_theme()
+#' nba_tbl_theme()
 #'
 #'gt_tbl
 #'
-#' @export NBA_tbl_theme
+#' @export nba_tbl_theme
 #'
 #'
 
-NBA_tbl_theme <- function(GT_TBL) {
+nba_tbl_theme <- function(GT_TBL) {
   last_row <- nrow(GT_TBL[["_data"]])
 
   GT_TBL %>%
@@ -227,17 +227,17 @@ NBA_tbl_theme <- function(GT_TBL) {
 #'
 #'thr_pro_tbl <- NBA_example_map_data |>
 #'sf::st_drop_geometry() |>
-#'NBA_tbl_comb(GROUP = P_EcosysType,
+#'nba_tbl_comb(GROUP = P_EcosysType,
 #'THR = threat_status,
 #'PRO = protection_level)
 #'
 #'thr_pro_tbl
 #'
-#' @export NBA_tbl_comb
+#' @export nba_tbl_comb
 #'
 #'
 
-NBA_tbl_comb <- function(DF, GROUP, THR, PRO){
+nba_tbl_comb <- function(DF, GROUP, THR, PRO){
 
 
 
