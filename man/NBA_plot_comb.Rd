@@ -13,7 +13,7 @@ nba_plot_comb(
   CHRT = c("bar", "donut"),
   NUM = FALSE,
   LAB,
-  GRP = TRUE,
+  GRP = FALSE,
   SAVE = NULL
 )
 }

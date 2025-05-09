@@ -26,7 +26,8 @@ Imports:
     sf,
     ggspatial,
     gt,
-    ggh4x
+    ggh4x,
+    rsconnect
 Suggests: 
     rmarkdown,
     testthat (>= 3.0.0)
