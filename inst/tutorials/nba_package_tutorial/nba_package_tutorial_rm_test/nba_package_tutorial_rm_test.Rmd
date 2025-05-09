@@ -71,7 +71,7 @@ library(NBA.package)
 ```
 
 
-## Create plots used in the NBA
+## Create plots for use in the NBA
 
 ### Bar and donut plots
 
@@ -79,10 +79,10 @@ library(NBA.package)
 
 The function creates a basic bar or donut plot with several options to customize the plot. 
 You can play around with these options to test out what they do. 
-The first argument is the dataframe you intend to use, so I load in both examples, have a look at them and think about their structure. 
+The first argument is the dataframe you intend to use, so load in both examples, have a look at them and think about their structure. 
 
 
-```{r nba_plot_example_data}
+```{r nba_plot_example_data, exercise = TRUE}
 NBA_example_pro_data <- NBA_example_pro_data
 NBA_example_pro_data
 
@@ -113,7 +113,7 @@ To make the plots you must provide:
 
 You can test out the function in the below code chunk. 
 
-```{r nba_plot, exercise = TRUE, exercise.eval = FALSE}
+```{r nba_plot, exercise = TRUE, exercise.eval = FALSE, warning=FALSE}
 bar_plot <- nba_plot(DF = NBA_example_thr_data,
                   GROUPS = `OVERALL types`,
                   COLS = 2:5,
@@ -133,7 +133,7 @@ bar_plot
 
 How could you use this same function to create a donut plot?
 
-```{r nba_plotex4, exercise = TRUE}
+```{r nba_plotex4, exercise = TRUE, warning=FALSE}
 
 ```
 
@@ -163,7 +163,7 @@ donut_plot
 
 *`nba_plot_comb()`*
 
-The function creates a combined plot of two or more plots created by the `nba_plot()` function. For this function you will need an extra column that differentiates your data into the two plots. For example you could call the column metric, and have "extent" for the rows showing extent of ecosystems that are threatened and "number" for rows showing the number of threatened ecosystems. For the example dataset in this package I combined the NBA_example_pro_data and NBA_example_thr_data and made a column called metric that had threat_status for rows of threat status and protection_level for rows with protection level information.
+The function creates a combined plot of two or more plots created by the `nba_plot()` function. For this function you will need an extra column that differentiates your data into the two or more plots. For example you could call the column metric, and have "extent" for the rows showing extent of ecosystems that are threatened and "number" for rows showing the number of threatened ecosystems. For the example dataset in this package I combined the NBA_example_pro_data and NBA_example_thr_data and made a column called metric that had threat_status for rows of threat status and protection_level for rows with protection level information.
 
 You can see below how the data now looks and think about its structure. 
 
@@ -192,7 +192,7 @@ To make the plots you must provide all the same things as for `nba_plot`:
 
 5. **NUM** Whether the values should be plotted onto the plot. There is only a TRUE or FALSE option for this. When plotting number of ecosystems or taxa this is usually preferable, but when plotting extent it is usually better to set to FALSE. The default setting is FALSE so if you don't include this argument the values won't be plotted.
 
-6. **LAB** The label for the x axis, so either extent, number, percentage of ecosystem types for example. This should also be in inverted commas. **NB PlEASE NOTE** The label here is slightly different in that the words in the **METRICS** column will be appended onto the end of the label to differentiate the plots.
+6. **LAB** The label for the x axis, so either extent, number, percentage of ecosystem types for example. This should also be in inverted commas. **NB PLEASE NOTE** The label here is slightly different in that the words in the **METRICS** column will be appended onto the end of the label to differentiate the plots.
 
 7. **GRP** This is only used for the donut plots and is a TRUE or FALSE option that allows you to choose if you want to plot all the data in one donut plot or each row/group as its own donut plot.The default is FALSE so if you don't include it only one donut plot will be plotted.
 
@@ -206,7 +206,7 @@ To make the plots you must provide all the same things as for `nba_plot`:
 
 You can test out the function in the below code chunk. 
 
-```{r nba_plot_comb, exercise = TRUE, exercise.eval = FALSE}
+```{r nba_plot_comb, exercise = TRUE, exercise.eval = FALSE, warning=FALSE}
 bar_plot_comb <- nba_plot_comb(
                                 DF = NBA_example_comb_data,
                                 GROUPS= `OVERALL types`,
@@ -225,11 +225,11 @@ bar_plot_comb
 "Good job!"
 ```
 
-### Exercise 1
+### Exercise 2
 
 How could you use this same function to create two donut plots?
 
-```{r nba_plot_combex4, exercise = TRUE}
+```{r nba_plot_combex4, exercise = TRUE, warning=FALSE}
 
 ```
 
@@ -250,11 +250,11 @@ bar_plot_comb
 ```
 
 ::: {#nba_plot_combex4-hint}
-**Hint:** Use  CHRT = "donut" and don't forget the GRP argument
+**Hint:** Use code from the bar plot and add CHRT = "donut" and don't forget the GRP argument
 :::
 
 ```{r nba_plot_combex4-check}
-"Great work! You have mastered nba_plot!"
+"Great work! You have mastered nba_plot_comb!"
 ```
 
 
@@ -292,11 +292,11 @@ To make the plots you must provide:
 7. **SAVE** If you want to automatically save a png of the plot you can add the name you would like to save it as to the save argument, otherwise you can leave it as NULL and the plot will not be saved. If you do save it you should have an outputs folder in your project to store it, if you do not you will be prompted to make one. This helps to save all plots with the same resolutions. This should also be in inverted commas.
 
 
-### Exercise 1
+### Exercise 3
 
 How could you use this function to create an RLI plot?
 
-```{r nba_plot_RLIex4, exercise = TRUE}
+```{r nba_plot_RLIex4, exercise = TRUE, warning=FALSE}
 
 ```
 
@@ -311,7 +311,7 @@ RLI_plot
 ```
 
 ::: {#nba_plot_RLIex4-hint}
-**Hint:** Use look at the previous example for guidance, and the NBA_example_RLI_data
+**Hint:** look at the previous example and the NBA_example_RLI_data for guidance
 :::
 
 ```{r nba_plot_RLIex4-check}
@@ -320,79 +320,149 @@ RLI_plot
 
 
 
+### Bubble plots
 
 
+*`nba_plot_bubble()`*
+
+This function will create bubble plot intended for creation of the percentage of taxa of ecological concern impacted by various pressures. The plot created has pressures on the right and sub-pressures on the left, with taxa on the top. Bubbles are sized accourding to the perecentage of taxa of concern that are impacted by the pressure, so you must have a column with that information in your data.
+
+The first argument is the dataframe you intend to use, so I have loaded in the example data, have a look at it and think about its structure.
 
 
+```{r nba_plot_bubble_example_data}
+NBA_example_bubble_data
+```
 
 
+Very importantly this data is all in long format. There is a column with the taxa name, and for each taxa there are several rows for each pressure and sub pressure that it experiences as well as the percentage of taxa of concern that experience that pressure. 
 
+You should also see that some taxa have rows with pressures that they are not affected by, resulting in an NA in the last column. This is because I assume most of your data will be in wide format and when it is converted to long format these NA's appear, and they are not a problem. However, if you are creating the data from scratch in long format there is no need to include the pressures that don't affect a taxa, and you would get the following data set, which would work just as well. 
 
+```{r nba_plot_bubble_example_dataex4, exercise = TRUE, exercise.eval = FALSE, warning=FALSE}
+NBA_example_bubble_data_no_NA <- NBA_example_bubble_data %>% 
+  filter(!is.na(perc_concern_under_press)) ##only keep rows where perc_concern_under_press is NOT NA
 
+NBA_example_bubble_data_no_NA
+```
 
+To make the plots you must provide:
 
+1. **DF** The dataframe, which we now have
 
+2. **GROUP** The column that contains the taxa or taxa group names
 
-## Topic 1
+3. **CAT** The column that contains overall pressure categories (named more generally CAT in case this plot is used for things other than pressures)
 
-### Exercise 
+4. **SUB_CAT** The column that contains sub categorie/ sub pressures
 
-*Here's a simple exercise with an empty code chunk provided for entering the answer.*
+5. **VALUE** The column that contains values, in this case the percentages of taxa of ecological concern that are impacted by the pressure
 
-Write the R code required to add two plus two:
+6. **SAVE** If you want to automatically save a png of the plot you can add the name you would like to save it as to the save argument, otherwise you can leave it as NULL and the plot will not be saved. If you do save it you should have an outputs folder in your project to store it, if you do not you will be prompted to make one. This helps to save all plots with the same resolutions. This should be in inverted commas.
 
-```{r two-plus-two, exercise=TRUE}
+**NB TO NOTE** The names of the pressures and sub-pressures are linked to their colours and must follow the standard NBA spellings and names. These can be found in `NBA_colours`
+
+### Exercise 3
+
+How could you use this function to create an bubble plot?
+
+```{r nba_plot_bubbleex4, exercise = TRUE, fig.width=9, fig.height=7, warning=FALSE}
 
 ```
 
-### Exercise with Code
+```{r nba_plot_bubbleex4-solution}
+bubble_plot <- nba_plot_bubble(DF = NBA_example_bubble_data,
+                         GROUP = taxon_group,
+                         CAT = pressure,
+                         SUB_CAT = sub_pressure,
+                         VALUE = perc_concern_under_press,
+                         SAVE = NULL)
 
-*Here's an exercise with some prepopulated code as well as `exercise.lines = 5` to provide a bit more initial room to work.*
-
-Now write a function that adds any two numbers and then call it:
-
-```{r add-function, exercise=TRUE, exercise.lines = 5}
-add <- function() {
-  
-}
+ bubble_plot
 ```
 
-## Topic 2
+::: {#nba_plot_RLIex4-hint}
+**Hint:** look at the previous example and the NBA_example_bubble_data for guidance
+:::
 
-### Exercise with Hint
-
-*Here's an exercise where the chunk is pre-evaluated via the `exercise.eval` option (so the user can see the default output we'd like them to customize). We also add a "hint" to the correct solution via the chunk immediate below labeled `print-limit-hint`.*
-
-Modify the following code to limit the number of rows printed to 5:
-
-```{r print-limit, exercise=TRUE, exercise.eval=TRUE}
-mtcars
+```{r nba_plot_bubbleex4-check}
+"Great work! You have mastered nba_plot_bubble!"
 ```
 
-```{r print-limit-hint}
-head(mtcars)
+
+
+### ggplot theme
+
+
+*`nba_plot_theme()`*
+
+This function will add the default NBA aesthetics to any ggplot. Therefore if you are making a plot that is not covered by one of the previouse functions you can add the functions `nba_plot_theme()` to the end of your ggplot to format it to the correct styling
+
+There are no arguments in this function.
+
+### Excercise 4
+
+Here is a point plot using ggplot
+
+```{r nba_plot_theme_example, exercise = TRUE, warning=FALSE}
+
+gg_plot <- NBA_example_pro_data |>
+  ggplot(aes(x = `OVERALL types`, y = `Well Protected`))+
+ ggplot2::geom_point()
+
+gg_plot
 ```
 
-### Quiz
 
-*You can include any number of single or multiple choice questions as a quiz. Use the `question` function to define a question and the `quiz` function for grouping multiple questions together.*
+See if you can add the NBA styling to it and see how it changes
 
-Some questions to verify that you understand the purposes of various base and recommended R packages:
+```{r nba_plot_themeex4, exercise = TRUE, warning=FALSE}
 
-```{r quiz}
-quiz(
-  question("Which package contains functions for installing other R packages?",
-    answer("base"),
-    answer("tools"),
-    answer("utils", correct = TRUE),
-    answer("codetools")
-  ),
-  question("Which of the R packages listed below are used to create plots?",
-    answer("lattice", correct = TRUE),
-    answer("tools"),
-    answer("stats"),
-    answer("grid", correct = TRUE)
-  )
-)
 ```
+
+```{r nba_plot_themeex4-solution}
+gg_plot <- NBA_example_pro_data |>
+  ggplot(aes(x = `OVERALL types`, y = `Well Protected`))+
+ ggplot2::geom_point()+
+  nba_plot_theme()
+
+gg_plot
+```
+
+::: {#nba_plot_RLIex4-hint}
+**Hint:** look at the nba_plot_theme function
+:::
+
+```{r nba_plot_themeex4-check}
+"Great work! You have mastered nba_plot_theme!"
+```
+
+
+##  Create tables for use in the NBA
+
+The NBA makes use of several tables. So far we only have functions to make a basci table with the basic NBA styling. This table is rendered through the `nba_tbl()` function and was made to be rendered in quarto to an html format. Therefore when you render the basic table here it does not look right, when rendered in html the sizing becomes correct. There is also an option to create a table where you can colour a column by its values `nba_tbl_col()`, as long as the values are one of the categories in `NBA_colours`. 
+
+There is then a function to create the table of protection level of threatened ecosystems `nba_tbl_comb()` and an NBA theme function `nba_tbl_theme()` that can be added onto any gt() table to give it the offcial NBA style.
+
+For the tables we can use the same example datasets as we did for the plots. 
+
+
+### Basic tables
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
