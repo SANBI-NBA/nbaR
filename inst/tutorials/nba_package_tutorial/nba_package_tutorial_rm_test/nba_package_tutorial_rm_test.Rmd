@@ -103,11 +103,11 @@ To make the plots you must provide:
 
 4. **CHRT** The type of plot you want, here you only have the choice between a bar or donut plot. This should be in inverted commas.
 
-5. **NUM** Whether the number should be plotted onto the plot. There is only a TRUE or FALSE option for this. When plotting number of ecosystems or taxa this is usually prefereable, but when plotting extent it is usually better to set to FALSE. 
+5. **NUM** Whether the values should be plotted onto the plot. There is only a TRUE or FALSE option for this. When plotting number of ecosystems or taxa this is usually preferable, but when plotting extent it is usually better to set to FALSE. The default setting is FALSE so if you don't include this argument the values won't be plotted.
 
 6. **LAB** The label for the x axis, so either extent, number, percentage of ecosystem types for example. This should also be in inverted commas. 
 
-7. **GRP** This is only used for the donut plots and is a TRUE or FALSE option that allows you to choose if you want to plot all the data in one donut plot or each row/group as its own donut plot.
+7. **GRP** This is only used for the donut plots and is a TRUE or FALSE option that allows you to choose if you want to plot all the data in one donut plot or each row/group as its own donut plot.The default is FALSE so if you don't include it only one donut plot will be plotted.
 
 6. **SAVE** If you want to automatically save a png of the plot you can add the name you would like to save it as to the save argument, otherwise you can leave it as NULL and the plot will not be saved. If you do save it you should have an outputs folder in your project to store it, if you do not you will be prompted to make one. This helps to save all plots with the same resolutions. This should also be in inverted commas.
 
@@ -157,6 +157,100 @@ donut_plot
 ```{r nba_plotex4-check}
 "Great work! You have mastered nba_plot!"
 ```
+
+
+### RLI plots
+
+
+*`nba_plot_RLI()`*
+
+The function creates a basic Red List Index plot several options to customize the plot. 
+You can play around with these options to test out what they do. 
+The first argument is the dataframe you intend to use, so I load in the example data, have a look at them and think about their structure.
+
+
+```{r nba_RLI_example_data}
+NBA_example_RLI_data
+```
+
+
+As you can see the there is a year column, with the associated RLI (Red List Index) values, as well as the minimum and maximum RLI values for that year. The order of the columns does not matter as you will specify in the function which columns to use. The min and max columns are used to create creates a buffer parallel to the RLI line. You can also draw multiple lines on the same graph for multiple species if desired.
+
+To make the plots you must provide:
+
+1. **DF** The dataframe, which we now have.
+
+2. **YEAR** The column that contains the years.
+
+3. **RLI** The column that contains the RLI values
+
+4. **MIN** The column that contains the minimum RLI values
+
+5. **MAX** The column that contains the maximum RLI values
+
+6. **GRP** The column that contains the grouping valriable. The default is NULL and if left out only a single line will be plotted 
+
+7. **SAVE** If you want to automatically save a png of the plot you can add the name you would like to save it as to the save argument, otherwise you can leave it as NULL and the plot will not be saved. If you do save it you should have an outputs folder in your project to store it, if you do not you will be prompted to make one. This helps to save all plots with the same resolutions. This should also be in inverted commas.
+
+You can test out the function in the below code chunk. 
+
+```{r nba_plot_RLI, exercise = TRUE, exercise.eval = FALSE}
+RLI_plot <- nba_plot_RLI(DF = NBA_example_RLI_data,
+                         YEAR = Years,
+                         RLI = RLI,
+                         MIN = min,
+                         MAX = max)
+
+RLI_plot
+```
+
+```{r nba_plot_RLI-check}
+"Good job!"
+```
+
+### Exercise 1
+
+How could you use this same function to create a donut plot?
+
+```{r nba_plot_RLIex4, exercise = TRUE}
+
+```
+
+```{r nba_plot_RLIex4-solution}
+donut_plot <- nba_plot(DF = NBA_example_pro_data,
+                  GROUPS = `OVERALL types`,
+                  COLS = 2:5,
+                 CHRT = "donut",
+                 NUM = TRUE,
+                 LAB = "Percentage of ecosystem types",
+                 GRP = FALSE,
+                SAVE = NULL)
+
+donut_plot
+```
+
+::: {#nba_plot_RLIex4-hint}
+**Hint:** Use  CHRT = "donut" and don't forget the GRP argument
+:::
+
+```{r nba_plot_RLIex4-check}
+"Great work! You have mastered nba_plot!"
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## Topic 1
 

@@ -326,7 +326,7 @@ nba_plot <- function(DF, GROUPS, COLS, CHRT = c("bar", "donut"), NUM = FALSE, LA
 #' @param RLI The Red List Index
 #' @param min The minimum values
 #' @param max The maximum values
-#' @param GRP A choice to group the plot, TRUE will group if, FALSE will not
+#' @param GRP A choice to group the plot, if a column name is supplied will groupd, if left NULL will not group
 #' @param SAVE The name of the output file that will be saved to the output folder. If you do not have an outputs folder you will be prompted to make one.
 #'
 #'
@@ -359,13 +359,13 @@ nba_plot <- function(DF, GROUPS, COLS, CHRT = c("bar", "donut"), NUM = FALSE, LA
 #' RLI_plot
 #'
 #'
-nba_plot_RLI <- function(DF,YEAR, RLI, min, max, GRP = FALSE, SAVE = NULL){
+nba_plot_RLI <- function(DF,YEAR, RLI, MIN, MAX, GRP = NULL, SAVE = NULL){
 
-if(GRP == TRUE){
+if(!is.null(GRP)){
 
-  RLI <- ggplot2::ggplot(DF, aes(x = {{YEAR}}, y = {{RLI}}, group = {{GROUP}}, color = {{GROUP}})) +
+  RLI <- ggplot2::ggplot(DF, aes(x = {{YEAR}}, y = {{RLI}}, group = {{GRP}}, color = {{GRP}})) +
     ggplot2::geom_line(linetype="dashed") +
-    ggplot2::geom_ribbon(aes(ymin = {{min}}, ymax = {{max}}), fill = "grey", alpha = .2, colour = NA)+
+    ggplot2::geom_ribbon(aes(ymin = {{MIN}}, ymax = {{MAX}}), fill = "grey", alpha = .2, colour = NA)+
     ggplot2::theme_classic()+
     ggplot2::ylim(0.7,1)
 
@@ -374,7 +374,7 @@ else {
 
   RLI <- ggplot2::ggplot(DF, aes(x = {{YEAR}}, y = {{RLI}})) +
     ggplot2::geom_line(aes(y = {{RLI}})) +
-    ggplot2::geom_ribbon(aes(ymin = {{min}}, ymax = {{max}}),alpha = .3, colour = NA)+
+    ggplot2::geom_ribbon(aes(ymin = {{MIN}}, ymax = {{MAX}}),alpha = .3, colour = NA)+
     ggplot2::theme_classic()+
     ggplot2::ylim(0.7,1)
 
