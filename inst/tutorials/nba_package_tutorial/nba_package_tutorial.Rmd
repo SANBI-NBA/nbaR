@@ -449,15 +449,95 @@ For the tables we can use the same example datasets as we did for the plots.
 
 ### Basic tables
 
+*`nba_tbl()`*
+
+The function creates a basic table with a purple heading bar. We will be using these two examples again:
+
+
+```{r nba_tbl_example_data, exercise = TRUE}
+
+NBA_example_pro_data
+
+NBA_example_thr_data
+```
+
+The table function only takes the dataframe and styles it like a table. Therefore the table will have the exact same structure as the dataframe, and any structure you want the table to have, you need to do to the dataframe before using the `nba_tbl()` function. 
+
+To make the table you must provide:
+
+1. **DF** The dataframe, which we now have.
+
+
+You can test out the function in the below code chunk. 
+
+```{r nba_tbl, exercise = TRUE, exercise.eval = FALSE, warning=FALSE}
+tbl <- nba_tbl(NBA_example_pro_data)
+
+tbl
+```
+
+```{r nba_tbl-check}
+"Good job!"
+```
+
+### Exercise 5
+
+Can you create a quarto document, load NBA.package, run the table function on some data in a code chunk and knit it to an html format to see what the table will look like on a website?
 
 
 
 
+### Tables with cells coloured according to their values
+
+*`nba_tbl_colr()`*
+
+A basic table with a purple heading bar and coloured blocks around the categories. Therefore for this table the categories are not the column headings, but now they are values in a column of protection level or threat status etc categories.
+
+You can see below how the data now looks and think about its structure. 
+
+
+```{r nba_plot_col_example_data}
+tbl <- NBA_example_pro_data %>%
+  pivot_longer(2:5, names_to = "protection_level")
+
+tbl
+```
+
+To then colour the protection level values you can use the `nba_tbl_colr()` function. 
+
+For the function you just need:
+
+
+1. **DF** The dataframe, which we now have.
+
+2. **COL** The name of the column where the categories are
 
 
 
+### Excercise 6
 
 
+See if you can change the NBA_example_pro_data to the correct format and make it into a table where the protection levels are coloured according to their values
+
+```{r nba_tbl_colrex4, exercise = TRUE, warning=FALSE}
+
+```
+
+```{r nba_tbl_colrex4-solution}
+tbl <- NBA_example_pro_data %>%
+  pivot_longer(2:5, names_to = "protection_level") %>% 
+  nba_tbl_colr(protection_level)
+
+tbl
+```
+
+::: {#nba_plot_RLIex4-hint}
+**Hint:** Use the code from the example data chunk above.
+:::
+
+```{r nba_tbl_colrex4-check}
+"Great work! You have mastered nba_tbl_colr!"
+```
 
 
 
