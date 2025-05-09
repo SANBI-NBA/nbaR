@@ -113,7 +113,7 @@ plots.</p>
 <code class="sourceCode R"><span><span class="va">NBA_example_thr_data</span> <span class="op">&lt;-</span> <span class="va">NBA_example_thr_data</span></span>
 <span></span>
 <span></span>
-<span><span class="va">bar_plot</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/NBA_plot.html">NBA_plot</a></span><span class="op">(</span><span class="va">NBA_example_thr_data</span>,</span>
+<span><span class="va">bar_plot</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/NBA_plot.html">nba_plot</a></span><span class="op">(</span><span class="va">NBA_example_thr_data</span>,</span>
 <span>                  <span class="va">`OVERALL types`</span>,</span>
 <span>                  <span class="fl">2</span><span class="op">:</span><span class="fl">5</span>,</span>
 <span>                 CHRT <span class="op">=</span> <span class="st">"bar"</span>,</span>
@@ -128,7 +128,7 @@ plots.</p>
 <code class="sourceCode R"><span><span class="va">NBA_example_pro_data</span> <span class="op">&lt;-</span> <span class="va">NBA_example_pro_data</span></span>
 <span></span>
 <span></span>
-<span><span class="va">donut_plot</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/NBA_plot.html">NBA_plot</a></span><span class="op">(</span><span class="va">NBA_example_pro_data</span>,</span>
+<span><span class="va">donut_plot</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/NBA_plot.html">nba_plot</a></span><span class="op">(</span><span class="va">NBA_example_pro_data</span>,</span>
 <span>                  <span class="va">`OVERALL types`</span>,</span>
 <span>                  <span class="fl">2</span><span class="op">:</span><span class="fl">5</span>,</span>
 <span>                 CHRT <span class="op">=</span> <span class="st">"donut"</span>,</span>
@@ -146,7 +146,7 @@ plots.</p>
 <span><span class="va">NBA_example_comb_data</span> <span class="op">&lt;-</span> <span class="va">NBA_example_comb_data</span></span>
 <span></span>
 <span></span>
-<span><span class="va">bar_plot_comb</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/NBA_plot_comb.html">NBA_plot_comb</a></span><span class="op">(</span></span>
+<span><span class="va">bar_plot_comb</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/NBA_plot_comb.html">nba_plot_comb</a></span><span class="op">(</span></span>
 <span>               <span class="va">NBA_example_comb_data</span>,</span>
 <span>                GROUPS<span class="op">=</span> <span class="va">`OVERALL types`</span>,</span>
 <span>                METRIC_COL <span class="op">=</span> <span class="va">metric</span>,</span>
@@ -164,7 +164,7 @@ plots.</p>
 <code class="sourceCode R"><span><span class="va">NBA_example_RLI_data</span> <span class="op">&lt;-</span> <span class="va">NBA_example_RLI_data</span></span>
 <span></span>
 <span></span>
-<span><span class="va">RLI_plot</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/NBA_plot_RLI.html">NBA_plot_RLI</a></span><span class="op">(</span><span class="va">NBA_example_RLI_data</span>,</span>
+<span><span class="va">RLI_plot</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/NBA_plot_RLI.html">nba_plot_RLI</a></span><span class="op">(</span><span class="va">NBA_example_RLI_data</span>,</span>
 <span>                 <span class="va">Years</span>, </span>
 <span>                 <span class="va">RLI</span>, </span>
 <span>                 <span class="va">min</span>, </span>
@@ -177,7 +177,7 @@ plots.</p>
 <code class="sourceCode R"><span><span class="va">NBA_example_bubble_data</span> <span class="op">&lt;-</span> <span class="va">NBA_example_bubble_data</span></span>
 <span></span>
 <span></span>
-<span> <span class="va">bubble_plot</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/NBA_plot_bubble.html">NBA_plot_bubble</a></span><span class="op">(</span>DF <span class="op">=</span> <span class="va">NBA_example_bubble_data</span>,</span>
+<span> <span class="va">bubble_plot</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/NBA_plot_bubble.html">nba_plot_bubble</a></span><span class="op">(</span>DF <span class="op">=</span> <span class="va">NBA_example_bubble_data</span>,</span>
 <span>                        GROUP <span class="op">=</span> <span class="va">taxon_group</span>,</span>
 <span>                       CAT <span class="op">=</span> <span class="va">pressure</span>,</span>
 <span>                       SUB_CAT <span class="op">=</span> <span class="va">sub_pressure</span>,</span>
@@ -194,7 +194,7 @@ plots.</p>
 <span></span>
 <span><span class="va">gg_plot</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">NBA_example_pro_data</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">`OVERALL types`</span>, y <span class="op">=</span> <span class="va">`Well Protected`</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
 <span>  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span></span>
-<span>  <span class="fu"><a href="../reference/NBA_plot_theme.html">NBA_plot_theme</a></span><span class="op">(</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="../reference/NBA_plot_theme.html">nba_plot_theme</a></span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">gg_plot</span></span></code></pre></div>
 <p><img src="NBA.package_files/figure-html/unnamed-chunk-7-1.png" width="700"></p>
@@ -207,7 +207,7 @@ may not appear correct in the vignette examples.</p>
 <p><strong>7. Basic table</strong></p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
-<span><span class="va">tbl</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/NBA_tbl.html">NBA_tbl</a></span><span class="op">(</span><span class="va">NBA_example_pro_data</span><span class="op">)</span></span>
+<span><span class="va">tbl</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/NBA_tbl.html">nba_tbl</a></span><span class="op">(</span><span class="va">NBA_example_pro_data</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">tbl</span></span></code></pre></div>
 <table class="table table table-striped table-hover" style="font-size: 1px; width: auto !important; margin-left: auto; margin-right: auto;">
@@ -389,7 +389,7 @@ Terrestrial
 <span></span>
 <span><span class="va">tbl</span> <span class="op">&lt;-</span> <span class="va">NBA_example_pro_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html" class="external-link">pivot_longer</a></span><span class="op">(</span><span class="fl">2</span><span class="op">:</span><span class="fl">5</span>, names_to <span class="op">=</span> <span class="st">"protection_level"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="../reference/NBA_tbl_colr.html">NBA_tbl_colr</a></span><span class="op">(</span>COL <span class="op">=</span> <span class="va">protection_level</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="../reference/NBA_tbl_colr.html">nba_tbl_colr</a></span><span class="op">(</span>COL <span class="op">=</span> <span class="va">protection_level</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">tbl</span></span></code></pre></div>
 <table class="table table table-striped table-hover" style="font-size: 12px; width: auto !important; margin-left: auto; margin-right: auto;">
@@ -837,7 +837,7 @@ Not Protected
 <span></span>
 <span><span class="va">gt_tbl</span> <span class="op">&lt;-</span> <span class="va">NBA_example_thr_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://gt.rstudio.com/reference/gt.html" class="external-link">gt</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="../reference/NBA_tbl_theme.html">NBA_tbl_theme</a></span><span class="op">(</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="../reference/NBA_tbl_theme.html">nba_tbl_theme</a></span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">gt_tbl</span></span></code></pre></div>
 <div id="mwlefoodfi" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
@@ -1370,7 +1370,7 @@ Not Protected
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">thr_pro_tbl</span> <span class="op">&lt;-</span> <span class="va">NBA_example_map_data</span> <span class="op">|&gt;</span></span>
 <span><span class="fu">sf</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html" class="external-link">st_drop_geometry</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span><span class="fu"><a href="../reference/NBA_tbl_comb.html">NBA_tbl_comb</a></span><span class="op">(</span>GROUP <span class="op">=</span> <span class="va">P_EcosysType</span>,</span>
+<span><span class="fu"><a href="../reference/NBA_tbl_comb.html">nba_tbl_comb</a></span><span class="op">(</span>GROUP <span class="op">=</span> <span class="va">P_EcosysType</span>,</span>
 <span>THR <span class="op">=</span> <span class="va">threat_status</span>,</span>
 <span>PRO <span class="op">=</span> <span class="va">protection_level</span><span class="op">)</span></span>
 <span></span>
@@ -1547,7 +1547,7 @@ Percentage (%)
 report 2018.</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
-<span><span class="va">map</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/NBA_map.html">NBA_map</a></span><span class="op">(</span>DF <span class="op">=</span> <span class="va">NBA_example_map_data</span>,</span>
+<span><span class="va">map</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/NBA_map.html">nba_map</a></span><span class="op">(</span>DF <span class="op">=</span> <span class="va">NBA_example_map_data</span>,</span>
 <span>               GEOM <span class="op">=</span> <span class="va">geometry</span>, </span>
 <span>               CAP <span class="op">=</span> <span class="st">"Figure 1. A map of the protection level of marine pelagic ecosystem types in South Africa"</span>, </span>
 <span>               FILL <span class="op">=</span> <span class="va">protection_level</span><span class="op">)</span></span>
