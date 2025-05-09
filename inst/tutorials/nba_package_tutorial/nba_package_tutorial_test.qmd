@@ -8,14 +8,13 @@ runtime: shiny_prerendered
 description: >
   Learn how to seamlesly create plots, tables, and maps 
   for the National Biodiveristy Assessment in r with 
-  the nba r package.
+  the nba r package. .
 ---
 
 ```{r setup, include=FALSE}
 library(learnr)
 library(tidyverse)
-library(nycflights13)
-library(Lahman)
+library(NBA.package)
 
 tutorial_options(
   exercise.timelimit = 60,
@@ -79,7 +78,7 @@ You can play around with these options to test out what they do.
 The first argument is the dataframe you intend to use, so first load in both example and have a look at them. 
 
 
-```{r nba_plot}
+```{r nba_plot_example_data}
 NBA_example_pro_data <- NBA_example_pro_data
 NBA_example_pro_data
 

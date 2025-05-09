@@ -1,0 +1,223 @@
+---
+title: "NBA package tutorial"
+output:
+  learnr::tutorial:
+    progressive: true
+    allow_skip: true
+runtime: shiny_prerendered
+description: >
+  Learn how to seamlesly create plots, tables, and maps 
+  for the National Biodiveristy Assessment in r with 
+  the nba r package.
+---
+
+
+```{r setup, include=FALSE}
+library(learnr)
+library(tidyverse)
+library(NBA.package)
+
+tutorial_options(
+  exercise.timelimit = 60,
+  # A simple checker function that just returns the message in the check chunk
+  exercise.checker = function(check_code, ...) {
+    list(
+      message = eval(parse(text = check_code)),
+      correct = logical(0),
+      type = "info",
+      location = "append"
+    )
+  }
+)
+knitr::opts_chunk$set(error = TRUE)
+```
+
+## Welcome
+
+In this tutorial, you will learn how to make the plots, tables, and maps used in the NBA:
+
+-   How to make bar and donut plots of threat status, protection level, condition etc with `nba_plot()`
+
+-   How to combine these plots into two complimentary plots of extent and number of threat status etc with `nba_plot_comb()`
+
+-   How to plot the Red List Index using `nba_plot_RLI()`
+
+-   How to make a bubble plot of pressures experienced by threatened species using `nba_plot_bubble()`
+
+-   How to add a custom NBA theme to any ggplot you create using the `nba_plot_theme()` inside ggplot
+
+-   How to make a basic table that will render to html format with `nba_tbl()`
+
+-   How to make a basic table where the cells with categories of threat status, protection level, condition etc are coloured according to the NBA standards with `nba_tbl_col()`
+
+-   How to make add the a custom NBA theme to any table made with `gt()` using `nba_tbl_theme()`
+
+-   How to make a table that cross-references the number of ecosystems or taxa by their threat status and protection level with `nba_tbl_comb()`
+
+-   How to make a basic map of the threat status, protection level, condition etc of ecosystems using `nba_map()`
+
+For more information on the package or any of the function please refer to it's [website](https://sanbi-nba.github.io/NBA.package/)
+
+### Setup
+
+To practice these skills, we will use several datasets pre set in the package that you will always have access to. These datasets will allow you to test out the functions and help provide examples of how data should be formatted before reading into r. 
+
+
+I've preloaded the packages for this tutorial with
+
+```{r eval = FALSE}
+library(tidyverse) 
+library(NBA.package)
+```
+
+
+## Create plots used in the NBA
+
+### Bar and donut plots
+
+*`nba_plot()`*
+
+The function creates a basic bar or donut plot with several options to customize the plot. 
+You can play around with these options to test out what they do. 
+The first argument is the dataframe you intend to use, so I load in both examples, have a look at them and think about their structure. 
+
+
+```{r nba_plot_example_data}
+NBA_example_pro_data <- NBA_example_pro_data
+NBA_example_pro_data
+
+NBA_example_thr_data <- NBA_example_thr_data
+NBA_example_thr_data
+```
+
+
+As you can see the ecosystem function types (or taxa) are in one column, and the number of ecosystems in each threat status or protection level are in the following columns. There are two important things to note, one that the names of the columns are very important, they should follow the naming conventions of the NBA, which can be found in the list `NBA_categories`. The other is that one dataframe has a total (TOT) column and one does not. This is because you will specify which columns the function should look at, so having extra columns such as TOT does not matter, you just have to have all the threat status or protection level (or condition etc) columns. 
+
+To make the plots you must provide:
+
+1. **DF** The dataframe, which we now have.
+
+2. **GROUPS** The column that contains the groups (taxa, ecosystems, ecosystem functional groups etc). This can just be the column name, and shouldn't be in inverted commas. R does not like spaces so if your column name has a space in it you can use `` these ticks to surround it to tell R that it is one name.
+
+3. **COLs** The columns that contain the threat status (there are several ways to provide these if you are familiar with tidy select functions, but the easiest is to just provide the column positions so the number of the column that contains the first category followed by : and then the number of the column that contains the last category), for instance 2:5.
+
+4. **CHRT** The type of plot you want, here you only have the choice between a bar or donut plot. This should be in inverted commas.
+
+5. **NUM** Whether the number should be plotted onto the plot. There is only a TRUE or FALSE option for this. When plotting number of ecosystems or taxa this is usually prefereable, but when plotting extent it is usually better to set to FALSE. 
+
+6. **LAB** The label for the x axis, so either extent, number, percentage of ecosystem types for example. This should also be in inverted commas. 
+
+7. **GRP** This is only used for the donut plots and is a TRUE or FALSE option that allows you to choose if you want to plot all the data in one donut plot or each row/group as its own donut plot.
+
+6. **SAVE** If you want to automatically save a png of the plot you can add the name you would like to save it as to the save argument, otherwise you can leave it as NULL and the plot will not be saved. If you do save it you should have an outputs folder in your project to store it, if you do not you will be prompted to make one. This helps to save all plots with the same resolutions. This should also be in inverted commas.
+
+You can test out the function in the below code chunk. 
+
+```{r nba_plot, exercise = TRUE, exercise.eval = FALSE}
+bar_plot <- nba_plot(DF = NBA_example_thr_data,
+                  GROUPS = `OVERALL types`,
+                  COLS = 2:5,
+                 CHRT = "bar",
+                 NUM = TRUE,
+                 LAB = "Percentage of ecosystem types",
+                SAVE = NULL)
+
+bar_plot
+```
+
+```{r nba_plot-check}
+"Good job!"
+```
+
+### Exercise 1
+
+How could you use this same function to create a donut plot?
+
+```{r nba_plotex4, exercise = TRUE}
+
+```
+
+```{r nba_plotex4-solution}
+donut_plot <- nba_plot(DF = NBA_example_pro_data,
+                  GROUPS = `OVERALL types`,
+                  COLS = 2:5,
+                 CHRT = "donut",
+                 NUM = TRUE,
+                 LAB = "Percentage of ecosystem types",
+                 GRP = FALSE,
+                SAVE = NULL)
+
+donut_plot
+```
+
+::: {#nba_plotex4-hint}
+**Hint:** Use  CHRT = "donut" and don't forget the GRP argument
+:::
+
+```{r nba_plotex4-check}
+"Great work! You have mastered nba_plot!"
+```
+
+## Topic 1
+
+### Exercise 
+
+*Here's a simple exercise with an empty code chunk provided for entering the answer.*
+
+Write the R code required to add two plus two:
+
+```{r two-plus-two, exercise=TRUE}
+
+```
+
+### Exercise with Code
+
+*Here's an exercise with some prepopulated code as well as `exercise.lines = 5` to provide a bit more initial room to work.*
+
+Now write a function that adds any two numbers and then call it:
+
+```{r add-function, exercise=TRUE, exercise.lines = 5}
+add <- function() {
+  
+}
+```
+
+## Topic 2
+
+### Exercise with Hint
+
+*Here's an exercise where the chunk is pre-evaluated via the `exercise.eval` option (so the user can see the default output we'd like them to customize). We also add a "hint" to the correct solution via the chunk immediate below labeled `print-limit-hint`.*
+
+Modify the following code to limit the number of rows printed to 5:
+
+```{r print-limit, exercise=TRUE, exercise.eval=TRUE}
+mtcars
+```
+
+```{r print-limit-hint}
+head(mtcars)
+```
+
+### Quiz
+
+*You can include any number of single or multiple choice questions as a quiz. Use the `question` function to define a question and the `quiz` function for grouping multiple questions together.*
+
+Some questions to verify that you understand the purposes of various base and recommended R packages:
+
+```{r quiz}
+quiz(
+  question("Which package contains functions for installing other R packages?",
+    answer("base"),
+    answer("tools"),
+    answer("utils", correct = TRUE),
+    answer("codetools")
+  ),
+  question("Which of the R packages listed below are used to create plots?",
+    answer("lattice", correct = TRUE),
+    answer("tools"),
+    answer("stats"),
+    answer("grid", correct = TRUE)
+  )
+)
+```
+

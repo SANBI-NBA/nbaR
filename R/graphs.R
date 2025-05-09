@@ -108,7 +108,7 @@
 
 
 
-nba_plot <- function(DF, GROUPS, COLS, CHRT = c("bar", "donut"), NUM = FALSE, LAB, GRP = TRUE, SAVE = NULL){
+nba_plot <- function(DF, GROUPS, COLS, CHRT = c("bar", "donut"), NUM = FALSE, LAB, GRP = FALSE, SAVE = NULL){
 
 
 
