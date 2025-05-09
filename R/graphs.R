@@ -460,7 +460,7 @@ nba_plot_comb <- function(DF,
                           CHRT = c("bar", "donut"),
                           NUM = FALSE,
                           LAB,
-                          GRP = TRUE,
+                          GRP = FALSE,
                           SAVE = NULL) {
 
 
@@ -475,6 +475,7 @@ nba_plot_comb <- function(DF,
                        COLS = COLS,
                        CHRT = CHRT,
                        NUM = NUM,
+                       GRP = GRP,
                        LAB = paste(LAB, m),
                        SAVE=NULL)
 

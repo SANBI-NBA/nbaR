@@ -159,6 +159,105 @@ donut_plot
 ```
 
 
+### Multi plots
+
+*`nba_plot_comb()`*
+
+The function creates a combined plot of two or more plots created by the `nba_plot()` function. For this function you will need an extra column that differentiates your data into the two plots. For example you could call the column metric, and have "extent" for the rows showing extent of ecosystems that are threatened and "number" for rows showing the number of threatened ecosystems. For the example dataset in this package I combined the NBA_example_pro_data and NBA_example_thr_data and made a column called metric that had threat_status for rows of threat status and protection_level for rows with protection level information.
+
+You can see below how the data now looks and think about its structure. 
+
+
+```{r nba_plot_comb_example_data}
+NBA_example_comb_data
+```
+
+
+This example dataset is a bit unusual in that you will mostly be plotting two plots of threat status together, so you won't have columns of both threat status and protection level, but it will work exactly the same either way.
+
+The nameing of the plots is automatically alphabetical and lower case.
+The ordering of the plots is also automatic.
+The legend is assumed to be the same and added to the bottom
+of the plots.
+
+To make the plots you must provide all the same things as for `nba_plot`:
+
+1. **DF** The dataframe, which we now have.
+
+2. **GROUPS** The column that contains the groups (taxa, ecosystems, ecosystem functional groups etc). This can just be the column name, and shouldn't be in inverted commas. R does not like spaces so if your column name has a space in it you can use `` these ticks to surround it to tell R that it is one name.
+
+3. **COLs** The columns that contain the threat status (there are several ways to provide these if you are familiar with tidy select functions, but the easiest is to just provide the column positions so the number of the column that contains the first category followed by : and then the number of the column that contains the last category), for instance 2:5.
+
+4. **CHRT** The type of plot you want, here you only have the choice between a bar or donut plot. This should be in inverted commas.
+
+5. **NUM** Whether the values should be plotted onto the plot. There is only a TRUE or FALSE option for this. When plotting number of ecosystems or taxa this is usually preferable, but when plotting extent it is usually better to set to FALSE. The default setting is FALSE so if you don't include this argument the values won't be plotted.
+
+6. **LAB** The label for the x axis, so either extent, number, percentage of ecosystem types for example. This should also be in inverted commas. **NB PlEASE NOTE** The label here is slightly different in that the words in the **METRICS** column will be appended onto the end of the label to differentiate the plots.
+
+7. **GRP** This is only used for the donut plots and is a TRUE or FALSE option that allows you to choose if you want to plot all the data in one donut plot or each row/group as its own donut plot.The default is FALSE so if you don't include it only one donut plot will be plotted.
+
+6. **SAVE** If you want to automatically save a png of the plot you can add the name you would like to save it as to the save argument, otherwise you can leave it as NULL and the plot will not be saved. If you do save it you should have an outputs folder in your project to store it, if you do not you will be prompted to make one. This helps to save all plots with the same resolutions. This should also be in inverted commas.
+
+**Plus** there are now two extra arguments: 
+
+7. **METRIC_COL** The column that stores the information on how to split the data.
+
+8. **METRICS** The names you used in the metric column to split the data. These should be in inverted commas.
+
+You can test out the function in the below code chunk. 
+
+```{r nba_plot_comb, exercise = TRUE, exercise.eval = FALSE}
+bar_plot_comb <- nba_plot_comb(
+                                DF = NBA_example_comb_data,
+                                GROUPS= `OVERALL types`,
+                                METRIC_COL = metric,
+                                METRICS = c("protection_level", "threat_status"),
+                                COLS = 3:10,
+                                CHRT = "bar",
+                                NUM = FALSE,
+                                LAB = "Percentage of ecosystem",
+                                SAVE=NULL)
+
+bar_plot_comb
+```
+
+```{r nba_plot_comb-check}
+"Good job!"
+```
+
+### Exercise 1
+
+How could you use this same function to create two donut plots?
+
+```{r nba_plot_combex4, exercise = TRUE}
+
+```
+
+```{r nba_plot_combex4-solution}
+bar_plot_comb <- nba_plot_comb(
+                                DF = NBA_example_comb_data,
+                                GROUPS= `OVERALL types`,
+                                METRIC_COL = metric,
+                                METRICS = c("protection_level", "threat_status"),
+                                COLS = 3:10,
+                                CHRT = "donut",
+                                NUM = FALSE,
+                                LAB = "Percentage of ecosystem",
+                                GRP = FALSE,
+                                SAVE=NULL)
+
+bar_plot_comb
+```
+
+::: {#nba_plot_combex4-hint}
+**Hint:** Use  CHRT = "donut" and don't forget the GRP argument
+:::
+
+```{r nba_plot_combex4-check}
+"Great work! You have mastered nba_plot!"
+```
+
+
 ### RLI plots
 
 
@@ -192,9 +291,16 @@ To make the plots you must provide:
 
 7. **SAVE** If you want to automatically save a png of the plot you can add the name you would like to save it as to the save argument, otherwise you can leave it as NULL and the plot will not be saved. If you do save it you should have an outputs folder in your project to store it, if you do not you will be prompted to make one. This helps to save all plots with the same resolutions. This should also be in inverted commas.
 
-You can test out the function in the below code chunk. 
 
-```{r nba_plot_RLI, exercise = TRUE, exercise.eval = FALSE}
+### Exercise 1
+
+How could you use this function to create an RLI plot?
+
+```{r nba_plot_RLIex4, exercise = TRUE}
+
+```
+
+```{r nba_plot_RLIex4-solution}
 RLI_plot <- nba_plot_RLI(DF = NBA_example_RLI_data,
                          YEAR = Years,
                          RLI = RLI,
@@ -204,37 +310,12 @@ RLI_plot <- nba_plot_RLI(DF = NBA_example_RLI_data,
 RLI_plot
 ```
 
-```{r nba_plot_RLI-check}
-"Good job!"
-```
-
-### Exercise 1
-
-How could you use this same function to create a donut plot?
-
-```{r nba_plot_RLIex4, exercise = TRUE}
-
-```
-
-```{r nba_plot_RLIex4-solution}
-donut_plot <- nba_plot(DF = NBA_example_pro_data,
-                  GROUPS = `OVERALL types`,
-                  COLS = 2:5,
-                 CHRT = "donut",
-                 NUM = TRUE,
-                 LAB = "Percentage of ecosystem types",
-                 GRP = FALSE,
-                SAVE = NULL)
-
-donut_plot
-```
-
 ::: {#nba_plot_RLIex4-hint}
-**Hint:** Use  CHRT = "donut" and don't forget the GRP argument
+**Hint:** Use look at the previous example for guidance, and the NBA_example_RLI_data
 :::
 
 ```{r nba_plot_RLIex4-check}
-"Great work! You have mastered nba_plot!"
+"Great work! You have mastered nba_plot_RLI!"
 ```
 
 
