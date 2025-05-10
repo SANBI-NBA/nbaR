@@ -1,3 +1,6 @@
+# NBA.package 1.4.0
+Added a tutorial for the people to get familiar with using the functions in the package
+
 # NBA.package 1.3.0
 Added a new bubble plot function
 
