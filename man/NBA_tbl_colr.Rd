@@ -14,7 +14,7 @@ nba_tbl_colr(DF, COL)
 \description{
 A basic table with a purple heading bar and coloured blocks around the
 categories
-This data should be in the same fomat as for the plot functions
+This data should be in the same format as for the plot functions
 }
 \examples{
 library(dplyr)

@@ -11,7 +11,7 @@ nba_tbl(DF)
 }
 \description{
 A basic table with a purple heading bar.
-This data should be in the same fomat as for the plot functions
+This data should be in the same format as for the plot functions
 }
 \examples{
 tbl <- nba_tbl(NBA_example_pro_data)
