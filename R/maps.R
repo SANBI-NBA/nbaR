@@ -9,7 +9,7 @@
 #'
 #' The function expects an sf object.
 #'
-#' Please look at the example data NBA_example_map_data and NBA_example_donut_plot to see the correct
+#' Please look at the example data NBA_example_map_data to see the correct
 #' structure for the data.
 #'
 #' The name of the fill column is irrelevant, but the categories must be
@@ -60,7 +60,7 @@
 #'
 #'map
 #'
-#'#map
+#'
 #'
 #'
 

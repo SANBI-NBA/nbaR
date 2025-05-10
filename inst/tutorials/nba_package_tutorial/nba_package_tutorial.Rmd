@@ -277,9 +277,9 @@ As you can see the there is a year column, with the associated RLI (Red List Ind
 
 To make the plots you must provide:
 
-1. **DF** The dataframe, which we now have.
+1. **DF** The dataframe, which we now have
 
-2. **YEAR** The column that contains the years.
+2. **YEAR** The column that contains the years
 
 3. **RLI** The column that contains the RLI values
 
@@ -381,7 +381,7 @@ bubble_plot <- nba_plot_bubble(DF = NBA_example_bubble_data,
  bubble_plot
 ```
 
-::: {#nba_plot_RLIex4-hint}
+::: {#nba_plot_bubbleex4-hint}
 **Hint:** look at the previous example and the NBA_example_bubble_data for guidance
 :::
 
@@ -429,7 +429,7 @@ gg_plot <- NBA_example_pro_data |>
 gg_plot
 ```
 
-::: {#nba_plot_RLIex4-hint}
+::: {#nba_plot_themeex4-hint}
 **Hint:** look at the nba_plot_theme function
 :::
 
@@ -531,7 +531,7 @@ tbl <- NBA_example_pro_data %>%
 tbl
 ```
 
-::: {#nba_plot_RLIex4-hint}
+::: {#nba_tbl_colrex4-hint}
 **Hint:** Use the code from the example data chunk above.
 :::
 
@@ -541,8 +541,205 @@ tbl
 
 
 
+### Table of protection level of threatened ecosystems
+
+*`nba_tbl_comb()`*
+
+A function to style a table with threat status on the horizontal rows and protection level on the vertical columns, with number of ecosystems or taxa that share those categories in the cells, with total and percentage çolumns added.
+
+For this data I have taken the marine pelagic ecosystem map (which is currently a GeoPackage, which we now use instead of shapefiles). To create this table from a map of ecosystems, you just need to have the threat status and protection level of the ecosystems as fields/attributes in your map shp/gpkg file and to remove the polygons from the dataset.
+
+We use the **sf** package for all our spatial analysis with vectors and I highly recommend you do to, it allows you to treat a spatial object like a normal dataframe which makes your life incredibly easy. 
+
+In the below code you can see how you would take an sf map object (that you would have read into R), and remove the polygons to prepare the dataset to be made into a table.You can also see below how the data now looks and think about its structure. 
 
 
+```{r nba_tbl_comb_example_data}
+NBA_example_map_data
+
+thr_pro_tbl <- NBA_example_map_data |> #these are base r pipes as comapred to the %>% tidy pipes
+sf::st_drop_geometry() 
+
+thr_pro_tbl
+```
+
+
+
+For the function you just need:
+
+
+1. **DF** The dataframe, which we now have.
+
+2. **GROUP** The name of the column where the ecosystem or taxa names are stored
+
+3. **THR** The name of the column where the threat status of the ecosystems/ taxa are stored
+
+4. **PRO** The name of the column where the protection level of the ecosystems/ taxa are stored
+
+**NB TO NOTE** The threat status and protection level categories must again match the spelling and conventions in the `NBA_colours` and `NBA_categories` lists for the colours to map correctly.
+
+
+
+### Excercise 7
+
+
+See if you can change the NBA_example_map_data to the correct format and make it into a table of protection level of threatened ecosystems
+
+```{r nba_tbl_combex4, exercise = TRUE, warning=FALSE}
+
+```
+
+```{r nba_tbl_combex4-solution}
+thr_pro_tbl <- NBA_example_map_data |> #these are base r pipes as comapred to the %>% tidy pipes
+sf::st_drop_geometry() |>
+nba_tbl_comb(GROUP = P_EcosysType,
+THR = threat_status,
+PRO = protection_level)
+
+thr_pro_tbl
+```
+
+::: {#nba_tbl_combex4-hint}
+**Hint:** Use the code from the example data chunk above.
+:::
+
+```{r nba_tbl_combex4-check}
+"Great work! You have mastered nba_tbl_comb!"
+```
+
+
+### Table theme to be added to any gt table object
+
+*`nba_tbl_theme()`*
+
+Function to apply gt styling to a table.
+
+To make tables in R there are two main packages we use, Kable (which is actually part of a family of functions kable, knitr, and kableExtra that all work together) and gt. They are both powerful packages that can create complex tables. Kable has been around longer and so has slightly more help and functions, but both are capable of creating great tables. Which you use is completely up to your preference, and we use both in this package. 
+
+If you do use gt to create a gt object as your table, you can use the `nba_tbl_theme()` function at the end to style your table to match the official NBA style.
+
+For this function you can use any of the example datastes, except for the map which you would have to first remove the polygon 'geom' column as in the previous example. I show an example below of how to create a basic gt table from one of the example datasets.
+
+
+```{r nba_tbl_theme_example_data}
+gt_tbl <- NBA_example_thr_data %>%
+  gt::gt() 
+
+gt_tbl
+```
+
+
+
+For the function you just need:
+
+
+1. **DF** The dataframe, which we now have
+
+
+
+### Excercise 8
+
+
+See if you can take make the gt table object as in the previous chunk and add the NBA styling to it
+
+```{r nba_tbl_themeex4, exercise = TRUE, warning=FALSE}
+
+```
+
+```{r nba_tbl_themeex4-solution}
+gt_tbl <- NBA_example_thr_data %>%
+  gt::gt() %>%
+ nba_tbl_theme()
+
+gt_tbl
+```
+
+::: {#nba_tbl_themeex4-hint}
+**Hint:** Use the code from the example data chunk above and pipe in the function or add the object inside the function
+:::
+
+```{r nba_tbl_themeex4-check}
+"Great work! You have mastered nba_tbl_theme!"
+```
+
+
+
+##  Create maps  for use in the NBA
+
+The NBA makes use of several maps, namely their ecosystem maps, maps of protection level, threat status, condition, pressures etc. So far in the package we have made a function to create the protection level, threat status and condition maps, and hopefully will be able to add the others in future. This function is called `nba_map()`.
+
+For the map we can use the example dataset `NBA_example_map_data`.
+
+
+### Map function
+
+*`nba_map()`*
+
+The function creates a basic map of ecosystems coloured by categories such as protection level etc.
+
+Below is an example dataset. To get a map dataset in R you can get by reading in a GeoPackage or shapefile using the sf package. **NB TO NOTE** These protection level and threat status categories are completely arbitrary and not real values for these ecosystems. 
+
+The function can take a dataset with either one polygon or multipolygon per ecosystem (each row has a unique ecosystem type) or multiple rows per ecosystem type. This example dataset has already been concatenated to have only one row per ecosystem type, but most maps especially the ecosystem maps will not come like this, just know it's not a problem and the function can deal with these datasets.
+
+```{r nba_map_example_data, exercise = TRUE}
+
+NBA_example_map_data
+```
+
+
+To make the map you must provide:
+
+1. **DF** The dataframe, which we now have
+
+2. **COLS** The columns to use to group the ecosystems by when combining all the individual polygons of an ecosystem type into one multipolygon (concatenating the dataset to one row per ecosystem type). This is set to NULL by default so if you already have one ecosystem type you can just leave it out. Otherwise it accepts names using c(ecosystem_name, threat_status) to select the columns you want to group by (and by default keep).
+
+2. **GEOM** The name of the column with the geometries or polygons
+
+3. **CAP** The figure capetion to go at the bottom of the plot
+
+4. **FILL** The column with the values/categories you would like to colour the plot by. These categories must follow the naming and spelling conventions of the NBA, which can be seen in the `NBA_colours` and `NBA_categories` lists.
+
+
+You can test out the function in the below code chunk. 
+
+```{r nba_map, exercise = TRUE, exercise.eval = FALSE, warning=FALSE}
+map <- nba_map(DF = NBA_example_map_data,
+              GEOM = geometry,
+              CAP = "Figure 1. A map of the protection level of marine pelagic ecosystem types in South Africa",
+            FILL = protection_level)
+
+map
+```
+
+```{r nba_map-check}
+"Good job!"
+```
+
+
+### Exercise 9
+
+See if you can create a map of threat status of ecosystems
+
+```{r nba_mapex4, exercise = TRUE, warning=FALSE}
+
+```
+
+```{r nba_mapex4-solution}
+map <- nba_map(DF = NBA_example_map_data,
+              GEOM = geometry,
+              CAP = "Figure 1. A map of the threat status of marine pelagic ecosystem types in South Africa",
+            FILL = threat_status)
+
+map
+```
+
+::: {#nba_mapex4-hint}
+**Hint:** Use the code from the example data chunk above, change the FILL argument, and remember to change the caption in the CAP argument.
+:::
+
+```{r nba_mapex4-check}
+"Great work! You have mastered nba_map!"
+```
 
 
 
