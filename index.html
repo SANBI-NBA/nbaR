@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>NBA theme package • NBA.package</title>
+<title>NBA theme package • nbaR</title>
 <script src="lightswitch.js"></script><script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
@@ -13,7 +13,7 @@
 <script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="NBA theme package">
 <meta name="description" content="Creation of standard themes for graphical outputs of the NBA.">
 <meta property="og:description" content="Creation of standard themes for graphical outputs of the NBA.">
-<meta property="og:image" content="https://sanbi-nba.github.io/NBA.package/logo.png">
+<meta property="og:image" content="https://sanbi-nba.github.io/nbaR/logo.png">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -21,7 +21,7 @@
 
     <nav class="navbar navbar-expand-lg fixed-top " aria-label="Site navigation"><div class="container">
 
-    <a class="navbar-brand me-2" href="index.html">NBA.package</a>
+    <a class="navbar-brand me-2" href="index.html">nbaR</a>
 
     <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.4.0</small>
 
@@ -32,13 +32,8 @@
 
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto">
+<li class="nav-item"><a class="nav-link" href="articles/nbaR.html">Get started</a></li>
 <li class="nav-item"><a class="nav-link" href="reference/index.html">Reference</a></li>
-<li class="nav-item dropdown">
-  <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
-  <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
-<li><a class="dropdown-item" href="articles/NBA.package.html">NBA.package</a></li>
-  </ul>
-</li>
 <li class="nav-item"><a class="nav-link" href="news/index.html">Changelog</a></li>
       </ul>
 <ul class="navbar-nav">
@@ -63,25 +58,25 @@
 <div class="row">
   <main id="main" class="col-md-9"><div class="section level1">
 <div class="page-header">
-<img src="logo.png" class="logo" alt=""><h1 id="nbapackage-">NBA.package 
-<a class="anchor" aria-label="anchor" href="#nbapackage-"></a>
+<img src="logo.png" class="logo" alt=""><h1 id="nbar-">nbaR 
+<a class="anchor" aria-label="anchor" href="#nbar-"></a>
 </h1>
 </div>
 <!-- badges: start -->
 <!-- badges: end -->
-<p>The NBA.package houses functions that enable easy creation of standardised graphs, plots and maps for SANBI’s National Biodiversity Assessment (NBA) content.</p>
+<p>The nbaR houses functions that enable easy creation of standardised graphs, plots and maps for SANBI’s National Biodiversity Assessment (NBA) content.</p>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
-<p>You can install the development version of NBA.package from <a href="https://github.com/" class="external-link">GitHub</a> with:</p>
+<p>You can install the development version of nbaR from <a href="https://github.com/" class="external-link">GitHub</a> with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># install.packages("devtools")</span></span>
-<span><span class="co">#devtools::install_github("SANBI-NBA/NBA.package")</span></span></code></pre></div>
+<span><span class="co">#devtools::install_github("SANBI-NBA/nbaR")</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a>
 </h2>
-<p>The package is intended for use in r and quarto by the NBA team to assist with the creation of the NBA website pages and reports. The goal of the functions is to simplify the processes of cretaing plots, tables, and maps in the reports and to standardise the outputs of all realms.</p>
+<p>The package is intended for use in r and quarto by the NBA team to assist with the creation of the NBA website pages and reports. The goal of the functions is to simplify the processes of creating plots, tables, and maps in the reports and to standardise the outputs of all realms.</p>
 </div>
 <div class="section level2">
 <h2 id="data">Data<a class="anchor" aria-label="anchor" href="#data"></a>
@@ -98,7 +93,7 @@
 <h2 id="how-to-cite-this-package">How to cite this package<a class="anchor" aria-label="anchor" href="#how-to-cite-this-package"></a>
 </h2>
 <p>You can cite this package like this “tables and figures were produced using the NBA.package R package (Besseling et al., 2024)”. Here is the full bibliographic reference to include in your reference list (don’t forget to update the ‘last accessed’ date):</p>
-<p>To cite package ‘NBA.package’ in publications use:</p>
+<p>To cite package ‘nbaR’ in publications use:</p>
 <p>Besseling N, Bull L, Monyeki M, Hendricks S, von Staden L (2024). “Package for creation of the NBA.” <em>NA</em>, <em>1</em>(1), 1. <a href="doi:10.5281/zenodo.15310061" class="uri">doi:10.5281/zenodo.15310061</a> <a href="https://doi.org/10.5281/zenodo.15310061" class="external-link uri">https://doi.org/10.5281/zenodo.15310061</a>.</p>
 <p>A BibTeX entry for LaTeX users is</p>
 <p>@Article{, title = {Package for creation of the NBA}, author = {Natasha Besseling and Lauryn Bull and Maphale Monyeki and Shae-Lynn Hendricks and Lize {von Staden}}, journal = {NA}, year = {2024}, volume = {1}, number = {1}, pages = {1}, doi = {<a href="https://doi.org/10.5281/zenodo.15310061" class="external-link uri">https://doi.org/10.5281/zenodo.15310061</a>}, }</p>
@@ -124,7 +119,7 @@
 <div class="citation">
 <h2 data-toc-skip>Citation</h2>
 <ul class="list-unstyled">
-<li><a href="authors.html#citation">Citing NBA.package</a></li>
+<li><a href="authors.html#citation">Citing nbaR</a></li>
 </ul>
 </div>
 
