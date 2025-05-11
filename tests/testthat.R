@@ -7,6 +7,6 @@
 # * https://testthat.r-lib.org/articles/special-files.html
 
 library(testthat)
-library(NBA.package)
+library(nbaR)
 
-test_check("NBA.package")
+test_check("nbaR")

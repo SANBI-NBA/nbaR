@@ -7,15 +7,15 @@ output:
 runtime: shiny_prerendered
 description: >
   Learn how to seamlesly create plots, tables, and maps 
-  for the National Biodiveristy Assessment in r with 
-  the nba r package.
+  for the National Biodiveristy Assessment in R with 
+  the nbaR package.
 ---
 
 
 ```{r setup, include=FALSE}
 library(learnr)
 library(tidyverse)
-library(NBA.package)
+library(nbaR)
 
 tutorial_options(
   exercise.timelimit = 60,
@@ -56,7 +56,7 @@ In this tutorial, you will learn how to make the plots, tables, and maps used in
 
 -   How to make a basic map of the threat status, protection level, condition etc of ecosystems using `nba_map()`
 
-For more information on the package or any of the function please refer to it's [website](https://sanbi-nba.github.io/NBA.package/)
+For more information on the package or any of the function please refer to it's [website](https://sanbi-nba.github.io/nbaR/)
 
 ### Setup
 
@@ -67,7 +67,7 @@ I've preloaded the packages for this tutorial with
 
 ```{r eval = FALSE}
 library(tidyverse) 
-library(NBA.package)
+library(nbaR)
 ```
 
 
@@ -482,7 +482,7 @@ tbl
 
 ### Exercise 5
 
-Can you create a quarto document, load NBA.package, run the table function on some data in a code chunk and knit it to an html format to see what the table will look like on a website?
+Can you create a quarto document, load nbaR, run the table function on some data in a code chunk and knit it to an html format to see what the table will look like on a website?
 
 
 

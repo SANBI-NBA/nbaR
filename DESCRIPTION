@@ -1,4 +1,4 @@
-Package: NBA.package
+Package: nbaR
 Title: NBA theme package
 Version: 1.4.0
 Authors@R: c(
@@ -30,6 +30,7 @@ Imports:
     rsconnect
 Suggests: 
     rmarkdown,
+    learnr,
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
 Encoding: UTF-8

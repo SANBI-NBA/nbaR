@@ -1,28 +1,28 @@
 
-# NBA.package <a href="https://sanbi-nba.github.io/NBA.package/"><img src="man/figures/logo.png" align="right" height="139" alt="NBA.package website" /></a>
+# nbaR <a href="https://sanbi-nba.github.io/nbaR/"><img src="man/figures/logo.png" align="right" height="139" alt="nbaR website" /></a>
 
 <!-- badges: start -->
 <!-- badges: end -->
 
-The NBA.package houses functions that enable easy creation of
-standardised graphs, plots and maps for SANBI’s National Biodiversity
-Assessment (NBA) content.
+The nbaR houses functions that enable easy creation of standardised
+graphs, plots and maps for SANBI’s National Biodiversity Assessment
+(NBA) content.
 
 ## Installation
 
-You can install the development version of NBA.package from
+You can install the development version of nbaR from
 [GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("devtools")
-#devtools::install_github("SANBI-NBA/NBA.package")
+#devtools::install_github("SANBI-NBA/nbaR")
 ```
 
 ## Usage
 
 The package is intended for use in r and quarto by the NBA team to
 assist with the creation of the NBA website pages and reports. The goal
-of the functions is to simplify the processes of cretaing plots, tables,
+of the functions is to simplify the processes of creating plots, tables,
 and maps in the reports and to standardise the outputs of all realms.
 
 ## Data
@@ -55,7 +55,7 @@ using the NBA.package R package (Besseling et al., 2024)”. Here is the
 full bibliographic reference to include in your reference list (don’t
 forget to update the ‘last accessed’ date):
 
-To cite package ‘NBA.package’ in publications use:
+To cite package ‘nbaR’ in publications use:
 
 Besseling N, Bull L, Monyeki M, Hendricks S, von Staden L (2024).
 “Package for creation of the NBA.” *NA*, *1*(1), 1.

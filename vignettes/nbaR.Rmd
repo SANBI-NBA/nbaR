@@ -1,8 +1,8 @@
 ---
-title: "NBA.package"
+title: "nbaR"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{NBA.package}
+  %\VignetteIndexEntry{nbaR}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -15,7 +15,7 @@ knitr::opts_chunk$set(
 ```
 
 ```{r setup}
-library(NBA.package)
+library(nbaR)
 ```
 
 This Vignette is to help users become familiar with the NBA package and get the most use out of its functions. 
