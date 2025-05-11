@@ -51,9 +51,9 @@ repository and log an issue so it can be dealt with.
 ## How to cite this package
 
 You can cite this package like this “tables and figures were produced
-using the NBA.package R package (Besseling et al., 2024)”. Here is the
-full bibliographic reference to include in your reference list (don’t
-forget to update the ‘last accessed’ date):
+using the nbaR R package (Besseling et al., 2024)”. Here is the full
+bibliographic reference to include in your reference list (don’t forget
+to update the ‘last accessed’ date):
 
 To cite package ‘nbaR’ in publications use:
 

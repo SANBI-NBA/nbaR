@@ -48,7 +48,7 @@ If you find any issues with the package or functions, or if you have any suggest
 
 ## How to cite this package
 
-You can cite this package like this "tables and figures were produced using the NBA.package R package (Besseling et al., 2024)". Here is the full bibliographic reference to include in your reference list (don't forget to update the 'last accessed' date):
+You can cite this package like this "tables and figures were produced using the nbaR R package (Besseling et al., 2024)". Here is the full bibliographic reference to include in your reference list (don't forget to update the 'last accessed' date):
 
 ```{r eval=FALSE, message=FALSE, warning=FALSE, include=FALSE}
 
