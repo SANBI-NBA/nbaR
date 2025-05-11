@@ -1,3 +1,6 @@
+# nbaR 2.0.0
+Changed package name
+
 # nbaR 1.4.0
 Added a tutorial for the people to get familiar with using the functions in the package
 
