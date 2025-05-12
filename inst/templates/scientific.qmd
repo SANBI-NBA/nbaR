@@ -163,31 +163,31 @@ It is possible do display both the data that a figure is based on and the figure
 
 ```{r}
 #| label: fig-tab
-#| fig-cap: "Ecosystem threat status of terrestrial ecosystem types." 
+#| fig-cap: "Ecosystem threat status of functional ecosystem types." 
 
 library(dplyr)
 library(tidyr)
 library(nbaR)
 
 # dat <- read.csv("data/terrestrial-ecosystems.csv", header = TRUE)
-# 
-# ecosystem_summary <- dat %>% 
-#                       group_by(biome, threat_status) %>% 
-#                       summarise(count = n()) %>% 
+
+# ecosystem_summary <- dat %>%
+#                       group_by(biome, threat_status) %>%
+#                       summarise(count = n()) %>%
 #                       pivot_wider(
 #                         id_cols = biome,
 #                         names_from = threat_status,
 #                         values_from = count
-#                       ) %>% 
+#                       ) %>%
 #                       mutate(across(where(is.numeric), ~replace_na(.x,0))) %>% ungroup()
-# 
-# nba_plot(ecosystem_summary,
-#          biome,
-#          2:5,
-#          CHRT = "bar",
-#          NUM = FALSE,
-#          LAB = "Percentage of ecosystem types",
-#          SAVE = "test-fig")
+
+nba_plot(NBA_example_thr_data,
+         `OVERALL types`,
+         2:5,
+         CHRT = "bar",
+         NUM = FALSE,
+         LAB = "Percentage of ecosystem types",
+         SAVE = "test-fig")
 
 ```
 
@@ -201,16 +201,19 @@ library(nbaR)
 #| tbl-cap: "Ecosystem threat status of terrestrial ecosystem types." 
 #| classes: plain
 
-# library(gt)
+library(gt)
 # source("gt_theme_nba.R")
 
-# tbl_dat <- dat %>% 
-#             select(ecosystem, biome, threat_status) %>% 
+# tbl_dat <- dat %>%
+#             select(ecosystem, biome, threat_status) %>%
 #             arrange(biome, ecosystem)
 # 
 # colnames(tbl_dat) <- c("Ecosystem", "Biome", "Threat status")
 # 
 # gt(tbl_dat) %>% gt_theme_nba()
+
+gt(NBA_example_pro_data) %>% 
+  nba_tbl_theme()
 
 ```
 :::
