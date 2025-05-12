@@ -26,6 +26,10 @@ reference:
   contents:
   - nba_map
 
+- title: Quarto functions
+  contents:
+  - nba_init_quarto_docs
+
 - title: Built in datasets
   contents:
   - NBA_example_thr_data

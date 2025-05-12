@@ -48,7 +48,7 @@ In this tutorial, you will learn how to make the plots, tables, and maps used in
 
 -   How to make a basic table that will render to html format with `nba_tbl()`
 
--   How to make a basic table where the cells with categories of threat status, protection level, condition etc are coloured according to the NBA standards with `nba_tbl_col()`
+-   How to make a basic table where the cells with categories of threat status, protection level, condition etc are coloured according to the NBA standards with `nba_tbl_colr()`
 
 -   How to make add the a custom NBA theme to any table made with `gt()` using `nba_tbl_theme()`
 
