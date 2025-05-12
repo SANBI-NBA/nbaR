@@ -295,7 +295,7 @@ nba_plot <- function(DF, GROUPS, COLS, CHRT = c("bar", "donut"), NUM = FALSE, LA
 
   if (!is.null(SAVE)) {
 
-    ggsave(paste0("outputs/", SAVE, ".png"), height = 10, width = 16, units = 'cm', dpi = 300)
+    ggsave(paste0("outputs/", SAVE, ".png"), height = 10, width = 16, units = 'cm', dpi = 300, create.dir = TRUE)
 
     }
 
@@ -383,7 +383,7 @@ else {
 
   if (!is.null(SAVE)) {
 
-    ggsave(paste0("outputs/", SAVE, ".png"), height = 10, width = 16, units = 'cm', dpi = 300)
+    ggsave(paste0("outputs/", SAVE, ".png"), height = 10, width = 16, units = 'cm', dpi = 300, create.dir = TRUE)
 
   }
   RLI
@@ -490,7 +490,7 @@ nba_plot_comb <- function(DF,
 
   if (!is.null(SAVE)) {
 
-    ggplot2::ggsave(paste0("outputs/", SAVE, ".png"), height = 10, width = 16, units = 'cm', bg="white" , dpi = 300)
+    ggplot2::ggsave(paste0("outputs/", SAVE, ".png"), height = 10, width = 16, units = 'cm', bg="white" , dpi = 300, create.dir = TRUE)
 
   }
 
@@ -675,7 +675,7 @@ nba_plot_bubble <- function(DF, GROUP, CAT, SUB_CAT, VALUE, SAVE = NULL){
 
   if(!is.null(SAVE)){
 
-    ggplot2::ggsave(paste0("outputs/", SAVE, ".png"), plot = p, height = 10, width = 16, units = 'cm', dpi = 300)
+    ggplot2::ggsave(paste0("outputs/", SAVE, ".png"), plot = p, height = 10, width = 16, units = 'cm', dpi = 300, create.dir = TRUE)
 
 
   }
