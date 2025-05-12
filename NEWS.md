@@ -1,3 +1,6 @@
+# nbaR 2.1.0
+Added a new function
+
 # nbaR 2.0.0
 Changed package name
 
