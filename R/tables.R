@@ -163,13 +163,13 @@ nba_tbl_colr <- function(DF, COL) {
     "Ecologically Sensitive Areas" = rgb(168, 168, 0, maxColorValue = 255),
 
     # Built up areas
-    "Cropland"= rgb(0, 0, 0, maxColorValue = 255),
-    "Plantation"= rgb(0, 0, 0, maxColorValue = 255),
-    "Built up"= rgb(0, 0, 0, maxColorValue = 255),
-    "Mine"= rgb(0, 0, 0, maxColorValue = 255),
-    "Artificial waterbody" = rgb(0, 0, 0, maxColorValue = 255)
+    "Cropland"= "#D27D2D",
+    "Plantation"= "#B87336",
+    "Built-up"= "#D3D3D3",
+    "Mine"= "#fcf2cd",
+    "Artificial waterbody" = "#89CFF0",
+    "Artificial water" = "#89CFF0")
 
-  )
 
   color_cell <- function(COL) {
 
@@ -439,6 +439,8 @@ nba_tbl_comb <- function(DF, GROUP, THR, PRO){
     "Built up"= rgb(0, 0, 0, maxColorValue = 255),
     "Mine"= rgb(0, 0, 0, maxColorValue = 255),
     "Artificial waterbody" = rgb(0, 0, 0, maxColorValue = 255)
+
+
 
   )
 
