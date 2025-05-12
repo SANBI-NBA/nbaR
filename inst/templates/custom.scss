@@ -1,0 +1,248 @@
+/*-- scss:defaults --*/
+
+//
+// Color system: This is the yeti theme's colours (with a few sanbi additions)
+//
+
+$white:    #fff !default;
+$gray-100: #f8f9fa !default;
+$gray-200: #eee !default;
+$gray-300: #dee2e6 !default;
+$gray-400: #ccc !default;
+$gray-500: #adb5bd !default;
+$gray-600: #888 !default;
+$gray-700: #495057 !default;
+$gray-800: #333 !default;
+$gray-900: #222 !default;
+$black:    #000 !default;
+
+$freshwater:     #4097C2 !default; //changed to freshwater blue
+$marine:         #02268A !default; //changed to marine blue
+$purple:         #9D85BE !default; //changed to sanbi purple
+$pink:           #e83e8c !default;
+$red:            #f04124 !default; 
+$orange:         #FAA755 !default; //changed to sanbi orange
+$coast:          #DEA004 !default; //changed to coastal yellow
+$green:          #70B276 !default; //changed to sanbi green
+$estuarine:      #028A85 !default; //changed to estuarine teal
+$cyan:           #5bc0de !default;
+$terrestrial:    #617016 !default;
+$threatened:     #C38443 !default;
+$well-protected: #4B6E00 !default;
+$not-protected:  #A6A6A6 !default;
+
+$primary:       $gray-200 !default; //This sets the colour of the topmost navbar (unless you overrule it with navbar-bg)
+$secondary:     $green !default; //SANBI green
+$success:       $green !default;
+$info:          $orange !default;
+$warning:       $purple !default;
+$danger:        $red !default;
+$light:         $gray-100 !default;
+$dark:          $gray-800 !default;
+
+$min-contrast-ratio:   1.9 !default;
+
+// Base document colours
+
+$navbar-bg: $white;
+$navbar-fg: $green;
+$navbar-hl: $gray-500;
+$body-bg: $white;
+$body-color: $gray-900;
+$link-color: $green;
+$link-decoration: none;
+$footer-bg: $gray-500;
+$sidebar-hl: $green;
+
+// Import fonts:
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+// Text settings 
+
+$headings-font-family: "Poppins";
+$headings-font-weight: medium;
+$headings-line-height: 1.4;
+$headings-color: $black;
+$font-weight-base: 300;
+$line-height-base: 1.8;
+
+/*-- scss:rules --*/
+
+strong, b {
+  font-weight: 500; 
+}
+
+// Navbar customization 
+
+.navbar-logo {
+    max-height: 100px;
+    width: auto;
+    padding-right: 4px;
+}
+
+.navbar-title {
+  font-family: "Poppins";
+  font-weight: 600;
+  font-size: 36px;
+}
+
+// Sidebar references customization
+
+.column-margin figcaption,.margin-caption,div.aside,aside,.column-margin {
+    color: #626262;
+    font-size: .8rem;
+    line-height: 1.5;
+}
+
+// Callout customization
+
+.callout {
+  margin-top: 1em;
+  margin-bottom: 1em;  
+  border-radius: .25rem;
+}
+
+.callout.callout-style-default {
+  border-left: solid #7E576B .3rem;
+  border-right: solid 1px #7E576B;
+  border-top: solid 1px #7E576B;
+  border-bottom: solid 1px #7E576B;
+}
+
+.callout .callout-body-container {
+  flex-grow: 1;
+}
+
+
+.callout.callout-style-default .callout-body {
+  font-size: 0.9rem;
+  font-weight: 300;
+}
+
+.callout.callout-titled.callout-style-simple .callout-body {
+  margin-top: 0.2em;
+}
+
+.callout:not(.callout-titled) .callout-body {
+    display: flex;
+}
+
+.callout:not(.no-icon).callout-titled.callout-style-simple .callout-content {
+  padding-left: 1.6em;
+}
+
+.callout.callout-titled .callout-header {
+  padding-top: 0.2em;
+  margin-bottom: -0.2em;
+}
+
+.callout.callout-titled .callout-title  p {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+  
+.callout.callout-titled.callout-style-default .callout-content  p {
+  margin-top: 0.7em;
+}
+
+.callout.callout-style-default  div.callout-title {
+  border-bottom: none;
+  font-weight: 600;
+  opacity: 85%;
+  font-size: 0.9rem;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+}
+
+.callout.callout-style-default div.callout-content {
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+}
+
+.callout.callout-style-default .callout-icon::before {
+  height: 0.9rem;
+  width: 0.9rem;
+  display: inline-block;
+  content: "";
+  background-repeat: no-repeat;
+  background-size: 0.9rem 0.9rem;
+}
+
+.callout-title {
+  display: flex
+}
+  
+.callout-icon::before {
+  margin-top: 1rem;
+  padding-right: .5rem;
+}
+
+.callout.no-icon::before {
+  display: none !important;
+}
+
+.callout.callout-titled .callout-body > .callout-content > :last-child {
+  padding-bottom: 0.5rem;
+  margin-bottom: 0;
+}
+
+.callout.callout-titled .callout-icon::before {
+  margin-top: .5rem;
+  padding-right: .5rem;
+}
+
+.callout:not(.callout-titled) .callout-icon::before {
+  margin-top: 1rem;
+  padding-right: .5rem;
+}
+
+/* Callout Types */
+
+div.callout-note {
+  border-left-color: #7E576B !important;
+}
+
+div.callout-note.callout-style-default .callout-header {
+  background-color: #C7B0BC !important;
+}
+
+
+/* Citation styling */
+
+#quarto-appendix.default {
+    border-top: 1px solid #fff
+}
+
+#quarto-appendix.default .quarto-appendix-citeas {
+    font-size: .9em;
+    padding: 1em;
+    border: solid 1px #fff;
+    margin-bottom: 1em
+}
+
+/* Styling classes for key statistics */
+
+.inline-style-threatened {
+  color:$threatened;
+  font-size: 300%;
+  font-weight: 600;
+}
+
+.inline-style-indicator {
+    font-size: 130%;
+    font-weight: 600;
+}
+
+.inline-style-well-protected {
+  color:$well-protected;
+  font-size: 300%;
+  font-weight: 600;
+}
+
+.inline-style-not-protected {
+  color:$not-protected;
+  font-size: 300%;
+  font-weight: 600;
+}
+
