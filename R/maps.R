@@ -189,12 +189,12 @@ nba_map <- function(DF, COLS = NULL, GEOM, CAP, FILL){
     mutate({{FILL}} := factor({{FILL}}, levels = NBA_categories))
 
 
-  ## plot the 30% protection threshold map
+  ## plot map
   map <- ggplot2::ggplot() +
 
     ggplot2::geom_sf(data = dat,
                      ggplot2::aes(fill = {{FILL}}),
-            color = "grey",
+            color = NA,
             lwd = 0.1) +  # plot protection level and separate each protectipn level category in grey boundaries
 
     ggplot2::scale_fill_manual(values = NBA_colours) +
