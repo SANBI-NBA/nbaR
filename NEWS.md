@@ -1,3 +1,6 @@
+# nbaR 2.1.1
+updated the nba_tbl_comb plot
+
 # nbaR 2.1.0
 Added a new function
 
