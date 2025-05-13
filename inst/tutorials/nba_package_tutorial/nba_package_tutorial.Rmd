@@ -557,9 +557,7 @@ In the below code you can see how an sf map object (that you would have read int
 ```{r nba_tbl_comb_example_data}
 NBA_example_map_data
 
-thr_pro_tbl <- NBA_example_map_data 
 
-thr_pro_tbl
 ```
 
 

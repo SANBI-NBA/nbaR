@@ -129,7 +129,7 @@ species using <code>nba_plot_bubble()</code></p></li>
 <code>nba_tbl()</code></p></li>
 <li><p>How to make a basic table where the cells with categories of
 threat status, protection level, condition etc are coloured according to
-the NBA standards with <code>nba_tbl_col()</code></p></li>
+the NBA standards with <code>nba_tbl_colr()</code></p></li>
 <li><p>How to make add the a custom NBA theme to any table made with
 <code>gt()</code> using <code>nba_tbl_theme()</code></p></li>
 <li><p>How to make a table that cross-references the number of
@@ -140,7 +140,7 @@ condition etc of ecosystems using <code>nba_map()</code></p></li>
 </ul>
 <p>For more information on the package or any of the function please
 refer to it’s <a
-href="https://sanbi-nba.github.io/NBA.package/">website</a></p>
+href="https://sanbi-nba.github.io/nbaR/">website</a></p>
 <div id="section-setup" class="section level3">
 <h3>Setup</h3>
 <p>To practice these skills, we will use several datasets pre set in the
@@ -149,7 +149,7 @@ you to test out the functions and help provide examples of how data
 should be formatted before reading into r.</p>
 <p>I’ve preloaded the packages for this tutorial with</p>
 <pre class="r"><code>library(tidyverse) 
-library(NBA.package)</code></pre>
+library(nbaR)</code></pre>
 </div>
 </div>
 <div id="section-create-plots-for-use-in-the-nba"
@@ -647,9 +647,9 @@ tbl</code></pre>
 </div>
 <div id="section-exercise-5" class="section level3">
 <h3>Exercise 5</h3>
-<p>Can you create a quarto document, load NBA.package, run the table
-function on some data in a code chunk and knit it to an html format to
-see what the table will look like on a website?</p>
+<p>Can you create a quarto document, load nbaR, run the table function
+on some data in a code chunk and knit it to an html format to see what
+the table will look like on a website?</p>
 </div>
 <div id="section-tables-with-cells-coloured-according-to-their-values"
 class="section level3">
@@ -710,35 +710,25 @@ class="section level3">
 <p><em><code>nba_tbl_comb()</code></em></p>
 <p>A function to style a table with threat status on the horizontal rows
 and protection level on the vertical columns, with number of ecosystems
-or taxa that share those categories in the cells, with total and
-percentage çolumns added.</p>
+or taxa that share those categories in the cells, with total çolumns
+added.</p>
 <p>For this data I have taken the marine pelagic ecosystem map (which is
 currently a GeoPackage, which we now use instead of shapefiles). To
 create this table from a map of ecosystems, you just need to have the
 threat status and protection level of the ecosystems as
 fields/attributes in your map shp/gpkg file and to remove the polygons
-from the dataset.</p>
+from the dataset. ALternatively you can make a csv/ excel file of your
+protection level of threatened ecosystems and just read that into r.</p>
 <p>We use the <strong>sf</strong> package for all our spatial analysis
 with vectors and I highly recommend you do to, it allows you to treat a
 spatial object like a normal dataframe which makes your life incredibly
 easy.</p>
-<p>In the below code you can see how you would take an sf map object
-(that you would have read into R), and remove the polygons to prepare
-the dataset to be made into a table.You can also see below how the data
-now looks and think about its structure.</p>
+<p>In the below code you can see how an sf map object (that you would
+have read into R) would look like and think about its structure.</p>
 <pre class="r"><code>NBA_example_map_data</code></pre>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["P_EcosysType"],"name":[1],"type":["chr"],"align":["left"]},{"label":["geometry"],"name":[2],"type":["s_GEOMET"],"align":["right"]},{"label":["protection_level"],"name":[3],"type":["chr"],"align":["left"]},{"label":["threat_status"],"name":[4],"type":["chr"],"align":["left"]}],"data":[{"1":"Agulhas Retroflection and South Ocean Transitional Water","2":"<s_GEOMET>","3":"Well Protected","4":"Critically Endangered","_rn_":"1"},{"1":"Cold Southeast Atlantic Water","2":"<s_GEOMET>","3":"Well Protected","4":"Endangered","_rn_":"2"},{"1":"Indian Ocean Frontal Margin Water","2":"<s_GEOMET>","3":"Moderately Protected","4":"Vulnerable","_rn_":"3"},{"1":"Indian Ocean Frontal Water","2":"<s_GEOMET>","3":"Moderately Protected","4":"Near Threatened","_rn_":"4"},{"1":"South Atlantic Productive Margin Water","2":"<s_GEOMET>","3":"Poorly Protected","4":"Least Concern","_rn_":"5"},{"1":"South Atlantic-Benguela Transitional Waters","2":"<s_GEOMET>","3":"Well Protected","4":"Vulnerable","_rn_":"6"},{"1":"Stable Agulhas Current Water","2":"<s_GEOMET>","3":"Moderately Protected","4":"Critically Endangered","_rn_":"7"},{"1":"Stable Indian Ocean Water","2":"<s_GEOMET>","3":"Poorly Protected","4":"Critically Endangered","_rn_":"8"},{"1":"Stable Southeast Atlantic Water","2":"<s_GEOMET>","3":"Poorly Protected","4":"Endangered","_rn_":"9"},{"1":"Upwelled Agulhas Current Margin Water","2":"<s_GEOMET>","3":"Not Protected","4":"Vulnerable","_rn_":"10"},{"1":"Variable Agulhas current core","2":"<s_GEOMET>","3":"Moderately Protected","4":"Least Concern","_rn_":"11"},{"1":"Variable Indo-Atlantic Water","2":"<s_GEOMET>","3":"Well Protected","4":"Least Concern","_rn_":"12"},{"1":"Warm Stable Indian Ocean Water","2":"<s_GEOMET>","3":"Well Protected","4":"Near Threatened","_rn_":"13"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
-</div>
-<pre class="r"><code>thr_pro_tbl &lt;- NBA_example_map_data |&gt; #these are base r pipes as comapred to the %&gt;% tidy pipes
-sf::st_drop_geometry() 
-
-thr_pro_tbl</code></pre>
-<div data-pagedtable="false">
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["P_EcosysType"],"name":[1],"type":["chr"],"align":["left"]},{"label":["protection_level"],"name":[2],"type":["chr"],"align":["left"]},{"label":["threat_status"],"name":[3],"type":["chr"],"align":["left"]}],"data":[{"1":"Agulhas Retroflection and South Ocean Transitional Water","2":"Well Protected","3":"Critically Endangered","_rn_":"1"},{"1":"Cold Southeast Atlantic Water","2":"Well Protected","3":"Endangered","_rn_":"2"},{"1":"Indian Ocean Frontal Margin Water","2":"Moderately Protected","3":"Vulnerable","_rn_":"3"},{"1":"Indian Ocean Frontal Water","2":"Moderately Protected","3":"Near Threatened","_rn_":"4"},{"1":"South Atlantic Productive Margin Water","2":"Poorly Protected","3":"Least Concern","_rn_":"5"},{"1":"South Atlantic-Benguela Transitional Waters","2":"Well Protected","3":"Vulnerable","_rn_":"6"},{"1":"Stable Agulhas Current Water","2":"Moderately Protected","3":"Critically Endangered","_rn_":"7"},{"1":"Stable Indian Ocean Water","2":"Poorly Protected","3":"Critically Endangered","_rn_":"8"},{"1":"Stable Southeast Atlantic Water","2":"Poorly Protected","3":"Endangered","_rn_":"9"},{"1":"Upwelled Agulhas Current Margin Water","2":"Not Protected","3":"Vulnerable","_rn_":"10"},{"1":"Variable Agulhas current core","2":"Moderately Protected","3":"Least Concern","_rn_":"11"},{"1":"Variable Indo-Atlantic Water","2":"Well Protected","3":"Least Concern","_rn_":"12"},{"1":"Warm Stable Indian Ocean Water","2":"Well Protected","3":"Near Threatened","_rn_":"13"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 <p>For the function you just need:</p>
@@ -750,11 +740,17 @@ or taxa names are stored</p></li>
 status of the ecosystems/ taxa are stored</p></li>
 <li><p><strong>PRO</strong> The name of the column where the protection
 level of the ecosystems/ taxa are stored</p></li>
+<li><p><strong>FILE</strong> States if you inital DF file is a spatial
+file, or a csv by stating FILE = “spatial” or file = “csv”</p></li>
 </ol>
 <p><strong>NB TO NOTE</strong> The threat status and protection level
 categories must again match the spelling and conventions in the
 <code>NBA_colours</code> and <code>NBA_categories</code> lists for the
 colours to map correctly.</p>
+<p>Also if you start from a spatial file you will need to add the DF,
+GROUP, THR, and PRO, and FILE arguments, but if you have already
+fromatted the data and read it in from a csv then you just need to
+provide the DF, THR and FILE arguments.</p>
 </div>
 <div id="section-excercise-7" class="section level3">
 <h3>Excercise 7</h3>
@@ -770,11 +766,11 @@ data-lines="0" data-pipe="|&gt;">
 data-label="nba_tbl_combex4-solution" data-completion="1"
 data-diagnostics="1" data-startover="1" data-lines="0"
 data-pipe="|&gt;">
-<pre class="text"><code>thr_pro_tbl &lt;- NBA_example_map_data |&gt; #these are base r pipes as comapred to the %&gt;% tidy pipes
-sf::st_drop_geometry() |&gt;
+<pre class="text"><code>thr_pro_tbl &lt;- NBA_example_map_data 
 nba_tbl_comb(GROUP = P_EcosysType,
 THR = threat_status,
-PRO = protection_level)
+PRO = protection_level, 
+FILE = &quot;spatial&quot;)
 
 thr_pro_tbl</code></pre>
 </div>
@@ -806,23 +802,23 @@ basic gt table from one of the example datasets.</p>
   gt::gt() 
 
 gt_tbl</code></pre>
-<div id="vqcrraojxp" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#vqcrraojxp table {
+<div id="hkrvjfqqfx" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#hkrvjfqqfx table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#vqcrraojxp thead, #vqcrraojxp tbody, #vqcrraojxp tfoot, #vqcrraojxp tr, #vqcrraojxp td, #vqcrraojxp th {
+#hkrvjfqqfx thead, #hkrvjfqqfx tbody, #hkrvjfqqfx tfoot, #hkrvjfqqfx tr, #hkrvjfqqfx td, #hkrvjfqqfx th {
   border-style: none;
 }
 
-#vqcrraojxp p {
+#hkrvjfqqfx p {
   margin: 0;
   padding: 0;
 }
 
-#vqcrraojxp .gt_table {
+#hkrvjfqqfx .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -848,12 +844,12 @@ gt_tbl</code></pre>
   border-left-color: #D3D3D3;
 }
 
-#vqcrraojxp .gt_caption {
+#hkrvjfqqfx .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#vqcrraojxp .gt_title {
+#hkrvjfqqfx .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -865,7 +861,7 @@ gt_tbl</code></pre>
   border-bottom-width: 0;
 }
 
-#vqcrraojxp .gt_subtitle {
+#hkrvjfqqfx .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -877,7 +873,7 @@ gt_tbl</code></pre>
   border-top-width: 0;
 }
 
-#vqcrraojxp .gt_heading {
+#hkrvjfqqfx .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -889,13 +885,13 @@ gt_tbl</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#vqcrraojxp .gt_bottom_border {
+#hkrvjfqqfx .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#vqcrraojxp .gt_col_headings {
+#hkrvjfqqfx .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -910,7 +906,7 @@ gt_tbl</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#vqcrraojxp .gt_col_heading {
+#hkrvjfqqfx .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -930,7 +926,7 @@ gt_tbl</code></pre>
   overflow-x: hidden;
 }
 
-#vqcrraojxp .gt_column_spanner_outer {
+#hkrvjfqqfx .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -942,15 +938,15 @@ gt_tbl</code></pre>
   padding-right: 4px;
 }
 
-#vqcrraojxp .gt_column_spanner_outer:first-child {
+#hkrvjfqqfx .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#vqcrraojxp .gt_column_spanner_outer:last-child {
+#hkrvjfqqfx .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#vqcrraojxp .gt_column_spanner {
+#hkrvjfqqfx .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -962,11 +958,11 @@ gt_tbl</code></pre>
   width: 100%;
 }
 
-#vqcrraojxp .gt_spanner_row {
+#hkrvjfqqfx .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#vqcrraojxp .gt_group_heading {
+#hkrvjfqqfx .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -992,7 +988,7 @@ gt_tbl</code></pre>
   text-align: left;
 }
 
-#vqcrraojxp .gt_empty_group_heading {
+#hkrvjfqqfx .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1007,15 +1003,15 @@ gt_tbl</code></pre>
   vertical-align: middle;
 }
 
-#vqcrraojxp .gt_from_md > :first-child {
+#hkrvjfqqfx .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#vqcrraojxp .gt_from_md > :last-child {
+#hkrvjfqqfx .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#vqcrraojxp .gt_row {
+#hkrvjfqqfx .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1034,7 +1030,7 @@ gt_tbl</code></pre>
   overflow-x: hidden;
 }
 
-#vqcrraojxp .gt_stub {
+#hkrvjfqqfx .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1047,7 +1043,7 @@ gt_tbl</code></pre>
   padding-right: 5px;
 }
 
-#vqcrraojxp .gt_stub_row_group {
+#hkrvjfqqfx .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1061,15 +1057,15 @@ gt_tbl</code></pre>
   vertical-align: top;
 }
 
-#vqcrraojxp .gt_row_group_first td {
+#hkrvjfqqfx .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#vqcrraojxp .gt_row_group_first th {
+#hkrvjfqqfx .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#vqcrraojxp .gt_summary_row {
+#hkrvjfqqfx .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1079,16 +1075,16 @@ gt_tbl</code></pre>
   padding-right: 5px;
 }
 
-#vqcrraojxp .gt_first_summary_row {
+#hkrvjfqqfx .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#vqcrraojxp .gt_first_summary_row.thick {
+#hkrvjfqqfx .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#vqcrraojxp .gt_last_summary_row {
+#hkrvjfqqfx .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1098,7 +1094,7 @@ gt_tbl</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#vqcrraojxp .gt_grand_summary_row {
+#hkrvjfqqfx .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1108,7 +1104,7 @@ gt_tbl</code></pre>
   padding-right: 5px;
 }
 
-#vqcrraojxp .gt_first_grand_summary_row {
+#hkrvjfqqfx .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1118,7 +1114,7 @@ gt_tbl</code></pre>
   border-top-color: #D3D3D3;
 }
 
-#vqcrraojxp .gt_last_grand_summary_row_top {
+#hkrvjfqqfx .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1128,11 +1124,11 @@ gt_tbl</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#vqcrraojxp .gt_striped {
+#hkrvjfqqfx .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#vqcrraojxp .gt_table_body {
+#hkrvjfqqfx .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1141,7 +1137,7 @@ gt_tbl</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#vqcrraojxp .gt_footnotes {
+#hkrvjfqqfx .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1155,7 +1151,7 @@ gt_tbl</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#vqcrraojxp .gt_footnote {
+#hkrvjfqqfx .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1164,7 +1160,7 @@ gt_tbl</code></pre>
   padding-right: 5px;
 }
 
-#vqcrraojxp .gt_sourcenotes {
+#hkrvjfqqfx .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1178,7 +1174,7 @@ gt_tbl</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#vqcrraojxp .gt_sourcenote {
+#hkrvjfqqfx .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1186,72 +1182,72 @@ gt_tbl</code></pre>
   padding-right: 5px;
 }
 
-#vqcrraojxp .gt_left {
+#hkrvjfqqfx .gt_left {
   text-align: left;
 }
 
-#vqcrraojxp .gt_center {
+#hkrvjfqqfx .gt_center {
   text-align: center;
 }
 
-#vqcrraojxp .gt_right {
+#hkrvjfqqfx .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#vqcrraojxp .gt_font_normal {
+#hkrvjfqqfx .gt_font_normal {
   font-weight: normal;
 }
 
-#vqcrraojxp .gt_font_bold {
+#hkrvjfqqfx .gt_font_bold {
   font-weight: bold;
 }
 
-#vqcrraojxp .gt_font_italic {
+#hkrvjfqqfx .gt_font_italic {
   font-style: italic;
 }
 
-#vqcrraojxp .gt_super {
+#hkrvjfqqfx .gt_super {
   font-size: 65%;
 }
 
-#vqcrraojxp .gt_footnote_marks {
+#hkrvjfqqfx .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#vqcrraojxp .gt_asterisk {
+#hkrvjfqqfx .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#vqcrraojxp .gt_indent_1 {
+#hkrvjfqqfx .gt_indent_1 {
   text-indent: 5px;
 }
 
-#vqcrraojxp .gt_indent_2 {
+#hkrvjfqqfx .gt_indent_2 {
   text-indent: 10px;
 }
 
-#vqcrraojxp .gt_indent_3 {
+#hkrvjfqqfx .gt_indent_3 {
   text-indent: 15px;
 }
 
-#vqcrraojxp .gt_indent_4 {
+#hkrvjfqqfx .gt_indent_4 {
   text-indent: 20px;
 }
 
-#vqcrraojxp .gt_indent_5 {
+#hkrvjfqqfx .gt_indent_5 {
   text-indent: 25px;
 }
 
-#vqcrraojxp .katex-display {
+#hkrvjfqqfx .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#vqcrraojxp div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#hkrvjfqqfx div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1365,7 +1361,9 @@ others in future. This function is called <code>nba_map()</code>.</p>
 <p>The function creates a basic map of ecosystems coloured by categories
 such as protection level etc.</p>
 <p>Below is an example dataset. To get a map dataset in R you can get by
-reading in a GeoPackage or shapefile using the sf package.</p>
+reading in a GeoPackage or shapefile using the sf package. <strong>NB TO
+NOTE</strong> These protection level and threat status categories are
+completely arbitrary and not real values for these ecosystems.</p>
 <p>The function can take a dataset with either one polygon or
 multipolygon per ecosystem (each row has a unique ecosystem type) or
 multiple rows per ecosystem type. This example dataset has already been
@@ -1437,7 +1435,7 @@ the CAP argument.</p>
 <script type="application/shiny-prerendered" data-context="server-start">
 library(learnr)
 library(tidyverse)
-library(NBA.package)
+library(nbaR)
 
 tutorial_options(
   exercise.timelimit = 60,
@@ -1484,7 +1482,7 @@ output$`tutorial-exercise-nba_plot_example_data-output` <- renderUI({
 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "nba_plot_example_data", global_setup = structure(c("library(learnr)", 
-"library(tidyverse)", "library(NBA.package)", "", "tutorial_options(", 
+"library(tidyverse)", "library(nbaR)", "", "tutorial_options(", 
 "  exercise.timelimit = 60,", "  # A simple checker function that just returns the message in the check chunk", 
 "  exercise.checker = function(check_code, ...) {", "    list(", 
 "      message = eval(parse(text = check_code)),", "      correct = logical(0),", 
@@ -1529,7 +1527,7 @@ output$`tutorial-exercise-nba_plot-output` <- renderUI({
 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "nba_plot", global_setup = structure(c("library(learnr)", 
-"library(tidyverse)", "library(NBA.package)", "", "tutorial_options(", 
+"library(tidyverse)", "library(nbaR)", "", "tutorial_options(", 
 "  exercise.timelimit = 60,", "  # A simple checker function that just returns the message in the check chunk", 
 "  exercise.checker = function(check_code, ...) {", "    list(", 
 "      message = eval(parse(text = check_code)),", "      correct = logical(0),", 
@@ -1579,7 +1577,7 @@ output$`tutorial-exercise-nba_plotex4-output` <- renderUI({
 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "nba_plotex4", global_setup = structure(c("library(learnr)", 
-"library(tidyverse)", "library(NBA.package)", "", "tutorial_options(", 
+"library(tidyverse)", "library(nbaR)", "", "tutorial_options(", 
 "  exercise.timelimit = 60,", "  # A simple checker function that just returns the message in the check chunk", 
 "  exercise.checker = function(check_code, ...) {", "    list(", 
 "      message = eval(parse(text = check_code)),", "      correct = logical(0),", 
@@ -1628,7 +1626,7 @@ output$`tutorial-exercise-nba_plot_comb-output` <- renderUI({
 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "nba_plot_comb", global_setup = structure(c("library(learnr)", 
-"library(tidyverse)", "library(NBA.package)", "", "tutorial_options(", 
+"library(tidyverse)", "library(nbaR)", "", "tutorial_options(", 
 "  exercise.timelimit = 60,", "  # A simple checker function that just returns the message in the check chunk", 
 "  exercise.checker = function(check_code, ...) {", "    list(", 
 "      message = eval(parse(text = check_code)),", "      correct = logical(0),", 
@@ -1680,7 +1678,7 @@ output$`tutorial-exercise-nba_plot_combex4-output` <- renderUI({
 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "nba_plot_combex4", global_setup = structure(c("library(learnr)", 
-"library(tidyverse)", "library(NBA.package)", "", "tutorial_options(", 
+"library(tidyverse)", "library(nbaR)", "", "tutorial_options(", 
 "  exercise.timelimit = 60,", "  # A simple checker function that just returns the message in the check chunk", 
 "  exercise.checker = function(check_code, ...) {", "    list(", 
 "      message = eval(parse(text = check_code)),", "      correct = logical(0),", 
@@ -1731,7 +1729,7 @@ output$`tutorial-exercise-nba_plot_RLIex4-output` <- renderUI({
 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "nba_plot_RLIex4", global_setup = structure(c("library(learnr)", 
-"library(tidyverse)", "library(NBA.package)", "", "tutorial_options(", 
+"library(tidyverse)", "library(nbaR)", "", "tutorial_options(", 
 "  exercise.timelimit = 60,", "  # A simple checker function that just returns the message in the check chunk", 
 "  exercise.checker = function(check_code, ...) {", "    list(", 
 "      message = eval(parse(text = check_code)),", "      correct = logical(0),", 
@@ -1778,7 +1776,7 @@ output$`tutorial-exercise-nba_plot_bubble_example_dataex4-output` <- renderUI({
 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "nba_plot_bubble_example_dataex4", global_setup = structure(c("library(learnr)", 
-"library(tidyverse)", "library(NBA.package)", "", "tutorial_options(", 
+"library(tidyverse)", "library(nbaR)", "", "tutorial_options(", 
 "  exercise.timelimit = 60,", "  # A simple checker function that just returns the message in the check chunk", 
 "  exercise.checker = function(check_code, ...) {", "    list(", 
 "      message = eval(parse(text = check_code)),", "      correct = logical(0),", 
@@ -1825,7 +1823,7 @@ output$`tutorial-exercise-nba_plot_bubbleex4-output` <- renderUI({
 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "nba_plot_bubbleex4", global_setup = structure(c("library(learnr)", 
-"library(tidyverse)", "library(NBA.package)", "", "tutorial_options(", 
+"library(tidyverse)", "library(nbaR)", "", "tutorial_options(", 
 "  exercise.timelimit = 60,", "  # A simple checker function that just returns the message in the check chunk", 
 "  exercise.checker = function(check_code, ...) {", "    list(", 
 "      message = eval(parse(text = check_code)),", "      correct = logical(0),", 
@@ -1875,7 +1873,7 @@ output$`tutorial-exercise-nba_plot_theme_example-output` <- renderUI({
 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "nba_plot_theme_example", global_setup = structure(c("library(learnr)", 
-"library(tidyverse)", "library(NBA.package)", "", "tutorial_options(", 
+"library(tidyverse)", "library(nbaR)", "", "tutorial_options(", 
 "  exercise.timelimit = 60,", "  # A simple checker function that just returns the message in the check chunk", 
 "  exercise.checker = function(check_code, ...) {", "    list(", 
 "      message = eval(parse(text = check_code)),", "      correct = logical(0),", 
@@ -1921,7 +1919,7 @@ output$`tutorial-exercise-nba_plot_themeex4-output` <- renderUI({
 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "nba_plot_themeex4", global_setup = structure(c("library(learnr)", 
-"library(tidyverse)", "library(NBA.package)", "", "tutorial_options(", 
+"library(tidyverse)", "library(nbaR)", "", "tutorial_options(", 
 "  exercise.timelimit = 60,", "  # A simple checker function that just returns the message in the check chunk", 
 "  exercise.checker = function(check_code, ...) {", "    list(", 
 "      message = eval(parse(text = check_code)),", "      correct = logical(0),", 
@@ -1969,7 +1967,7 @@ output$`tutorial-exercise-nba_tbl_example_data-output` <- renderUI({
 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "nba_tbl_example_data", global_setup = structure(c("library(learnr)", 
-"library(tidyverse)", "library(NBA.package)", "", "tutorial_options(", 
+"library(tidyverse)", "library(nbaR)", "", "tutorial_options(", 
 "  exercise.timelimit = 60,", "  # A simple checker function that just returns the message in the check chunk", 
 "  exercise.checker = function(check_code, ...) {", "    list(", 
 "      message = eval(parse(text = check_code)),", "      correct = logical(0),", 
@@ -2013,7 +2011,7 @@ output$`tutorial-exercise-nba_tbl-output` <- renderUI({
 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "nba_tbl", global_setup = structure(c("library(learnr)", 
-"library(tidyverse)", "library(NBA.package)", "", "tutorial_options(", 
+"library(tidyverse)", "library(nbaR)", "", "tutorial_options(", 
 "  exercise.timelimit = 60,", "  # A simple checker function that just returns the message in the check chunk", 
 "  exercise.checker = function(check_code, ...) {", "    list(", 
 "      message = eval(parse(text = check_code)),", "      correct = logical(0),", 
@@ -2059,7 +2057,7 @@ output$`tutorial-exercise-nba_tbl_colrex4-output` <- renderUI({
 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "nba_tbl_colrex4", global_setup = structure(c("library(learnr)", 
-"library(tidyverse)", "library(NBA.package)", "", "tutorial_options(", 
+"library(tidyverse)", "library(nbaR)", "", "tutorial_options(", 
 "  exercise.timelimit = 60,", "  # A simple checker function that just returns the message in the check chunk", 
 "  exercise.checker = function(check_code, ...) {", "    list(", 
 "      message = eval(parse(text = check_code)),", "      correct = logical(0),", 
@@ -2105,7 +2103,7 @@ output$`tutorial-exercise-nba_tbl_combex4-output` <- renderUI({
 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "nba_tbl_combex4", global_setup = structure(c("library(learnr)", 
-"library(tidyverse)", "library(NBA.package)", "", "tutorial_options(", 
+"library(tidyverse)", "library(nbaR)", "", "tutorial_options(", 
 "  exercise.timelimit = 60,", "  # A simple checker function that just returns the message in the check chunk", 
 "  exercise.checker = function(check_code, ...) {", "    list(", 
 "      message = eval(parse(text = check_code)),", "      correct = logical(0),", 
@@ -2115,9 +2113,9 @@ learnr:::store_exercise_cache(structure(list(label = "nba_tbl_combex4", global_s
     list(label = "nba_tbl_combex4", code = "", opts = list(label = "\"nba_tbl_combex4\"", 
         exercise = "TRUE", warning = "FALSE"), engine = "r")), 
     code_check = NULL, error_check = NULL, check = structure("\"Great work! You have mastered nba_tbl_comb!\"", chunk_opts = list(
-        label = "nba_tbl_combex4-check")), solution = structure(c("thr_pro_tbl <- NBA_example_map_data |> #these are base r pipes as comapred to the %>% tidy pipes", 
-    "sf::st_drop_geometry() |>", "nba_tbl_comb(GROUP = P_EcosysType,", 
-    "THR = threat_status,", "PRO = protection_level)", "", "thr_pro_tbl"
+        label = "nba_tbl_combex4-check")), solution = structure(c("thr_pro_tbl <- NBA_example_map_data ", 
+    "nba_tbl_comb(GROUP = P_EcosysType,", "THR = threat_status,", 
+    "PRO = protection_level, ", "FILE = \"spatial\")", "", "thr_pro_tbl"
     ), chunk_opts = list(label = "nba_tbl_combex4-solution")), 
     tests = NULL, options = list(eval = FALSE, echo = TRUE, results = "markup", 
         tidy = FALSE, tidy.opts = NULL, collapse = FALSE, prompt = FALSE, 
@@ -2152,7 +2150,7 @@ output$`tutorial-exercise-nba_tbl_themeex4-output` <- renderUI({
 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "nba_tbl_themeex4", global_setup = structure(c("library(learnr)", 
-"library(tidyverse)", "library(NBA.package)", "", "tutorial_options(", 
+"library(tidyverse)", "library(nbaR)", "", "tutorial_options(", 
 "  exercise.timelimit = 60,", "  # A simple checker function that just returns the message in the check chunk", 
 "  exercise.checker = function(check_code, ...) {", "    list(", 
 "      message = eval(parse(text = check_code)),", "      correct = logical(0),", 
@@ -2198,7 +2196,7 @@ output$`tutorial-exercise-nba_map_example_data-output` <- renderUI({
 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "nba_map_example_data", global_setup = structure(c("library(learnr)", 
-"library(tidyverse)", "library(NBA.package)", "", "tutorial_options(", 
+"library(tidyverse)", "library(nbaR)", "", "tutorial_options(", 
 "  exercise.timelimit = 60,", "  # A simple checker function that just returns the message in the check chunk", 
 "  exercise.checker = function(check_code, ...) {", "    list(", 
 "      message = eval(parse(text = check_code)),", "      correct = logical(0),", 
@@ -2242,7 +2240,7 @@ output$`tutorial-exercise-nba_map-output` <- renderUI({
 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "nba_map", global_setup = structure(c("library(learnr)", 
-"library(tidyverse)", "library(NBA.package)", "", "tutorial_options(", 
+"library(tidyverse)", "library(nbaR)", "", "tutorial_options(", 
 "  exercise.timelimit = 60,", "  # A simple checker function that just returns the message in the check chunk", 
 "  exercise.checker = function(check_code, ...) {", "    list(", 
 "      message = eval(parse(text = check_code)),", "      correct = logical(0),", 
@@ -2290,7 +2288,7 @@ output$`tutorial-exercise-nba_mapex4-output` <- renderUI({
 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "nba_mapex4", global_setup = structure(c("library(learnr)", 
-"library(tidyverse)", "library(NBA.package)", "", "tutorial_options(", 
+"library(tidyverse)", "library(nbaR)", "", "tutorial_options(", 
 "  exercise.timelimit = 60,", "  # A simple checker function that just returns the message in the check chunk", 
 "  exercise.checker = function(check_code, ...) {", "    list(", 
 "      message = eval(parse(text = check_code)),", "      correct = logical(0),", 
@@ -2333,7 +2331,7 @@ learnr:::store_exercise_cache(structure(list(label = "nba_mapex4", global_setup 
 <!--/html_preserve-->
 <!--html_preserve-->
 <script type="application/shiny-prerendered" data-context="execution_dependencies">
-{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["packages"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["packages","version"]},"class":{"type":"character","attributes":{},"value":["data.frame"]},"row.names":{"type":"integer","attributes":{},"value":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93]}},"value":[{"type":"character","attributes":{},"value":["abind","backports","base","broom","bslib","cachem","car","carData","checkmate","class","classInt","cli","compiler","datasets","DBI","dichromat","digest","dplyr","e1071","evaluate","farver","fastmap","fontawesome","forcats","Formula","generics","ggh4x","ggplot2","ggpubr","ggsignif","ggspatial","glue","graphics","grDevices","grid","gt","gtable","hms","htmltools","htmlwidgets","httpuv","jquerylib","jsonlite","kableExtra","KernSmooth","knitr","later","learnr","lifecycle","lubridate","magrittr","methods","mime","NBA.package","pillar","pkgconfig","promises","proxy","purrr","R6","RColorBrewer","Rcpp","readr","rlang","rmarkdown","rprojroot","rstatix","rstudioapi","sass","scales","sf","shiny","stats","stringi","stringr","svglite","systemfonts","tibble","tidyr","tidyselect","tidyverse","timechange","tools","tzdb","units","utils","vctrs","viridisLite","withr","xfun","xml2","xtable","yaml"]},{"type":"character","attributes":{},"value":["1.4-8","1.5.0","4.5.0","1.0.8","0.9.0","1.1.0","3.1-3","3.0-5","2.3.2","7.3-23","0.4-11","3.6.5","4.5.0","4.5.0","1.2.3","2.0-0.1","0.6.37","1.1.4","1.7-16","1.0.3","2.1.2","1.2.0","0.5.3","1.0.0","1.2-5","0.1.3","0.3.0","3.5.2","0.6.0","0.6.4","1.1.9","1.8.0","4.5.0","4.5.0","4.5.0","1.0.0","0.3.6","1.1.3","0.5.8.1","1.6.4","1.6.16","0.1.4","2.0.0","1.4.0","2.23-26","1.50","1.4.2","0.11.5","1.0.4","1.9.4","2.0.3","4.5.0","0.13","1.3.0","1.10.2","2.0.3","1.3.2","0.4-27","1.0.4","2.6.1","1.1-3","1.0.14","2.1.5","1.1.6","2.29","2.0.4","0.7.2","0.17.1","0.4.10","1.4.0","1.0-20","1.10.0","4.5.0","1.8.7","1.5.1","2.1.3","1.2.2","3.2.1","1.3.1","1.2.1","2.0.0","0.3.0","4.5.0","0.5.0","0.8-7","4.5.0","0.6.5","0.4.2","3.0.2","0.52","1.3.8","1.8-4","2.3.10"]}]}]}
+{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["packages"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["packages","version"]},"class":{"type":"character","attributes":{},"value":["data.frame"]},"row.names":{"type":"integer","attributes":{},"value":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93]}},"value":[{"type":"character","attributes":{},"value":["abind","backports","base","broom","bslib","cachem","car","carData","checkmate","class","classInt","cli","compiler","datasets","DBI","dichromat","digest","dplyr","e1071","evaluate","farver","fastmap","fontawesome","forcats","Formula","generics","ggh4x","ggplot2","ggpubr","ggsignif","ggspatial","glue","graphics","grDevices","grid","gt","gtable","hms","htmltools","htmlwidgets","httpuv","jquerylib","jsonlite","kableExtra","KernSmooth","knitr","later","learnr","lifecycle","lubridate","magrittr","methods","mime","nbaR","pillar","pkgconfig","promises","proxy","purrr","R6","RColorBrewer","Rcpp","readr","rlang","rmarkdown","rprojroot","rstatix","rstudioapi","sass","scales","sf","shiny","stats","stringi","stringr","svglite","systemfonts","tibble","tidyr","tidyselect","tidyverse","timechange","tools","tzdb","units","utils","vctrs","viridisLite","withr","xfun","xml2","xtable","yaml"]},{"type":"character","attributes":{},"value":["1.4-8","1.5.0","4.5.0","1.0.8","0.9.0","1.1.0","3.1-3","3.0-5","2.3.2","7.3-23","0.4-11","3.6.5","4.5.0","4.5.0","1.2.3","2.0-0.1","0.6.37","1.1.4","1.7-16","1.0.3","2.1.2","1.2.0","0.5.3","1.0.0","1.2-5","0.1.3","0.3.0","3.5.2","0.6.0","0.6.4","1.1.9","1.8.0","4.5.0","4.5.0","4.5.0","1.0.0","0.3.6","1.1.3","0.5.8.1","1.6.4","1.6.16","0.1.4","2.0.0","1.4.0","2.23-26","1.50","1.4.2","0.11.5","1.0.4","1.9.4","2.0.3","4.5.0","0.13","2.1.1","1.10.2","2.0.3","1.3.2","0.4-27","1.0.4","2.6.1","1.1-3","1.0.14","2.1.5","1.1.6","2.29","2.0.4","0.7.2","0.17.1","0.4.10","1.4.0","1.0-20","1.10.0","4.5.0","1.8.7","1.5.1","2.1.3","1.2.2","3.2.1","1.3.1","1.2.1","2.0.0","0.3.0","4.5.0","0.5.0","0.8-7","4.5.0","0.6.5","0.4.2","3.0.2","0.52","1.3.8","1.8-4","2.3.10"]}]}]}
 </script>
 <!--/html_preserve-->
 </div>
