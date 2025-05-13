@@ -300,10 +300,15 @@ nba_tbl_theme <- function(GT_TBL) {
 #' and protection level on the vertical columns, with number of ecosystems
 #' or taxa that share those categories, with total and percentage çolumns added
 #'
+#' This function is special because if you start from a spatial file you will need
+#'  to add the group, thr and pro, and file arguments, but if you start from a
+#'   dataframe (csv) you only need the DF, thr, and file arguments.
+#'
 #' @param DF The data frame that contains the data
 #' @param GROUP The column that contains the name of the variable (the ecosystems or taxa names)
 #' @param THR The column name of the threat statuses
 #' @param PRO The column name of the protection levels
+#' @param FILE An indication if the input file is a map (spatial file with a geom column) or a csv/ normal dataframe. If it is a normal dataframe the data must already be in the correct format as the function only formats data in a spatial file.
 #'
 #' @importFrom dplyr distinct
 #' @importFrom dplyr mutate
@@ -326,10 +331,10 @@ nba_tbl_theme <- function(GT_TBL) {
 #'@examples
 #'
 #'thr_pro_tbl <- NBA_example_map_data |>
-#'sf::st_drop_geometry() |>
 #'nba_tbl_comb(GROUP = P_EcosysType,
 #'THR = threat_status,
-#'PRO = protection_level)
+#'PRO = protection_level,
+#'FILE = "spatial")
 #'
 #'thr_pro_tbl
 #'
@@ -337,170 +342,84 @@ nba_tbl_theme <- function(GT_TBL) {
 #'
 #'
 
-nba_tbl_comb <- function(DF, GROUP, THR, PRO){
 
+nba_tbl_comb <- function(DF, GROUP, THR, PRO, FILE = c("spatial", "csv")){
+  ###make a table of protection level of threatened ecosystems
+  ### define the levels and color of threat status and protection level categories
 
-  NBA_categories <-c("Natural",
-                     "Natural/near-natural",
-                     "Near-natural",
-                     "Moderately modified",
-                     "Heavily modified",
-                     "Severely/critically modified",
-                     "Well Protected",
-                     "Moderately Protected",
-                     "Poorly Protected",
-                     "No Protection",
-                     "Not Protected",
-                     "Extinct",
-                     "Critically Endangered",
-                     "Endangered",
-                     "Vulnerable",
-                     "Near Threatened",
-                     "Data Deficient",
-                     "Rare",
-                     "Least Concern",
-                     "Cropland",
-                     "Plantation",
-                     "Built up",
-                     "Mine",
-                     "Artificial waterbody")
+  ## define color mapping for threat statuses for use in the table display
+  threat_color_mapping <- c("Critically Endangered" = "#e9302c",
+                            "Endangered" = "#f97835",
+                            "Vulnerable" = "#fff02a")
 
-  NBA_colours <- c(
-
-    ##Threat status
-    "Critically Endangered" = rgb(216, 30, 5, maxColorValue = 255),
-    "Endangered" = rgb(252, 127, 63, maxColorValue = 255),
-    "Vulnerable" = rgb(249, 232, 20, maxColorValue = 255),
-    "Near Threatened" = rgb(204, 226, 38, maxColorValue = 255),
-    "Least Concern" = rgb(180, 215, 158, maxColorValue = 255),
-    "Data Deficient" = rgb(209, 209, 198, maxColorValue = 255),
-    "Rare" = rgb(193, 181, 165, maxColorValue = 255),
-    "Extinct" = rgb(0, 0, 0, maxColorValue = 255),
-    "Extinct in the Wild" = rgb(84, 35, 68, maxColorValue = 255),
-
-    #Protection level
-    "Not Protected" = rgb(166, 166, 166, maxColorValue = 255),
-    "Poorly Protected" = rgb(213, 222, 196, maxColorValue = 255),
-    "Moderately Protected" = rgb(132, 171, 92, maxColorValue = 255),
-    "Well Protected" = rgb(75, 110, 0, maxColorValue = 255),
-
-    #Pressures
-    "Low" = rgb(223, 220, 199, maxColorValue = 255),
-    "Medium" = rgb(175, 168, 117, maxColorValue = 255),
-    "High" = rgb(122, 116, 70, maxColorValue = 255),
-    "Very high" = rgb(88, 82, 50, maxColorValue = 255),
-
-
-    "No threats" = rgb(48, 30, 6, maxColorValue = 255),
-    "Pollution" = rgb(97, 65, 56, maxColorValue = 255),
-    "Transportation & service corridors" = rgb(99, 76, 39, maxColorValue = 255),
-    "Agriculture" = rgb(133, 76, 13, maxColorValue = 255),
-    "Agriculture and aquaculture" = rgb(133, 76, 13, maxColorValue = 255),
-    "Geological events" = rgb(153, 102, 0, maxColorValue = 255),
-    "Biological resource use" = rgb(180, 121, 42, maxColorValue = 255),
-    "Other threats" = rgb(231, 160, 54, maxColorValue = 255),
-    "Human intrusions & disturbance" = rgb(159, 134, 9, maxColorValue = 255),
-    "Human intrusions and disturbance" = rgb(159, 134, 9, maxColorValue = 255),
-    "Climate change" = rgb(178, 149, 78, maxColorValue = 255),
-    "Climate change & severe weather" = rgb(178, 149, 78, maxColorValue = 255),
-    "Energy production & mining" = rgb(122, 116, 70, maxColorValue = 255),
-    "Energy production and mining" = rgb(122, 116, 70, maxColorValue = 255),
-    "Natural system modifications" = rgb(88, 82, 50, maxColorValue = 255),
-    "Invasive and other problematic species, genes & diseases" = rgb(61, 69, 64, maxColorValue = 255),
-    "Invasive and other problamatic species, genes and diseases" = rgb(61, 69, 64, maxColorValue = 255),
-    "Residential & commercial development" = rgb(128, 128, 128, maxColorValue = 255),
-
-
-    # Condition
-    "Natural" = rgb(110, 159, 212, maxColorValue = 255),
-    "Natural / near natural" = rgb(110, 159, 212, maxColorValue = 255),
-    "Near natural" = rgb(110, 159, 212, maxColorValue = 255),
-    "Moderately modified" = rgb(165, 197, 199, maxColorValue = 255),
-    "Heavily / intensively modified" = rgb(129, 171, 167, maxColorValue = 255),
-    "Permanently / irreversibly modified" = rgb(136, 129, 78, maxColorValue = 255),
-
-
-    # Responses
-    "No response" = rgb(91, 66, 114, maxColorValue = 255),
-    "Some kind of response" = rgb(100, 103, 130, maxColorValue = 255),
-    "Gazetted" = rgb(117, 164, 179, maxColorValue = 255),
-    "Signed off" = rgb(117, 164, 179, maxColorValue = 255),
-
-
-    # Priority areas
-    "Land-based Protected Areas" = rgb(0, 60, 0, maxColorValue = 255),
-    "Marine Protected Areas" = rgb(0, 38, 115, maxColorValue = 255),
-    "Critical Biodiversity Areas" = rgb(67, 128, 0, maxColorValue = 255),
-    "Ecologically Sensitive Areas" = rgb(168, 168, 0, maxColorValue = 255),
-
-    # Built up areas
-    "Cropland"= rgb(0, 0, 0, maxColorValue = 255),
-    "Plantation"= rgb(0, 0, 0, maxColorValue = 255),
-    "Built up"= rgb(0, 0, 0, maxColorValue = 255),
-    "Mine"= rgb(0, 0, 0, maxColorValue = 255),
-    "Artificial waterbody" = rgb(0, 0, 0, maxColorValue = 255)
-
-
-
-  )
 
   ## specify the order for threat statuses and protection levels for consistent ordering
   threat_order <- c("Critically Endangered", "Endangered", "Vulnerable", "Near Threatened", "Least Concern")
   protection_order <- c("Not Protected", "Poorly Protected", "Moderately Protected", "Well Protected")
 
+  ############################################
+
+  if(FILE == "spatial"){
+
+    summary_table <- DF %>%
+      sf::st_drop_geometry() %>%
+      dplyr::distinct({{GROUP}}, {{THR}}, {{PRO}}) %>%
+      dplyr::mutate(
+        ## set factor levels for threat status based on the defined order
+        {{THR}} := factor({{THR}}, levels = threat_order)
+      )%>%
+      ## Group by threat status and protection level
+      dplyr::group_by({{THR}}, {{PRO}}) %>%
+      ## count the occurrences within each group
+      dplyr::summarise(Count = dplyr::n(), .groups = 'drop') %>%
+      ## convert from long to wide format, filling missing values with zero
+      tidyr::pivot_wider(names_from = {{PRO}}, values_from = Count, values_fill = list(Count = 0)) %>%
+      ## calculate a total count for each row
+      dplyr::mutate(Total = rowSums(dplyr::select(., -c({{THR}})), na.rm = TRUE)) %>%
+      dplyr::arrange({{THR}})
 
 
+    ## calculate total count for each column and add a total row
+    total_row <- summary_table %>%
+      dplyr::summarise(across(-c({{THR}}), \(x) sum(x, na.rm = TRUE))) %>%
+      dplyr::mutate({{THR}} := "Total (n)")
 
-  summary_table <- DF %>%
-    dplyr::distinct({{GROUP}}, {{THR}}, {{PRO}}) %>%
-    dplyr::mutate(
-      ## set factor levels for threat status based on the defined order
-      {{THR}} := factor({{THR}}, levels = threat_order)
-    )%>%
-    ## Group by threat status and protection level
-    dplyr::group_by({{THR}}, {{PRO}}) %>%
-    ## count the occurrences within each group
-    dplyr::summarise(Count = dplyr::n(), .groups = 'drop') %>%
-    ## convert from long to wide format, filling missing values with zero
-    tidyr::pivot_wider(names_from = {{PRO}}, values_from = Count, values_fill = list(Count = 0)) %>%
-    ## calculate a total count for each row
-    dplyr::mutate(Total = rowSums(dplyr::select(., -c({{THR}})), na.rm = TRUE)) %>%
-    dplyr::arrange({{THR}})
+    # ##calculate number of ecosystems
+    # eco_num <- DF %>%
+    #   dplyr::distinct({{GROUP}}) %>%
+    #   dplyr::count() %>%
+    #   as.data.frame()
+    #
+    # eco_num <- eco_num[,1]
+    #
+    # ## calculate the percentage
+    # percentage_row <- total_row %>%
+    #   dplyr::mutate(dplyr::across(-{{THR}}, ~ (.x/eco_num) * 100))%>%  ## calculate percentage for each column
+    #   dplyr::mutate({{THR}} := "Percentage (%)")  ## set the row name as "Percentage %"
 
+    ## combine summary, total
+    final_table <- dplyr::bind_rows(summary_table, total_row)
 
-  ## calculate total count for each column and add a total row
-  total_row <- summary_table %>%
-    dplyr::summarise(across(-c({{THR}}), \(x) sum(x, na.rm = TRUE))) %>%
-    dplyr::mutate({{THR}} := "Total (n)")
+    var <- deparse(substitute(THR))
 
-  ##calculate number of ecosystems
-  eco_num <- DF %>%
-    dplyr::distinct({{GROUP}}) %>%
-    dplyr::count() %>%
-    as.data.frame()
+    ## identify columns to round (exclude total and threat status columns)
+    count_columns <- setdiff(names(final_table), c(var, "Total"))
 
-  eco_num <- eco_num[,1]
+    ## round counts to 0 decimal places for cleaner display
+    final_table <- final_table %>%
+      dplyr::mutate(dplyr::across(tidyselect::all_of(count_columns), round, 0))
 
-  ## calculate the percentage
-  percentage_row <- total_row %>%
-    dplyr::mutate(dplyr::across(-{{THR}}, ~ (.x/eco_num) * 100))%>%  ## calculate percentage for each column
-    dplyr::mutate({{THR}} := "Percentage (%)")  ## set the row name as "Percentage %"
+    ## reorder protection level columns based on predefined order
+    final_table <- final_table %>%
+      dplyr::select({{THR}}, tidyselect::all_of(protection_order), Total)
+  }
 
-  ## combine summary, total, and percentage rows
-  final_table <- dplyr::bind_rows(summary_table, total_row, percentage_row)
+  else{
 
-  var <- deparse(substitute(THR))
+    final_table <- DF
 
-  ## identify columns to round (exclude total and threat status columns)
-  count_columns <- setdiff(names(final_table), c(var, "Total"))
+  }
 
-  ## round counts to 0 decimal places for cleaner display
-  final_table <- final_table %>%
-    dplyr::mutate(dplyr::across(tidyselect::all_of(count_columns), round, 0))
-
-  ## reorder protection level columns based on predefined order
-  final_table <- final_table %>%
-    dplyr::select({{THR}}, tidyselect::all_of(protection_order), Total)
 
   ######################################################################################
   ### use the function to produce the correct table
@@ -519,58 +438,50 @@ nba_tbl_comb <- function(DF, GROUP, THR, PRO){
              extra_css = "border-top: 2px solid black; border-bottom: 2px solid black; text-align: left; font-weight: normal;") %>%
     ## set general column styling (no borders, white background)
     kableExtra::column_spec(1:ncol(final_table), border_left = FALSE, border_right = FALSE, background = "white") %>%
-    ## grey out and add borders for the Total row
-    kableExtra::row_spec(nrow(final_table) - 1, background = "lightgrey", color = "black",
-             extra_css = "border-top: 2px solid black; border-bottom: 2px solid black") %>%
-    ## grey out and add borders for the Percentage row
+    # ## grey out and add borders for the Total row and make bold
+    # row_spec(nrow(final_table) - 1, background = "lightgrey", color = "black",
+    #          extra_css = "border-top: 2px solid black; border-bottom: 2px solid black",
+    #          bold=T,hline_after = T) %>%
+    ## grey out and add borders for the Percentage row and make bold
     kableExtra::row_spec(nrow(final_table), background = "lightgrey", color = "black",
-             extra_css = "border-top: 2px solid black; border-bottom: 2px solid black;")
+             extra_css = "border-top: 2px solid black; border-bottom: 2px solid black;",
+             bold=T,hline_after = T)
 
-  ## rotate the header text to fit and enhance readability
-  tbl_final <- tbl_final %>%
-    kableExtra::row_spec(0, extra_css = "text-align: left; writing-mode: vertical-rl; transform: rotate(180deg); white-space: nowrap; height: 170px;")
+  # ## rotate the header text to fit and enhance readability
+  # tbl_final <- tbl_final %>%
+  #   row_spec(0, extra_css = "text-align: left; writing-mode: vertical-rl; transform: rotate(180deg); white-space: nowrap; height: 170px;")
 
 
   ## apply background colors for threat status rows
   for (i in 1:(nrow(final_table) - 1)) {
     thr_name <- final_table %>%
-      select({{THR}}) %>%
+      dplyr::select({{THR}}) %>%
       dplyr::slice(i) %>%
       as.data.frame()
     thr_name <- thr_name[,1]
-    if (!is.na(thr_name) && thr_name %in% names(NBA_colours)) {
+    if (!is.na(thr_name) && thr_name %in% names(threat_color_mapping)) {
       tbl_final <- tbl_final %>%
-        kableExtra::row_spec(i, background = NBA_colours[thr_name])
+        kableExtra::row_spec(i, background = threat_color_mapping[thr_name])
     }
   }
 
 
-  ## apply background colors for protection level columns
-  for (j in 1:length(protection_order)) {
-    protection_column <-   colnames(final_table)[[j + 1]] ## access each protection level column
-    tbl_final <- tbl_final %>%
-      kableExtra::column_spec(j+1 ,
-                  background = ifelse(protection_column %in% names(NBA_colours),
-                                      NBA_colours[as.character(protection_column)],
-                                      "white"),
-                  include_thead = TRUE,
-                  bold = FALSE)
-  }
+
 
   ## ensure the Total column has no background color
   tbl_final <- tbl_final %>%
-    kableExtra::column_spec(2:ncol(final_table), background = "white")
-
-  ## apply background color to the percentage row
-  tbl_final <- tbl_final %>%
-    kableExtra::row_spec(nrow(final_table), background = "lightgrey")  ## change color for the total row as needed
+    kableExtra::column_spec(1, background = "white")%>%
+    kableExtra::column_spec(ncol(final_table), background = "white")
 
   ## apply background color to the total row
   tbl_final <- tbl_final %>%
-    kableExtra::row_spec(nrow(final_table) - 1, background = "lightgrey")
+    kableExtra::row_spec(nrow(final_table), background = "lightgrey")  ## change color for the total row as needed
+
+  # apply bold to the heading
+  tbl_final <- tbl_final %>%
+    kableExtra::row_spec(0, bold=T,hline_after = T)  ## change color for the total row as needed
+
 
   ## display the final table
   tbl_final ## render the final formatted table
-
-
 }

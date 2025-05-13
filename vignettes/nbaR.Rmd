@@ -215,10 +215,10 @@ gt_tbl
 
 ```{r}
 thr_pro_tbl <- NBA_example_map_data |>
-sf::st_drop_geometry() |>
 nba_tbl_comb(GROUP = P_EcosysType,
 THR = threat_status,
-PRO = protection_level)
+PRO = protection_level, 
+FILE = "spatial")
 
 thr_pro_tbl
 ```
