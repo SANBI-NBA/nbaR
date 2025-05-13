@@ -70,8 +70,13 @@
 </h2>
 <p>You can install the development version of nbaR from <a href="https://github.com/" class="external-link">GitHub</a> with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># install.packages("devtools")</span></span>
+<code class="sourceCode R"><span><span class="co"># if (!require("devtools")) install.packages("devtools")</span></span>
 <span><span class="co">#devtools::install_github("SANBI-NBA/nbaR")</span></span></code></pre></div>
+<p>You can then do a tutorial on the package using:</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">#</span></span>
+<span><span class="co"># if (!require("learnr")) install.packages("learnr")</span></span>
+<span><span class="co"># learnr::run_tutorial("nba_package_tutorial", package = "nbaR")</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a>
