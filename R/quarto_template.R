@@ -8,11 +8,26 @@
 #' @param rename Named character vector to rename files on copy, e.g., c("scientific.qmd" = "index.qmd")
 #'
 #' @return Invisibly returns the paths of copied files.
+#'
+#' @importFrom usethis create_project
+#'
 #' @export
-nba_init_quarto_docs <- function(path = ".",
+nba_init_quarto_docs <- function(path = "MyNewProject",
                                  overwrite = FALSE,
-                                 files = c("scientific.qmd","basic.qmd", "custom.scss", "_quarto.yml"),
+                                 files = c("scientific.qmd","basic.qmd", "custom.scss", "_quarto.yml",
+                                           ".gitignore", "_brand.yml", "annals-of-the-new-york-academy-of-sciences.csl",
+                                           "references.BibTeX", "nba-banner.png",
+                                           "sanbi-logo-small.png", "terrestrial-ecosystems.csv"),
                                  rename = NULL) {
+
+  # Load required package
+  if (!requireNamespace("usethis", quietly = TRUE)) {
+    stop("The 'usethis' package is required. Please install it with install.packages('usethis').")
+  }
+
+  # Create a new RStudio project
+  usethis::create_project(path = path, open = TRUE, rstudio = TRUE)
+
 
   # Template source directory
   template_dir <- system.file("templates", package = "nbaR")
@@ -20,11 +35,34 @@ nba_init_quarto_docs <- function(path = ".",
 
   copied <- character()
 
+  ##Create imgs/ subfolder if not already present
+  imgs_dir <- file.path(path, "imgs")
+  if (!dir.exists(imgs_dir)) {
+    dir.create(imgs_dir, recursive = TRUE)
+    message("Created folder: imgs/")
+  }
+
+  ##Create data/ subfolder if not already present
+  data_dir <- file.path(path, "data")
+  if (!dir.exists(data_dir)) {
+    dir.create(data_dir, recursive = TRUE)
+    message("Created folder: data/")
+  }
+
   for (file in files) {
     source_path <- file.path(template_dir, file)
     if (!file.exists(source_path)) {
-      print(paste("Template file", file, "not found."))
+      warning(paste("Template file", file, "not found."))
       next
+    }
+
+    # Determine file destination
+    if (grepl("\\.png$", file)) {
+      dest_dir <- imgs_dir
+    } else if (grepl("\\.csv$", file)) {
+      dest_dir <- data_dir
+    } else {
+      dest_dir <- path
     }
 
     # Rename if requested
@@ -34,7 +72,7 @@ nba_init_quarto_docs <- function(path = ".",
       file
     }
 
-    target_path <- file.path(path, out_name)
+    target_path <- file.path(dest_dir, out_name)
 
     # Handle existing files
     if (file.exists(target_path) && !overwrite) {
@@ -42,10 +80,14 @@ nba_init_quarto_docs <- function(path = ".",
       next
     }
 
+
     file.copy(source_path, target_path, overwrite = TRUE)
-    print(paste("Copied", file, "to", out_name))
+    print(paste("Copied", out_name, "to", target_path))
     copied <- c(copied, target_path)
   }
 
   invisible(copied)
 }
+
+
+

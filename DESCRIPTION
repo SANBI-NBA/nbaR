@@ -27,7 +27,8 @@ Imports:
     ggspatial,
     gt,
     ggh4x,
-    rsconnect
+    rsconnect,
+    usethis
 Suggests: 
     rmarkdown,
     learnr,

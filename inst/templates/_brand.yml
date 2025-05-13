@@ -1,0 +1,17 @@
+color:
+  palette:
+    sanbi-green: "#70B276"
+    sanbi-orange: "#FAA755"
+    sanbi-purple: "#9D85BE"
+    freshwater: "#4097C2"
+    marine: "#02268A"
+    coast: "#DEA004"
+    estuarine: "#028A85"
+    terrestrial: "#617016"
+    banner-grey: "#A7A9AC"
+    threatened: "#C38443"
+    well-protected: "#4B6E00"
+    not-protected: "#A6A6A6"
+    
+    
+    

@@ -5,9 +5,11 @@
 \title{Create template quarto documents to get an NBA html page up and running}
 \usage{
 nba_init_quarto_docs(
-  path = ".",
+  path = "MyNewProject",
   overwrite = FALSE,
-  files = c("scientific.qmd", "basic.qmd", "custom.scss", "_quarto.yml"),
+  files = c("scientific.qmd", "basic.qmd", "custom.scss", "_quarto.yml", ".gitignore",
+    "_brand.yml", "annals-of-the-new-york-academy-of-sciences.csl", "references.BibTeX",
+    "nba-banner.png", "sanbi-logo-small.png", "terrestrial-ecosystems.csv"),
   rename = NULL
 )
 }
