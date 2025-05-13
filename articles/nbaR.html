@@ -1364,171 +1364,151 @@ Not Protected
 <p><strong>10. Threatened ecosystems protection level table</strong></p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">thr_pro_tbl</span> <span class="op">&lt;-</span> <span class="va">NBA_example_map_data</span> <span class="op">|&gt;</span></span>
-<span><span class="fu">sf</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html" class="external-link">st_drop_geometry</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span><span class="fu"><a href="../reference/NBA_tbl_comb.html">nba_tbl_comb</a></span><span class="op">(</span>GROUP <span class="op">=</span> <span class="va">P_EcosysType</span>,</span>
 <span>THR <span class="op">=</span> <span class="va">threat_status</span>,</span>
-<span>PRO <span class="op">=</span> <span class="va">protection_level</span><span class="op">)</span></span>
+<span>PRO <span class="op">=</span> <span class="va">protection_level</span>, </span>
+<span>FILE <span class="op">=</span> <span class="st">"spatial"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">thr_pro_tbl</span></span></code></pre></div>
 <table class="table table table-striped table-hover" style="font-size: 16px; width: auto !important; margin-left: auto; margin-right: auto;">
 <thead><tr>
-<th style="text-align:left;color: black !important;background-color: lightgrey !important;border-top: 2px solid black; border-bottom: 2px solid black; text-align: left; font-weight: normal;text-align: left; writing-mode: vertical-rl; transform: rotate(180deg); white-space: nowrap; height: 170px;">
+<th style="text-align:left;color: black !important;background-color: lightgrey !important;border-top: 2px solid black; border-bottom: 2px solid black; text-align: left; font-weight: normal;font-weight: bold;">
 </th>
-<th style="text-align:right;color: black !important;background-color: lightgrey !important;border-top: 2px solid black; border-bottom: 2px solid black; text-align: left; font-weight: normal;text-align: left; writing-mode: vertical-rl; transform: rotate(180deg); white-space: nowrap; height: 170px;background-color: rgba(166, 166, 166, 255) !important;">
+<th style="text-align:right;color: black !important;background-color: lightgrey !important;border-top: 2px solid black; border-bottom: 2px solid black; text-align: left; font-weight: normal;font-weight: bold;">
 Not Protected
 </th>
-<th style="text-align:right;color: black !important;background-color: lightgrey !important;border-top: 2px solid black; border-bottom: 2px solid black; text-align: left; font-weight: normal;text-align: left; writing-mode: vertical-rl; transform: rotate(180deg); white-space: nowrap; height: 170px;background-color: rgba(213, 222, 196, 255) !important;">
+<th style="text-align:right;color: black !important;background-color: lightgrey !important;border-top: 2px solid black; border-bottom: 2px solid black; text-align: left; font-weight: normal;font-weight: bold;">
 Poorly Protected
 </th>
-<th style="text-align:right;color: black !important;background-color: lightgrey !important;border-top: 2px solid black; border-bottom: 2px solid black; text-align: left; font-weight: normal;text-align: left; writing-mode: vertical-rl; transform: rotate(180deg); white-space: nowrap; height: 170px;background-color: rgba(132, 171, 92, 255) !important;">
+<th style="text-align:right;color: black !important;background-color: lightgrey !important;border-top: 2px solid black; border-bottom: 2px solid black; text-align: left; font-weight: normal;font-weight: bold;">
 Moderately Protected
 </th>
-<th style="text-align:right;color: black !important;background-color: lightgrey !important;border-top: 2px solid black; border-bottom: 2px solid black; text-align: left; font-weight: normal;text-align: left; writing-mode: vertical-rl; transform: rotate(180deg); white-space: nowrap; height: 170px;background-color: rgba(75, 110, 0, 255) !important;">
+<th style="text-align:right;color: black !important;background-color: lightgrey !important;border-top: 2px solid black; border-bottom: 2px solid black; text-align: left; font-weight: normal;font-weight: bold;">
 Well Protected
 </th>
-<th style="text-align:right;color: black !important;background-color: lightgrey !important;border-top: 2px solid black; border-bottom: 2px solid black; text-align: left; font-weight: normal;text-align: left; writing-mode: vertical-rl; transform: rotate(180deg); white-space: nowrap; height: 170px;">
+<th style="text-align:right;color: black !important;background-color: lightgrey !important;border-top: 2px solid black; border-bottom: 2px solid black; text-align: left; font-weight: normal;font-weight: bold;">
 Total
 </th>
 </tr></thead>
 <tbody>
 <tr>
-<td style="text-align:left;background-color: white !important;background-color: rgba(216, 30, 5, 255) !important;">
+<td style="text-align:left;background-color: white !important;background-color: rgba(233, 48, 44, 255) !important;background-color: white !important;">
 Critically Endangered
 </td>
-<td style="text-align:right;background-color: white !important;background-color: rgba(216, 30, 5, 255) !important;background-color: rgba(166, 166, 166, 255) !important;background-color: white !important;">
+<td style="text-align:right;background-color: white !important;background-color: rgba(233, 48, 44, 255) !important;">
 0
 </td>
-<td style="text-align:right;background-color: white !important;background-color: rgba(216, 30, 5, 255) !important;background-color: rgba(213, 222, 196, 255) !important;background-color: white !important;">
+<td style="text-align:right;background-color: white !important;background-color: rgba(233, 48, 44, 255) !important;">
 1
 </td>
-<td style="text-align:right;background-color: white !important;background-color: rgba(216, 30, 5, 255) !important;background-color: rgba(132, 171, 92, 255) !important;background-color: white !important;">
+<td style="text-align:right;background-color: white !important;background-color: rgba(233, 48, 44, 255) !important;">
 1
 </td>
-<td style="text-align:right;background-color: white !important;background-color: rgba(216, 30, 5, 255) !important;background-color: rgba(75, 110, 0, 255) !important;background-color: white !important;">
+<td style="text-align:right;background-color: white !important;background-color: rgba(233, 48, 44, 255) !important;">
 1
 </td>
-<td style="text-align:right;background-color: white !important;background-color: rgba(216, 30, 5, 255) !important;background-color: white !important;">
+<td style="text-align:right;background-color: white !important;background-color: rgba(233, 48, 44, 255) !important;background-color: white !important;">
 3
 </td>
 </tr>
 <tr>
-<td style="text-align:left;background-color: white !important;background-color: rgba(252, 127, 63, 255) !important;">
+<td style="text-align:left;background-color: white !important;background-color: rgba(249, 120, 53, 255) !important;background-color: white !important;">
 Endangered
 </td>
-<td style="text-align:right;background-color: white !important;background-color: rgba(252, 127, 63, 255) !important;background-color: rgba(166, 166, 166, 255) !important;background-color: white !important;">
+<td style="text-align:right;background-color: white !important;background-color: rgba(249, 120, 53, 255) !important;">
 0
 </td>
-<td style="text-align:right;background-color: white !important;background-color: rgba(252, 127, 63, 255) !important;background-color: rgba(213, 222, 196, 255) !important;background-color: white !important;">
+<td style="text-align:right;background-color: white !important;background-color: rgba(249, 120, 53, 255) !important;">
 1
 </td>
-<td style="text-align:right;background-color: white !important;background-color: rgba(252, 127, 63, 255) !important;background-color: rgba(132, 171, 92, 255) !important;background-color: white !important;">
+<td style="text-align:right;background-color: white !important;background-color: rgba(249, 120, 53, 255) !important;">
 0
 </td>
-<td style="text-align:right;background-color: white !important;background-color: rgba(252, 127, 63, 255) !important;background-color: rgba(75, 110, 0, 255) !important;background-color: white !important;">
+<td style="text-align:right;background-color: white !important;background-color: rgba(249, 120, 53, 255) !important;">
 1
 </td>
-<td style="text-align:right;background-color: white !important;background-color: rgba(252, 127, 63, 255) !important;background-color: white !important;">
+<td style="text-align:right;background-color: white !important;background-color: rgba(249, 120, 53, 255) !important;background-color: white !important;">
 2
 </td>
 </tr>
 <tr>
-<td style="text-align:left;background-color: white !important;background-color: rgba(249, 232, 20, 255) !important;">
+<td style="text-align:left;background-color: white !important;background-color: rgba(255, 240, 42, 255) !important;background-color: white !important;">
 Vulnerable
 </td>
-<td style="text-align:right;background-color: white !important;background-color: rgba(249, 232, 20, 255) !important;background-color: rgba(166, 166, 166, 255) !important;background-color: white !important;">
+<td style="text-align:right;background-color: white !important;background-color: rgba(255, 240, 42, 255) !important;">
 1
 </td>
-<td style="text-align:right;background-color: white !important;background-color: rgba(249, 232, 20, 255) !important;background-color: rgba(213, 222, 196, 255) !important;background-color: white !important;">
+<td style="text-align:right;background-color: white !important;background-color: rgba(255, 240, 42, 255) !important;">
 0
 </td>
-<td style="text-align:right;background-color: white !important;background-color: rgba(249, 232, 20, 255) !important;background-color: rgba(132, 171, 92, 255) !important;background-color: white !important;">
+<td style="text-align:right;background-color: white !important;background-color: rgba(255, 240, 42, 255) !important;">
 1
 </td>
-<td style="text-align:right;background-color: white !important;background-color: rgba(249, 232, 20, 255) !important;background-color: rgba(75, 110, 0, 255) !important;background-color: white !important;">
+<td style="text-align:right;background-color: white !important;background-color: rgba(255, 240, 42, 255) !important;">
 1
 </td>
-<td style="text-align:right;background-color: white !important;background-color: rgba(249, 232, 20, 255) !important;background-color: white !important;">
+<td style="text-align:right;background-color: white !important;background-color: rgba(255, 240, 42, 255) !important;background-color: white !important;">
 3
 </td>
 </tr>
 <tr>
-<td style="text-align:left;background-color: white !important;background-color: rgba(204, 226, 38, 255) !important;">
+<td style="text-align:left;background-color: white !important;background-color: white !important;">
 Near Threatened
 </td>
-<td style="text-align:right;background-color: white !important;background-color: rgba(204, 226, 38, 255) !important;background-color: rgba(166, 166, 166, 255) !important;background-color: white !important;">
+<td style="text-align:right;background-color: white !important;">
 0
 </td>
-<td style="text-align:right;background-color: white !important;background-color: rgba(204, 226, 38, 255) !important;background-color: rgba(213, 222, 196, 255) !important;background-color: white !important;">
+<td style="text-align:right;background-color: white !important;">
 0
 </td>
-<td style="text-align:right;background-color: white !important;background-color: rgba(204, 226, 38, 255) !important;background-color: rgba(132, 171, 92, 255) !important;background-color: white !important;">
+<td style="text-align:right;background-color: white !important;">
 1
 </td>
-<td style="text-align:right;background-color: white !important;background-color: rgba(204, 226, 38, 255) !important;background-color: rgba(75, 110, 0, 255) !important;background-color: white !important;">
+<td style="text-align:right;background-color: white !important;">
 1
 </td>
-<td style="text-align:right;background-color: white !important;background-color: rgba(204, 226, 38, 255) !important;background-color: white !important;">
+<td style="text-align:right;background-color: white !important;background-color: white !important;">
 2
 </td>
 </tr>
 <tr>
-<td style="text-align:left;background-color: white !important;background-color: rgba(180, 215, 158, 255) !important;">
+<td style="text-align:left;background-color: white !important;background-color: white !important;">
 Least Concern
 </td>
-<td style="text-align:right;background-color: white !important;background-color: rgba(180, 215, 158, 255) !important;background-color: rgba(166, 166, 166, 255) !important;background-color: white !important;">
+<td style="text-align:right;background-color: white !important;">
 0
 </td>
-<td style="text-align:right;background-color: white !important;background-color: rgba(180, 215, 158, 255) !important;background-color: rgba(213, 222, 196, 255) !important;background-color: white !important;">
+<td style="text-align:right;background-color: white !important;">
 1
 </td>
-<td style="text-align:right;background-color: white !important;background-color: rgba(180, 215, 158, 255) !important;background-color: rgba(132, 171, 92, 255) !important;background-color: white !important;">
+<td style="text-align:right;background-color: white !important;">
 1
 </td>
-<td style="text-align:right;background-color: white !important;background-color: rgba(180, 215, 158, 255) !important;background-color: rgba(75, 110, 0, 255) !important;background-color: white !important;">
+<td style="text-align:right;background-color: white !important;">
 1
 </td>
-<td style="text-align:right;background-color: white !important;background-color: rgba(180, 215, 158, 255) !important;background-color: white !important;">
+<td style="text-align:right;background-color: white !important;background-color: white !important;">
 3
 </td>
 </tr>
 <tr>
-<td style="text-align:left;background-color: white !important;color: black !important;background-color: lightgrey !important;border-top: 2px solid black; border-bottom: 2px solid blackbackground-color: lightgrey !important;">
+<td style="text-align:left;background-color: white !important;font-weight: bold;color: black !important;background-color: lightgrey !important;border-top: 2px solid black; border-bottom: 2px solid black;background-color: white !important;background-color: lightgrey !important;">
 Total (n)
 </td>
-<td style="text-align:right;background-color: white !important;color: black !important;background-color: lightgrey !important;border-top: 2px solid black; border-bottom: 2px solid blackbackground-color: rgba(166, 166, 166, 255) !important;background-color: white !important;background-color: lightgrey !important;">
+<td style="text-align:right;background-color: white !important;font-weight: bold;color: black !important;background-color: lightgrey !important;border-top: 2px solid black; border-bottom: 2px solid black;background-color: lightgrey !important;">
 1
 </td>
-<td style="text-align:right;background-color: white !important;color: black !important;background-color: lightgrey !important;border-top: 2px solid black; border-bottom: 2px solid blackbackground-color: rgba(213, 222, 196, 255) !important;background-color: white !important;background-color: lightgrey !important;">
+<td style="text-align:right;background-color: white !important;font-weight: bold;color: black !important;background-color: lightgrey !important;border-top: 2px solid black; border-bottom: 2px solid black;background-color: lightgrey !important;">
 3
 </td>
-<td style="text-align:right;background-color: white !important;color: black !important;background-color: lightgrey !important;border-top: 2px solid black; border-bottom: 2px solid blackbackground-color: rgba(132, 171, 92, 255) !important;background-color: white !important;background-color: lightgrey !important;">
+<td style="text-align:right;background-color: white !important;font-weight: bold;color: black !important;background-color: lightgrey !important;border-top: 2px solid black; border-bottom: 2px solid black;background-color: lightgrey !important;">
 4
 </td>
-<td style="text-align:right;background-color: white !important;color: black !important;background-color: lightgrey !important;border-top: 2px solid black; border-bottom: 2px solid blackbackground-color: rgba(75, 110, 0, 255) !important;background-color: white !important;background-color: lightgrey !important;">
+<td style="text-align:right;background-color: white !important;font-weight: bold;color: black !important;background-color: lightgrey !important;border-top: 2px solid black; border-bottom: 2px solid black;background-color: lightgrey !important;">
 5
 </td>
-<td style="text-align:right;background-color: white !important;color: black !important;background-color: lightgrey !important;border-top: 2px solid black; border-bottom: 2px solid blackbackground-color: white !important;background-color: lightgrey !important;">
+<td style="text-align:right;background-color: white !important;font-weight: bold;color: black !important;background-color: lightgrey !important;border-top: 2px solid black; border-bottom: 2px solid black;background-color: white !important;background-color: lightgrey !important;">
 13
-</td>
-</tr>
-<tr>
-<td style="text-align:left;background-color: white !important;color: black !important;background-color: lightgrey !important;border-top: 2px solid black; border-bottom: 2px solid black;background-color: lightgrey !important;">
-Percentage (%)
-</td>
-<td style="text-align:right;background-color: white !important;color: black !important;background-color: lightgrey !important;border-top: 2px solid black; border-bottom: 2px solid black;background-color: rgba(166, 166, 166, 255) !important;background-color: white !important;background-color: lightgrey !important;">
-8
-</td>
-<td style="text-align:right;background-color: white !important;color: black !important;background-color: lightgrey !important;border-top: 2px solid black; border-bottom: 2px solid black;background-color: rgba(213, 222, 196, 255) !important;background-color: white !important;background-color: lightgrey !important;">
-23
-</td>
-<td style="text-align:right;background-color: white !important;color: black !important;background-color: lightgrey !important;border-top: 2px solid black; border-bottom: 2px solid black;background-color: rgba(132, 171, 92, 255) !important;background-color: white !important;background-color: lightgrey !important;">
-31
-</td>
-<td style="text-align:right;background-color: white !important;color: black !important;background-color: lightgrey !important;border-top: 2px solid black; border-bottom: 2px solid black;background-color: rgba(75, 110, 0, 255) !important;background-color: white !important;background-color: lightgrey !important;">
-38
-</td>
-<td style="text-align:right;background-color: white !important;color: black !important;background-color: lightgrey !important;border-top: 2px solid black; border-bottom: 2px solid black;background-color: white !important;background-color: lightgrey !important;">
-100
 </td>
 </tr>
 </tbody>
