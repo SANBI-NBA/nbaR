@@ -545,20 +545,19 @@ tbl
 
 *`nba_tbl_comb()`*
 
-A function to style a table with threat status on the horizontal rows and protection level on the vertical columns, with number of ecosystems or taxa that share those categories in the cells, with total and percentage çolumns added.
+A function to style a table with threat status on the horizontal rows and protection level on the vertical columns, with number of ecosystems or taxa that share those categories in the cells, with total çolumns added.
 
-For this data I have taken the marine pelagic ecosystem map (which is currently a GeoPackage, which we now use instead of shapefiles). To create this table from a map of ecosystems, you just need to have the threat status and protection level of the ecosystems as fields/attributes in your map shp/gpkg file and to remove the polygons from the dataset.
+For this data I have taken the marine pelagic ecosystem map (which is currently a GeoPackage, which we now use instead of shapefiles). To create this table from a map of ecosystems, you just need to have the threat status and protection level of the ecosystems as fields/attributes in your map shp/gpkg file and to remove the polygons from the dataset. ALternatively you can make a csv/ excel file of your protection level of threatened ecosystems and just read that into r. 
 
 We use the **sf** package for all our spatial analysis with vectors and I highly recommend you do to, it allows you to treat a spatial object like a normal dataframe which makes your life incredibly easy. 
 
-In the below code you can see how you would take an sf map object (that you would have read into R), and remove the polygons to prepare the dataset to be made into a table.You can also see below how the data now looks and think about its structure. 
+In the below code you can see how an sf map object (that you would have read into R) would look like and think about its structure. 
 
 
 ```{r nba_tbl_comb_example_data}
 NBA_example_map_data
 
-thr_pro_tbl <- NBA_example_map_data |> #these are base r pipes as comapred to the %>% tidy pipes
-sf::st_drop_geometry() 
+thr_pro_tbl <- NBA_example_map_data 
 
 thr_pro_tbl
 ```
@@ -576,7 +575,11 @@ For the function you just need:
 
 4. **PRO** The name of the column where the protection level of the ecosystems/ taxa are stored
 
+5. **FILE** States if you inital DF file is a spatial file, or a csv by stating FILE = "spatial" or file = "csv"
+
 **NB TO NOTE** The threat status and protection level categories must again match the spelling and conventions in the `NBA_colours` and `NBA_categories` lists for the colours to map correctly.
+
+Also if you start from a spatial file you will need to add the DF, GROUP, THR, and PRO, and FILE arguments, but if you have already fromatted the data and read it in from a csv then you just need to provide the DF, THR and FILE arguments.
 
 
 
@@ -590,11 +593,11 @@ See if you can change the NBA_example_map_data to the correct format and make it
 ```
 
 ```{r nba_tbl_combex4-solution}
-thr_pro_tbl <- NBA_example_map_data |> #these are base r pipes as comapred to the %>% tidy pipes
-sf::st_drop_geometry() |>
+thr_pro_tbl <- NBA_example_map_data 
 nba_tbl_comb(GROUP = P_EcosysType,
 THR = threat_status,
-PRO = protection_level)
+PRO = protection_level, 
+FILE = "spatial")
 
 thr_pro_tbl
 ```
