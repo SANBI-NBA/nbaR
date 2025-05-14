@@ -29,6 +29,7 @@ reference:
 - title: Quarto functions
   contents:
   - nba_init_quarto_docs
+  - nba_init_quarto_proj
 
 - title: Built in datasets
   contents:

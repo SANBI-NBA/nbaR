@@ -13,13 +13,13 @@ nba_plot_RLI(DF, YEAR, RLI, MIN, MAX, GRP = NULL, SAVE = NULL)
 
 \item{RLI}{The Red List Index}
 
+\item{MIN}{The minimum values}
+
+\item{MAX}{The maximum values}
+
 \item{GRP}{A choice to group the plot, if a column name is supplied will groupd, if left NULL will not group}
 
 \item{SAVE}{The name of the output file that will be saved to the output folder. If you do not have an outputs folder you will be prompted to make one.}
-
-\item{min}{The minimum values}
-
-\item{max}{The maximum values}
 }
 \value{
 Returns a RLI plot

@@ -425,8 +425,8 @@ nba_plot <- function(DF, GROUPS, COLS, CHRT = c("bar", "donut"), NUM = FALSE, LA
 #' @param DF The data frame that contains the information on the Red List Index
 #' @param YEAR The years
 #' @param RLI The Red List Index
-#' @param min The minimum values
-#' @param max The maximum values
+#' @param MIN The minimum values
+#' @param MAX The maximum values
 #' @param GRP A choice to group the plot, if a column name is supplied will groupd, if left NULL will not group
 #' @param SAVE The name of the output file that will be saved to the output folder. If you do not have an outputs folder you will be prompted to make one.
 #'
