@@ -3,7 +3,7 @@ pkgdown: 2.1.2
 pkgdown_sha: ~
 articles:
   nbaR: nbaR.html
-last_built: 2025-05-22T14:34Z
+last_built: 2025-05-22T14:46Z
 urls:
   reference: https://sanbi-nba.github.io/nbaR/reference
   article: https://sanbi-nba.github.io/nbaR/articles
