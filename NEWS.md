@@ -1,3 +1,6 @@
+# nbaR 2.2.0
+Added new function nba_citation and fixed a bunch of bugs
+
 # nbaR 2.1.1
 updated the nba_tbl_comb plot
 
