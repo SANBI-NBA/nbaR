@@ -1,3 +1,4 @@
+##nba_init_quarto_proj##################################################
 #' Create template quarto project to get an NBA html page up and running
 #'
 #' Copies a template.qmd, template.scss, and _quarto.yml into a Quarto project directory.
@@ -89,7 +90,7 @@ nba_init_quarto_proj <- function(path = "PathToMyProject/MyNewProject",
   invisible(copied)
 }
 
-
+##nba_init_quarto_docs##################################################
 #' Create template quarto documents to get an NBA html page up and running
 #'
 #' Copies a template.qmd, template.scss, and _quarto.yml into a Quarto project directory.
@@ -146,4 +147,88 @@ nba_init_quarto_docs <- function(path = ".",
   }
 
   invisible(copied)
+}
+
+##nba_citation##############################################################
+#' NBA citation  function
+#'
+#' A function to create the citation string when given the author metadata
+#' in a quarto file to be rendered to a website.
+#'
+#'
+#'
+#' @param META The result of calling rmarkdown::metadata. Note that
+#' rmarkdown::metadata only runs when the .qmd file is rendered,
+#' therefore the outputs of this code will return no results
+#' if you try to run it within R - that does not mean it is not working.
+#'
+#'
+#' @return Returns a citation string
+#'
+#'
+#' @importFrom WikidataR initials
+#' @importFrom knitr current_input
+#'
+#' @export
+#'
+#' @examples
+#' # meta <- knitr::opts_knit$get("rmarkdown.pandoc.to")  # forces knitr to load metadata
+#' # meta <- rmarkdown::metadata  # full YAML is now in `meta`
+#' #
+#' # nba_citation(meta)
+#' #
+#'#
+#'
+#'
+
+nba_citation <- function(META){
+
+  # 1. ----------- Author string ----------------------------------------------
+  # helper: turn "Jo M."  -> "J.M."
+  initials <- function(given) {
+    # split on spaces or dots, drop empties, keep first letter, add a dot
+    parts <- unlist(strsplit(given, "[[:space:].]+"))
+    paste0(substring(parts, 1, 1), collapse = ".") |> paste0(".")
+  }
+
+  authors <- vapply(meta$author, function(a) {
+    fam  <- a$name$family
+    fam  <- sub("^(.)(.*)$", "\\U\\1\\E\\2", fam, perl = TRUE)  # cap first letter only
+    inits <- WikidataR::initials(a$name$given)
+    paste0(fam, ", ", inits)
+  }, FUN.VALUE = character(1))
+
+  if (length(authors) == 1) {
+    author_str <- authors
+  } else if (length(authors) == 2) {
+    author_str <- paste(authors, collapse = " & ")
+  } else {
+    author_str <- paste(
+      paste(authors[-length(authors)], collapse = ", "),
+      authors[length(authors)],
+      sep = if (length(authors) > 2) ", & " else " & "
+    )
+  }
+
+  #--- 2. year ---------------------------------------------------------
+  if (identical(meta$date, "last-modified")) {
+    # take the file’s modification time (UTC) and pull the year
+    file_time <- file.info(knitr::current_input())$mtime
+    yr <- format(as.Date(file_time), "%Y")
+  } else {
+    yr <- format(as.Date(meta$date), "%Y")
+  }
+
+  # 3. ----------- Remaining pieces -----------------------------------------
+  title     <- meta$title
+  container <- meta$citation$`container-title`
+  publisher <- meta$citation$publisher
+  url       <- meta$citation$url
+
+  # 4. ----------- Stitch the citation together -----------------------------
+  cat(paste0(
+    author_str, " ", yr, ". ", title, ". ",
+    container, ". ", publisher, ". ", url, ".\n\n"
+  ))
+
 }

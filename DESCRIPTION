@@ -28,7 +28,8 @@ Imports:
     gt,
     ggh4x,
     rsconnect,
-    usethis
+    usethis,
+    WikidataR
 Suggests: 
     rmarkdown,
     learnr,
