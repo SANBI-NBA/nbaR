@@ -30,6 +30,7 @@ reference:
   contents:
   - nba_init_quarto_docs
   - nba_init_quarto_proj
+  - nba_citation
 
 - title: Built in datasets
   contents:
