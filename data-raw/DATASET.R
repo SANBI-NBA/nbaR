@@ -96,7 +96,7 @@ NBA_categories <- c("Critically Endangered",
                     "Energy production and mining" ,
                     "Natural system modifications" ,
                     "Invasive and other problematic species, genes & diseases",
-                    "Invasive and other problamatic species, genes and diseases",
+                    "Invasive and other problematic species, genes and diseases",
                     "Residential & commercial development" ,
 
 
@@ -173,7 +173,7 @@ NBA_colours <- c(
   "Energy production and mining" = rgb(122, 116, 70, maxColorValue = 255),
   "Natural system modifications" = rgb(88, 82, 50, maxColorValue = 255),
   "Invasive and other problematic species, genes & diseases" = rgb(61, 69, 64, maxColorValue = 255),
-  "Invasive and other problamatic species, genes and diseases" = rgb(61, 69, 64, maxColorValue = 255),
+  "Invasive and other problematic species, genes and diseases" = rgb(61, 69, 64, maxColorValue = 255),
   "Residential & commercial development" = rgb(128, 128, 128, maxColorValue = 255),
 
 
