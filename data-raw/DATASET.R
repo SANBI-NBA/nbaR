@@ -57,30 +57,78 @@ NBA_example_comb_data <- NBA_example_pro_data %>%
 
 ##threat status/ protection level categories
 
-NBA_categories <- c("Natural",
-                    "Natural/near-natural",
-                    "Near-natural",
-                    "Moderately modified",
-                    "Heavily modified",
-                    "Severely/critically modified",
-                    "Well Protected",
-                    "Moderately Protected",
-                    "Poorly Protected",
-                    "No Protection",
-                    "Not Protected",
-                    "Extinct",
-                    "Critically Endangered",
-                    "Endangered",
+NBA_categories <- c("Critically Endangered",
+                    "Endangered" ,
                     "Vulnerable",
-                    "Near Threatened",
-                    "Data Deficient",
-                    "Rare",
-                    "Least Concern",
+                    "Near Threatened" ,
+                    "Least Concern" ,
+                    "Data Deficient" ,
+                    "Rare" ,
+                    "Extinct" ,
+                    "Extinct in the Wild" ,
+
+                    #Protection level
+                    "Well Protected" ,
+                    "Moderately Protected" ,
+                    "Poorly Protected" ,
+                    "Not Protected" ,
+
+                    #Pressures
+                    "Low" ,
+                    "Medium" ,
+                    "High" ,
+                    "Very high",
+
+
+                    "No threats" ,
+                    "Pollution",
+                    "Transportation & service corridors" ,
+                    "Agriculture" ,
+                    "Agriculture and aquaculture",
+                    "Geological events",
+                    "Biological resource use" ,
+                    "Other threats",
+                    "Human intrusions & disturbance" ,
+                    "Human intrusions and disturbance" ,
+                    "Climate change" ,
+                    "Climate change & severe weather",
+                    "Energy production & mining" ,
+                    "Energy production and mining" ,
+                    "Natural system modifications" ,
+                    "Invasive and other problematic species, genes & diseases",
+                    "Invasive and other problamatic species, genes and diseases",
+                    "Residential & commercial development" ,
+
+
+                    # Condition
+                    "Natural" ,
+                    "Natural / near natural",
+                    "Near natural" ,
+                    "Moderately modified" ,
+                    "Heavily / intensively modified" ,
+                    "Permanently / irreversibly modified" ,
+
+
+                    # Responses
+                    "No response" ,
+                    "Some kind of response" ,
+                    "Gazetted" ,
+                    "Signed off" ,
+
+
+                    # Priority areas
+                    "Land-based Protected Areas",
+                    "Marine Protected Areas",
+                    "Critical Biodiversity Areas",
+                    "Ecologically Sensitive Areas" ,
+
+                    # Built up areas
                     "Cropland",
                     "Plantation",
                     "Built up",
                     "Mine",
-                    "Artificial waterbody")
+                    "Artificial waterbody",
+                    "Landcover Natural")
 
 ##colour mapping
 NBA_colours <- c(
@@ -152,11 +200,12 @@ NBA_colours <- c(
   "Ecologically Sensitive Areas" = rgb(168, 168, 0, maxColorValue = 255),
 
   # Built up areas
-  "Cropland"= rgb(0, 0, 0, maxColorValue = 255),
-  "Plantation"= rgb(0, 0, 0, maxColorValue = 255),
-  "Built up"= rgb(0, 0, 0, maxColorValue = 255),
-  "Mine"= rgb(0, 0, 0, maxColorValue = 255),
-  "Artificial waterbody" = rgb(0, 0, 0, maxColorValue = 255)
+  "Cropland"= "#DB7D15",
+  "Plantation"= "#B36611",
+  "Built up"= "#808080",
+  "Mine"= " #F5C592",
+  "Artificial waterbody" ="#0071C0",
+  "Landcover Natural" = "#B9B386"
 
 )
 
