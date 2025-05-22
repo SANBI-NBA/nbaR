@@ -648,7 +648,7 @@ nba_plot_bubble <- function(DF, GROUP, CAT, SUB_CAT, VALUE, SAVE = NULL){
     ggplot2::geom_text(ggplot2::aes(label = {{VALUE}}),
                        parse = TRUE,
                        size = 2,
-                       colour = "black") +
+                       colour = "white") +
     ggh4x::facet_grid2(
       pressure ~ ., scales = "free", space = "free",
       labeller = ggplot2::labeller(pressure = ggplot2::label_wrap_gen(width = 20)),
