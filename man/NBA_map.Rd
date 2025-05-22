@@ -34,7 +34,7 @@ structure for the data.
 
 The name of the fill column is irrelevant, but the categories must be
 spelled correctly (there is a list of the standard spellings/ cases
-of NBA categories named NBA_categories in this package,
+of NBA categories named nbaR::NBA_categories in this package,
 which can be accessed for reference).
 }
 \examples{

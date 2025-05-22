@@ -42,7 +42,7 @@ taxa etc), with one
 group value per row, and then several columns of the protection level,
 threat status, or condition of the groups with values representing either the number
 or percentage/ extent of groups within each category. These columns should be named
-according the to conventions in the NBA_categories example list.
+according the to conventions in the nbaR::NBA_categories example list.
 }
 \details{
 Please look at the example datasets NBA_example_thr_plot and
@@ -58,7 +58,7 @@ displayed within the plot.
 
 The name of the groups column is irrelevant, but the categories must be
 spelled correctly (there is a list of the standard spellings/ cases
-of NBA categories named NBA_categories in this package,
+of NBA categories named nbaR::NBA_categories in this package,
 which can be accessed for reference).
 }
 \examples{
