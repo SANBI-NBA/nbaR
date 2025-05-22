@@ -8,7 +8,7 @@
 #' group value per row, and then several columns of the protection level,
 #' threat status, or condition of the groups with values representing either the number
 #' or percentage/ extent of groups within each category. These columns should be named
-#' according the to conventions in the NBA_categories example list.
+#' according the to conventions in the nbaR::NBA_categories example list.
 #'
 #' Please look at the example datasets NBA_example_thr_plot and
 #' NBA_example_pro_plot to see the correct
@@ -23,7 +23,7 @@
 #'
 #' The name of the groups column is irrelevant, but the categories must be
 #' spelled correctly (there is a list of the standard spellings/ cases
-#' of NBA categories named NBA_categories in this package,
+#' of NBA categories named nbaR::NBA_categories in this package,
 #' which can be accessed for reference).
 #'
 #'
@@ -110,107 +110,6 @@
 
 nba_plot <- function(DF, GROUPS, COLS, CHRT = c("bar", "donut"), NUM = FALSE, LAB, GRP = FALSE, SAVE = NULL){
 
-  NBA_categories <-c("Natural",
-                     "Natural/near-natural",
-                     "Near-natural",
-                     "Moderately modified",
-                     "Heavily modified",
-                     "Severely/critically modified",
-                     "Well Protected",
-                     "Moderately Protected",
-                     "Poorly Protected",
-                     "No Protection",
-                     "Not Protected",
-                     "Extinct",
-                     "Critically Endangered",
-                     "Endangered",
-                     "Vulnerable",
-                     "Near Threatened",
-                     "Data Deficient",
-                     "Rare",
-                     "Least Concern",
-                     "Cropland",
-                     "Plantation",
-                     "Built up",
-                     "Mine",
-                     "Artificial waterbody")
-
-  NBA_colours <- c(
-
-    ##Threat status
-    "Critically Endangered" = rgb(216, 30, 5, maxColorValue = 255),
-    "Endangered" = rgb(252, 127, 63, maxColorValue = 255),
-    "Vulnerable" = rgb(249, 232, 20, maxColorValue = 255),
-    "Near Threatened" = rgb(204, 226, 38, maxColorValue = 255),
-    "Least Concern" = rgb(180, 215, 158, maxColorValue = 255),
-    "Data Deficient" = rgb(209, 209, 198, maxColorValue = 255),
-    "Rare" = rgb(193, 181, 165, maxColorValue = 255),
-    "Extinct" = rgb(0, 0, 0, maxColorValue = 255),
-    "Extinct in the Wild" = rgb(84, 35, 68, maxColorValue = 255),
-
-    #Protection level
-    "Not Protected" = rgb(166, 166, 166, maxColorValue = 255),
-    "Poorly Protected" = rgb(213, 222, 196, maxColorValue = 255),
-    "Moderately Protected" = rgb(132, 171, 92, maxColorValue = 255),
-    "Well Protected" = rgb(75, 110, 0, maxColorValue = 255),
-
-    #Pressures
-    "Low" = rgb(223, 220, 199, maxColorValue = 255),
-    "Medium" = rgb(175, 168, 117, maxColorValue = 255),
-    "High" = rgb(122, 116, 70, maxColorValue = 255),
-    "Very high" = rgb(88, 82, 50, maxColorValue = 255),
-
-
-    "No threats" = rgb(48, 30, 6, maxColorValue = 255),
-    "Pollution" = rgb(97, 65, 56, maxColorValue = 255),
-    "Transportation & service corridors" = rgb(99, 76, 39, maxColorValue = 255),
-    "Agriculture" = rgb(133, 76, 13, maxColorValue = 255),
-    "Agriculture and aquaculture" = rgb(133, 76, 13, maxColorValue = 255),
-    "Geological events" = rgb(153, 102, 0, maxColorValue = 255),
-    "Biological resource use" = rgb(180, 121, 42, maxColorValue = 255),
-    "Other threats" = rgb(231, 160, 54, maxColorValue = 255),
-    "Human intrusions & disturbance" = rgb(159, 134, 9, maxColorValue = 255),
-    "Human intrusions and disturbance" = rgb(159, 134, 9, maxColorValue = 255),
-    "Climate change" = rgb(178, 149, 78, maxColorValue = 255),
-    "Climate change & severe weather" = rgb(178, 149, 78, maxColorValue = 255),
-    "Energy production & mining" = rgb(122, 116, 70, maxColorValue = 255),
-    "Energy production and mining" = rgb(122, 116, 70, maxColorValue = 255),
-    "Natural system modifications" = rgb(88, 82, 50, maxColorValue = 255),
-    "Invasive and other problematic species, genes & diseases" = rgb(61, 69, 64, maxColorValue = 255),
-    "Invasive and other problamatic species, genes and diseases" = rgb(61, 69, 64, maxColorValue = 255),
-    "Residential & commercial development" = rgb(128, 128, 128, maxColorValue = 255),
-
-
-    # Condition
-    "Natural" = rgb(110, 159, 212, maxColorValue = 255),
-    "Natural / near natural" = rgb(110, 159, 212, maxColorValue = 255),
-    "Near natural" = rgb(110, 159, 212, maxColorValue = 255),
-    "Moderately modified" = rgb(165, 197, 199, maxColorValue = 255),
-    "Heavily / intensively modified" = rgb(129, 171, 167, maxColorValue = 255),
-    "Permanently / irreversibly modified" = rgb(136, 129, 78, maxColorValue = 255),
-
-
-    # Responses
-    "No response" = rgb(91, 66, 114, maxColorValue = 255),
-    "Some kind of response" = rgb(100, 103, 130, maxColorValue = 255),
-    "Gazetted" = rgb(117, 164, 179, maxColorValue = 255),
-    "Signed off" = rgb(117, 164, 179, maxColorValue = 255),
-
-
-    # Priority areas
-    "Land-based Protected Areas" = rgb(0, 60, 0, maxColorValue = 255),
-    "Marine Protected Areas" = rgb(0, 38, 115, maxColorValue = 255),
-    "Critical Biodiversity Areas" = rgb(67, 128, 0, maxColorValue = 255),
-    "Ecologically Sensitive Areas" = rgb(168, 168, 0, maxColorValue = 255),
-
-    # Built up areas
-    "Cropland"= rgb(0, 0, 0, maxColorValue = 255),
-    "Plantation"= rgb(0, 0, 0, maxColorValue = 255),
-    "Built up"= rgb(0, 0, 0, maxColorValue = 255),
-    "Mine"= rgb(0, 0, 0, maxColorValue = 255),
-    "Artificial waterbody" = rgb(0, 0, 0, maxColorValue = 255)
-
-  )
 
 
   if(CHRT == "donut"){
@@ -221,7 +120,7 @@ nba_plot <- function(DF, GROUPS, COLS, CHRT = c("bar", "donut"), NUM = FALSE, LA
       dat <- DF %>%
         tidyr::pivot_longer({{COLS}}, names_to = "FILL", values_to = "COUNT")%>%
         dplyr::summarise(COUNT = sum(COUNT, na.rm = T), .by = FILL)  %>%
-        dplyr::mutate(FILL = factor(FILL, levels = NBA_categories))%>%
+        dplyr::mutate(FILL = factor(FILL, levels = nbaR::NBA_categories))%>%
         dplyr::mutate(ymax = cumsum(COUNT)) %>%
         dplyr::mutate(ymin = ymax -COUNT) %>%
         dplyr::ungroup()
@@ -234,7 +133,7 @@ nba_plot <- function(DF, GROUPS, COLS, CHRT = c("bar", "donut"), NUM = FALSE, LA
         #ggplot2::geom_text(aes(x = 3.5, y = (ymin + ymax) / 2, label = COUNT), color = "black", size = 5) +  ## Add this line to include count values
         ggplot2::coord_polar(theta = "y") + ## convert to polar coordinates
         ggplot2::xlim(c(2, 4)) + ## limit x-axis to create a donut chart
-        ggplot2::scale_fill_manual(values = NBA_colours) +
+        ggplot2::scale_fill_manual(values = nbaR::NBA_colours) +
         #ggplot2::ggtitle(LAB)+
         ggplot2::labs(fill = "", title = LAB) + #this is the legend label
         ggplot2::theme_void() + ## removes the lines around chart and grey background
@@ -255,7 +154,7 @@ nba_plot <- function(DF, GROUPS, COLS, CHRT = c("bar", "donut"), NUM = FALSE, LA
           ggplot2::geom_text(aes(x = 3.5, y = (ymin + ymax) / 2, label = COUNT), color = "black", size = 5) +  ## Add this line to include count values
           ggplot2::coord_polar(theta = "y") + ## convert to polar coordinates
           ggplot2::xlim(c(2, 4)) + ## limit x-axis to create a donut chart
-          ggplot2::scale_fill_manual(values = NBA_colours) +
+          ggplot2::scale_fill_manual(values = nbaR::NBA_colours) +
           ggplot2::labs(fill = "", title = LAB)+
           #ggplot2::xlab(LAB)+
           ggplot2::theme_void() + ## removes the lines around chart and grey background
@@ -277,7 +176,7 @@ nba_plot <- function(DF, GROUPS, COLS, CHRT = c("bar", "donut"), NUM = FALSE, LA
         tidyr::pivot_longer({{COLS}}, names_to = "FILL", values_to = "COUNT")%>%
         dplyr::mutate(TOT = sum(COUNT, na.rm = T), .by = {{GROUPS}} )%>%
         dplyr::mutate(PERCENTAGE = (COUNT/TOT)*100)%>%
-        dplyr::mutate(FILL = factor(FILL, levels = NBA_categories))%>%
+        dplyr::mutate(FILL = factor(FILL, levels = nbaR::NBA_categories))%>%
         dplyr::mutate(ymax = cumsum(PERCENTAGE), .by = {{GROUPS}}) %>%
         dplyr::mutate(ymin = ymax -PERCENTAGE)
 
@@ -290,7 +189,7 @@ nba_plot <- function(DF, GROUPS, COLS, CHRT = c("bar", "donut"), NUM = FALSE, LA
         #ggplot2::geom_text(aes(x = 3.5, y = (ymin + ymax) / 2, label = COUNT), color = "black", size = 3) +  ## Add this line to include count values
         ggplot2::coord_polar(theta = "y") + ## convert to polar coordinates
         ggplot2::xlim(c(2, 4)) + ## limit x-axis to create a donut chart
-        ggplot2::scale_fill_manual(values = NBA_colours) +
+        ggplot2::scale_fill_manual(values = nbaR::NBA_colours) +
         ggplot2::labs(fill = "", title = LAB)+
         #ggplot2::xlab(LAB)+
         ggplot2::theme_void() + ## removes the lines around chart and grey background
@@ -311,7 +210,7 @@ nba_plot <- function(DF, GROUPS, COLS, CHRT = c("bar", "donut"), NUM = FALSE, LA
           ggplot2::geom_text(aes(x = 3.5, y = (ymin + ymax) / 2, label = COUNT), color = "black", size = 3) +  ## Add this line to include count values
           ggplot2::coord_polar(theta = "y") + ## convert to polar coordinates
           ggplot2::xlim(c(2, 4)) + ## limit x-axis to create a donut chart
-          ggplot2::scale_fill_manual(values = NBA_colours) +
+          ggplot2::scale_fill_manual(values = nbaR::NBA_colours) +
           ggplot2::labs(fill = "", title = LAB)+
           #ggplot2::xlab(LAB)+
           ggplot2::theme_void() + ## removes the lines around chart and grey background
@@ -339,7 +238,7 @@ nba_plot <- function(DF, GROUPS, COLS, CHRT = c("bar", "donut"), NUM = FALSE, LA
       dplyr::mutate(TOT = sum(COUNT, na.rm = T), .by = {{GROUPS}} )%>%
       dplyr::mutate(PERCENTAGE = (COUNT/TOT)*100)%>%
       dplyr::mutate(dplyr::across(COUNT, ~ dplyr::na_if(., 0))) %>%
-      dplyr::mutate(FILL = factor(FILL, levels = NBA_categories))
+      dplyr::mutate(FILL = factor(FILL, levels = nbaR::NBA_categories))
 
     if(NUM == TRUE){
 
@@ -352,7 +251,7 @@ nba_plot <- function(DF, GROUPS, COLS, CHRT = c("bar", "donut"), NUM = FALSE, LA
                            size = 3,
                            color = "black",
                            show.legend = FALSE) + # adjust size of labels with no legend being shown
-        ggplot2::scale_fill_manual(values = NBA_colours)+  # order the colours of the bars in the reversed order
+        ggplot2::scale_fill_manual(values = nbaR::NBA_colours)+  # order the colours of the bars in the reversed order
         ggplot2::ylab({{LAB}}) +
         ggplot2::xlab("") + ## remove the heading for the y-axis
         ggplot2::guides(fill = guide_legend(reverse = F, nrow = 1, size = 0.5)) +  # display legend in 2 rows
@@ -374,7 +273,7 @@ nba_plot <- function(DF, GROUPS, COLS, CHRT = c("bar", "donut"), NUM = FALSE, LA
 
       plot <- ggplot2::ggplot(dat, aes(y = PERCENTAGE, x = factor({{GROUPS}}, level = ord), fill = FILL)) +
         ggplot2::geom_bar(stat = "identity", position =  position_stack(reverse = TRUE), width = 0.5) + # change width of bars
-        ggplot2::scale_fill_manual(values = NBA_colours) +  # order the colours of the bars in the reversed order
+        ggplot2::scale_fill_manual(values = nbaR::NBA_colours) +  # order the colours of the bars in the reversed order
         ggplot2::ylab({{LAB}}) +
         ggplot2::xlab("") + ## remove the heading for the y-axis
         ggplot2::guides(fill = guide_legend(reverse = F, nrow = 1, size = 0.5)) +  # display legend in 2 rows
@@ -505,7 +404,7 @@ else {
 #'
 #' The name of the groups column is irrelevant, but the categories must be
 #' spelled correctly (there is a list of the standard spellings/ cases
-#' of NBA categories named NBA_categories in this package,
+#' of NBA categories named nbaR::NBA_categories in this package,
 #' which can be accessed for reference).
 #'
 #' The nameing of the plots is automatically alphabetical and lower case.
@@ -717,107 +616,6 @@ nba_plot_theme <- function() {
 
 nba_plot_bubble <- function(DF, GROUP, CAT, SUB_CAT, VALUE, SAVE = NULL){
 
-  NBA_categories <-c("Natural",
-                     "Natural/near-natural",
-                     "Near-natural",
-                     "Moderately modified",
-                     "Heavily modified",
-                     "Severely/critically modified",
-                     "Well Protected",
-                     "Moderately Protected",
-                     "Poorly Protected",
-                     "No Protection",
-                     "Not Protected",
-                     "Extinct",
-                     "Critically Endangered",
-                     "Endangered",
-                     "Vulnerable",
-                     "Near Threatened",
-                     "Data Deficient",
-                     "Rare",
-                     "Least Concern",
-                     "Cropland",
-                     "Plantation",
-                     "Built up",
-                     "Mine",
-                     "Artificial waterbody")
-
-  NBA_colours <- c(
-
-    ##Threat status
-    "Critically Endangered" = rgb(216, 30, 5, maxColorValue = 255),
-    "Endangered" = rgb(252, 127, 63, maxColorValue = 255),
-    "Vulnerable" = rgb(249, 232, 20, maxColorValue = 255),
-    "Near Threatened" = rgb(204, 226, 38, maxColorValue = 255),
-    "Least Concern" = rgb(180, 215, 158, maxColorValue = 255),
-    "Data Deficient" = rgb(209, 209, 198, maxColorValue = 255),
-    "Rare" = rgb(193, 181, 165, maxColorValue = 255),
-    "Extinct" = rgb(0, 0, 0, maxColorValue = 255),
-    "Extinct in the Wild" = rgb(84, 35, 68, maxColorValue = 255),
-
-    #Protection level
-    "Not Protected" = rgb(166, 166, 166, maxColorValue = 255),
-    "Poorly Protected" = rgb(213, 222, 196, maxColorValue = 255),
-    "Moderately Protected" = rgb(132, 171, 92, maxColorValue = 255),
-    "Well Protected" = rgb(75, 110, 0, maxColorValue = 255),
-
-    #Pressures
-    "Low" = rgb(223, 220, 199, maxColorValue = 255),
-    "Medium" = rgb(175, 168, 117, maxColorValue = 255),
-    "High" = rgb(122, 116, 70, maxColorValue = 255),
-    "Very high" = rgb(88, 82, 50, maxColorValue = 255),
-
-
-    "No threats" = rgb(48, 30, 6, maxColorValue = 255),
-    "Pollution" = rgb(97, 65, 56, maxColorValue = 255),
-    "Transportation & service corridors" = rgb(99, 76, 39, maxColorValue = 255),
-    "Agriculture" = rgb(133, 76, 13, maxColorValue = 255),
-    "Agriculture and aquaculture" = rgb(133, 76, 13, maxColorValue = 255),
-    "Geological events" = rgb(153, 102, 0, maxColorValue = 255),
-    "Biological resource use" = rgb(180, 121, 42, maxColorValue = 255),
-    "Other threats" = rgb(231, 160, 54, maxColorValue = 255),
-    "Human intrusions & disturbance" = rgb(159, 134, 9, maxColorValue = 255),
-    "Human intrusions and disturbance" = rgb(159, 134, 9, maxColorValue = 255),
-    "Climate change" = rgb(178, 149, 78, maxColorValue = 255),
-    "Climate change & severe weather" = rgb(178, 149, 78, maxColorValue = 255),
-    "Energy production & mining" = rgb(122, 116, 70, maxColorValue = 255),
-    "Energy production and mining" = rgb(122, 116, 70, maxColorValue = 255),
-    "Natural system modifications" = rgb(88, 82, 50, maxColorValue = 255),
-    "Invasive and other problematic species, genes & diseases" = rgb(61, 69, 64, maxColorValue = 255),
-    "Invasive and other problamatic species, genes and diseases" = rgb(61, 69, 64, maxColorValue = 255),
-    "Residential & commercial development" = rgb(128, 128, 128, maxColorValue = 255),
-
-
-    # Condition
-    "Natural" = rgb(110, 159, 212, maxColorValue = 255),
-    "Natural / near natural" = rgb(110, 159, 212, maxColorValue = 255),
-    "Near natural" = rgb(110, 159, 212, maxColorValue = 255),
-    "Moderately modified" = rgb(165, 197, 199, maxColorValue = 255),
-    "Heavily / intensively modified" = rgb(129, 171, 167, maxColorValue = 255),
-    "Permanently / irreversibly modified" = rgb(136, 129, 78, maxColorValue = 255),
-
-
-    # Responses
-    "No response" = rgb(91, 66, 114, maxColorValue = 255),
-    "Some kind of response" = rgb(100, 103, 130, maxColorValue = 255),
-    "Gazetted" = rgb(117, 164, 179, maxColorValue = 255),
-    "Signed off" = rgb(117, 164, 179, maxColorValue = 255),
-
-
-    # Priority areas
-    "Land-based Protected Areas" = rgb(0, 60, 0, maxColorValue = 255),
-    "Marine Protected Areas" = rgb(0, 38, 115, maxColorValue = 255),
-    "Critical Biodiversity Areas" = rgb(67, 128, 0, maxColorValue = 255),
-    "Ecologically Sensitive Areas" = rgb(168, 168, 0, maxColorValue = 255),
-
-    # Built up areas
-    "Cropland"= rgb(0, 0, 0, maxColorValue = 255),
-    "Plantation"= rgb(0, 0, 0, maxColorValue = 255),
-    "Built up"= rgb(0, 0, 0, maxColorValue = 255),
-    "Mine"= rgb(0, 0, 0, maxColorValue = 255),
-    "Artificial waterbody" = rgb(0, 0, 0, maxColorValue = 255)
-
-  )
 
 
   # Create a named color palette for pressures
@@ -827,13 +625,13 @@ nba_plot_bubble <- function(DF, GROUP, CAT, SUB_CAT, VALUE, SAVE = NULL){
     as.data.frame()
   cat <- cat[,1]
 
-  # Subset NBA_colours using names that match the values in pressures
-  subset_NBA_colours <- NBA_colours[match(cat, names(NBA_colours))]
+  # Subset nbaR::NBA_colours using names that match the values in pressures
+  subset_colours <- nbaR::NBA_colours[match(cat, names(nbaR::NBA_colours))]
 
 
   # Create strip background and text style lists
-  strip_bg <- lapply(subset_NBA_colours, function(col) element_rect(fill = col, colour = col))
-  strip_text <- lapply(subset_NBA_colours, function(col) element_text(colour = "black"))  # or custom color
+  strip_bg <- lapply(subset_colours, function(col) element_rect(fill = col, colour = col))
+  strip_text <- lapply(subset_colours, function(col) element_text(colour = "black"))  # or custom color
 
 
   # Build strip object
@@ -858,8 +656,8 @@ nba_plot_bubble <- function(DF, GROUP, CAT, SUB_CAT, VALUE, SAVE = NULL){
     ) +
     ggplot2::scale_size(range = c(.1, 15)) +
     ggplot2::scale_x_discrete(position = "top", guide = ggplot2::guide_axis(n.dodge = 2)) +
-    ggplot2::scale_fill_manual(values = NBA_colours) +
-    ggplot2::scale_colour_manual(values = NBA_colours) +
+    ggplot2::scale_fill_manual(values = nbaR::NBA_colours) +
+    ggplot2::scale_colour_manual(values = nbaR::NBA_colours) +
     ggplot2::ylab("") +
     ggplot2::xlab("") +
     ggplot2::theme(
