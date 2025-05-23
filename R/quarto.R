@@ -108,7 +108,8 @@ nba_init_quarto_proj <- function(path = "PathToMyProject/MyNewProject",
 nba_init_quarto_docs <- function(path = ".",
                                  overwrite = FALSE,
                                  files = c("scientific.qmd","basic.qmd", "custom.scss", "_quarto.yml",
-                                           "_brand.yml", "annals-of-the-new-york-academy-of-sciences.csl"),
+                                           "_brand.yml", "annals-of-the-new-york-academy-of-sciences.csl",
+                                           "references.bib"),
                                  rename = NULL) {
 
 
