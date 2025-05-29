@@ -1,40 +1,38 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" version="1.0" demote-non-dropping-particle="sort-only" default-locale="en-US">
+  <!-- This style was edited with the Visual CSL Editor (https://editor.citationstyles.org/visualEditor/) -->
   <info>
-    <title>Annals of the New York Academy of Sciences</title>
-    <id>http://www.zotero.org/styles/annals-of-the-new-york-academy-of-sciences</id>
-    <link href="http://www.zotero.org/styles/annals-of-the-new-york-academy-of-sciences" rel="self"/>
-    <link href="http://www.zotero.org/styles/clinical-otolaryngology" rel="template"/>
-    <link href="https://nyaspubs.onlinelibrary.wiley.com/hub/journal/17496632/author-guidelines.html" rel="documentation"/>
-    <link href="https://nyaspubs.onlinelibrary.wiley.com/pb-assets/assets/17496632/Author%20Guidelines%20Standard%20Reference%20Text_DB-1655907493580.pdf" rel="documentation"/>
+    <title>SANBI</title>
+    <id>http://www.zotero.org/styles/sanbi</id>
+    <link rel="self" href="http://www.zotero.org/styles/sanbi"/>
     <author>
-      <name>Patrick O'Brien</name>
+      <name>Lize von Staden</name>
     </author>
     <category citation-format="numeric"/>
     <category field="science"/>
     <issn>0077-8923</issn>
     <eissn>1749-6632</eissn>
-    <updated>2023-09-17T18:40:11+00:00</updated>
+    <summary>An adaptation of Annals of the New York Academy of Sciences</summary>
+    <updated>2025-05-28T09:19:00+00:00</updated>
     <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
   </info>
   <macro name="editor">
-    <group delimiter=": ">
+    <group delimiter=" ">
       <choose>
         <if type="chapter paper-conference" match="any">
           <text term="in" text-case="capitalize-first"/>
         </if>
       </choose>
-      <names variable="editor" suffix=".">
-        <name sort-separator=" " initialize-with="" name-as-sort-order="all" delimiter=", " delimiter-precedes-last="always"/>
-        <label form="long" prefix=", "/>
+      <names variable="editor" suffix=",">
+        <name and="symbol" delimiter-precedes-last="never" initialize-with="." name-as-sort-order="first" sort-separator=", "/>
+        <label form="short" prefix=" (" suffix=")"/>
       </names>
     </group>
   </macro>
   <macro name="author">
     <names variable="author">
-      <name and="symbol" delimiter-precedes-last="never" initialize-with="." name-as-sort-order="first" sort-separator=" "/>
+      <name and="symbol" delimiter-precedes-last="never" initialize-with="." name-as-sort-order="first" sort-separator=", "/>
       <label form="short" prefix=" (" suffix=")"/>
-      <et-al font-style="italic"/>
       <substitute>
         <names variable="editor"/>
         <text macro="title"/>
@@ -52,9 +50,9 @@
     </choose>
   </macro>
   <macro name="publisher">
-    <group delimiter=": ">
-      <text variable="publisher-place"/>
+    <group delimiter=", ">
       <text variable="publisher"/>
+      <text variable="publisher-place"/>
     </group>
   </macro>
   <macro name="edition">
@@ -85,7 +83,7 @@
       <text variable="citation-number"/>
     </layout>
   </citation>
-  <bibliography et-al-min="3" et-al-use-first="1">
+  <bibliography et-al-min="3" et-al-use-first="1" hanging-indent="true">
     <layout>
       <text variable="citation-number" suffix=". "/>
       <group delimiter=". " suffix=".">
@@ -104,18 +102,27 @@
               <text prefix=" " macro="publisher"/>
             </group>
           </if>
-          <else-if type="chapter paper-conference" match="any">
+          <else-if type="chapter" match="any">
             <group delimiter=". ">
               <text macro="title"/>
               <group prefix=" ">
-                <text term="in" text-case="capitalize-first"/>
-                <text variable="container-title" prefix=" " font-style="italic"/>
-                <names variable="editor" delimiter=", " prefix=" ">
-                  <name name-as-sort-order="all" and="symbol" sort-separator=" " initialize-with="."/>
-                  <label form="short" text-case="capitalize-first" prefix=", "/>
-                </names>
-                <group prefix=" " suffix="." delimiter=", ">
-                  <text macro="edition"/>
+                <text macro="editor" prefix=" "/>
+                <text variable="container-title" prefix=" " delimiter=" " suffix="" font-style="italic"/>
+                <group prefix=": " suffix=".">
+                  <text variable="page"/>
+                </group>
+                <text macro="publisher" prefix=" "/>
+              </group>
+            </group>
+          </else-if>
+          <else-if type="paper-conference" match="any">
+            <group delimiter=". ">
+              <text macro="title"/>
+              <group prefix=" ">
+                <text macro="editor" prefix=" "/>
+                <text variable="container-title" prefix=" " delimiter=" " suffix="" font-style="italic"/>
+                <text variable="collection-title" prefix=". "/>
+                <group prefix=": " suffix="." delimiter=" ">
                   <text variable="page"/>
                 </group>
                 <text macro="publisher" prefix=" "/>
@@ -124,13 +131,12 @@
           </else-if>
           <else-if type="webpage post-weblog post" match="any">
             <group delimiter=" ">
-              <text variable="container-title"/>
-              <date form="text" date-parts="year-month-day" variable="issued"/>
-              <group delimiter=" " suffix=".">
+              <text variable="title" suffix="." font-style="italic"/>
+              <text variable="URL" prefix=". Available at: "/>
+              <group delimiter=" " prefix=". " suffix=".">
                 <text term="accessed" text-case="capitalize-first"/>
                 <date form="text" variable="accessed"/>
               </group>
-              <text variable="URL"/>
             </group>
           </else-if>
           <else>
@@ -146,4 +152,9 @@
       <text macro="access" prefix=". "/>
     </layout>
   </bibliography>
+  <locale>
+    <terms>
+      <term name="editor" form="short" plural="true">eds</term>
+    </terms>
+  </locale>
 </style>

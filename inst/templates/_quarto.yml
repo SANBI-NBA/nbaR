@@ -3,3 +3,57 @@ project:
 
 editor: visual
 
+csl: sanbi.csl
+footnotes-hover: true
+reference-location: document
+link-external-newwindow: true
+callout-icon: false
+
+language:
+  section-title-footnotes: Notes
+
+execute:
+  echo: false 
+  warning: false 
+  message: false
+
+format: 
+  html:
+    template-partials:
+      - partials/title-metadata.html
+      - partials/_title-meta-author.html
+    theme: 
+      - default 
+      - custom.scss    
+    crossref:
+      fig-prefix: Figure
+      fig-title: Figure
+      tbl-prefix: Table
+      tbl-title: Table
+      ref-hyperlink: true
+      fig-labels: arabic
+      tbl-labels: arabic
+      subref-labels: alpha a
+      title-delim: \.
+    include-after-body: # Some random code to make the fig & table caption labels bold
+      text: |
+        <script>
+          document.addEventListener("DOMContentLoaded", () => {
+              document.querySelectorAll("figcaption").forEach(e => {
+                  const text = e.innerHTML.trim();
+                  // Only proceed if it starts with "Figure" or "Table"
+                  if (/^(Figure|Table)\b/.test(text)) {
+                    const match = text.match(/^([^<]*?\.)\s*(.*)$/s); // Match up to first period before any tag
+                  if (match) {
+                    const strongPart = `<strong>${match[1]}</strong>`;
+                    const rest = match[2];
+                    e.innerHTML = `${strongPart} ${rest}`;
+                  }
+                }
+              });
+          });
+        </script>   
+    toc: true
+    toc-location: right
+    toc-depth: 4
+    toc-expand: true

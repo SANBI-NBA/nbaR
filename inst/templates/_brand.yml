@@ -8,6 +8,8 @@ color:
     coast: "#DEA004"
     estuarine: "#028A85"
     terrestrial: "#617016"
+    genetics: "#DE2104"
+    pei: "#481C66"
     banner-grey: "#A7A9AC"
     threatened: "#C38443"
     well-protected: "#4B6E00"

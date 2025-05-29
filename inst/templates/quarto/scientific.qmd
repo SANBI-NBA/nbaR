@@ -1,65 +1,55 @@
 ---
-title: "Add the title of your page here"
-subtitle: "Add subtitle here (you can also delete this whole line if you don't have a subtitle)"
-title-block-banner: "#A7A9AC"
-title-block-banner-color: white
+# indentations are critical in YAML headers, be careful when editing this section
+
+title: "Add the title of your page here" # Compulsory
+subtitle: "Add subtitle here" # Optional: delete if you are not using a subtitle
+
+title-block-banner: "#A7A9AC" #Background colour of the title block: Apply component colours where necessary - find hex codes in _brand.yml
+title-block-banner-color: white # Header text colour: DO NOT CHANGE
+
+# List authors here in the order you want them displayed in the title block
+# See examples in README
 author:
-  - name: First Author
-    orcid: 0000-0000-0000-0000
-    affiliation: First Author Affiliation 
-  - name: Second Author
-    orcid: 0000-0000-0000-0000
-    affiliation: 
-     - Second Author First Affiliation 
-     - Second Author Second Affiliation
-  - name: Third Author
-    orcid: 0000-0000-0000-0000
-    affiliation: Third Author Affiliation 
+  # Copy this block and add details for each author of your page. Make sure you maintain indentations exactly as they are here
+  - name:
+      given: First #Add author's first name here. Abbreviate the middle name
+      family: Author #Add author's surname here
+    orcid: 0000-0000-0000-0000 # Author's orcid ID. Delete this line if author is not on orcid
+    affiliations:
+      - ref: af1 # Ref here must match the id of one of the affiliations listed below
+      # If an author has more than one affiliation, add more - ref: lines here
+
+affiliations:
+# List affiliations here and number them in the order that they are associated with the list of authors above. If multiple authors have the same affiliation, only list the affiliation once here.
+# Write out institutional names in full
+# See README for common examples - they can be copied and pasted here
+# Make sure you maintain indentations exactly as they are here
+  - id: af1 # Use this as the affiliation ref with authors above
+    number: 1 # This number is used to associate authors with affiliations
+    name: Name of Affiliation
+
+# This date determines the PUBLISHED date in the title block
 date: last-modified
+
+# Remember to rename the default .bib file and change the name here
+bibliography: references.bib
+
+# This section sets up the page citation format. DO NOT EDIT
 citation:
   type: webpage
   container-title: National Biodiversity Assessment 2025
   publisher: South African National Biodiversity Institute
   url: http://nba.sanbi.org.za/
-appendix-cite-as: display
+# Do not edit or change any of the following entries
+appendix-cite-as: false
 google-scholar: true
-format: 
-  html:
-    crossref:
-      fig-prefix: Figure
-      tbl-prefix: Table
-      ref-hyperlink: true
-      fig-labels: arabic
-      tbl-labels: arabic
-      subref-labels: alpha a
-      title-delim: "."
-    toc: true
-    toc-location: right
-    toc-depth: 4
-    toc-expand: true
-    theme: 
-      - default 
-      - custom.scss
-language:
-  section-title-footnotes: Notes
-  section-title-citation: Recommended citation
-footnotes-hover: true
-reference-location: document
-link-external-newwindow: true
-bibliography: references.bib
-csl: annals-of-the-new-york-academy-of-sciences.csl
-callout-icon: false
-execute:
-  echo: false 
-  warning: false 
-  message: false
 ---
 
 ------------------------------------------------------------------------
 
-<!--# Key statistics section: This section can be edited to report more/fewer statistics by adding more items to each column (these will be stacked), or adding more columns (then they will be placed next to each other). Using source view, copy and paste the entire block (the three lines with the pipe | at the start), and edit contents as necessary. Do not change any of the inline styling, other than the colour applied to the statistic. Remember to adjust the column widths to add up to 100%. Try not to add more columns, as more than two columns tend to display poorly on narrow screens. Delete the entire section if you don't want to include statistics on your page-->
+<!--# Key statistics section: This section can be edited to report more/fewer statistics by adding more items to each column (these will be stacked), or adding more columns (then they will be placed next to each other). Using source view, copy and paste the entire block (the three lines with the pipe | at the start), and edit contents as necessary. Be careful to apply the correct styling parameters (the bits in the sqiggly brackets {}). If you are adding or removing columns, remember to adjust the column widths to add up to 100%. Preferably add more rows, as more than two columns tend to display poorly on narrow screens. Delete the entire section (plus the horizontal line above the Summary header) if you don't want to include statistics on your page-->
 
-::: columns
+::::: columns
 ::: {.column width="50%"}
 <center>
 
@@ -87,13 +77,13 @@ execute:
 
 </center>
 :::
-:::
+:::::
 
 ------------------------------------------------------------------------
 
 ## Summary {#summary}
 
-**Use this section to summarise highlights or key messages of your page** Use bold text to highlight your main points.
+**Use this section to summarise highlights or key messages of your page** Use bold text to highlight your main points. Do not write it as an abstract. Suggestion is to follow this section with a nice picture that relates to your page/section, before diving into details or supporting statistics
 
 **Remember to use links to relevant sections elsewhere on the page**. To add a link, click on Insert \> Link. In the pop-up box, change the link to selection from URL to Heading, and select the heading of the section you want to link to. The display text will default to the header name. If you want to use different text, you need to tag your header. Select the header, and click on the three dots to the right. In the pop-up box, give the header a tag using the ID text box. The tag must start with #, e.g. #summary. Now you can link to it using the following syntax: [display text](#section-name). (Check how it is configured in Source view).
 
@@ -125,15 +115,23 @@ Some text with a footnote[^1].
 
 ### References
 
-See [Quarto documentation](https://quarto.org/docs/authoring/citations.html#sec-citations) for different ways to cite references. For reference citations to work, there needs to be a .bib file stored in the same folder as the .qmd file. Give the .bib file a unique name (i.e. change it from the default references.bib). Make sure to edit the yaml header to reference the correct .bib file. See this [bibtex reference](https://www.bibtex.com/e/entry-types/) for the formats for different types of references
+See [Quarto documentation](https://quarto.org/docs/authoring/citations.html#sec-citations) for different ways to cite references. For reference citations to work, there needs to be a .bib file stored in the same folder as the .qmd file. Give the .bib file a unique name (i.e. change it from the default references.bib). Make sure to edit the yaml header to reference the correct .bib file. See this [bibtex reference](https://www.bibtex.com/e/entry-types/) for the formats for different types of references. The references.bib file in the `quarto` folder contains some example references:
 
-Citing a journal article[@harris2019].
+Here is a citation of a journal article[@harris2019].
 
-Citing a book[@megadiversity1997].
+Here is a citation of a book [@megadiversity1997].
 
-Citing a book chapter[@wilson2018].
+Here is a citation of an edited book[@Skowno2019].
 
-Citing a technical report[@vonmaltitz2020carbon].
+Here is a citation of a book chapter [@wilson2018].
+
+Here is a citation of a report [@vonmaltitz2020carbon].
+
+Here is a citation of a website [@nhm2019].
+
+Here is a citation of multiple references [@barger2018; @melaku2024; @vonmaltitz2020carbon]
+
+For a chapter or section in a book that is part of a series (e.g. Vegetation of South Africa) use the `@inproceedings` format[@vegsa2006]
 
 ## Code blocks for graphs, maps and tables
 
@@ -149,7 +147,8 @@ Add an appropriate descriptive caption next to **fig-cap.**
 #| label: fig-ref
 #| fig-cap: "Add figure caption here." 
 
-# Add R code for generating figure here
+# Add R code for generating figure here, e.g.
+nbaR::nba_plot(nbaR::NBA_example_thr_data, `OVERALL types`, 2:5, CHRT = "bar", NUM = TRUE, LAB = "Percentage of ecosystem types")
 
 ```
 
@@ -162,7 +161,8 @@ Follow the same system for creating tables. Do not use the visual editor to inse
 #| tbl-cap: "Add table caption here." 
 #| classes: plain
 
-# Add R code for generating table here
+# Add R code for generating table here, e.g.
+nbaR::nba_tbl(nbaR::NBA_example_pro_data)
 
 ```
 
@@ -170,8 +170,10 @@ Follow the same system for creating tables. Do not use the visual editor to inse
 
 It is possible do display both the data that a figure is based on and the figure using [tabset-panels](https://quarto.org/docs/output-formats/html-basics.html#tabsets). This enables users to interrogate the data behind the statistics directly. Use this code to set up a tabset:
 
-::: panel-tabset
+:::: panel-tabset
 ## Figure
+
+<!-- it is important to use second-level headings in panel tabsets, i.e. two hashes -->
 
 ```{r}
 #| label: fig-tab
@@ -228,20 +230,30 @@ gt(tbl_dat) %>% nba_tbl_theme()
 ```
 :::
 
-Download the data here.
-:::
+Download the data [here](http://insert_your_link_to_your_data).
+::::
 
 ## Information boxes
 
 Additional information can be added in collapsible information boxes using [callout blocks](https://quarto.org/docs/authoring/callouts.html). The callout block is styled using the scss file associated with this template, therefore it does not look exactly like the standard Quarto callouts. If you want to cross reference the box in the text, you need to give it a uniqe name starting with **\#** this will allow you to reference it as [Box 1](#box-1).
 
 ::: {#box-1 .callout-note collapse="true"}
-## Box title
+## Box 1. Box title
+
+<!-- it is important to use second-level headings in box titles -->
 
 Add the box content here. It can include text, pictures, tables and graphs. Add them as you would for general text.
 :::
 
 ## Technical documentation
+
+<!--# This section is compulsory for all scientific content, but what you include here is flexible based on what you have available for your indicators -->
+
+<!--# the below examples/recommendations can be modified, e.g. you could do a technical report PDF, as long as it is made available on a public repository (figshare?) and can be linked to in this document -->
+
+<!--# avoid linking to Google Drive or other personal drives that may not be permanent. -->
+
+<!--# Always use DOI to link to published papers - never use the journal's website -->
 
 The last section of your page should contain links to technical documentation of the indicators and analyses presented on your page. Technical documentation can be in a variety of formats. It is not necessary to have all these in place, but there should at least be a technical report available in a public document repository (e.g. OPUS) or a published paper describing your methods. Edit and adapt the suggested layout below depending on what technical documentation is applicable to your page.
 
@@ -249,11 +261,31 @@ The last section of your page should contain links to technical documentation of
 
 -   **Data repository**: [OPUS](https://opus.sanbi.org/home), [Figshare](https://figshare.com/), [KNB](https://knb.ecoinformatics.org/) or [BGIS](https://bgis.sanbi.org/) - link to the specific page within these websites containing your data.
 
--   **Technical report**: Add link to technical report in PDF format
+-   **Technical report**: Add link to technical report in PDF format or Quarto website
 
-**Other publications**
+**Key publications**
 
 Jordaan, M.S., et al. 2020. Protected areas and endemic freshwater fishes of the Cape Fold Ecoregion: missing the boat for fish conservation? Frontiers in Environmental Science 8:502042. doi: [10.3389/fenvs.2020.502042](https://doi.org/10.3389/fenvs.2020.502042)
+
+## Recommended citation
+
+```{r}
+#| output: asis
+#| label: lst-citation-code
+
+library(nbaR) 
+library(knitr)
+library(rmarkdown)
+
+# Code for fetching the yaml metadata
+# Note that this only runs when the .qmd file is rendered, therefore the outputs of this code block will return no results if you try to run it within R - that does not mean it is not working
+
+meta <- knitr::opts_knit$get("rmarkdown.pandoc.to")  # forces knitr to load metadata
+meta <- rmarkdown::metadata  # full YAML is now in `meta`
+
+nba_citation(meta)
+
+```
 
 ## References
 

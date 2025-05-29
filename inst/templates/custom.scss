@@ -246,3 +246,26 @@ div.callout-note.callout-style-default .callout-header {
   font-weight: 600;
 }
 
+/* Custom styling element for affiliations */
+
+.quarto-title-meta-contents-affiliation {
+    font-size: .7em;
+}
+
+
+/* Fixing table caption alignment */
+figure.quarto-float-tbl figcaption.quarto-float-caption-top {
+    margin-top: .5rem;
+    margin-bottom: .25rem;
+    text-align: left
+}
+
+/* Distinguishing footnotes from references */
+.footnote-ref sup:before {
+  content: '[';
+}
+
+.footnote-ref sup:after {
+  content: ']';
+}
+

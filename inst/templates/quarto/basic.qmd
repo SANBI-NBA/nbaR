@@ -1,0 +1,6 @@
+---
+title: "Basic template for synthesis content"
+subtitle: "Add subtitle here"
+title-block-banner: "#adb5bd"
+title-block-banner-color: white
+---
