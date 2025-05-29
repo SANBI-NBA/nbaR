@@ -13,12 +13,22 @@
 #' @importFrom usethis create_project
 #'
 #' @export
-nba_init_quarto_proj <- function(path = "PathToMyProject/MyNewProject",
+nba_init_quarto_proj <- function(path = "Path/To/My/Project/MyNewProject",
                                  overwrite = FALSE,
-                                 files = c("scientific.qmd","basic.qmd", "custom.scss", "_quarto.yml",
-                                           "_brand.yml", "annals-of-the-new-york-academy-of-sciences.csl",
-                                           "references.bib", "nba-banner.png",
-                                           "sanbi-logo-small.png", "terrestrial-ecosystems.csv"),
+                                 files = c( "_brand.yml","_quarto.yml", ".gitignore", #main folder
+                                            "custom.scss",  "sanbi.csl",
+
+                                                "_title-meta-author.html", "title-metadata.html", #partials
+
+
+                                                "scientific.qmd","basic.qmd","references.bib",#quarto
+
+                                                          "terrestrial-ecosystems.csv", #data
+
+
+                                                          "nba-banner.png", "sanbi-logo-small.png", #imgs
+
+                                                          "test-fig.png"), #outputs
                                  rename = NULL) {
 
   # Load required package
@@ -36,18 +46,39 @@ nba_init_quarto_proj <- function(path = "PathToMyProject/MyNewProject",
 
   copied <- character()
 
-  ##Create imgs/ subfolder if not already present
-  imgs_dir <- file.path(path, "imgs")
-  if (!dir.exists(imgs_dir)) {
-    dir.create(imgs_dir, recursive = TRUE)
-    message("Created folder: imgs/")
+  ##Create partials/ subfolder if not already present
+  partials_dir <- file.path(path, "partials")
+  if (!dir.exists(partials_dir)) {
+    dir.create(partials_dir, recursive = TRUE)
+    message("Created folder: partials/")
   }
 
-  ##Create data/ subfolder if not already present
-  data_dir <- file.path(path, "data")
+  ##Create quarto/ subfolder if not already present
+  quarto_dir <- file.path(path, "quarto")
+  if (!dir.exists(quarto_dir)) {
+    dir.create(quarto_dir, recursive = TRUE)
+    message("Created folder: quarto/")
+  }
+
+  ##Create quarto/imgs/ subfolder if not already present
+  imgs_dir <- file.path(path, "quarto/imgs")
+  if (!dir.exists(imgs_dir)) {
+    dir.create(imgs_dir, recursive = TRUE)
+    message("Created folder: quarto/imgs/")
+  }
+
+  ##Create quarto/data/ subfolder if not already present
+  data_dir <- file.path(path, "quarto/data")
   if (!dir.exists(data_dir)) {
     dir.create(data_dir, recursive = TRUE)
-    message("Created folder: data/")
+    message("Created folder: quarto/data/")
+  }
+
+  ##Create quarto/outputs subfolder if not already present
+  outputs_dir <- file.path(path, "quarto/outputs")
+  if (!dir.exists(outputs_dir)) {
+    dir.create(outputs_dir, recursive = TRUE)
+    message("Created folder: quarto/outputs")
   }
 
   for (file in files) {
