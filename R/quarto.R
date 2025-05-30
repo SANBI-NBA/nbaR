@@ -43,11 +43,16 @@ nba_init_quarto_proj <- function(path = "Path/To/My/Project/MyNewProject",
   # Template source directory
   template_dir <- system.file("templates", package = "nbaR")
 
+  # List all files (recursively)
+  files_to_copy <- files
 
-  # Copy everything from Template to new path
-  file.copy(from = template_dir,
-            to = path,
-            recursive = TRUE)
+  # Copy each file, preserving relative path
+  for (file in files_to_copy) {
+    rel_path <- path_rel(file, start = template_dir)
+    dest_path <- path(path, rel_path)
+    dir_create(path_dir(dest_path))
+    file_copy(file, dest_path, overwrite = TRUE)
+  }
 
 
   # copied <- character()
