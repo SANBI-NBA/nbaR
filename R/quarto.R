@@ -44,81 +44,87 @@ nba_init_quarto_proj <- function(path = "Path/To/My/Project/MyNewProject",
   template_dir <- system.file("templates", package = "nbaR")
 
 
-  copied <- character()
-
-  ##Create partials/ subfolder if not already present
-  partials_dir <- file.path(path, "partials")
-  if (!dir.exists(partials_dir)) {
-    dir.create(partials_dir, recursive = TRUE)
-    message("Created folder: partials/")
-  }
-
-  ##Create quarto/ subfolder if not already present
-  quarto_dir <- file.path(path, "quarto")
-  if (!dir.exists(quarto_dir)) {
-    dir.create(quarto_dir, recursive = TRUE)
-    message("Created folder: quarto/")
-  }
-
-  ##Create quarto/imgs/ subfolder if not already present
-  imgs_dir <- file.path(path, "quarto/imgs")
-  if (!dir.exists(imgs_dir)) {
-    dir.create(imgs_dir, recursive = TRUE)
-    message("Created folder: quarto/imgs/")
-  }
-
-  ##Create quarto/data/ subfolder if not already present
-  data_dir <- file.path(path, "quarto/data")
-  if (!dir.exists(data_dir)) {
-    dir.create(data_dir, recursive = TRUE)
-    message("Created folder: quarto/data/")
-  }
-
-  ##Create quarto/outputs subfolder if not already present
-  outputs_dir <- file.path(path, "quarto/outputs")
-  if (!dir.exists(outputs_dir)) {
-    dir.create(outputs_dir, recursive = TRUE)
-    message("Created folder: quarto/outputs")
-  }
-
-  for (file in files) {
-    source_path <- file.path(template_dir, file)
-    if (!file.exists(source_path)) {
-      warning(paste("Template file", file, "not found."))
-      next
-    }
-
-    # Determine file destination
-    if (grepl("\\.png$", file)) {
-      dest_dir <- imgs_dir
-    } else if (grepl("\\.csv$", file)) {
-      dest_dir <- data_dir
-    } else {
-      dest_dir <- path
-    }
-
-    # Rename if requested
-    out_name <- if (!is.null(rename) && file %in% names(rename)) {
-      rename[[file]]
-    } else {
-      file
-    }
-
-    target_path <- file.path(dest_dir, out_name)
-
-    # Handle existing files
-    if (file.exists(target_path) && !overwrite) {
-      print(paste("Skipping", out_name, "(already exists)."))
-      next
-    }
+  # Copy everything from Template to new path
+  file.copy(from = template_dir,
+            to = path,
+            recursive = TRUE)
 
 
-    file.copy(source_path, target_path, overwrite = TRUE)
-    print(paste("Copied", out_name, "to", target_path))
-    copied <- c(copied, target_path)
-  }
-
-  invisible(copied)
+  # copied <- character()
+  #
+  # ##Create partials/ subfolder if not already present
+  # partials_dir <- file.path(path, "partials")
+  # if (!dir.exists(partials_dir)) {
+  #   dir.create(partials_dir, recursive = TRUE)
+  #   message("Created folder: partials/")
+  # }
+  #
+  # ##Create quarto/ subfolder if not already present
+  # quarto_dir <- file.path(path, "quarto")
+  # if (!dir.exists(quarto_dir)) {
+  #   dir.create(quarto_dir, recursive = TRUE)
+  #   message("Created folder: quarto/")
+  # }
+  #
+  # ##Create quarto/imgs/ subfolder if not already present
+  # imgs_dir <- file.path(path, "quarto/imgs")
+  # if (!dir.exists(imgs_dir)) {
+  #   dir.create(imgs_dir, recursive = TRUE)
+  #   message("Created folder: quarto/imgs/")
+  # }
+  #
+  # ##Create quarto/data/ subfolder if not already present
+  # data_dir <- file.path(path, "quarto/data")
+  # if (!dir.exists(data_dir)) {
+  #   dir.create(data_dir, recursive = TRUE)
+  #   message("Created folder: quarto/data/")
+  # }
+  #
+  # ##Create quarto/outputs subfolder if not already present
+  # outputs_dir <- file.path(path, "quarto/outputs")
+  # if (!dir.exists(outputs_dir)) {
+  #   dir.create(outputs_dir, recursive = TRUE)
+  #   message("Created folder: quarto/outputs")
+  # }
+  #
+  # for (file in files) {
+  #   source_path <- file.path(template_dir, file)
+  #   if (!file.exists(source_path)) {
+  #     warning(paste("Template file", file, "not found."))
+  #     next
+  #   }
+  #
+  #   # Determine file destination
+  #   if (grepl("\\.png$", file)) {
+  #     dest_dir <- imgs_dir
+  #   } else if (grepl("\\.csv$", file)) {
+  #     dest_dir <- data_dir
+  #   } else {
+  #     dest_dir <- path
+  #   }
+  #
+  #   # Rename if requested
+  #   out_name <- if (!is.null(rename) && file %in% names(rename)) {
+  #     rename[[file]]
+  #   } else {
+  #     file
+  #   }
+  #
+  #   target_path <- file.path(dest_dir, out_name)
+  #
+  #   # Handle existing files
+  #   if (file.exists(target_path) && !overwrite) {
+  #     print(paste("Skipping", out_name, "(already exists)."))
+  #     next
+  #   }
+  #
+  #
+  #   file.copy(source_path, target_path, overwrite = TRUE)
+  #   print(paste("Copied", out_name, "to", target_path))
+  #   copied <- c(copied, target_path)
+  # }
+  #
+  # invisible(copied)
 }
 
 ##nba_init_quarto_docs##################################################
