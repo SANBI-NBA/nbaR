@@ -37,23 +37,17 @@ nba_init_quarto_proj <- function(path = "Path/To/My/Project/MyNewProject",
   }
 
   # Create a new RStudio project
-  usethis::create_project(path = path, open = TRUE, rstudio = TRUE)
+  #usethis::create_project(path = path, open = TRUE, rstudio = TRUE)
 
 
   # Template source directory
   template_dir <- system.file("templates", package = "nbaR")
 
-  # List all files (recursively)
-  files_to_copy <- files
 
-  # Copy each file, preserving relative path
-  for (file in files_to_copy) {
-    rel_path <- path_rel(file, start = template_dir)
-    dest_path <- path(path, rel_path)
-    dir_create(path_dir(dest_path))
-    file_copy(file, dest_path, overwrite = TRUE)
-  }
-
+  # Copy everything from original to new
+  file.copy(from = template_dir,
+            to = path,
+            recursive = TRUE)
 
   # copied <- character()
   #
