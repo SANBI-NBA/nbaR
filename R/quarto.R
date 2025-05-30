@@ -36,18 +36,21 @@ nba_init_quarto_proj <- function(path = "Path/To/My/Project/MyNewProject",
     stop("The 'usethis' package is required. Please install it with install.packages('usethis').")
   }
 
-  # Create a new RStudio project
-  #usethis::create_project(path = path, open = TRUE, rstudio = TRUE)
 
 
   # Template source directory
   template_dir <- system.file("templates", package = "nbaR")
 
 
-  # Copy everything from original to new
+  # Copy everything from Template to new path
   file.copy(from = template_dir,
             to = path,
             recursive = TRUE)
+
+  # Create a new RStudio project
+    usethis::create_project(path = paste0(path, "/templates"), open = TRUE, rstudio = TRUE)
+
+
 
   # copied <- character()
   #
