@@ -146,9 +146,14 @@ nba_init_quarto_proj <- function(path = "Path/To/My/Project/MyNewProject",
 #' @export
 nba_init_quarto_docs <- function(path = ".",
                                  overwrite = FALSE,
-                                 files = c("scientific.qmd","basic.qmd", "custom.scss", "_quarto.yml",
-                                           "_brand.yml", "annals-of-the-new-york-academy-of-sciences.csl",
-                                           "references.bib"),
+                                 files = c("_brand.yml","_quarto.yml", #main folder
+                                           "custom.scss",  "sanbi.csl",
+
+                                           "_title-meta-author.html", "title-metadata.html", #partials
+
+
+                                           "scientific.qmd","basic.qmd","references.bib"#quarto
+                                           ),
                                  rename = NULL) {
 
 
