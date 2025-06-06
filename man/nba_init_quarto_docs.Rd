@@ -7,8 +7,9 @@
 nba_init_quarto_docs(
   path = ".",
   overwrite = FALSE,
-  files = c("scientific.qmd", "basic.qmd", "custom.scss", "_quarto.yml", "_brand.yml",
-    "annals-of-the-new-york-academy-of-sciences.csl", "references.bib"),
+  files = c("_brand.yml", "_quarto.yml", "custom.scss", "sanbi.csl",
+    "_title-meta-author.html", "title-metadata.html", "scientific.qmd", "basic.qmd",
+    "references.bib"),
   rename = NULL
 )
 }

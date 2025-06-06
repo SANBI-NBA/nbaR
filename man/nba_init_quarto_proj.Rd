@@ -5,11 +5,12 @@
 \title{Create template quarto project to get an NBA html page up and running}
 \usage{
 nba_init_quarto_proj(
-  path = "PathToMyProject/MyNewProject",
+  path = "Path/To/My/Project/MyNewProject",
   overwrite = FALSE,
-  files = c("scientific.qmd", "basic.qmd", "custom.scss", "_quarto.yml", "_brand.yml",
-    "annals-of-the-new-york-academy-of-sciences.csl", "references.bib", "nba-banner.png",
-    "sanbi-logo-small.png", "terrestrial-ecosystems.csv"),
+  files = c("_brand.yml", "_quarto.yml", ".gitignore", "custom.scss", "sanbi.csl",
+    "_title-meta-author.html", "title-metadata.html", "scientific.qmd", "basic.qmd",
+    "references.bib", "terrestrial-ecosystems.csv", "nba-banner.png",
+    "sanbi-logo-small.png", "test-fig.png"),
   rename = NULL
 )
 }
