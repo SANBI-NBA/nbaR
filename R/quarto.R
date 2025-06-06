@@ -3,7 +3,7 @@
 #'
 #' Copies a template.qmd, template.scss, and _quarto.yml into a Quarto project directory.
 #'
-#' @param path The destination directory for the project followed by the project name
+#' @param path The destination directory for the project, the project will automatically be names templates
 #' @param overwrite Whether to overwrite existing files. Defaults to FALSE.
 #' @param files Character vector of files to copy. Defaults to all template files.
 #' @param rename Named character vector to rename files on copy, e.g., c("scientific.qmd" = "index.qmd")
@@ -13,22 +13,8 @@
 #' @importFrom usethis create_project
 #'
 #' @export
-nba_init_quarto_proj <- function(path = "Path/To/My/Project/MyNewProject",
-                                 overwrite = FALSE,
-                                 files = c( "_brand.yml","_quarto.yml", ".gitignore", #main folder
-                                            "custom.scss",  "sanbi.csl",
-
-                                                "_title-meta-author.html", "title-metadata.html", #partials
-
-
-                                                "scientific.qmd","basic.qmd","references.bib",#quarto
-
-                                                          "terrestrial-ecosystems.csv", #data
-
-
-                                                          "nba-banner.png", "sanbi-logo-small.png", #imgs
-
-                                                          "test-fig.png"), #outputs
+nba_init_quarto_proj <- function(path = "Path/To/My/Project/",
+                                 overwrite = FALSE, #outputs
                                  rename = NULL) {
 
   # Load required package
