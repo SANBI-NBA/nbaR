@@ -5,23 +5,19 @@
 \title{Create template quarto project to get an NBA html page up and running}
 \usage{
 nba_init_quarto_proj(
-  path = "Path/To/My/Project/MyNewProject",
+  path = "Path/To/My/Project/",
   overwrite = FALSE,
-  files = c("_brand.yml", "_quarto.yml", ".gitignore", "custom.scss", "sanbi.csl",
-    "_title-meta-author.html", "title-metadata.html", "scientific.qmd", "basic.qmd",
-    "references.bib", "terrestrial-ecosystems.csv", "nba-banner.png",
-    "sanbi-logo-small.png", "test-fig.png"),
   rename = NULL
 )
 }
 \arguments{
-\item{path}{The destination directory for the project followed by the project name}
+\item{path}{The destination directory for the project, the project will automatically be names templates}
 
 \item{overwrite}{Whether to overwrite existing files. Defaults to FALSE.}
 
-\item{files}{Character vector of files to copy. Defaults to all template files.}
-
 \item{rename}{Named character vector to rename files on copy, e.g., c("scientific.qmd" = "index.qmd")}
+
+\item{files}{Character vector of files to copy. Defaults to all template files.}
 }
 \value{
 Invisibly returns the paths of copied files.
