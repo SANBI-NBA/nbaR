@@ -230,7 +230,7 @@ nba_citation <- function(META){
 
   # 1. ----------- Author string ----------------------------------------------
   # helper: turn "Jo M."  -> "J.M."
-  initials <- function(given) {
+  nba_initials <- function(given) {
     # split on spaces or dots, drop empties, keep first letter, add a dot
     parts <- unlist(strsplit(given, "[[:space:].]+"))
     paste0(substring(parts, 1, 1), collapse = ".") |> paste0(".")
@@ -239,7 +239,7 @@ nba_citation <- function(META){
   authors <- vapply(meta$author, function(a) {
     fam  <- a$name$family
     fam  <- sub("^(.)(.*)$", "\\U\\1\\E\\2", fam, perl = TRUE)  # cap first letter only
-    inits <- WikidataR::initials(a$name$given)
+    inits <- nba_initials(a$name$given)
     paste0(fam, ", ", inits)
   }, FUN.VALUE = character(1))
 
