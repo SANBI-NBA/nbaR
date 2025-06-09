@@ -153,9 +153,11 @@ nba_init_quarto_docs <- function(path = ".",
   for (file in files) {
     source_path <- file.path(template_dir, file)
     if (!file.exists(source_path)) {
-      print(paste("Template file", file, "not found."))
-      next
-    }
+      source_path <- file.path(system.file("templates/partials", package = "nbaR"), file)
+      if(!file.exists(source_path)) {
+        source_path <- file.path(system.file("templates/quarto", package = "nbaR"), file)
+      next}}}
+
 
     # Rename if requested
     out_name <- if (!is.null(rename) && file %in% names(rename)) {
@@ -175,7 +177,7 @@ nba_init_quarto_docs <- function(path = ".",
     file.copy(source_path, target_path, overwrite = TRUE)
     print(paste("Copied", out_name, "to", target_path))
     copied <- c(copied, target_path)
-  }
+
 
   invisible(copied)
 }
