@@ -153,10 +153,12 @@ nba_init_quarto_docs <- function(path = ".",
   for (file in files) {
     source_path <- file.path(template_dir, file)
     if (!file.exists(source_path)) {
-      source_path <- file.path(system.file("templates/partials", package = "nbaR"), file)}
+      source_path <- file.path(system.file("templates/partials", package = "nbaR"), file)
+      next
+      }
       if(!file.exists(source_path)) {
         source_path <- file.path(system.file("templates/quarto", package = "nbaR"), file)
-      next}
+      next }
 
 
     # Rename if requested
