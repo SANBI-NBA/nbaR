@@ -23,5 +23,5 @@ nba_init_quarto_proj(
 Invisibly returns the paths of copied files.
 }
 \description{
-Copies a template.qmd, template.scss, and _quarto.yml into a Quarto project directory.
+Copies a project named templates
 }

@@ -1,7 +1,7 @@
 ##nba_init_quarto_proj##################################################
 #' Create template quarto project to get an NBA html page up and running
 #'
-#' Copies a template.qmd, template.scss, and _quarto.yml into a Quarto project directory.
+#' Copies a project named templates
 #'
 #' @param path The destination directory for the project, the project will automatically be names templates
 #' @param overwrite Whether to overwrite existing files. Defaults to FALSE.
@@ -118,7 +118,17 @@ nba_init_quarto_proj <- function(path = "Path/To/My/Project/",
 ##nba_init_quarto_docs##################################################
 #' Create template quarto documents to get an NBA html page up and running
 #'
-#' Copies a template.qmd, template.scss, and _quarto.yml into a Quarto project directory.
+#' Copies a all template files into project directory.
+#'
+#' main folder
+#' "_brand.yml","_quarto.yml",
+#' "custom.scss",  "sanbi.csl"
+#'
+#' partials
+#' "_title-meta-author.html", "title-metadata.html",
+#'
+#' quarto
+#' "scientific.qmd","basic.qmd","references.bib"
 #'
 #' @param path The destination directory. Defaults to current working directory. Just add the name of any folder you want the documents to be cpoied into as long as it is in your project folder.
 #' @param overwrite Whether to overwrite existing files. Defaults to FALSE.
