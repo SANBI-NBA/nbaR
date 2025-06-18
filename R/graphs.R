@@ -363,11 +363,7 @@ nba_plot <- function(DF, GROUPS, COLS, CHRT = c("bar", "donut"), NUM = FALSE, LA
 #'
 #'
 
-library(dplyr)
-library(ggplot2)
-library(rlang)
-
-RLI_plot <- function(DF, YEAR, RLI, min, max, GROUP = NULL, summarise_by_year = TRUE, SAVE = NULL) {
+nba_plot_RLI <- function(DF, YEAR, RLI, min, max, GROUP = NULL, summarise_by_year = TRUE, SAVE = NULL) {
   # Convert column names to symbols (quosures)
   YEAR <- enquo(YEAR)
   RLI <- enquo(RLI)
