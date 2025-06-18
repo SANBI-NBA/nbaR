@@ -54,7 +54,16 @@ line using the minimum and maximum values.</p>
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">nba_plot_RLI</span><span class="op">(</span><span class="va">DF</span>, <span class="va">YEAR</span>, <span class="va">RLI</span>, <span class="va">MIN</span>, <span class="va">MAX</span>, GRP <span class="op">=</span> <span class="cn">NULL</span>, SAVE <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">nba_plot_RLI</span><span class="op">(</span></span>
+<span>  <span class="va">DF</span>,</span>
+<span>  <span class="va">YEAR</span>,</span>
+<span>  <span class="va">RLI</span>,</span>
+<span>  <span class="va">min</span>,</span>
+<span>  <span class="va">max</span>,</span>
+<span>  GROUP <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  summarise_by_year <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  SAVE <span class="op">=</span> <span class="cn">NULL</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -73,6 +82,10 @@ line using the minimum and maximum values.</p>
 <dd><p>The Red List Index</p></dd>
 
 
+<dt id="arg-save">SAVE<a class="anchor" aria-label="anchor" href="#arg-save"></a></dt>
+<dd><p>The name of the output file that will be saved to the output folder. If you do not have an outputs folder you will be prompted to make one.</p></dd>
+
+
 <dt id="arg-min">MIN<a class="anchor" aria-label="anchor" href="#arg-min"></a></dt>
 <dd><p>The minimum values</p></dd>
 
@@ -83,10 +96,6 @@ line using the minimum and maximum values.</p>
 
 <dt id="arg-grp">GRP<a class="anchor" aria-label="anchor" href="#arg-grp"></a></dt>
 <dd><p>A choice to group the plot, if a column name is supplied will groupd, if left NULL will not group</p></dd>
-
-
-<dt id="arg-save">SAVE<a class="anchor" aria-label="anchor" href="#arg-save"></a></dt>
-<dd><p>The name of the output file that will be saved to the output folder. If you do not have an outputs folder you will be prompted to make one.</p></dd>
 
 </dl></div>
     <div class="section level2">
