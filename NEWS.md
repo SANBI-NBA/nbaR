@@ -1,3 +1,6 @@
+# nbaR 2.2.1
+updates to RLI and bubble plots. and some minor issue fixes
+
 # nbaR 2.2.0
 Added new function nba_citation and fixed a bunch of bugs
 
