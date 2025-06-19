@@ -27,7 +27,6 @@ Imports:
     ggspatial,
     gt,
     ggh4x,
-    rsconnect,
     usethis,
     WikidataR,
     rlang
