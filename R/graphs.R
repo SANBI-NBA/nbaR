@@ -342,12 +342,9 @@ nba_plot <- function(DF, GROUPS, COLS, CHRT = c("bar", "donut"), NUM = FALSE, LA
 #' @importFrom ggplot2  labs
 #' @importFrom ggplot2  theme_void
 #' @importFrom ggplot2  theme
-#' @importFrom magrittr %>%
-#' @importFrom dplyr group_by
-#' @importFrom dplyr summarise
-#' @importFrom rlang enquo
-#' @importFrom rlang quo_is_null
-#' @importFrom rlang !!
+#' @importFrom dplyr count
+#' @importFrom dplyr arrange
+#' @importFrom dplyr mutate
 #'
 #'
 #' @export
@@ -362,61 +359,35 @@ nba_plot <- function(DF, GROUPS, COLS, CHRT = c("bar", "donut"), NUM = FALSE, LA
 #' RLI_plot
 #'
 #'
+nba_plot_RLI <- function(DF,YEAR, RLI, MIN, MAX, GRP = NULL, SAVE = NULL){
 
-library(dplyr)
-library(ggplot2)
-library(rlang)
+if(!is.null(GRP)){
 
-RLI_plot <- function(DF, YEAR, RLI, min, max, GROUP = NULL, summarise_by_year = TRUE, SAVE = NULL) {
-  # Convert column names to symbols (quosures)
-  YEAR <- enquo(YEAR)
-  RLI <- enquo(RLI)
-  min <- enquo(min)
-  max <- enquo(max)
-  GROUP <- enquo(GROUP)
+  RLI <- ggplot2::ggplot(DF, aes(x = {{YEAR}}, y = {{RLI}}, group = {{GRP}}, color = {{GRP}})) +
+    ggplot2::geom_line(linetype="dashed") +
+    ggplot2::geom_ribbon(aes(ymin = {{MIN}}, ymax = {{MAX}}), fill = "grey", alpha = .2, colour = NA)+
+    ggplot2::theme_classic()+
+    ggplot2::ylim(0.7,1)
 
-  # Summarisation
-  if (summarise_by_year && rlang::quo_is_null(GROUP)) {
-    DF <- DF %>%
-      group_by(!!YEAR) %>%
-      summarise(
-        !!min := mean(!!min, na.rm = TRUE),
-        !!max := mean(!!max, na.rm = TRUE),
-        !!RLI := mean(!!RLI, na.rm = TRUE),
-        .groups = "drop"
-      )
-  }
+}
+else {
 
-  # Base plot
-  p <- ggplot(DF, aes(x = !!YEAR, y = !!RLI))
+  RLI <- ggplot2::ggplot(DF, aes(x = {{YEAR}}, y = {{RLI}})) +
+    ggplot2::geom_line(aes(y = {{RLI}})) +
+    ggplot2::geom_ribbon(aes(ymin = {{MIN}}, ymax = {{MAX}}),alpha = .3, colour = NA)+
+    ggplot2::theme_classic()+
+    ggplot2::ylim(0.7,1)
 
-  # Add layers based on grouping
-  if (rlang::quo_is_null(GROUP)) {
-    p <- p +
-      geom_line() +
-      geom_ribbon(aes(ymin = !!min, ymax = !!max), alpha = 0.3, colour = NA)
-  } else {
-    p <- p +
-      geom_line(aes(group = !!GROUP, color = !!GROUP), linetype = "dashed") +
-      geom_ribbon(aes(ymin = !!min, ymax = !!max, group = !!GROUP), fill = "grey", alpha = 0.2, colour = NA)
-  }
 
-  # Finalize plot
-  p <- p + theme_classic() + ylim(0.7, 1)
-
-  # Optional: save to file if SAVE is provided
-  if (!is.null(SAVE)) {
-    ggsave(filename = paste0("outputs/", SAVE, ".png"),
-           plot = p,
-           height = 10, width = 16, units = "cm", dpi = 300)
-  }
-
-  p
 }
 
+  if (!is.null(SAVE)) {
 
+    ggsave(paste0("outputs/", SAVE, ".png"), height = 10, width = 16, units = 'cm', dpi = 300, create.dir = TRUE)
 
-
+  }
+  RLI
+}
 
 #######################################################################
 #' NBA multi plot function
