@@ -653,12 +653,7 @@ nba_plot_bubble <- function(DF, GROUP, CAT, SUB_CAT, VALUE, SAVE = NULL){
   DF  <- DF %>%
     mutate(pressure = factor(pressure, levels = names(subset_colours)))
 
-  # Now get levels in order
-  cat <- DF %>%
-    dplyr::select(pressure) %>%
-    unique() %>%
-    as.data.frame()
-  cat <- cat[,1]
+
 
   # Create strip background and text style lists
   strip_bg <- lapply(subset_colours, function(col) element_rect(fill = col, colour = col))
