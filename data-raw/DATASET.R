@@ -167,6 +167,7 @@ NBA_colours <- c(
   "Geological events" = rgb(153, 102, 0, maxColorValue = 255),
   "Biological resource use" = rgb(180, 121, 42, maxColorValue = 255),
   "Other threats" = rgb(231, 160, 54, maxColorValue = 255),
+  "Other threat" = rgb(231, 160, 54, maxColorValue = 255),
   "Human intrusions & disturbance" = rgb(159, 134, 9, maxColorValue = 255),
   "Human intrusions and disturbance" = rgb(159, 134, 9, maxColorValue = 255),
   "Climate change" = rgb(178, 149, 78, maxColorValue = 255),
