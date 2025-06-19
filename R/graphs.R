@@ -649,9 +649,21 @@ nba_plot_bubble <- function(DF, GROUP, CAT, SUB_CAT, VALUE, SAVE = NULL){
   subset_colours <- nbaR::NBA_colours[match(cat, names(nbaR::NBA_colours))]
 
 
+  # Ensure pressure is a factor with correct levels
+  DF  <- DF %>%
+    mutate(!!CAT := factor({{CAT}}, levels = names(subset_colours)))
+
+  # Now get levels in order
+  cat <- DF %>%
+    dplyr::select(pressure) %>%
+    unique() %>%
+    as.data.frame()
+  cat <- cat[,1]
+
+
   # Create strip background and text style lists
   strip_bg <- lapply(subset_colours, function(col) element_rect(fill = col, colour = col))
-  strip_text <- lapply(subset_colours, function(col) element_text(colour = "black"))  # or custom color
+  strip_text <- lapply(subset_colours, function(col) element_text(colour = "white"))  # or custom color
 
 
   # Build strip object
