@@ -205,12 +205,12 @@ NBA_colours <- c(
   "Cropland"= "#DB7D15",
   "Plantation"= "#B36611",
   "Built up"= "#808080",
-  "Mine"= " #F5C592",
+  "Mine"= "#F5C592",
   "Artificial waterbody" ="#0071C0",
   "Landcover Natural" = "#B9B386"
 
 )
-
+NBA_colours <- NBA_colours[!duplicated(names(NBA_colours))]
 ##map
 
 NBA_example_map_data <- sf::st_read(dir("data-raw",
