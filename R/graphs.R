@@ -638,6 +638,7 @@ nba_plot_bubble <- function(DF, GROUP, CAT, SUB_CAT, VALUE, SAVE = NULL){
 
 
 
+
   # Create a named color palette for pressures
   cat <- DF %>%
     dplyr::select({{CAT}}) %>%
@@ -648,10 +649,9 @@ nba_plot_bubble <- function(DF, GROUP, CAT, SUB_CAT, VALUE, SAVE = NULL){
   # Subset nbaR::NBA_colours using names that match the values in pressures
   subset_colours <- nbaR::NBA_colours[match(cat, names(nbaR::NBA_colours))]
 
-
   # Ensure pressure is a factor with correct levels
   DF  <- DF %>%
-    mutate(!!CAT := factor({{CAT}}, levels = names(subset_colours)))
+    mutate(pressure = factor(pressure, levels = names(subset_colours)))
 
   # Now get levels in order
   cat <- DF %>%
@@ -659,7 +659,6 @@ nba_plot_bubble <- function(DF, GROUP, CAT, SUB_CAT, VALUE, SAVE = NULL){
     unique() %>%
     as.data.frame()
   cat <- cat[,1]
-
 
   # Create strip background and text style lists
   strip_bg <- lapply(subset_colours, function(col) element_rect(fill = col, colour = col))
@@ -675,7 +674,7 @@ nba_plot_bubble <- function(DF, GROUP, CAT, SUB_CAT, VALUE, SAVE = NULL){
 
   p <- DF %>%
     ggplot2::ggplot(ggplot2::aes({{GROUP}}, {{SUB_CAT}}, size = {{VALUE}},
-               fill = {{CAT}}, colour = {{CAT}})) +
+                                 fill = {{CAT}}, colour = {{CAT}})) +
     ggplot2::geom_point(shape = 21) +
     ggplot2::geom_text(ggplot2::aes(label = {{VALUE}}),
                        parse = TRUE,
@@ -713,8 +712,6 @@ nba_plot_bubble <- function(DF, GROUP, CAT, SUB_CAT, VALUE, SAVE = NULL){
   }
   p
 }
-
-
 
 
 ###################################################################################################
