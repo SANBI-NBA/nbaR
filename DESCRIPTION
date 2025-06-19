@@ -29,7 +29,8 @@ Imports:
     ggh4x,
     rsconnect,
     usethis,
-    WikidataR
+    WikidataR,
+    rlang
 Suggests: 
     rmarkdown,
     learnr,

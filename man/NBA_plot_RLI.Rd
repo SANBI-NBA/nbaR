@@ -4,7 +4,16 @@
 \alias{nba_plot_RLI}
 \title{NBA Redlist index plot function}
 \usage{
-nba_plot_RLI(DF, YEAR, RLI, MIN, MAX, GRP = NULL, SAVE = NULL)
+nba_plot_RLI(
+  DF,
+  YEAR,
+  RLI,
+  min,
+  max,
+  GROUP = NULL,
+  summarise_by_year = TRUE,
+  SAVE = NULL
+)
 }
 \arguments{
 \item{DF}{The data frame that contains the information on the Red List Index}
@@ -13,13 +22,13 @@ nba_plot_RLI(DF, YEAR, RLI, MIN, MAX, GRP = NULL, SAVE = NULL)
 
 \item{RLI}{The Red List Index}
 
+\item{SAVE}{The name of the output file that will be saved to the output folder. If you do not have an outputs folder you will be prompted to make one.}
+
 \item{MIN}{The minimum values}
 
 \item{MAX}{The maximum values}
 
 \item{GRP}{A choice to group the plot, if a column name is supplied will groupd, if left NULL will not group}
-
-\item{SAVE}{The name of the output file that will be saved to the output folder. If you do not have an outputs folder you will be prompted to make one.}
 }
 \value{
 Returns a RLI plot
