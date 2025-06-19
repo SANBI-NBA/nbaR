@@ -680,7 +680,7 @@ nba_plot_bubble <- function(DF, GROUP, CAT, SUB_CAT, VALUE, SAVE = NULL){
       labeller = ggplot2::labeller(pressure = ggplot2::label_wrap_gen(width = 20)),
       strip = my_strips
     ) +
-    ggplot2::scale_size(range = c(.1, 15)) +
+    ggplot2::scale_size(range = c(3, 15)) +
     ggplot2::scale_x_discrete(position = "top", guide = ggplot2::guide_axis(n.dodge = 2)) +
     ggplot2::scale_fill_manual(values = nbaR::NBA_colours) +
     ggplot2::scale_colour_manual(values = nbaR::NBA_colours) +
