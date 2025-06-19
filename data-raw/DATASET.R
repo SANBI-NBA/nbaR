@@ -160,6 +160,7 @@ NBA_colours <- c(
   "No threats" = rgb(48, 30, 6, maxColorValue = 255),
   "Pollution" = rgb(97, 65, 56, maxColorValue = 255),
   "Transportation & service corridors" = rgb(99, 76, 39, maxColorValue = 255),
+  "Transportation and service corridors" = rgb(99, 76, 39, maxColorValue = 255),
   "Agriculture" = rgb(133, 76, 13, maxColorValue = 255),
   "Agriculture and aquaculture" = rgb(133, 76, 13, maxColorValue = 255),
   "Agriculture & aquaculture" = rgb(133, 76, 13, maxColorValue = 255),
