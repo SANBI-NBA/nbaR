@@ -36,6 +36,7 @@
 #' @param LAB The x axis label of the plot
 #' @param GRP A choice of whether or not to plot the donut graphs by group, TRUE will plot a donut plot for each group.
 #' @param SAVE The name of the output file that will be saved to the output folder. If you do not have an outputs folder you will be prompted to make one.
+#' @param SCALE_TEXT scale the sizes of the plot text to fit your intended output. currently set at 1 as default. If you want to save it to 8 by 6 cm, set it to 0.5.
 #'
 #' @return Returns a plot
 #'
@@ -106,205 +107,234 @@
 #'donut_plot
 #'
 
+nba_plot <- function(DF, GROUPS, COLS, CHRT = c("bar", "donut"), NUM = FALSE, LAB, GRP = FALSE, SAVE = NULL,
+                            SCALE_TEXT = 1){
 
 
-nba_plot <- function(DF, GROUPS, COLS, CHRT = c("bar", "donut"), NUM = FALSE, LAB, GRP = FALSE, SAVE = NULL){
+
+    if(CHRT == "donut"){
+
+      if(GRP == FALSE) {
+
+        ## Prepare the data frame by arranging and setting colors
+        dat <- DF %>%
+          tidyr::pivot_longer({{COLS}}, names_to = "FILL", values_to = "COUNT")%>%
+          dplyr::summarise(COUNT = sum(COUNT, na.rm = T), .by = FILL)  %>%
+          dplyr::mutate(FILL = factor(FILL, levels = nbaR::NBA_categories))%>%
+          dplyr::mutate(ymax = cumsum(COUNT)) %>%
+          dplyr::mutate(ymin = ymax -COUNT) %>%
+          dplyr::ungroup()
+
+        if(NUM == FALSE){
 
 
+          plot <- ggplot2::ggplot(dat, aes(ymax = ymax, ymin = ymin,xmax = 4, xmin = 3,  fill = FILL)) +
+            ggplot2::geom_rect() +
+            #ggplot2::geom_text(aes(x = 3.5, y = (ymin + ymax) / 2, label = COUNT), color = "black", size = 5) +  ## Add this line to include count values
+            ggplot2::coord_polar(theta = "y") + ## convert to polar coordinates
+            ggplot2::xlim(c(2, 4)) + ## limit x-axis to create a donut chart
+            ggplot2::scale_fill_manual(values = nbaR::NBA_colours) +
+            #ggplot2::ggtitle(LAB)+
+            ggplot2::labs(fill = "", title = LAB) + #this is the legend label
+            ggplot2::theme_void() + ## removes the lines around chart and grey background
+            ggplot2::theme(
+              panel.background = element_rect(fill = "white", color = NA),  ## set panel background to white
+              plot.background = element_rect(fill = "white", color = NA),
+              title = element_text(size = 10* SCALE_TEXT),
+              strip.text = element_blank(),## set plot background to white
+              axis.text.x = element_text(size = 8 * SCALE_TEXT),
+              axis.text.y = element_text(size = 8 * SCALE_TEXT),
+              axis.title.x = element_text(size = 10 * SCALE_TEXT),
+              axis.title.y = element_text(size = 10 * SCALE_TEXT),
+              legend.key.size = unit(1 * SCALE_TEXT, "lines")
+            )
 
-  if(CHRT == "donut"){
+        }
 
-    if(GRP == FALSE) {
+        #if NUm is true
+        else{
 
- ## Prepare the data frame by arranging and setting colors
-      dat <- DF %>%
-        tidyr::pivot_longer({{COLS}}, names_to = "FILL", values_to = "COUNT")%>%
-        dplyr::summarise(COUNT = sum(COUNT, na.rm = T), .by = FILL)  %>%
-        dplyr::mutate(FILL = factor(FILL, levels = nbaR::NBA_categories))%>%
-        dplyr::mutate(ymax = cumsum(COUNT)) %>%
-        dplyr::mutate(ymin = ymax -COUNT) %>%
-        dplyr::ungroup()
+          plot <- ggplot2::ggplot(dat, aes(ymax = ymax, ymin = ymin,xmax = 4, xmin = 3,  fill = FILL)) +
+            ggplot2::geom_rect() +
+            ggplot2::geom_text(aes(x = 3.5, y = (ymin + ymax) / 2, label = COUNT), color = "black", size = 5* SCALE_TEXT) +  ## Add this line to include count values
+            ggplot2::coord_polar(theta = "y") + ## convert to polar coordinates
+            ggplot2::xlim(c(2, 4)) + ## limit x-axis to create a donut chart
+            ggplot2::scale_fill_manual(values = nbaR::NBA_colours) +
+            ggplot2::labs(fill = "", title = LAB)+
+            #ggplot2::xlab(LAB)+
+            ggplot2::theme_void() + ## removes the lines around chart and grey background
+            ggplot2::theme(
+              panel.background = element_rect(fill = "white", color = NA),  ## set panel background to white
+              plot.background = element_rect(fill = "white", color = NA),
+              title = element_text(size = 10),
+              strip.text = element_blank(),## set plot background to white
+              axis.text.x = element_text(size = 8 * SCALE_TEXT),
+              axis.text.y = element_text(size = 8 * SCALE_TEXT),
+              axis.title.x = element_text(size = 10 * SCALE_TEXT),
+              axis.title.y = element_text(size = 10 * SCALE_TEXT),
+              legend.key.size = unit(1 * SCALE_TEXT, "lines")
+            )
 
-      if(NUM == FALSE){
-
-
-      plot <- ggplot2::ggplot(dat, aes(ymax = ymax, ymin = ymin,xmax = 4, xmin = 3,  fill = FILL)) +
-        ggplot2::geom_rect() +
-        #ggplot2::geom_text(aes(x = 3.5, y = (ymin + ymax) / 2, label = COUNT), color = "black", size = 5) +  ## Add this line to include count values
-        ggplot2::coord_polar(theta = "y") + ## convert to polar coordinates
-        ggplot2::xlim(c(2, 4)) + ## limit x-axis to create a donut chart
-        ggplot2::scale_fill_manual(values = nbaR::NBA_colours) +
-        #ggplot2::ggtitle(LAB)+
-        ggplot2::labs(fill = "", title = LAB) + #this is the legend label
-        ggplot2::theme_void() + ## removes the lines around chart and grey background
-        ggplot2::theme(
-          panel.background = element_rect(fill = "white", color = NA),  ## set panel background to white
-          plot.background = element_rect(fill = "white", color = NA),
-          title = element_text(size = 10),
-          strip.text = element_blank()## set plot background to white
-        )
-
+        }
       }
 
-      #if NUm is true
-      else{
+      #if grp is true
+      else {
 
-        plot <- ggplot2::ggplot(dat, aes(ymax = ymax, ymin = ymin,xmax = 4, xmin = 3,  fill = FILL)) +
-          ggplot2::geom_rect() +
-          ggplot2::geom_text(aes(x = 3.5, y = (ymin + ymax) / 2, label = COUNT), color = "black", size = 5) +  ## Add this line to include count values
-          ggplot2::coord_polar(theta = "y") + ## convert to polar coordinates
-          ggplot2::xlim(c(2, 4)) + ## limit x-axis to create a donut chart
-          ggplot2::scale_fill_manual(values = nbaR::NBA_colours) +
-          ggplot2::labs(fill = "", title = LAB)+
-          #ggplot2::xlab(LAB)+
-          ggplot2::theme_void() + ## removes the lines around chart and grey background
-          ggplot2::theme(
-            panel.background = element_rect(fill = "white", color = NA),  ## set panel background to white
-            plot.background = element_rect(fill = "white", color = NA),
-            title = element_text(size = 10),
-            strip.text = element_blank()  ## set plot background to white
-          )
+        ## Prepare the data frame by arranging and setting colors
+        dat <- DF %>%
+          tidyr::pivot_longer({{COLS}}, names_to = "FILL", values_to = "COUNT")%>%
+          dplyr::mutate(TOT = sum(COUNT, na.rm = T), .by = {{GROUPS}} )%>%
+          dplyr::mutate(PERCENTAGE = (COUNT/TOT)*100)%>%
+          dplyr::mutate(FILL = factor(FILL, levels = nbaR::NBA_categories))%>%
+          dplyr::mutate(ymax = cumsum(PERCENTAGE), .by = {{GROUPS}}) %>%
+          dplyr::mutate(ymin = ymax -PERCENTAGE)
+
+        if(NUM == FALSE){
+
+
+          plot <-ggplot2::ggplot(dat, aes(ymax = ymax, ymin = ymin,xmax = 4, xmin = 3,  fill = FILL)) +
+            ggplot2::geom_rect() +
+            ggplot2::facet_wrap(vars({{GROUPS}}))+
+            #ggplot2::geom_text(aes(x = 3.5, y = (ymin + ymax) / 2, label = COUNT), color = "black", size = 3) +  ## Add this line to include count values
+            ggplot2::coord_polar(theta = "y") + ## convert to polar coordinates
+            ggplot2::xlim(c(2, 4)) + ## limit x-axis to create a donut chart
+            ggplot2::scale_fill_manual(values = nbaR::NBA_colours) +
+            ggplot2::labs(fill = "", title = LAB)+
+            #ggplot2::xlab(LAB)+
+            ggplot2::theme_void() + ## removes the lines around chart and grey background
+            ggplot2::theme(
+              panel.background = element_rect(fill = "white", color = NA),  ## set panel background to white
+              plot.background = element_rect(fill = "white", color = NA),
+              title = element_text(size = 10* SCALE_TEXT),
+              strip.text = element_blank(), ## set plot background to white
+              axis.text.x = element_text(size = 8 * SCALE_TEXT),
+              axis.text.y = element_text(size = 8 * SCALE_TEXT),
+              axis.title.x = element_text(size = 10 * SCALE_TEXT),
+              axis.title.y = element_text(size = 10 * SCALE_TEXT),
+              legend.key.size = unit(1 * SCALE_TEXT, "lines")
+            )
+        }
+
+        #if Num is true
+        else{
+
+          plot <-ggplot2::ggplot(dat, aes(ymax = ymax, ymin = ymin,xmax = 4, xmin = 3,  fill = FILL)) +
+            ggplot2::geom_rect() +
+            ggplot2::facet_wrap(vars({{GROUPS}}))+
+            ggplot2::geom_text(aes(x = 3.5, y = (ymin + ymax) / 2, label = COUNT), color = "black", size = 3* SCALE_TEXT) +  ## Add this line to include count values
+            ggplot2::coord_polar(theta = "y") + ## convert to polar coordinates
+            ggplot2::xlim(c(2, 4)) + ## limit x-axis to create a donut chart
+            ggplot2::scale_fill_manual(values = nbaR::NBA_colours) +
+            ggplot2::labs(fill = "", title = LAB)+
+            #ggplot2::xlab(LAB)+
+            ggplot2::theme_void() + ## removes the lines around chart and grey background
+            ggplot2::theme(
+              panel.background = element_rect(fill = "white", color = NA),  ## set panel background to white
+              plot.background = element_rect(fill = "white", color = NA),
+              title = element_text(size = 10* SCALE_TEXT),
+              strip.text = element_blank(),## set plot background to white
+              axis.text.x = element_text(size = 8 * SCALE_TEXT),
+              axis.text.y = element_text(size = 8 * SCALE_TEXT),
+              axis.title.x = element_text(size = 10 * SCALE_TEXT),
+              axis.title.y = element_text(size = 10 * SCALE_TEXT),
+              legend.key.size = unit(1 * SCALE_TEXT, "lines")
+            )
+
+        }
 
       }
     }
 
-    #if grp is true
+
+    ## if chart is bar:
     else {
 
- ## Prepare the data frame by arranging and setting colors
+      ord <-   DF %>%
+        dplyr::pull({{GROUPS}})
+
       dat <- DF %>%
         tidyr::pivot_longer({{COLS}}, names_to = "FILL", values_to = "COUNT")%>%
         dplyr::mutate(TOT = sum(COUNT, na.rm = T), .by = {{GROUPS}} )%>%
         dplyr::mutate(PERCENTAGE = (COUNT/TOT)*100)%>%
-        dplyr::mutate(FILL = factor(FILL, levels = nbaR::NBA_categories))%>%
-        dplyr::mutate(ymax = cumsum(PERCENTAGE), .by = {{GROUPS}}) %>%
-        dplyr::mutate(ymin = ymax -PERCENTAGE)
+        dplyr::mutate(dplyr::across(COUNT, ~ dplyr::na_if(., 0))) %>%
+        dplyr::mutate(FILL = factor(FILL, levels = nbaR::NBA_categories))
 
-      if(NUM == FALSE){
+      if(NUM == TRUE){
 
 
-      plot <-ggplot2::ggplot(dat, aes(ymax = ymax, ymin = ymin,xmax = 4, xmin = 3,  fill = FILL)) +
-        ggplot2::geom_rect() +
-        ggplot2::facet_wrap(vars({{GROUPS}}))+
-        #ggplot2::geom_text(aes(x = 3.5, y = (ymin + ymax) / 2, label = COUNT), color = "black", size = 3) +  ## Add this line to include count values
-        ggplot2::coord_polar(theta = "y") + ## convert to polar coordinates
-        ggplot2::xlim(c(2, 4)) + ## limit x-axis to create a donut chart
-        ggplot2::scale_fill_manual(values = nbaR::NBA_colours) +
-        ggplot2::labs(fill = "", title = LAB)+
-        #ggplot2::xlab(LAB)+
-        ggplot2::theme_void() + ## removes the lines around chart and grey background
-        ggplot2::theme(
-          panel.background = element_rect(fill = "white", color = NA),  ## set panel background to white
-          plot.background = element_rect(fill = "white", color = NA),
-          title = element_text(size = 10),
-          strip.text = element_blank()  ## set plot background to white
-        )
+
+        plot <-ggplot2::ggplot(dat, aes(y = PERCENTAGE, x = factor({{GROUPS}}, level = ord), fill = FILL)) +
+          ggplot2::geom_bar(stat = "identity", position =  position_stack(reverse = TRUE), width = 0.5) + # change width of bars
+          ggplot2::geom_text(aes(label = COUNT),
+                             position = position_stack(vjust = 0.5, reverse = TRUE), # add count labels to the bars and adjust "vjust" value to place text at the beginning, centre or end of bars
+                             size = 3* SCALE_TEXT,
+                             color = "black",
+                             show.legend = FALSE) + # adjust size of labels with no legend being shown
+          ggplot2::scale_fill_manual(values = nbaR::NBA_colours)+  # order the colours of the bars in the reversed order
+          ggplot2::ylab({{LAB}}) +
+          ggplot2::xlab("") + ## remove the heading for the y-axis
+          ggplot2::guides(fill = guide_legend(reverse = F, nrow = 1, size = 0.5* SCALE_TEXT)) +  # display legend in 2 rows
+          ggplot2::labs(fill = "") + ## change the legend title here
+          ggplot2::scale_y_continuous(labels = function(x) paste0(x, "%"), breaks = c(0, 50, 100)) + # set the y-axis to show 0%, 50%, and 100%
+          ggplot2::theme_minimal() +
+          ggplot2::theme(legend.position = "bottom", # position legend to the bottom
+                         panel.grid.minor = element_blank(), # remove grid lines on every second x-axis value
+                         axis.line = element_blank(), # remove all x-axis grid lines
+                         panel.grid.major.y = element_blank(), # remove the horizontal lines only on 1st , 3rd and 5 ... x-axis
+                         legend.text = element_text(size = 8* SCALE_TEXT), # change legend text size
+                         plot.background = element_rect(color = "black", fill = NA),  # add border around the entire plot include legend
+                         plot.margin = margin(10, 10, 10, 10),
+                         axis.text.x = element_text(size = 8 * SCALE_TEXT),
+                         axis.text.y = element_text(size = 8 * SCALE_TEXT),
+                         axis.title.x = element_text(size = 10 * SCALE_TEXT),
+                         axis.title.y = element_text(size = 10 * SCALE_TEXT),
+                         legend.key.size = unit(1 * SCALE_TEXT, "lines")) +   # extend plot margins to accommodate the border)
+          ggplot2::coord_flip()  # flip the orientation of the chart
       }
 
-      #if Num is true
-      else{
+      ## if NUM == FALSE
+      else {
 
-        plot <-ggplot2::ggplot(dat, aes(ymax = ymax, ymin = ymin,xmax = 4, xmin = 3,  fill = FILL)) +
-          ggplot2::geom_rect() +
-          ggplot2::facet_wrap(vars({{GROUPS}}))+
-          ggplot2::geom_text(aes(x = 3.5, y = (ymin + ymax) / 2, label = COUNT), color = "black", size = 3) +  ## Add this line to include count values
-          ggplot2::coord_polar(theta = "y") + ## convert to polar coordinates
-          ggplot2::xlim(c(2, 4)) + ## limit x-axis to create a donut chart
-          ggplot2::scale_fill_manual(values = nbaR::NBA_colours) +
-          ggplot2::labs(fill = "", title = LAB)+
-          #ggplot2::xlab(LAB)+
-          ggplot2::theme_void() + ## removes the lines around chart and grey background
-          ggplot2::theme(
-            panel.background = element_rect(fill = "white", color = NA),  ## set panel background to white
-            plot.background = element_rect(fill = "white", color = NA),
-            title = element_text(size = 10),
-            strip.text = element_blank()  ## set plot background to white
-          )
+        plot <- ggplot2::ggplot(dat, aes(y = PERCENTAGE, x = factor({{GROUPS}}, level = ord), fill = FILL)) +
+          ggplot2::geom_bar(stat = "identity", position =  position_stack(reverse = TRUE), width = 0.5) + # change width of bars
+          ggplot2::scale_fill_manual(values = nbaR::NBA_colours) +  # order the colours of the bars in the reversed order
+          ggplot2::ylab({{LAB}}) +
+          ggplot2::xlab("") + ## remove the heading for the y-axis
+          ggplot2::guides(fill = guide_legend(reverse = F, nrow = 1, size = 0.5* SCALE_TEXT)) +  # display legend in 2 rows
+          ggplot2::labs(fill = "") + ## change the legend title here
+          ggplot2::scale_y_continuous(labels = function(x) paste0(x, "%"), breaks = c(0, 50, 100)) + # set the y-axis to show 0%, 50%, and 100%
+          ggplot2::theme_minimal() +
+          ggplot2::theme(legend.position = "bottom", # position legend to the bottom
+                         panel.grid.minor = element_blank(), # remove grid lines on every second x-axis value
+                         axis.line = element_blank(), # remove all x-axis grid lines
+                         panel.grid.major.y = element_blank(), # remove the horizontal lines only on 1st , 3rd and 5 ... x-axis
+                         legend.text = element_text(size = 8* SCALE_TEXT), # change legend text size
+                         plot.background = element_rect(color = "black", fill = NA),  # add border around the entire plot include legend
+                         plot.margin = margin(10, 10, 10, 10),
+                         axis.text.x = element_text(size = 8 * SCALE_TEXT),
+                         axis.text.y = element_text(size = 8 * SCALE_TEXT),
+                         axis.title.x = element_text(size = 10 * SCALE_TEXT),
+                         axis.title.y = element_text(size = 10 * SCALE_TEXT),
+                         legend.key.size = unit(1 * SCALE_TEXT, "lines")) +   # extend plot margins to accommodate the border)
+          ggplot2::coord_flip()  # flip the orientation of the chart
+
 
       }
+    }
+
+    if (!is.null(SAVE)) {
+
+      ggsave(paste0("outputs/", SAVE, ".jpeg"), height = 8, width = 6, units = 'cm', dpi = 300, create.dir = TRUE)
 
     }
+
+
+
+
+    plot
+
   }
-
-
-  ## if chart is bar:
-  else {
-
-    ord <-   DF %>%
-      dplyr::pull({{GROUPS}})
-
-    dat <- DF %>%
-      tidyr::pivot_longer({{COLS}}, names_to = "FILL", values_to = "COUNT")%>%
-      dplyr::mutate(TOT = sum(COUNT, na.rm = T), .by = {{GROUPS}} )%>%
-      dplyr::mutate(PERCENTAGE = (COUNT/TOT)*100)%>%
-      dplyr::mutate(dplyr::across(COUNT, ~ dplyr::na_if(., 0))) %>%
-      dplyr::mutate(FILL = factor(FILL, levels = nbaR::NBA_categories))
-
-    if(NUM == TRUE){
-
-
-
-      plot <-ggplot2::ggplot(dat, aes(y = PERCENTAGE, x = factor({{GROUPS}}, level = ord), fill = FILL)) +
-        ggplot2::geom_bar(stat = "identity", position =  position_stack(reverse = TRUE), width = 0.5) + # change width of bars
-        ggplot2::geom_text(aes(label = COUNT),
-                           position = position_stack(vjust = 0.5, reverse = TRUE), # add count labels to the bars and adjust "vjust" value to place text at the beginning, centre or end of bars
-                           size = 3,
-                           color = "black",
-                           show.legend = FALSE) + # adjust size of labels with no legend being shown
-        ggplot2::scale_fill_manual(values = nbaR::NBA_colours)+  # order the colours of the bars in the reversed order
-        ggplot2::ylab({{LAB}}) +
-        ggplot2::xlab("") + ## remove the heading for the y-axis
-        ggplot2::guides(fill = guide_legend(reverse = F, nrow = 1, size = 0.5)) +  # display legend in 2 rows
-        ggplot2::labs(fill = "") + ## change the legend title here
-        ggplot2::scale_y_continuous(labels = function(x) paste0(x, "%"), breaks = c(0, 50, 100)) + # set the y-axis to show 0%, 50%, and 100%
-        ggplot2::theme_minimal() +
-        ggplot2::theme(legend.position = "bottom", # position legend to the bottom
-                       panel.grid.minor = element_blank(), # remove grid lines on every second x-axis value
-                       axis.line = element_blank(), # remove all x-axis grid lines
-                       panel.grid.major.y = element_blank(), # remove the horizontal lines only on 1st , 3rd and 5 ... x-axis
-                       legend.text = element_text(size = 8), # change legend text size
-                       plot.background = element_rect(color = "black", fill = NA),  # add border around the entire plot include legend
-                       plot.margin = margin(10, 10, 10, 10)) +   # extend plot margins to accommodate the border)
-        ggplot2::coord_flip()  # flip the orientation of the chart
-    }
-
-    ## if NUM == FALSE
-    else {
-
-      plot <- ggplot2::ggplot(dat, aes(y = PERCENTAGE, x = factor({{GROUPS}}, level = ord), fill = FILL)) +
-        ggplot2::geom_bar(stat = "identity", position =  position_stack(reverse = TRUE), width = 0.5) + # change width of bars
-        ggplot2::scale_fill_manual(values = nbaR::NBA_colours) +  # order the colours of the bars in the reversed order
-        ggplot2::ylab({{LAB}}) +
-        ggplot2::xlab("") + ## remove the heading for the y-axis
-        ggplot2::guides(fill = guide_legend(reverse = F, nrow = 1, size = 0.5)) +  # display legend in 2 rows
-        ggplot2::labs(fill = "") + ## change the legend title here
-        ggplot2::scale_y_continuous(labels = function(x) paste0(x, "%"), breaks = c(0, 50, 100)) + # set the y-axis to show 0%, 50%, and 100%
-        ggplot2::theme_minimal() +
-        ggplot2::theme(legend.position = "bottom", # position legend to the bottom
-                       panel.grid.minor = element_blank(), # remove grid lines on every second x-axis value
-                       axis.line = element_blank(), # remove all x-axis grid lines
-                       panel.grid.major.y = element_blank(), # remove the horizontal lines only on 1st , 3rd and 5 ... x-axis
-                       legend.text = element_text(size = 8), # change legend text size
-                       plot.background = element_rect(color = "black", fill = NA),  # add border around the entire plot include legend
-                       plot.margin = margin(10, 10, 10, 10)) +   # extend plot margins to accommodate the border)
-        ggplot2::coord_flip()  # flip the orientation of the chart
-
-
-    }
-  }
-
-  if (!is.null(SAVE)) {
-
-    ggsave(paste0("outputs/", SAVE, ".png"), height = 10, width = 16, units = 'cm', dpi = 300, create.dir = TRUE)
-
-    }
-
-
-
-
-  plot
-
-}
 
 
 #######################################################################################################
