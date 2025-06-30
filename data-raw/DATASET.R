@@ -208,9 +208,22 @@ NBA_colours <- c(
   "Built up"= "#808080",
   "Mine"= "#F5C592",
   "Artificial waterbody" ="#0071C0",
-  "Landcover Natural" = "#B9B386"
+  "Landcover Natural" = "#B9B386",
+
+  # Realms
+  "sanbi-green" = "#70B276",
+  "sanbi-orange" =  "#FAA755",
+  "sanbi-purple" = "#9D85BE",
+  "Freshwater" = "#4097C2",
+  "Marine" = "#02268A",
+  "Coast" = "#DEA004",
+  "Estuarine" = "#028A85",
+  "Terrestrial"=  "#617016",
+  "Genetics" =  "#DE2104",
+  "PEI" =  "#481C66"
 
 )
+
 NBA_colours <- NBA_colours[!duplicated(names(NBA_colours))]
 ##map
 
