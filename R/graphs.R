@@ -111,7 +111,6 @@ nba_plot <- function(DF, GROUPS, COLS, CHRT = c("bar", "donut"), NUM = FALSE, LA
                             SCALE_TEXT = 1){
 
 
-
     if(CHRT == "donut"){
 
       if(GRP == FALSE) {
@@ -146,7 +145,8 @@ nba_plot <- function(DF, GROUPS, COLS, CHRT = c("bar", "donut"), NUM = FALSE, LA
               axis.text.y = element_text(size = 8 * SCALE_TEXT),
               axis.title.x = element_text(size = 10 * SCALE_TEXT),
               axis.title.y = element_text(size = 10 * SCALE_TEXT),
-              legend.key.size = unit(1 * SCALE_TEXT, "lines")
+              legend.key.size = unit(1 * SCALE_TEXT, "lines"),
+              legend.box.margin = margin()
             )
 
         }
@@ -172,7 +172,8 @@ nba_plot <- function(DF, GROUPS, COLS, CHRT = c("bar", "donut"), NUM = FALSE, LA
               axis.text.y = element_text(size = 8 * SCALE_TEXT),
               axis.title.x = element_text(size = 10 * SCALE_TEXT),
               axis.title.y = element_text(size = 10 * SCALE_TEXT),
-              legend.key.size = unit(1 * SCALE_TEXT, "lines")
+              legend.key.size = unit(1 * SCALE_TEXT, "lines"),
+              legend.box.margin = margin()
             )
 
         }
@@ -212,7 +213,8 @@ nba_plot <- function(DF, GROUPS, COLS, CHRT = c("bar", "donut"), NUM = FALSE, LA
               axis.text.y = element_text(size = 8 * SCALE_TEXT),
               axis.title.x = element_text(size = 10 * SCALE_TEXT),
               axis.title.y = element_text(size = 10 * SCALE_TEXT),
-              legend.key.size = unit(1 * SCALE_TEXT, "lines")
+              legend.key.size = unit(1 * SCALE_TEXT, "lines"),
+              legend.box.margin = margin()
             )
         }
 
@@ -238,7 +240,8 @@ nba_plot <- function(DF, GROUPS, COLS, CHRT = c("bar", "donut"), NUM = FALSE, LA
               axis.text.y = element_text(size = 8 * SCALE_TEXT),
               axis.title.x = element_text(size = 10 * SCALE_TEXT),
               axis.title.y = element_text(size = 10 * SCALE_TEXT),
-              legend.key.size = unit(1 * SCALE_TEXT, "lines")
+              legend.key.size = unit(1 * SCALE_TEXT, "lines"),
+              legend.box.margin = margin()
             )
 
         }
@@ -289,7 +292,8 @@ nba_plot <- function(DF, GROUPS, COLS, CHRT = c("bar", "donut"), NUM = FALSE, LA
                          axis.text.y = element_text(size = 8 * SCALE_TEXT),
                          axis.title.x = element_text(size = 10 * SCALE_TEXT),
                          axis.title.y = element_text(size = 10 * SCALE_TEXT),
-                         legend.key.size = unit(1 * SCALE_TEXT, "lines")) +   # extend plot margins to accommodate the border)
+                         legend.key.size = unit(1 * SCALE_TEXT, "lines"),
+                         legend.box.margin = margin()) +   # extend plot margins to accommodate the border)
           ggplot2::coord_flip()  # flip the orientation of the chart
       }
 
@@ -316,7 +320,8 @@ nba_plot <- function(DF, GROUPS, COLS, CHRT = c("bar", "donut"), NUM = FALSE, LA
                          axis.text.y = element_text(size = 8 * SCALE_TEXT),
                          axis.title.x = element_text(size = 10 * SCALE_TEXT),
                          axis.title.y = element_text(size = 10 * SCALE_TEXT),
-                         legend.key.size = unit(1 * SCALE_TEXT, "lines")) +   # extend plot margins to accommodate the border)
+                         legend.key.size = unit(1 * SCALE_TEXT, "lines"),
+                         legend.box.margin = margin()) +   # extend plot margins to accommodate the border)
           ggplot2::coord_flip()  # flip the orientation of the chart
 
 
@@ -325,7 +330,12 @@ nba_plot <- function(DF, GROUPS, COLS, CHRT = c("bar", "donut"), NUM = FALSE, LA
 
     if (!is.null(SAVE)) {
 
-      ggsave(paste0("outputs/", SAVE, ".jpeg"), height = 8, width = 6, units = 'cm', dpi = 300, create.dir = TRUE)
+      plot_save <- plot+
+        theme(legend.justification='right')
+
+      ggsave(paste0("outputs/", SAVE, ".jpeg"),
+             plot = plot_save,
+             height = 8, width = 6, units = 'cm', dpi = 300, create.dir = TRUE)
 
     }
 
