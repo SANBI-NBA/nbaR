@@ -8,8 +8,8 @@ nba_plot_RLI(
   DF,
   YEAR,
   RLI,
-  min,
-  max,
+  MIN,
+  MAX,
   GROUP = NULL,
   summarise_by_year = TRUE,
   SAVE = NULL
@@ -22,13 +22,15 @@ nba_plot_RLI(
 
 \item{RLI}{The Red List Index}
 
-\item{SAVE}{The name of the output file that will be saved to the output folder. If you do not have an outputs folder you will be prompted to make one.}
-
 \item{MIN}{The minimum values}
 
 \item{MAX}{The maximum values}
 
-\item{GRP}{A choice to group the plot, if a column name is supplied will groupd, if left NULL will not group}
+\item{GROUP}{A choice to group the plot, if a column name is supplied will groupd, if left NULL will not group}
+
+\item{summarise_by_year}{\strong{must be added}}
+
+\item{SAVE}{The name of the output file that will be saved to the output folder. If you do not have an outputs folder you will be prompted to make one.}
 }
 \value{
 Returns a RLI plot
@@ -46,11 +48,11 @@ There is an example dataset (NBA_example_RLI_data), available for users
 to reference if needed.
 }
 \examples{
-RLI_plot <- nba_plot_RLI(NBA_example_RLI_data,
-Years,
-RLI,
-min,
-max)
+#RLI_plot <- nba_plot_RLI(NBA_example_RLI_data,
+#Years,
+#RLI,
+#MIN,
+#MAX)
 
 RLI_plot
 

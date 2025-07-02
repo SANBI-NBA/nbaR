@@ -366,7 +366,8 @@ nba_plot <- function(DF, GROUPS, COLS, CHRT = c("bar", "donut"), NUM = FALSE, LA
 #' @param RLI The Red List Index
 #' @param MIN The minimum values
 #' @param MAX The maximum values
-#' @param GRP A choice to group the plot, if a column name is supplied will groupd, if left NULL will not group
+#' @param GROUP A choice to group the plot, if a column name is supplied will groupd, if left NULL will not group
+#' @param summarise_by_year **must be added**
 #' @param SAVE The name of the output file that will be saved to the output folder. If you do not have an outputs folder you will be prompted to make one.
 #'
 #'
@@ -393,21 +394,21 @@ nba_plot <- function(DF, GROUPS, COLS, CHRT = c("bar", "donut"), NUM = FALSE, LA
 #' @export
 #'
 #' @examples
-#' RLI_plot <- nba_plot_RLI(NBA_example_RLI_data,
-#' Years,
-#' RLI,
-#' min,
-#' max)
+#' #RLI_plot <- nba_plot_RLI(NBA_example_RLI_data,
+#' #Years,
+#' #RLI,
+#' #MIN,
+#' #MAX)
 #'
 #' RLI_plot
 #'
 #'
-nba_plot_RLI <- function(DF, YEAR, RLI, min, max, GROUP = NULL, summarise_by_year = TRUE, SAVE = NULL) {
+nba_plot_RLI <- function(DF, YEAR, RLI, MIN, MAX, GROUP = NULL, summarise_by_year = TRUE, SAVE = NULL) {
   # Convert column names to symbols (quosures)
   YEAR <- enquo(YEAR)
   RLI <- enquo(RLI)
-  min <- enquo(min)
-  max <- enquo(max)
+  MIN <- enquo(MIN)
+  MAX <- enquo(MAX)
   GROUP <- enquo(GROUP)
 
   # Summarisation
@@ -415,8 +416,8 @@ nba_plot_RLI <- function(DF, YEAR, RLI, min, max, GROUP = NULL, summarise_by_yea
     DF <- DF %>%
       group_by(!!YEAR) %>%
       summarise(
-        !!min := mean(!!min, na.rm = TRUE),
-        !!max := mean(!!max, na.rm = TRUE),
+        !!MIN := mean(!!MIN, na.rm = TRUE),
+        !!MAX := mean(!!MAX, na.rm = TRUE),
         !!RLI := mean(!!RLI, na.rm = TRUE),
         .groups = "drop"
       )
@@ -429,11 +430,11 @@ nba_plot_RLI <- function(DF, YEAR, RLI, min, max, GROUP = NULL, summarise_by_yea
   if (rlang::quo_is_null(GROUP)) {
     p <- p +
       geom_line() +
-      geom_ribbon(aes(ymin = !!min, ymax = !!max), alpha = 0.3, colour = NA)
+      geom_ribbon(aes(ymin = !!MIN, ymax = !!MAX), alpha = 0.3, colour = NA)
   } else {
     p <- p +
       geom_line(aes(group = !!GROUP, color = !!GROUP), linetype = "dashed") +
-      geom_ribbon(aes(ymin = !!min, ymax = !!max, group = !!GROUP), fill = "grey", alpha = 0.2, colour = NA)
+      geom_ribbon(aes(ymin = !!MIN, ymax = !!MAX, group = !!GROUP), fill = "grey", alpha = 0.2, colour = NA)
   }
 
   # Finalize plot

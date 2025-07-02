@@ -16,8 +16,6 @@ nba_init_quarto_proj(
 \item{overwrite}{Whether to overwrite existing files. Defaults to FALSE.}
 
 \item{rename}{Named character vector to rename files on copy, e.g., c("scientific.qmd" = "index.qmd")}
-
-\item{files}{Character vector of files to copy. Defaults to all template files.}
 }
 \value{
 Invisibly returns the paths of copied files.

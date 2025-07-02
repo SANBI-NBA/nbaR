@@ -5,7 +5,6 @@
 #'
 #' @param path The destination directory for the project, the project will automatically be names templates
 #' @param overwrite Whether to overwrite existing files. Defaults to FALSE.
-#' @param files Character vector of files to copy. Defaults to all template files.
 #' @param rename Named character vector to rename files on copy, e.g., c("scientific.qmd" = "index.qmd")
 #'
 #' @return Invisibly returns the paths of copied files.

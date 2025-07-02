@@ -38,18 +38,30 @@ nba_tbl <- function(DF){
 ################################################################################
 #' Coloured table
 #'
-#' A basic table with a purple heading bar and coloured blocks around the
+#' A basic table with a coloured heading bar and coloured blocks around the
 #' categories
-#' This data should be in the same format as for the plot functions
+#' This data should be in the same format as for the plot functions.
+#'
+#' This table has the same styling as set out in nba_tbl_theme. If you would like
+#' to change anything you can just use a pipe %>%  to add gt styling onto the gt
+#' object this function creates and it will override the styling set in the function.
 #'
 #' @param DF The data frame that contains the data
 #' @param COL the column containing the categories
+#' @param HEADER the name to determine the colour of the header row
 #'
-#' @importFrom kableExtra  kable
-#' @importFrom kableExtra  kable_styling
-#' @importFrom kableExtra  row_spec
-#' @importFrom kableExtra  column_spec
-#' @importFrom kableExtra  add_header_above
+#' @importFrom gt gt
+#' @importFrom gt tab_style
+#' @importFrom gt cell_fill
+#' @importFrom gt cell_text
+#' @importFrom gt cells_column_labels
+#' @importFrom gt tab_options
+#' @importFrom gt cell_borders
+#' @importFrom gt cells_body
+#' @importFrom tidyselect everything
+#' @importFrom scales col_factor
+#' @importFrom tidyselect all_of
+#' @importFrom rlang as_name
 #' @importFrom dplyr  case_when
 #' @importFrom dplyr  mutate
 #' @importFrom magrittr "%>%"
@@ -60,45 +72,111 @@ nba_tbl <- function(DF){
 #'
 #'tbl <- NBA_example_pro_data %>%
 #'  pivot_longer(2:5, names_to = "protection_level") %>%
-#'  nba_tbl_colr(COL = protection_level)
+#'  nba_tbl_colr(COL = protection_level, HEADER_COL = "Coast")
 #'
 #'tbl
 #'
 #' @export nba_tbl_colr
 #'
 #'
-nba_tbl_colr <- function(DF, COL) {
 
 
-  color_cell <- function(COL) {
+nba_tbl_colr <- function(DF, COL, HEADER = c("sanbi-green",
+                                                      "sanbi-orange",
+                                                      "sanbi-purple",
+                                                      "Freshwater",
+                                                      "Marine",
+                                                      "Coast",
+                                                      "Estuarine",
+                                                      "Terrestrial",
+                                                      "Genetics",
+                                                      "PEI")) {
 
-    color <- nbaR::NBA_colours[match(COL, names(nbaR::NBA_colours))]
+  # Capture column name as string
+  col_name <- rlang::as_name(enquo(COL))
 
-    html <- paste0(
-      '<div style="background-color:', color, '; color: black; padding: 5px;">',
-      COL, '</div>'
+  # Extract header colors from nbaR palette
+  header_col <- nbaR::NBA_colours[match(HEADER, names(nbaR::NBA_colours))]
+
+  # Extract colors for cell values in the target column
+  value_colors <- nbaR::NBA_colours[DF[[col_name]]]
+
+  # last row
+  last_row <- nrow(DF)
+
+  # Build the gt table
+  gt_tbl <- DF %>%
+    gt::gt() %>%
+    # Color the entire column cells by matching their values to the palette
+    gt::data_color(
+      columns = tidyselect::all_of(col_name),
+      colors = scales::col_factor(
+        palette = value_colors,
+        domain = DF[[col_name]]
+      )
+    ) %>%
+    # Style the header row background colors according to header_col vector
+    gt::tab_style(
+      style = list(
+        gt::cell_fill(color = header_col[1]),
+        gt::cell_text(weight = "bold", color = "black")
+      ),
+      locations = gt::cells_column_labels(columns = tidyselect::everything())
+    ) %>%
+    # Center the table
+    gt::tab_options(table.align = "center") %>%
+    # 1. Header shading and borders
+    gt::tab_style(
+      style = list(
+        gt::cell_borders(
+          sides = c("top", "bottom"),
+          color = "black",
+          weight = gt::px(2),
+          style = "solid"
+        ),
+        gt::cell_borders(
+          sides = c("left", "right"),
+          color = "lightgray"
+        ),
+        gt::cell_text(weight = "bold")
+      ),
+      locations = gt::cells_column_labels()
+    ) %>%
+
+    # 2. Data row borders (dotted top and bottom, no vertical)
+    gt::tab_style(
+      style = gt::cell_borders(
+        sides = c("top", "bottom"),
+        color = "gray50",
+        weight = gt::px(1),
+        style = "dotted"
+      ),
+      locations = gt::cells_body()
+    ) %>%
+
+    # 3. Remove all vertical borders
+    gt::tab_style(
+      style = gt::cell_borders(
+        sides = c("left", "right"),
+        color = "transparent"
+      ),
+      locations = gt::cells_body()
+    ) %>%
+
+    # 4. Bottom border for whole table
+    gt::tab_style(
+      style = gt::cell_borders(
+        sides = "bottom",
+        color = "black",
+        weight = gt::px(2),
+        style = "solid"
+      ),
+      locations = gt::cells_body(rows = last_row)  # last row only
     )
 
-    return(html)
-  }
-
-  # Apply the HTML function to the Status column
-  DF_col <- DF %>%
-    dplyr::mutate({{COL}} := sapply({{COL}}, color_cell))
-
-  table <- kableExtra::kable(DF_col, "html", escape = FALSE) %>%
-    kableExtra::kable_styling(
-      bootstrap_options = c("striped", "hover"),
-      full_width = FALSE,
-      position = "center",
-      font_size = 12
-    ) %>%
-    kableExtra::column_spec(1:ncol(DF_col), border_left = TRUE, border_right = TRUE, background = "white") %>%
-    kableExtra::add_header_above(c(" " = ncol(DF_col)), line = TRUE, line_sep = 3, color = "black")%>%
-    kableExtra::row_spec(0, background = "#899be1", color = "black", bold = TRUE, extra_css = "border: 1px solid black")
-  table
-
+  return(gt_tbl)
 }
+
 
 
 #########################################
