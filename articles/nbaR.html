@@ -385,456 +385,11 @@ Terrestrial
 <span><span class="va">tbl</span> <span class="op">&lt;-</span> <span class="va">NBA_example_pro_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html" class="external-link">pivot_longer</a></span><span class="op">(</span><span class="fl">2</span><span class="op">:</span><span class="fl">5</span>, names_to <span class="op">=</span> <span class="st">"protection_level"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="../reference/NBA_tbl_colr.html">nba_tbl_colr</a></span><span class="op">(</span>COL <span class="op">=</span> <span class="va">protection_level</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning: Since gt v0.9.0, the `colors` argument has been deprecated.</span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">•</span> Please use the `fn` argument instead.</span></span>
+<span><span class="co">#&gt; <span style="color: #555555;">This warning is displayed once every 8 hours.</span></span></span>
 <span></span>
 <span><span class="va">tbl</span></span></code></pre></div>
-<table class="table table table-striped table-hover" style="font-size: 12px; width: auto !important; margin-left: auto; margin-right: auto;">
-<thead>
-<tr>
-<th style="empty-cells: hide;border-bottom:hidden;" colspan="3">
-</th>
-</tr>
-<tr>
-<th style="text-align:left;font-weight: bold;color: black !important;background-color: rgba(137, 155, 225, 255) !important;border: 1px solid black">
-OVERALL types
-</th>
-<th style="text-align:left;font-weight: bold;color: black !important;background-color: rgba(137, 155, 225, 255) !important;border: 1px solid black">
-protection_level
-</th>
-<th style="text-align:right;font-weight: bold;color: black !important;background-color: rgba(137, 155, 225, 255) !important;border: 1px solid black">
-value
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
-subAntarctic
-</td>
-<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
-<div style="background-color:#4B6E00; color: black; padding: 5px;">
-Well Protected
-</div>
-</td>
-<td style="text-align:right;background-color: white !important;border-left:1px solid;border-right:1px solid;">
-15
-</td>
-</tr>
-<tr>
-<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
-subAntarctic
-</td>
-<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
-<div style="background-color:#84AB5C; color: black; padding: 5px;">
-Moderately Protected
-</div>
-</td>
-<td style="text-align:right;background-color: white !important;border-left:1px solid;border-right:1px solid;">
-14
-</td>
-</tr>
-<tr>
-<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
-subAntarctic
-</td>
-<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
-<div style="background-color:#D5DEC4; color: black; padding: 5px;">
-Poorly Protected
-</div>
-</td>
-<td style="text-align:right;background-color: white !important;border-left:1px solid;border-right:1px solid;">
-1
-</td>
-</tr>
-<tr>
-<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
-subAntarctic
-</td>
-<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
-<div style="background-color:#A6A6A6; color: black; padding: 5px;">
-Not Protected
-</div>
-</td>
-<td style="text-align:right;background-color: white !important;border-left:1px solid;border-right:1px solid;">
-4
-</td>
-</tr>
-<tr>
-<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
-Coastal
-</td>
-<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
-<div style="background-color:#4B6E00; color: black; padding: 5px;">
-Well Protected
-</div>
-</td>
-<td style="text-align:right;background-color: white !important;border-left:1px solid;border-right:1px solid;">
-65
-</td>
-</tr>
-<tr>
-<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
-Coastal
-</td>
-<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
-<div style="background-color:#84AB5C; color: black; padding: 5px;">
-Moderately Protected
-</div>
-</td>
-<td style="text-align:right;background-color: white !important;border-left:1px solid;border-right:1px solid;">
-28
-</td>
-</tr>
-<tr>
-<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
-Coastal
-</td>
-<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
-<div style="background-color:#D5DEC4; color: black; padding: 5px;">
-Poorly Protected
-</div>
-</td>
-<td style="text-align:right;background-color: white !important;border-left:1px solid;border-right:1px solid;">
-52
-</td>
-</tr>
-<tr>
-<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
-Coastal
-</td>
-<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
-<div style="background-color:#A6A6A6; color: black; padding: 5px;">
-Not Protected
-</div>
-</td>
-<td style="text-align:right;background-color: white !important;border-left:1px solid;border-right:1px solid;">
-41
-</td>
-</tr>
-<tr>
-<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
-Estuarine
-</td>
-<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
-<div style="background-color:#4B6E00; color: black; padding: 5px;">
-Well Protected
-</div>
-</td>
-<td style="text-align:right;background-color: white !important;border-left:1px solid;border-right:1px solid;">
-4
-</td>
-</tr>
-<tr>
-<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
-Estuarine
-</td>
-<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
-<div style="background-color:#84AB5C; color: black; padding: 5px;">
-Moderately Protected
-</div>
-</td>
-<td style="text-align:right;background-color: white !important;border-left:1px solid;border-right:1px solid;">
-8
-</td>
-</tr>
-<tr>
-<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
-Estuarine
-</td>
-<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
-<div style="background-color:#D5DEC4; color: black; padding: 5px;">
-Poorly Protected
-</div>
-</td>
-<td style="text-align:right;background-color: white !important;border-left:1px solid;border-right:1px solid;">
-7
-</td>
-</tr>
-<tr>
-<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
-Estuarine
-</td>
-<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
-<div style="background-color:#A6A6A6; color: black; padding: 5px;">
-Not Protected
-</div>
-</td>
-<td style="text-align:right;background-color: white !important;border-left:1px solid;border-right:1px solid;">
-3
-</td>
-</tr>
-<tr>
-<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
-Marine
-</td>
-<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
-<div style="background-color:#4B6E00; color: black; padding: 5px;">
-Well Protected
-</div>
-</td>
-<td style="text-align:right;background-color: white !important;border-left:1px solid;border-right:1px solid;">
-47
-</td>
-</tr>
-<tr>
-<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
-Marine
-</td>
-<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
-<div style="background-color:#84AB5C; color: black; padding: 5px;">
-Moderately Protected
-</div>
-</td>
-<td style="text-align:right;background-color: white !important;border-left:1px solid;border-right:1px solid;">
-62
-</td>
-</tr>
-<tr>
-<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
-Marine
-</td>
-<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
-<div style="background-color:#D5DEC4; color: black; padding: 5px;">
-Poorly Protected
-</div>
-</td>
-<td style="text-align:right;background-color: white !important;border-left:1px solid;border-right:1px solid;">
-22
-</td>
-</tr>
-<tr>
-<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
-Marine
-</td>
-<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
-<div style="background-color:#A6A6A6; color: black; padding: 5px;">
-Not Protected
-</div>
-</td>
-<td style="text-align:right;background-color: white !important;border-left:1px solid;border-right:1px solid;">
-19
-</td>
-</tr>
-<tr>
-<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
-Wetland
-</td>
-<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
-<div style="background-color:#4B6E00; color: black; padding: 5px;">
-Well Protected
-</div>
-</td>
-<td style="text-align:right;background-color: white !important;border-left:1px solid;border-right:1px solid;">
-8
-</td>
-</tr>
-<tr>
-<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
-Wetland
-</td>
-<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
-<div style="background-color:#84AB5C; color: black; padding: 5px;">
-Moderately Protected
-</div>
-</td>
-<td style="text-align:right;background-color: white !important;border-left:1px solid;border-right:1px solid;">
-4
-</td>
-</tr>
-<tr>
-<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
-Wetland
-</td>
-<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
-<div style="background-color:#D5DEC4; color: black; padding: 5px;">
-Poorly Protected
-</div>
-</td>
-<td style="text-align:right;background-color: white !important;border-left:1px solid;border-right:1px solid;">
-41
-</td>
-</tr>
-<tr>
-<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
-Wetland
-</td>
-<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
-<div style="background-color:#A6A6A6; color: black; padding: 5px;">
-Not Protected
-</div>
-</td>
-<td style="text-align:right;background-color: white !important;border-left:1px solid;border-right:1px solid;">
-82
-</td>
-</tr>
-<tr>
-<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
-River
-</td>
-<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
-<div style="background-color:#4B6E00; color: black; padding: 5px;">
-Well Protected
-</div>
-</td>
-<td style="text-align:right;background-color: white !important;border-left:1px solid;border-right:1px solid;">
-29
-</td>
-</tr>
-<tr>
-<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
-River
-</td>
-<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
-<div style="background-color:#84AB5C; color: black; padding: 5px;">
-Moderately Protected
-</div>
-</td>
-<td style="text-align:right;background-color: white !important;border-left:1px solid;border-right:1px solid;">
-33
-</td>
-</tr>
-<tr>
-<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
-River
-</td>
-<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
-<div style="background-color:#D5DEC4; color: black; padding: 5px;">
-Poorly Protected
-</div>
-</td>
-<td style="text-align:right;background-color: white !important;border-left:1px solid;border-right:1px solid;">
-66
-</td>
-</tr>
-<tr>
-<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
-River
-</td>
-<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
-<div style="background-color:#A6A6A6; color: black; padding: 5px;">
-Not Protected
-</div>
-</td>
-<td style="text-align:right;background-color: white !important;border-left:1px solid;border-right:1px solid;">
-94
-</td>
-</tr>
-<tr>
-<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
-Inland Aquatic
-</td>
-<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
-<div style="background-color:#4B6E00; color: black; padding: 5px;">
-Well Protected
-</div>
-</td>
-<td style="text-align:right;background-color: white !important;border-left:1px solid;border-right:1px solid;">
-37
-</td>
-</tr>
-<tr>
-<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
-Inland Aquatic
-</td>
-<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
-<div style="background-color:#84AB5C; color: black; padding: 5px;">
-Moderately Protected
-</div>
-</td>
-<td style="text-align:right;background-color: white !important;border-left:1px solid;border-right:1px solid;">
-37
-</td>
-</tr>
-<tr>
-<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
-Inland Aquatic
-</td>
-<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
-<div style="background-color:#D5DEC4; color: black; padding: 5px;">
-Poorly Protected
-</div>
-</td>
-<td style="text-align:right;background-color: white !important;border-left:1px solid;border-right:1px solid;">
-107
-</td>
-</tr>
-<tr>
-<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
-Inland Aquatic
-</td>
-<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
-<div style="background-color:#A6A6A6; color: black; padding: 5px;">
-Not Protected
-</div>
-</td>
-<td style="text-align:right;background-color: white !important;border-left:1px solid;border-right:1px solid;">
-176
-</td>
-</tr>
-<tr>
-<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
-Terrestrial
-</td>
-<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
-<div style="background-color:#4B6E00; color: black; padding: 5px;">
-Well Protected
-</div>
-</td>
-<td style="text-align:right;background-color: white !important;border-left:1px solid;border-right:1px solid;">
-118
-</td>
-</tr>
-<tr>
-<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
-Terrestrial
-</td>
-<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
-<div style="background-color:#84AB5C; color: black; padding: 5px;">
-Moderately Protected
-</div>
-</td>
-<td style="text-align:right;background-color: white !important;border-left:1px solid;border-right:1px solid;">
-59
-</td>
-</tr>
-<tr>
-<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
-Terrestrial
-</td>
-<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
-<div style="background-color:#D5DEC4; color: black; padding: 5px;">
-Poorly Protected
-</div>
-</td>
-<td style="text-align:right;background-color: white !important;border-left:1px solid;border-right:1px solid;">
-166
-</td>
-</tr>
-<tr>
-<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
-Terrestrial
-</td>
-<td style="text-align:left;background-color: white !important;border-left:1px solid;border-right:1px solid;">
-<div style="background-color:#A6A6A6; color: black; padding: 5px;">
-Not Protected
-</div>
-</td>
-<td style="text-align:right;background-color: white !important;border-left:1px solid;border-right:1px solid;">
-115
-</td>
-</tr>
-</tbody>
-</table>
-<p><strong>9. gt table theme</strong></p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://gt.rstudio.com" class="external-link">gt</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
-<span></span>
-<span></span>
-<span><span class="va">gt_tbl</span> <span class="op">&lt;-</span> <span class="va">NBA_example_thr_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://gt.rstudio.com/reference/gt.html" class="external-link">gt</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="../reference/NBA_tbl_theme.html">nba_tbl_theme</a></span><span class="op">(</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">gt_tbl</span></span></code></pre></div>
 <div id="mwlefoodfi" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>#mwlefoodfi table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
@@ -1281,6 +836,636 @@ Not Protected
 }
 
 #mwlefoodfi div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+<table class="table gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead><tr class="gt_col_headings">
+<th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="background-color: #70B276; color: #000000; font-weight: bold; border-top-width: 2px; border-top-style: solid; border-top-color: black; border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: black; border-left-width: 1px; border-left-style: solid; border-left-color: lightgray; border-right-width: 1px; border-right-style: solid; border-right-color: lightgray;" scope="col" id="OVERALL-types">OVERALL types</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="background-color: #70B276; color: #000000; font-weight: bold; border-top-width: 2px; border-top-style: solid; border-top-color: black; border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: black; border-left-width: 1px; border-left-style: solid; border-left-color: lightgray; border-right-width: 1px; border-right-style: solid; border-right-color: lightgray;" scope="col" id="protection_level">protection_level</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="background-color: #70B276; color: #000000; font-weight: bold; border-top-width: 2px; border-top-style: solid; border-top-color: black; border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: black; border-left-width: 1px; border-left-style: solid; border-left-color: lightgray; border-right-width: 1px; border-right-style: solid; border-right-color: lightgray;" scope="col" id="value">value</th>
+    </tr></thead>
+<tbody class="gt_table_body">
+<tr>
+<td headers="OVERALL types" class="gt_row gt_left" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">subAntarctic</td>
+<td headers="protection_level" class="gt_row gt_left" style="background-color: #A6A6A6; color: #000000; border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">Well Protected</td>
+<td headers="value" class="gt_row gt_right" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">15</td>
+</tr>
+<tr>
+<td headers="OVERALL types" class="gt_row gt_left" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">subAntarctic</td>
+<td headers="protection_level" class="gt_row gt_left" style="background-color: #4B6E00; color: #FFFFFF; border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">Moderately Protected</td>
+<td headers="value" class="gt_row gt_right" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">14</td>
+</tr>
+<tr>
+<td headers="OVERALL types" class="gt_row gt_left" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">subAntarctic</td>
+<td headers="protection_level" class="gt_row gt_left" style="background-color: #719641; color: #FFFFFF; border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">Poorly Protected</td>
+<td headers="value" class="gt_row gt_right" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">1</td>
+</tr>
+<tr>
+<td headers="OVERALL types" class="gt_row gt_left" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">subAntarctic</td>
+<td headers="protection_level" class="gt_row gt_left" style="background-color: #C5CBBA; color: #000000; border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">Not Protected</td>
+<td headers="value" class="gt_row gt_right" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">4</td>
+</tr>
+<tr>
+<td headers="OVERALL types" class="gt_row gt_left" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">Coastal</td>
+<td headers="protection_level" class="gt_row gt_left" style="background-color: #A6A6A6; color: #000000; border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">Well Protected</td>
+<td headers="value" class="gt_row gt_right" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">65</td>
+</tr>
+<tr>
+<td headers="OVERALL types" class="gt_row gt_left" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">Coastal</td>
+<td headers="protection_level" class="gt_row gt_left" style="background-color: #4B6E00; color: #FFFFFF; border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">Moderately Protected</td>
+<td headers="value" class="gt_row gt_right" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">28</td>
+</tr>
+<tr>
+<td headers="OVERALL types" class="gt_row gt_left" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">Coastal</td>
+<td headers="protection_level" class="gt_row gt_left" style="background-color: #719641; color: #FFFFFF; border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">Poorly Protected</td>
+<td headers="value" class="gt_row gt_right" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">52</td>
+</tr>
+<tr>
+<td headers="OVERALL types" class="gt_row gt_left" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">Coastal</td>
+<td headers="protection_level" class="gt_row gt_left" style="background-color: #C5CBBA; color: #000000; border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">Not Protected</td>
+<td headers="value" class="gt_row gt_right" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">41</td>
+</tr>
+<tr>
+<td headers="OVERALL types" class="gt_row gt_left" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">Estuarine</td>
+<td headers="protection_level" class="gt_row gt_left" style="background-color: #A6A6A6; color: #000000; border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">Well Protected</td>
+<td headers="value" class="gt_row gt_right" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">4</td>
+</tr>
+<tr>
+<td headers="OVERALL types" class="gt_row gt_left" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">Estuarine</td>
+<td headers="protection_level" class="gt_row gt_left" style="background-color: #4B6E00; color: #FFFFFF; border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">Moderately Protected</td>
+<td headers="value" class="gt_row gt_right" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">8</td>
+</tr>
+<tr>
+<td headers="OVERALL types" class="gt_row gt_left" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">Estuarine</td>
+<td headers="protection_level" class="gt_row gt_left" style="background-color: #719641; color: #FFFFFF; border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">Poorly Protected</td>
+<td headers="value" class="gt_row gt_right" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">7</td>
+</tr>
+<tr>
+<td headers="OVERALL types" class="gt_row gt_left" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">Estuarine</td>
+<td headers="protection_level" class="gt_row gt_left" style="background-color: #C5CBBA; color: #000000; border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">Not Protected</td>
+<td headers="value" class="gt_row gt_right" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">3</td>
+</tr>
+<tr>
+<td headers="OVERALL types" class="gt_row gt_left" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">Marine</td>
+<td headers="protection_level" class="gt_row gt_left" style="background-color: #A6A6A6; color: #000000; border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">Well Protected</td>
+<td headers="value" class="gt_row gt_right" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">47</td>
+</tr>
+<tr>
+<td headers="OVERALL types" class="gt_row gt_left" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">Marine</td>
+<td headers="protection_level" class="gt_row gt_left" style="background-color: #4B6E00; color: #FFFFFF; border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">Moderately Protected</td>
+<td headers="value" class="gt_row gt_right" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">62</td>
+</tr>
+<tr>
+<td headers="OVERALL types" class="gt_row gt_left" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">Marine</td>
+<td headers="protection_level" class="gt_row gt_left" style="background-color: #719641; color: #FFFFFF; border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">Poorly Protected</td>
+<td headers="value" class="gt_row gt_right" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">22</td>
+</tr>
+<tr>
+<td headers="OVERALL types" class="gt_row gt_left" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">Marine</td>
+<td headers="protection_level" class="gt_row gt_left" style="background-color: #C5CBBA; color: #000000; border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">Not Protected</td>
+<td headers="value" class="gt_row gt_right" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">19</td>
+</tr>
+<tr>
+<td headers="OVERALL types" class="gt_row gt_left" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">Wetland</td>
+<td headers="protection_level" class="gt_row gt_left" style="background-color: #A6A6A6; color: #000000; border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">Well Protected</td>
+<td headers="value" class="gt_row gt_right" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">8</td>
+</tr>
+<tr>
+<td headers="OVERALL types" class="gt_row gt_left" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">Wetland</td>
+<td headers="protection_level" class="gt_row gt_left" style="background-color: #4B6E00; color: #FFFFFF; border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">Moderately Protected</td>
+<td headers="value" class="gt_row gt_right" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">4</td>
+</tr>
+<tr>
+<td headers="OVERALL types" class="gt_row gt_left" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">Wetland</td>
+<td headers="protection_level" class="gt_row gt_left" style="background-color: #719641; color: #FFFFFF; border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">Poorly Protected</td>
+<td headers="value" class="gt_row gt_right" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">41</td>
+</tr>
+<tr>
+<td headers="OVERALL types" class="gt_row gt_left" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">Wetland</td>
+<td headers="protection_level" class="gt_row gt_left" style="background-color: #C5CBBA; color: #000000; border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">Not Protected</td>
+<td headers="value" class="gt_row gt_right" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">82</td>
+</tr>
+<tr>
+<td headers="OVERALL types" class="gt_row gt_left" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">River</td>
+<td headers="protection_level" class="gt_row gt_left" style="background-color: #A6A6A6; color: #000000; border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">Well Protected</td>
+<td headers="value" class="gt_row gt_right" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">29</td>
+</tr>
+<tr>
+<td headers="OVERALL types" class="gt_row gt_left" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">River</td>
+<td headers="protection_level" class="gt_row gt_left" style="background-color: #4B6E00; color: #FFFFFF; border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">Moderately Protected</td>
+<td headers="value" class="gt_row gt_right" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">33</td>
+</tr>
+<tr>
+<td headers="OVERALL types" class="gt_row gt_left" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">River</td>
+<td headers="protection_level" class="gt_row gt_left" style="background-color: #719641; color: #FFFFFF; border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">Poorly Protected</td>
+<td headers="value" class="gt_row gt_right" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">66</td>
+</tr>
+<tr>
+<td headers="OVERALL types" class="gt_row gt_left" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">River</td>
+<td headers="protection_level" class="gt_row gt_left" style="background-color: #C5CBBA; color: #000000; border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">Not Protected</td>
+<td headers="value" class="gt_row gt_right" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">94</td>
+</tr>
+<tr>
+<td headers="OVERALL types" class="gt_row gt_left" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">Inland Aquatic</td>
+<td headers="protection_level" class="gt_row gt_left" style="background-color: #A6A6A6; color: #000000; border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">Well Protected</td>
+<td headers="value" class="gt_row gt_right" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">37</td>
+</tr>
+<tr>
+<td headers="OVERALL types" class="gt_row gt_left" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">Inland Aquatic</td>
+<td headers="protection_level" class="gt_row gt_left" style="background-color: #4B6E00; color: #FFFFFF; border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">Moderately Protected</td>
+<td headers="value" class="gt_row gt_right" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">37</td>
+</tr>
+<tr>
+<td headers="OVERALL types" class="gt_row gt_left" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">Inland Aquatic</td>
+<td headers="protection_level" class="gt_row gt_left" style="background-color: #719641; color: #FFFFFF; border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">Poorly Protected</td>
+<td headers="value" class="gt_row gt_right" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">107</td>
+</tr>
+<tr>
+<td headers="OVERALL types" class="gt_row gt_left" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">Inland Aquatic</td>
+<td headers="protection_level" class="gt_row gt_left" style="background-color: #C5CBBA; color: #000000; border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">Not Protected</td>
+<td headers="value" class="gt_row gt_right" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">176</td>
+</tr>
+<tr>
+<td headers="OVERALL types" class="gt_row gt_left" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">Terrestrial</td>
+<td headers="protection_level" class="gt_row gt_left" style="background-color: #A6A6A6; color: #000000; border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">Well Protected</td>
+<td headers="value" class="gt_row gt_right" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">118</td>
+</tr>
+<tr>
+<td headers="OVERALL types" class="gt_row gt_left" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">Terrestrial</td>
+<td headers="protection_level" class="gt_row gt_left" style="background-color: #4B6E00; color: #FFFFFF; border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">Moderately Protected</td>
+<td headers="value" class="gt_row gt_right" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">59</td>
+</tr>
+<tr>
+<td headers="OVERALL types" class="gt_row gt_left" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">Terrestrial</td>
+<td headers="protection_level" class="gt_row gt_left" style="background-color: #719641; color: #FFFFFF; border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">Poorly Protected</td>
+<td headers="value" class="gt_row gt_right" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: gray50; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">166</td>
+</tr>
+<tr>
+<td headers="OVERALL types" class="gt_row gt_left" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: black; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">Terrestrial</td>
+<td headers="protection_level" class="gt_row gt_left" style="background-color: #C5CBBA; color: #000000; border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: black; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">Not Protected</td>
+<td headers="value" class="gt_row gt_right" style="border-top-width: 1px; border-top-style: dotted; border-top-color: gray50; border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: black; border-left-width: 1px; border-left-style: solid; border-left-color: transparent; border-right-width: 1px; border-right-style: solid; border-right-color: transparent;">115</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>9. gt table theme</strong></p>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://gt.rstudio.com" class="external-link">gt</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
+<span></span>
+<span></span>
+<span><span class="va">gt_tbl</span> <span class="op">&lt;-</span> <span class="va">NBA_example_thr_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://gt.rstudio.com/reference/gt.html" class="external-link">gt</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="../reference/NBA_tbl_theme.html">nba_tbl_theme</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">gt_tbl</span></span></code></pre></div>
+<div id="eexombwkke" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#eexombwkke table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#eexombwkke thead, #eexombwkke tbody, #eexombwkke tfoot, #eexombwkke tr, #eexombwkke td, #eexombwkke th {
+  border-style: none;
+}
+
+#eexombwkke p {
+  margin: 0;
+  padding: 0;
+}
+
+#eexombwkke .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#eexombwkke .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#eexombwkke .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#eexombwkke .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#eexombwkke .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#eexombwkke .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#eexombwkke .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#eexombwkke .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#eexombwkke .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#eexombwkke .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#eexombwkke .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#eexombwkke .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#eexombwkke .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#eexombwkke .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#eexombwkke .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#eexombwkke .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#eexombwkke .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#eexombwkke .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#eexombwkke .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#eexombwkke .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#eexombwkke .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#eexombwkke .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#eexombwkke .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#eexombwkke .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#eexombwkke .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#eexombwkke .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#eexombwkke .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#eexombwkke .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#eexombwkke .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#eexombwkke .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#eexombwkke .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#eexombwkke .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#eexombwkke .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#eexombwkke .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#eexombwkke .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#eexombwkke .gt_left {
+  text-align: left;
+}
+
+#eexombwkke .gt_center {
+  text-align: center;
+}
+
+#eexombwkke .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#eexombwkke .gt_font_normal {
+  font-weight: normal;
+}
+
+#eexombwkke .gt_font_bold {
+  font-weight: bold;
+}
+
+#eexombwkke .gt_font_italic {
+  font-style: italic;
+}
+
+#eexombwkke .gt_super {
+  font-size: 65%;
+}
+
+#eexombwkke .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#eexombwkke .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#eexombwkke .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#eexombwkke .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#eexombwkke .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#eexombwkke .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#eexombwkke .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#eexombwkke .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#eexombwkke div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
