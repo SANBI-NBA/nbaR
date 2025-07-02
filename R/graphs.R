@@ -400,7 +400,7 @@ nba_plot <- function(DF, GROUPS, COLS, CHRT = c("bar", "donut"), NUM = FALSE, LA
 #' #MIN,
 #' #MAX)
 #'
-#' RLI_plot
+#' #RLI_plot
 #'
 #'
 nba_plot_RLI <- function(DF, YEAR, RLI, MIN, MAX, GROUP = NULL, summarise_by_year = TRUE, SAVE = NULL) {

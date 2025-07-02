@@ -24,6 +24,7 @@ Imports:
     tidyr,
     tidyselect,
     sf,
+    rsconnect,
     ggspatial,
     gt,
     ggh4x,
