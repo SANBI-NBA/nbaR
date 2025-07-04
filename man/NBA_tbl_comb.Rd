@@ -15,17 +15,12 @@ nba_tbl_comb(DF, GROUP, THR, PRO, FILE = c("spatial", "csv"))
 
 \item{PRO}{The column name of the protection levels}
 
-\item{FILE}{An indication if the input file is a map (spatial file with a geom column) or a csv/ normal dataframe. If it is a normal dataframe the data must already be in the correct format as the function only formats data in a spatial file.}
+\item{FILE}{An indication if the input file is a map (spatial file with a geom column) or a csv/ normal dataframe.}
 }
 \description{
 Function to style a table with threat status on the horizontal rows
 and protection level on the vertical columns, with number of ecosystems
 or taxa that share those categories, with total and percentage çolumns added
-}
-\details{
-This function is special because if you start from a spatial file you will need
-to add the group, thr and pro, and file arguments, but if you start from a
-dataframe (csv) you only need the DF, thr, and file arguments.
 }
 \examples{
 

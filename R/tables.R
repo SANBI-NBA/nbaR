@@ -277,15 +277,13 @@ nba_tbl_theme <- function(GT_TBL) {
 #' and protection level on the vertical columns, with number of ecosystems
 #' or taxa that share those categories, with total and percentage çolumns added
 #'
-#' This function is special because if you start from a spatial file you will need
-#'  to add the group, thr and pro, and file arguments, but if you start from a
-#'   dataframe (csv) you only need the DF, thr, and file arguments.
+#'
 #'
 #' @param DF The data frame that contains the data
 #' @param GROUP The column that contains the name of the variable (the ecosystems or taxa names)
 #' @param THR The column name of the threat statuses
 #' @param PRO The column name of the protection levels
-#' @param FILE An indication if the input file is a map (spatial file with a geom column) or a csv/ normal dataframe. If it is a normal dataframe the data must already be in the correct format as the function only formats data in a spatial file.
+#' @param FILE An indication if the input file is a map (spatial file with a geom column) or a csv/ normal dataframe.
 #'
 #' @importFrom dplyr distinct
 #' @importFrom dplyr mutate
@@ -345,7 +343,13 @@ nba_tbl_comb <- function(DF, GROUP, THR, PRO, FILE = c("spatial", "csv")){
   if(FILE == "spatial"){
 
     summary_table <- DF %>%
-      sf::st_drop_geometry() %>%
+      sf::st_drop_geometry()
+  } else{
+
+    summary_table <- DF
+    }
+
+  summary_table <- summary_table %>%
       dplyr::distinct({{GROUP}}, {{THR}}, {{PRO}}) %>%
       dplyr::mutate(
         ## set factor levels for threat status based on the defined order
@@ -395,13 +399,7 @@ nba_tbl_comb <- function(DF, GROUP, THR, PRO, FILE = c("spatial", "csv")){
     ## reorder protection level columns based on predefined order
     final_table <- final_table %>%
       dplyr::select({{THR}}, tidyselect::all_of(protection_order), Total)
-  }
 
-  else{
-
-    final_table <- DF
-
-  }
 
 
   ######################################################################################
