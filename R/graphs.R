@@ -140,13 +140,7 @@ nba_plot <- function(DF, GROUPS, COLS, CHRT = c("bar", "donut"), NUM = FALSE, LA
               panel.background = element_rect(fill = "white", color = NA),  ## set panel background to white
               plot.background = element_rect(fill = "white", color = NA),
               title = element_text(size = 10* SCALE_TEXT),
-              strip.text = element_blank(),## set plot background to white
-              axis.text.x = element_text(size = 8 * SCALE_TEXT),
-              axis.text.y = element_text(size = 8 * SCALE_TEXT),
-              axis.title.x = element_text(size = 10 * SCALE_TEXT),
-              axis.title.y = element_text(size = 10 * SCALE_TEXT),
-              legend.key.size = unit(1 * SCALE_TEXT, "lines"),
-              legend.box.margin = margin()
+              strip.text = element_blank()
             )
 
         }
@@ -167,13 +161,7 @@ nba_plot <- function(DF, GROUPS, COLS, CHRT = c("bar", "donut"), NUM = FALSE, LA
               panel.background = element_rect(fill = "white", color = NA),  ## set panel background to white
               plot.background = element_rect(fill = "white", color = NA),
               title = element_text(size = 10),
-              strip.text = element_blank(),## set plot background to white
-              axis.text.x = element_text(size = 8 * SCALE_TEXT),
-              axis.text.y = element_text(size = 8 * SCALE_TEXT),
-              axis.title.x = element_text(size = 10 * SCALE_TEXT),
-              axis.title.y = element_text(size = 10 * SCALE_TEXT),
-              legend.key.size = unit(1 * SCALE_TEXT, "lines"),
-              legend.box.margin = margin()
+              strip.text = element_blank()
             )
 
         }
@@ -208,13 +196,7 @@ nba_plot <- function(DF, GROUPS, COLS, CHRT = c("bar", "donut"), NUM = FALSE, LA
               panel.background = element_rect(fill = "white", color = NA),  ## set panel background to white
               plot.background = element_rect(fill = "white", color = NA),
               title = element_text(size = 10* SCALE_TEXT),
-              strip.text = element_blank(), ## set plot background to white
-              axis.text.x = element_text(size = 8 * SCALE_TEXT),
-              axis.text.y = element_text(size = 8 * SCALE_TEXT),
-              axis.title.x = element_text(size = 10 * SCALE_TEXT),
-              axis.title.y = element_text(size = 10 * SCALE_TEXT),
-              legend.key.size = unit(1 * SCALE_TEXT, "lines"),
-              legend.box.margin = margin()
+              strip.text = element_blank()
             )
         }
 
@@ -234,14 +216,7 @@ nba_plot <- function(DF, GROUPS, COLS, CHRT = c("bar", "donut"), NUM = FALSE, LA
             ggplot2::theme(
               panel.background = element_rect(fill = "white", color = NA),  ## set panel background to white
               plot.background = element_rect(fill = "white", color = NA),
-              title = element_text(size = 10* SCALE_TEXT),
-              strip.text = element_blank(),## set plot background to white
-              axis.text.x = element_text(size = 8 * SCALE_TEXT),
-              axis.text.y = element_text(size = 8 * SCALE_TEXT),
-              axis.title.x = element_text(size = 10 * SCALE_TEXT),
-              axis.title.y = element_text(size = 10 * SCALE_TEXT),
-              legend.key.size = unit(1 * SCALE_TEXT, "lines"),
-              legend.box.margin = margin()
+              title = element_text(size = 10* SCALE_TEXT)
             )
 
         }
@@ -330,7 +305,7 @@ nba_plot <- function(DF, GROUPS, COLS, CHRT = c("bar", "donut"), NUM = FALSE, LA
 
     if (!is.null(SAVE)) {
 
-      plot_save <- plot+
+      plot_save <- plot +
         theme(legend.justification='right')
 
       ggsave(paste0("outputs/", SAVE, ".jpeg"),
