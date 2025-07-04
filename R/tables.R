@@ -325,9 +325,15 @@ nba_tbl_comb <- function(DF, GROUP, THR, PRO, FILE = c("spatial", "csv")){
   ### define the levels and color of threat status and protection level categories
 
   ## define color mapping for threat statuses for use in the table display
-  threat_color_mapping <- c("Critically Endangered" = "#e9302c",
-                            "Endangered" = "#f97835",
-                            "Vulnerable" = "#fff02a")
+  threat_color_mapping <- c("Critically Endangered" = rgb(216, 30, 5, maxColorValue = 255),
+                            "Endangered" = rgb(252, 127, 63, maxColorValue = 255),
+                            "Vulnerable" = rgb(249, 232, 20, maxColorValue = 255),
+                            "Near Threatened" = rgb(204, 226, 38, maxColorValue = 255),
+                            "Least Concern" = rgb(180, 215, 158, maxColorValue = 255),
+                            "Data Deficient" = rgb(209, 209, 198, maxColorValue = 255),
+                            "Rare" = rgb(193, 181, 165, maxColorValue = 255),
+                            "Extinct" = rgb(0, 0, 0, maxColorValue = 255),
+                            "Extinct in the Wild" = rgb(84, 35, 68, maxColorValue = 255))
 
 
   ## specify the order for threat statuses and protection levels for consistent ordering
