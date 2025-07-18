@@ -382,9 +382,9 @@ Terrestrial
 <span><span class="co">#&gt;     intersect, setdiff, setequal, union</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org" class="external-link">tidyr</a></span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">tbl</span> <span class="op">&lt;-</span> <span class="va">NBA_example_pro_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html" class="external-link">pivot_longer</a></span><span class="op">(</span><span class="fl">2</span><span class="op">:</span><span class="fl">5</span>, names_to <span class="op">=</span> <span class="st">"protection_level"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="../reference/NBA_tbl_colr.html">nba_tbl_colr</a></span><span class="op">(</span>COL <span class="op">=</span> <span class="va">protection_level</span><span class="op">)</span></span>
+<span><span class="va">tbl</span> <span class="op">&lt;-</span> <span class="va">NBA_example_pro_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html" class="external-link">pivot_longer</a></span><span class="op">(</span><span class="fl">2</span><span class="op">:</span><span class="fl">5</span>, names_to <span class="op">=</span> <span class="st">"protection_level"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span> <span class="fu"><a href="../reference/NBA_tbl_colr.html">nba_tbl_colr</a></span><span class="op">(</span>COL <span class="op">=</span> <span class="va">protection_level</span>, HEADER <span class="op">=</span> <span class="st">"Coast"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Warning: Since gt v0.9.0, the `colors` argument has been deprecated.</span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">•</span> Please use the `fn` argument instead.</span></span>
 <span><span class="co">#&gt; <span style="color: #555555;">This warning is displayed once every 8 hours.</span></span></span>
@@ -841,9 +841,9 @@ Terrestrial
 </style>
 <table class="table gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
 <thead><tr class="gt_col_headings">
-<th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="background-color: #70B276; color: #000000; font-weight: bold; border-top-width: 2px; border-top-style: solid; border-top-color: black; border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: black; border-left-width: 1px; border-left-style: solid; border-left-color: lightgray; border-right-width: 1px; border-right-style: solid; border-right-color: lightgray;" scope="col" id="OVERALL-types">OVERALL types</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="background-color: #70B276; color: #000000; font-weight: bold; border-top-width: 2px; border-top-style: solid; border-top-color: black; border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: black; border-left-width: 1px; border-left-style: solid; border-left-color: lightgray; border-right-width: 1px; border-right-style: solid; border-right-color: lightgray;" scope="col" id="protection_level">protection_level</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="background-color: #70B276; color: #000000; font-weight: bold; border-top-width: 2px; border-top-style: solid; border-top-color: black; border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: black; border-left-width: 1px; border-left-style: solid; border-left-color: lightgray; border-right-width: 1px; border-right-style: solid; border-right-color: lightgray;" scope="col" id="value">value</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="background-color: #DEA004; color: #000000; font-weight: bold; border-top-width: 2px; border-top-style: solid; border-top-color: black; border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: black; border-left-width: 1px; border-left-style: solid; border-left-color: lightgray; border-right-width: 1px; border-right-style: solid; border-right-color: lightgray;" scope="col" id="OVERALL-types">OVERALL types</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="background-color: #DEA004; color: #000000; font-weight: bold; border-top-width: 2px; border-top-style: solid; border-top-color: black; border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: black; border-left-width: 1px; border-left-style: solid; border-left-color: lightgray; border-right-width: 1px; border-right-style: solid; border-right-color: lightgray;" scope="col" id="protection_level">protection_level</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="background-color: #DEA004; color: #000000; font-weight: bold; border-top-width: 2px; border-top-style: solid; border-top-color: black; border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: black; border-left-width: 1px; border-left-style: solid; border-left-color: lightgray; border-right-width: 1px; border-right-style: solid; border-right-color: lightgray;" scope="col" id="value">value</th>
     </tr></thead>
 <tbody class="gt_table_body">
 <tr>
@@ -1709,8 +1709,9 @@ report 2018.</p>
 <code class="sourceCode R"><span></span>
 <span><span class="va">map</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/NBA_map.html">nba_map</a></span><span class="op">(</span>DF <span class="op">=</span> <span class="va">NBA_example_map_data</span>,</span>
 <span>               GEOM <span class="op">=</span> <span class="va">geometry</span>, </span>
-<span>               CAP <span class="op">=</span> <span class="st">"Figure 1. A map of the protection level of marine pelagic ecosystem types in South Africa"</span>, </span>
-<span>               FILL <span class="op">=</span> <span class="va">protection_level</span><span class="op">)</span></span>
+<span>               FILL <span class="op">=</span> <span class="va">protection_level</span>, </span>
+<span>               LEGEND <span class="op">=</span> <span class="cn">TRUE</span>, </span>
+<span>               MOE <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">map</span></span></code></pre></div>
 <p><img src="nbaR_files/figure-html/unnamed-chunk-12-1.png" width="700"></p>
