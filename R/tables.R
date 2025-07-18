@@ -72,7 +72,7 @@ nba_tbl <- function(DF){
 #'
 #'tbl <- NBA_example_pro_data %>%
 #'  pivot_longer(2:5, names_to = "protection_level") %>%
-#'  nba_tbl_colr(COL = protection_level, HEADER_COL = "Coast")
+#'  nba_tbl_colr(COL = protection_level, HEADER = "Coast")
 #'
 #'tbl
 #'

@@ -4,18 +4,19 @@
 \alias{nba_map}
 \title{NBA map function}
 \usage{
-nba_map(DF, COLS = NULL, GEOM, CAP, FILL)
+nba_map(DF, GEOM, FILL, LEGEND = FALSE, MOE = FALSE)
 }
 \arguments{
 \item{DF}{The data frame that contains the information}
 
-\item{COLS}{The variables to group together with the ecosystem types if the data isn't already in the form of one row per ecosystem type.}
-
 \item{GEOM}{The name of the geometry column}
 
-\item{CAP}{The caption for the map (will be place at the bottom left of the plot)}
+\item{FILL}{The column that contains the categories to colour the ecosystems by
+(e.g. protection level, threat status, or condition)}
 
-\item{FILL}{The column that contains the categories to colour the ecosystems by (e.g. protection level, threat status, or condition)}
+\item{LEGEND}{True to include the legend in the plot, False to exclude it}
+
+\item{MOE}{True to include the Map orientation elements (MOE) of a scale bar and north arrow, False to exclude}
 }
 \value{
 Returns a map
@@ -40,9 +41,10 @@ which can be accessed for reference).
 \examples{
 
 map <- nba_map(DF = NBA_example_map_data,
-              GEOM = geometry,
-              CAP = "Figure 1. A map of the protection level of marine pelagic ecosystem types in South Africa",
-              FILL = protection_level)
+GEOM = geometry,
+FILL = protection_level,
+LEGEND = TRUE,
+MOE = TRUE)
 
 map
 
