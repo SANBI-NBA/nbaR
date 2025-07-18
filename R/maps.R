@@ -80,8 +80,8 @@ nba_map <- function(DF, GEOM, FILL, LEGEND = FALSE, MOE = FALSE){
   map <- ggplot2::ggplot() +
 
     ggplot2::geom_sf(data = dat,
-                     ggplot2::aes(fill = {{FILL}}),
-            color = NA,
+                     ggplot2::aes(fill = {{FILL}},
+                                  colour = {{FILL}}),
             lwd = 0.1) +
 
     ggplot2::scale_fill_manual(values = nbaR::NBA_colours) +
