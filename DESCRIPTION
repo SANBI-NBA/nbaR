@@ -31,7 +31,8 @@ Imports:
     usethis,
     WikidataR,
     rlang,
-    scales
+    scales,
+    tidyterra
 Suggests: 
     rmarkdown,
     learnr,

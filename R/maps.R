@@ -19,7 +19,8 @@
 #'
 #'
 #' @param DF The data frame that contains the information
-#' @param GEOM The name of the geometry column
+#' @param GEOM Whether the layer is a vector or a raster. Vectors must be
+#' sf objects and rasters must be terra (spatraster) objects
 #' @param FILL The column that contains the categories to colour the ecosystems by
 #'  (e.g. protection level, threat status, or condition)
 #' @param LEGEND True to include the legend in the plot, False to exclude it
@@ -47,7 +48,7 @@
 #' @importFrom magrittr "%>%"
 #' @importFrom sf st_union
 #' @importFrom sf st_geometry_type
-#'
+#' @importFrom tidyterra geom_spatraster
 #'
 #'
 #' @export
@@ -55,7 +56,7 @@
 #' @examples
 #'
 #'map <- nba_map(DF = NBA_example_map_data,
-#'GEOM = geometry,
+#'GEOM = "vector",
 #'FILL = protection_level,
 #'LEGEND = TRUE,
 #'MOE = TRUE)
@@ -67,9 +68,10 @@
 #'
 
 
-nba_map <- function(DF, GEOM, FILL, LEGEND = FALSE, MOE = FALSE){
+nba_map <- function(DF, GEOM = c("vector", "raster"), FILL, LEGEND = FALSE, MOE = FALSE){
 
 
+if(GEOM == "vector"){
 
 
   dat <- DF %>%
@@ -84,13 +86,23 @@ nba_map <- function(DF, GEOM, FILL, LEGEND = FALSE, MOE = FALSE){
                                   colour = {{FILL}}),
             lwd = 0.1) +
 
-    ggplot2::scale_fill_manual(values = nbaR::NBA_colours) +
+    ggplot2::scale_fill_manual(values = nbaR::NBA_colours)+
+    ggplot2::scale_colour_manual(values = nbaR::NBA_colours)
 
-    ggplot2::labs(
-         title = "",
-         fill = "", ## legend title
-         x = "",
-         y = "")
+} else {
+
+
+
+  map <- ggplot2::ggplot()+
+    tidyterra::geom_spatraster(data=DF)+
+    ggplot2::scale_fill_manual(values = nbaR::NBA_colours, na.value = "transparent")
+
+
+
+}
+
+
+
 
 
 if(LEGEND == TRUE){

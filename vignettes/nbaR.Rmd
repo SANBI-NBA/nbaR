@@ -235,7 +235,7 @@ Please note this was modeled after the maps in the marine technical report 2018.
 ```{r}
 
 map <- nba_map(DF = NBA_example_map_data,
-               GEOM = geometry, 
+               GEOM = "vector", 
                FILL = protection_level, 
                LEGEND = TRUE, 
                MOE = TRUE)

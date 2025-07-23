@@ -4,12 +4,13 @@
 \alias{nba_map}
 \title{NBA map function}
 \usage{
-nba_map(DF, GEOM, FILL, LEGEND = FALSE, MOE = FALSE)
+nba_map(DF, GEOM = c("vector", "raster"), FILL, LEGEND = FALSE, MOE = FALSE)
 }
 \arguments{
 \item{DF}{The data frame that contains the information}
 
-\item{GEOM}{The name of the geometry column}
+\item{GEOM}{Whether the layer is a vector or a raster. Vectors must be
+sf objects and rasters must be terra (spatraster) objects}
 
 \item{FILL}{The column that contains the categories to colour the ecosystems by
 (e.g. protection level, threat status, or condition)}
@@ -41,7 +42,7 @@ which can be accessed for reference).
 \examples{
 
 map <- nba_map(DF = NBA_example_map_data,
-GEOM = geometry,
+GEOM = "vector",
 FILL = protection_level,
 LEGEND = TRUE,
 MOE = TRUE)
