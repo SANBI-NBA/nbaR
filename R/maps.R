@@ -97,8 +97,6 @@ if(GEOM == "vector"){
     tidyterra::geom_spatraster(data=DF)+
     ggplot2::scale_fill_manual(values = nbaR::NBA_colours, na.value = "transparent")
 
-
-
 }
 
 
