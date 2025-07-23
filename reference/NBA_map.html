@@ -54,7 +54,7 @@ multiple rows per ecosystem type.</p>
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">nba_map</span><span class="op">(</span><span class="va">DF</span>, <span class="va">GEOM</span>, <span class="va">FILL</span>, LEGEND <span class="op">=</span> <span class="cn">FALSE</span>, MOE <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">nba_map</span><span class="op">(</span><span class="va">DF</span>, GEOM <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"vector"</span>, <span class="st">"raster"</span><span class="op">)</span>, <span class="va">FILL</span>, LEGEND <span class="op">=</span> <span class="cn">FALSE</span>, MOE <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -66,7 +66,8 @@ multiple rows per ecosystem type.</p>
 
 
 <dt id="arg-geom">GEOM<a class="anchor" aria-label="anchor" href="#arg-geom"></a></dt>
-<dd><p>The name of the geometry column</p></dd>
+<dd><p>Whether the layer is a vector or a raster. Vectors must be
+sf objects and rasters must be terra (spatraster) objects</p></dd>
 
 
 <dt id="arg-fill">FILL<a class="anchor" aria-label="anchor" href="#arg-fill"></a></dt>
@@ -101,7 +102,7 @@ which can be accessed for reference).</p>
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">map</span> <span class="op">&lt;-</span> <span class="fu">nba_map</span><span class="op">(</span>DF <span class="op">=</span> <span class="va">NBA_example_map_data</span>,</span></span>
-<span class="r-in"><span>GEOM <span class="op">=</span> <span class="va">geometry</span>,</span></span>
+<span class="r-in"><span>GEOM <span class="op">=</span> <span class="st">"vector"</span>,</span></span>
 <span class="r-in"><span>FILL <span class="op">=</span> <span class="va">protection_level</span>,</span></span>
 <span class="r-in"><span>LEGEND <span class="op">=</span> <span class="cn">TRUE</span>,</span></span>
 <span class="r-in"><span>MOE <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
