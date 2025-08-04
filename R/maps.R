@@ -25,6 +25,7 @@
 #'  (e.g. protection level, threat status, or condition)
 #' @param LEGEND True to include the legend in the plot, False to exclude it
 #' @param MOE True to include the Map orientation elements (MOE) of a scale bar and north arrow, False to exclude
+#' @param LWD Line width to use in the plot
 #'
 #' @return Returns a map
 #'
@@ -68,7 +69,8 @@
 #'
 
 
-nba_map <- function(DF, GEOM = c("vector", "raster"), FILL, LEGEND = FALSE, MOE = FALSE){
+nba_map <- function(DF, GEOM = c("vector", "raster"), FILL, LEGEND = FALSE, MOE = FALSE,
+                    LWD = 0.1){
 
 
 if(GEOM == "vector"){
@@ -84,7 +86,7 @@ if(GEOM == "vector"){
     ggplot2::geom_sf(data = dat,
                      ggplot2::aes(fill = {{FILL}},
                                   colour = {{FILL}}),
-            lwd = 0.1) +
+            lwd = LWD) +
 
     ggplot2::scale_fill_manual(values = nbaR::NBA_colours)+
     ggplot2::scale_colour_manual(values = nbaR::NBA_colours)

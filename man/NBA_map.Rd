@@ -4,7 +4,14 @@
 \alias{nba_map}
 \title{NBA map function}
 \usage{
-nba_map(DF, GEOM = c("vector", "raster"), FILL, LEGEND = FALSE, MOE = FALSE)
+nba_map(
+  DF,
+  GEOM = c("vector", "raster"),
+  FILL,
+  LEGEND = FALSE,
+  MOE = FALSE,
+  LWD = 0.1
+)
 }
 \arguments{
 \item{DF}{The data frame that contains the information}
@@ -18,6 +25,8 @@ sf objects and rasters must be terra (spatraster) objects}
 \item{LEGEND}{True to include the legend in the plot, False to exclude it}
 
 \item{MOE}{True to include the Map orientation elements (MOE) of a scale bar and north arrow, False to exclude}
+
+\item{LWD}{Line width to use in the plot}
 }
 \value{
 Returns a map
