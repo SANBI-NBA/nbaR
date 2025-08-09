@@ -150,6 +150,12 @@ NBA_colours <- c(
   "Moderately Protected" = rgb(132, 171, 92, maxColorValue = 255),
   "Well Protected" = rgb(75, 110, 0, maxColorValue = 255),
 
+  #unluckies
+  "CR_NP" = "#A93800",
+  "CR_PP" = "#A87001",
+  "EN_NP" = "#A87001",
+  "EN_PP" = "#FFEBB0",
+
   #Pressures
   "Low" = rgb(223, 220, 199, maxColorValue = 255),
   "Medium" = rgb(175, 168, 117, maxColorValue = 255),
