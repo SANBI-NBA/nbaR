@@ -153,7 +153,7 @@ NBA_colours <- c(
   #unluckies
   "CR_NP" = "#A93800",
   "CR_PP" = "#A87001",
-  "EN_NP" = "#A87001",
+  "EN_NP" = "#E69800",
   "EN_PP" = "#FFEBB0",
 
   #Pressures

@@ -76,8 +76,10 @@ nba_map <- function(DF, GEOM = c("vector", "raster"), FILL, LEGEND = FALSE, MOE 
 if(GEOM == "vector"){
 
 
-  dat <- DF %>%
-    mutate({{FILL}} := factor({{FILL}}, levels = nbaR::NBA_categories))
+  dat <- DF
+
+  # %>%
+  #   mutate({{FILL}} := factor({{FILL}}, levels = nbaR::NBA_categories))
 
 
   ## plot map
