@@ -192,6 +192,7 @@ NBA_colours <- c(
   "Near natural" = rgb(110, 159, 212, maxColorValue = 255),
   "Moderately modified" = rgb(165, 197, 199, maxColorValue = 255),
   "Heavily / intensively modified" = rgb(129, 171, 167, maxColorValue = 255),
+  "Severely/critically modified" = rgb(136, 129, 78, maxColorValue = 255),
   "Permanently / irreversibly modified" = rgb(136, 129, 78, maxColorValue = 255),
 
 
