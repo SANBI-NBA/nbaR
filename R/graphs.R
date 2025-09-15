@@ -505,6 +505,7 @@ nba_plot_comb <- function(DF,
 
   for (m in METRICS) {
 
+
     figure <- nba_plot(DF = DF %>%
                          filter({{METRIC_COL}}== m),
                        GROUPS= {{GROUPS}},
@@ -520,7 +521,7 @@ nba_plot_comb <- function(DF,
   }
 
   plot <- ggpubr::ggarrange(plotlist =  plot_list2,
-                    labels = c("auto"),
+                    labels = c("AUTO"),
                     common.legend = T,
                     legend = "bottom")
 
