@@ -505,19 +505,47 @@ nba_plot_comb <- function(DF,
 
   for (m in METRICS) {
 
-
-    figure <- nba_plot(DF = DF %>%
+    if(m == "count"){
+       figure <- nba_plot(DF = DF %>%
                          filter({{METRIC_COL}}== m),
                        GROUPS= {{GROUPS}},
                        COLS = COLS,
                        CHRT = CHRT,
-                       NUM = NUM,
+                       NUM = T,
                        GRP = GRP,
                        LAB = paste(LAB, m),
                        SAVE=NULL)
+    } else
+
+      if(m == "extent"){
+
+      figure <- nba_plot(DF = DF %>%
+                           filter({{METRIC_COL}}== m),
+                         GROUPS= {{GROUPS}},
+                         COLS = COLS,
+                         CHRT = CHRT,
+                         NUM = F,
+                         GRP = GRP,
+                         LAB = paste(LAB, m),
+                         SAVE=NULL)
+
+      } else {
+
+        figure <- nba_plot(DF = DF %>%
+                             filter({{METRIC_COL}}== m),
+                           GROUPS= {{GROUPS}},
+                           COLS = COLS,
+                           CHRT = CHRT,
+                           NUM = NUM,
+                           GRP = GRP,
+                           LAB = paste(LAB, m),
+                           SAVE=NULL)
+
+    }
 
     plot_list2[[i]] <- figure
     i <- i + 1
+
   }
 
   plot <- ggpubr::ggarrange(plotlist =  plot_list2,
