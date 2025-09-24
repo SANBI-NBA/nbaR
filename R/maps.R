@@ -110,9 +110,10 @@ if(GEOM == "vector"){
 if(LEGEND == TRUE){
 
   map_leg <- map +
-    ggplot2::theme(legend.key.size = ggplot2::unit(0.5,"line"),
+    ggplot2::theme(legend.key.size = ggplot2::unit(1,"line"),
                    legend.position = "inside",
                    legend.justification = c("right", "bottom"),
+                   legend.title = element_blank(),
                    plot.background = ggplot2::element_blank(),
                    panel.background = ggplot2::element_blank(),
                    panel.border = ggplot2::element_blank(),
