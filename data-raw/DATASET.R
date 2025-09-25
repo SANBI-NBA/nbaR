@@ -122,6 +122,14 @@ NBA_categories <- c("Critically Endangered",
                     "Critical Biodiversity Areas",
                     "Ecologically Sensitive Areas" ,
 
+                    #priority ecosystems
+                    "CR_NP",
+                    "CR_PP",
+                    "EN_NP",
+                    "EN_PP",
+                    "VU_NP",
+                    "VU_PP",
+
                     # Built up areas
                     "Cropland",
                     "Plantation",
@@ -292,7 +300,7 @@ usethis::use_data(NBA_example_thr_data)
 usethis::use_data(NBA_example_RLI_data)
 usethis::use_data(NBA_example_pro_data)
 usethis::use_data(NBA_example_comb_data)
-usethis::use_data(NBA_categories)
+usethis::use_data(NBA_categories, overwrite = TRUE)
 usethis::use_data(NBA_example_map_data, overwrite = TRUE)
 usethis::use_data(NBA_example_bubble_data, overwrite = TRUE)
 usethis::use_data(NBA_colours, overwrite = TRUE)
