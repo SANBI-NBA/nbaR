@@ -309,7 +309,7 @@ nba_tbl_theme <- function(GT_TBL, HEADER = c("sanbi-green",
     #   )
     # ) %>%
     gt::tab_options(
-      table.font.size = gt::px(11.5)  # or "small", or px(10)
+      table.font.size = gt::px(12)  # or "small", or px(10)
     )
 }
 
