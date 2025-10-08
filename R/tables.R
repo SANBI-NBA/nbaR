@@ -302,14 +302,14 @@ nba_tbl_theme <- function(GT_TBL, HEADER = c("sanbi-green",
       locations = gt::cells_body(rows = last_row)  # last row only
     ) %>%
 
-    gt::opt_table_font(
-      font = list(
-        gt::google_font(name = "Ariel"),
-        gt::default_fonts()
-      )
-    ) %>%
+    # gt::opt_table_font(
+    #   font = list(
+    #     gt::google_font(name = "Ariel"),
+    #     gt::default_fonts()
+    #   )
+    # ) %>%
     gt::tab_options(
-      table.font.size = gt::px(12)  # or "small", or px(10)
+      table.font.size = gt::px(10)  # or "small", or px(10)
     )
 }
 
