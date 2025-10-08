@@ -187,6 +187,7 @@ nba_tbl_colr <- function(DF, COL, HEADER = c("sanbi-green",
 #' Function to apply gt styling to table
 #'
 #' @param GT_TBL The data frame that contains the data
+#' @param HEADER the name to determine the colour of the header row. Defaults to SANBI green
 #'
 #' @importFrom gt tab_style
 #' @importFrom gt cell_fill
@@ -212,14 +213,28 @@ nba_tbl_colr <- function(DF, COL, HEADER = c("sanbi-green",
 #'
 #'
 
-nba_tbl_theme <- function(GT_TBL) {
+nba_tbl_theme <- function(GT_TBL, HEADER = c("sanbi-green",
+                                             "sanbi-orange",
+                                             "sanbi-purple",
+                                             "Freshwater",
+                                             "Marine",
+                                             "Coast",
+                                             "Estuarine",
+                                             "Terrestrial",
+                                             "Genetics",
+                                             "PEI")) {
+  # Extract header colors from nbaR palette
+  header_col <- nbaR::NBA_colours[match(HEADER, names(nbaR::NBA_colours))]
+
+  #last row
   last_row <- nrow(GT_TBL[["_data"]])
 
   GT_TBL %>%
+
     # 1. Header shading and borders
     gt::tab_style(
       style = list(
-        gt::cell_fill(color = "lightgray"),
+        gt::cell_fill(color = header_col[1]),
         gt::cell_borders(
           sides = c("top", "bottom"),
           color = "black",
@@ -234,6 +249,27 @@ nba_tbl_theme <- function(GT_TBL) {
       ),
       locations = gt::cells_column_labels()
     ) %>%
+
+    # Left-align header and body of first column
+    gt::tab_style(
+      style = gt::cell_text(align = "left"),
+      locations = list(
+        gt::cells_column_labels(columns = 1),
+        gt::cells_body(columns = 1)
+      )
+    ) %>%
+
+    # Center-align header and body of all other columns
+    gt::tab_style(
+      style = gt::cell_text(align = "center"),
+      locations = list(
+        gt::cells_column_labels(columns = 2:last_col()),
+        gt::cells_body(columns = 2:last_col())
+      )
+    ) %>%
+
+
+
 
     # 2. Data row borders (dotted top and bottom, no vertical)
     gt::tab_style(
@@ -264,6 +300,16 @@ nba_tbl_theme <- function(GT_TBL) {
         style = "solid"
       ),
       locations = gt::cells_body(rows = last_row)  # last row only
+    ) %>%
+
+    gt::opt_table_font(
+      font = list(
+        gt::google_font(name = "Ariel"),
+        gt::default_fonts()
+      )
+    ) %>%
+    gt::tab_options(
+      table.font.size = gt::px(12)  # or "small", or px(10)
     )
 }
 

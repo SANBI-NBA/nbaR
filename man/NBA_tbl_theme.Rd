@@ -4,10 +4,16 @@
 \alias{nba_tbl_theme}
 \title{gt table theme}
 \usage{
-nba_tbl_theme(GT_TBL)
+nba_tbl_theme(
+  GT_TBL,
+  HEADER = c("sanbi-green", "sanbi-orange", "sanbi-purple", "Freshwater", "Marine",
+    "Coast", "Estuarine", "Terrestrial", "Genetics", "PEI")
+)
 }
 \arguments{
 \item{GT_TBL}{The data frame that contains the data}
+
+\item{HEADER}{the name to determine the colour of the header row. Defaults to SANBI green}
 }
 \description{
 Function to apply gt styling to table
