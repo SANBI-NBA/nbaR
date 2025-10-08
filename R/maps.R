@@ -112,7 +112,7 @@ if(GEOM == "vector"){
 if(LEGEND == TRUE){
 
   map_leg <- map +
-    ggplot2::theme(legend.spacing.y = unit(0.3, 'cm'),
+    ggplot2::theme(legend.spacing.y = unit(0.5, 'cm'),
                    legend.key.size = ggplot2::unit(1* SCALE_TEXT,"line"),
                    legend.text = element_text(size = 14* SCALE_TEXT),
                    legend.position = "inside",
