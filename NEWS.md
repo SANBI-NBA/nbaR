@@ -1,3 +1,6 @@
+# nbaR 2.2.2
+Have made several minar changes to several of the functions
+
 # nbaR 2.2.1
 updates to RLI and bubble plots. and some minor issue fixes
 
