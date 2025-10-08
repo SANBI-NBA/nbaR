@@ -10,7 +10,8 @@ nba_map(
   FILL,
   LEGEND = FALSE,
   MOE = FALSE,
-  LWD = 0.1
+  LWD = 0.1,
+  SCALE_TEXT = 1
 )
 }
 \arguments{
@@ -27,6 +28,8 @@ sf objects and rasters must be terra (spatraster) objects}
 \item{MOE}{True to include the Map orientation elements (MOE) of a scale bar and north arrow, False to exclude}
 
 \item{LWD}{Line width to use in the plot}
+
+\item{SCALE_TEXT}{scale the sizes of the plot text to fit your intended output. currently set at 1 as default. If you want to save it to 8 by 6 cm, set it to 0.5.}
 }
 \value{
 Returns a map

@@ -26,6 +26,7 @@
 #' @param LEGEND True to include the legend in the plot, False to exclude it
 #' @param MOE True to include the Map orientation elements (MOE) of a scale bar and north arrow, False to exclude
 #' @param LWD Line width to use in the plot
+#' @param SCALE_TEXT scale the sizes of the plot text to fit your intended output. currently set at 1 as default. If you want to save it to 8 by 6 cm, set it to 0.5.
 #'
 #' @return Returns a map
 #'
@@ -70,7 +71,8 @@
 
 
 nba_map <- function(DF, GEOM = c("vector", "raster"), FILL, LEGEND = FALSE, MOE = FALSE,
-                    LWD = 0.1){
+                    LWD = 0.1, SCALE_TEXT = 1){
+
 
 
 if(GEOM == "vector"){
@@ -110,7 +112,7 @@ if(GEOM == "vector"){
 if(LEGEND == TRUE){
 
   map_leg <- map +
-    ggplot2::theme(legend.key.size = ggplot2::unit(1,"line"),
+    ggplot2::theme(legend.key.size = ggplot2::unit(1* SCALE_TEXT,"line"),
                    legend.position = "inside",
                    legend.justification = c("right", "bottom"),
                    legend.title = element_blank(),
