@@ -486,8 +486,8 @@ nba_tbl_comb <- function(DF, GROUP, THR, PRO, FILE = c("spatial", "csv")){
 
 
     tbl_final <- tbl_final %>%
-      kableExtra::row_spec(1, background = c("#A93800", "#A87001"))%>%
-      kableExtra::row_spec(2, background = c("#E69800", "#FFEBB0"))
+      kableExtra::row_spec(1, background = c("#A93800", "#A87001", "white", "white"))%>%
+      kableExtra::row_spec(2, background = c("#E69800", "#FFEBB0", "white", "white"))
 
   ## ensure the Total column has no background color
   tbl_final <- tbl_final %>%
