@@ -262,8 +262,8 @@ nba_plot <- function(DF, GROUPS, COLS, CHRT = c("bar", "donut"), NUM = FALSE, LA
                          panel.grid.major.y = element_blank(), # remove the horizontal lines only on 1st , 3rd and 5 ... x-axis
                          legend.text = element_text(size = 8* SCALE_TEXT), # change legend text size
                         # plot.background = element_rect(color = "black", fill = NA),  # add border around the entire plot include legend
-                         plot.margin = margin(10, 10, 10, 10),
-                         axis.text.x = element_text(size = 8 * SCALE_TEXT),
+                        plot.margin=grid::unit(c(4,4,4,4), "pt"),
+                         axis.text.x = element_text(size = 10 * SCALE_TEXT),
                          axis.text.y = element_text(size = 8 * SCALE_TEXT),
                          axis.title.x = element_text(size = 10 * SCALE_TEXT),
                          axis.title.y = element_text(size = 10 * SCALE_TEXT),
@@ -290,8 +290,8 @@ nba_plot <- function(DF, GROUPS, COLS, CHRT = c("bar", "donut"), NUM = FALSE, LA
                          panel.grid.major.y = element_blank(), # remove the horizontal lines only on 1st , 3rd and 5 ... x-axis
                          legend.text = element_text(size = 8* SCALE_TEXT), # change legend text size
                         # plot.background = element_rect(color = "black", fill = NA),  # add border around the entire plot include legend
-                         plot.margin = margin(10, 10, 10, 10),
-                         axis.text.x = element_text(size = 8 * SCALE_TEXT),
+                        plot.margin=grid::unit(c(4,4,4,4), "pt"),
+                         axis.text.x = element_text(size = 10 * SCALE_TEXT),
                          axis.text.y = element_text(size = 8 * SCALE_TEXT),
                          axis.title.x = element_text(size = 10 * SCALE_TEXT),
                          axis.title.y = element_text(size = 10 * SCALE_TEXT),
@@ -514,7 +514,8 @@ nba_plot_comb <- function(DF,
                        NUM = T,
                        GRP = GRP,
                        LAB = paste(LAB, m),
-                       SAVE=NULL)
+                       SAVE=NULL)+
+         theme(axis.text.y = element_text(size = 6))
     } else
 
       if(m == "extent"){
@@ -527,7 +528,8 @@ nba_plot_comb <- function(DF,
                          NUM = F,
                          GRP = GRP,
                          LAB = paste(LAB, m),
-                         SAVE=NULL)
+                         SAVE=NULL)+
+        theme(axis.text.y = element_text(size = 6))
 
       } else {
 
@@ -539,7 +541,8 @@ nba_plot_comb <- function(DF,
                            NUM = NUM,
                            GRP = GRP,
                            LAB = paste(LAB, m),
-                           SAVE=NULL)
+                           SAVE=NULL)+
+          theme(axis.text.y = element_text(size = 6))
 
     }
 
