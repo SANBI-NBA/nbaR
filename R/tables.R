@@ -385,58 +385,58 @@ nba_tbl_comb <- function(DF, GROUP, THR, PRO, FILE = c("spatial", "csv")){
   } else{
 
     summary_table <- DF
-    }
+  }
 
   summary_table <- summary_table %>%
-      dplyr::distinct({{GROUP}}, {{THR}}, {{PRO}}) %>%
-      dplyr::mutate(
-        ## set factor levels for threat status based on the defined order
-        {{THR}} := factor({{THR}}, levels = threat_order)
-      )%>%
-      ## Group by threat status and protection level
-      dplyr::group_by({{THR}}, {{PRO}}) %>%
-      ## count the occurrences within each group
-      dplyr::summarise(Count = dplyr::n(), .groups = 'drop') %>%
-      ## convert from long to wide format, filling missing values with zero
-      tidyr::pivot_wider(names_from = {{PRO}}, values_from = Count, values_fill = list(Count = 0)) %>%
-      ## calculate a total count for each row
-      dplyr::mutate(Total = rowSums(dplyr::select(., -c({{THR}})), na.rm = TRUE)) %>%
-      dplyr::arrange({{THR}})
+    dplyr::distinct({{GROUP}}, {{THR}}, {{PRO}}) %>%
+    dplyr::mutate(
+      ## set factor levels for threat status based on the defined order
+      {{THR}} := factor({{THR}}, levels = threat_order)
+    )%>%
+    ## Group by threat status and protection level
+    dplyr::group_by({{THR}}, {{PRO}}) %>%
+    ## count the occurrences within each group
+    dplyr::summarise(Count = dplyr::n(), .groups = 'drop') %>%
+    ## convert from long to wide format, filling missing values with zero
+    tidyr::pivot_wider(names_from = {{PRO}}, values_from = Count, values_fill = list(Count = 0)) %>%
+    ## calculate a total count for each row
+    dplyr::mutate(Total = rowSums(dplyr::select(., -c({{THR}})), na.rm = TRUE)) %>%
+    dplyr::arrange({{THR}})
 
 
-    ## calculate total count for each column and add a total row
-    total_row <- summary_table %>%
-      dplyr::summarise(across(-c({{THR}}), \(x) sum(x, na.rm = TRUE))) %>%
-      dplyr::mutate({{THR}} := "Total (n)")
+  ## calculate total count for each column and add a total row
+  total_row <- summary_table %>%
+    dplyr::summarise(across(-c({{THR}}), \(x) sum(x, na.rm = TRUE))) %>%
+    dplyr::mutate({{THR}} := "Total (n)")
 
-    # ##calculate number of ecosystems
-    # eco_num <- DF %>%
-    #   dplyr::distinct({{GROUP}}) %>%
-    #   dplyr::count() %>%
-    #   as.data.frame()
-    #
-    # eco_num <- eco_num[,1]
-    #
-    # ## calculate the percentage
-    # percentage_row <- total_row %>%
-    #   dplyr::mutate(dplyr::across(-{{THR}}, ~ (.x/eco_num) * 100))%>%  ## calculate percentage for each column
-    #   dplyr::mutate({{THR}} := "Percentage (%)")  ## set the row name as "Percentage %"
+  # ##calculate number of ecosystems
+  # eco_num <- DF %>%
+  #   dplyr::distinct({{GROUP}}) %>%
+  #   dplyr::count() %>%
+  #   as.data.frame()
+  #
+  # eco_num <- eco_num[,1]
+  #
+  # ## calculate the percentage
+  # percentage_row <- total_row %>%
+  #   dplyr::mutate(dplyr::across(-{{THR}}, ~ (.x/eco_num) * 100))%>%  ## calculate percentage for each column
+  #   dplyr::mutate({{THR}} := "Percentage (%)")  ## set the row name as "Percentage %"
 
-    ## combine summary, total
-    final_table <- dplyr::bind_rows(summary_table, total_row)
+  ## combine summary, total
+  final_table <- dplyr::bind_rows(summary_table, total_row)
 
-    var <- deparse(substitute(THR))
+  var <- deparse(substitute(THR))
 
-    ## identify columns to round (exclude total and threat status columns)
-    count_columns <- setdiff(names(final_table), c(var, "Total"))
+  ## identify columns to round (exclude total and threat status columns)
+  count_columns <- setdiff(names(final_table), c(var, "Total"))
 
-    ## round counts to 0 decimal places for cleaner display
-    final_table <- final_table %>%
-      dplyr::mutate(dplyr::across(tidyselect::all_of(count_columns), round, 0))
+  ## round counts to 0 decimal places for cleaner display
+  final_table <- final_table %>%
+    dplyr::mutate(dplyr::across(tidyselect::all_of(count_columns), round, 0))
 
-    ## reorder protection level columns based on predefined order
-    final_table <- final_table %>%
-      dplyr::select({{THR}}, tidyselect::all_of(protection_order), Total)
+  ## reorder protection level columns based on predefined order
+  final_table <- final_table %>%
+    dplyr::select({{THR}}, tidyselect::all_of(protection_order), Total)
 
 
 
@@ -444,7 +444,11 @@ nba_tbl_comb <- function(DF, GROUP, THR, PRO, FILE = c("spatial", "csv")){
   ### use the function to produce the correct table
 
   ## create and format the table using kableExtra
-  tbl_final <- knitr::kable(final_table, col.names = c("", colnames(final_table)[-1]), format = "html", escape = FALSE) %>%
+  tbl_final <- knitr::kable(final_table,
+                            col.names = c("", colnames(final_table)[-1]),
+                            format = "html",
+                            escape = FALSE,
+                            align = c("l", rep("c", ncol(final_table) - 1))) %>%
     ## apply table styling
     kableExtra::kable_styling(
       bootstrap_options = c("striped", "hover"),
@@ -454,7 +458,7 @@ nba_tbl_comb <- function(DF, GROUP, THR, PRO, FILE = c("spatial", "csv")){
     ) %>%
     ## style the header row
     kableExtra::row_spec(0, background = "white", color = "black",
-             extra_css = "border-top: 2px solid black; border-bottom: 2px solid black; text-align: left; font-weight: normal;") %>%
+                         extra_css = "border-top: 2px solid black; border-bottom: 2px solid black; text-align: left; font-weight: normal;") %>%
     ## set general column styling (no borders, white background)
     kableExtra::column_spec(1:ncol(final_table), border_left = FALSE, border_right = FALSE, background = "white") %>%
     # ## grey out and add borders for the Total row and make bold
@@ -463,8 +467,8 @@ nba_tbl_comb <- function(DF, GROUP, THR, PRO, FILE = c("spatial", "csv")){
     #          bold=T,hline_after = T) %>%
     ## grey out and add borders for the Percentage row and make bold
     kableExtra::row_spec(nrow(final_table), background = "white", color = "black",
-             extra_css = "border-top: 2px solid black; border-bottom: 2px solid black;",
-             bold=T,hline_after = T)
+                         extra_css = "border-top: 2px solid black; border-bottom: 2px solid black;",
+                         bold=F, hline_after = T)
 
   # ## rotate the header text to fit and enhance readability
   # tbl_final <- tbl_final %>%
@@ -485,9 +489,13 @@ nba_tbl_comb <- function(DF, GROUP, THR, PRO, FILE = c("spatial", "csv")){
   # }
 
 
-    tbl_final <- tbl_final %>%
-      kableExtra::row_spec(1, background = c("#A93800", "#A87001", "white", "white"))%>%
-      kableExtra::row_spec(2, background = c("#E69800", "#FFEBB0", "white", "white"))
+  tbl_final <- tbl_final %>%
+    # kableExtra::cell_spec(tbl_final[2,2], background = "#A93800")%>%
+    # kableExtra::cell_spec(tbl_final[2,3], background = "#A87001")%>%
+    # kableExtra::cell_spec(tbl_final[3,2], background = "#E69800")%>%
+    # kableExtra::cell_spec(tbl_final[3,2], background = "#FFEBB0")
+    kableExtra::column_spec(2, background = c("#A93800","#E69800", "white", "white", "white", "white"))%>%
+    kableExtra::column_spec(3, background = c( "#A87001","#FFEBB0", "white", "white", "white", "white"))
 
   ## ensure the Total column has no background color
   tbl_final <- tbl_final %>%
@@ -500,7 +508,11 @@ nba_tbl_comb <- function(DF, GROUP, THR, PRO, FILE = c("spatial", "csv")){
 
   # apply bold to the heading
   tbl_final <- tbl_final %>%
-    kableExtra::row_spec(0, bold=T,hline_after = T)  ## change color for the total row as needed
+    kableExtra::row_spec(0, bold=T,hline_after = T, align = "center")
+
+  # apply bold to the rownames
+  tbl_final <- tbl_final %>%
+    kableExtra::column_spec(1, bold=T)
 
 
   ## display the final table
