@@ -455,7 +455,7 @@ nba_tbl_comb <- function(DF, GROUP, THR, PRO, FILE = c("spatial", "csv")){
       full_width = FALSE,
       position = "center",
       font_size = 12,
-      html_font = arial
+      html_font = "arial"
     ) %>%
     ## style the header row
     kableExtra::row_spec(0, background = "white", color = "black",
