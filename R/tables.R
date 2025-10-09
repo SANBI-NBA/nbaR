@@ -369,15 +369,7 @@ nba_tbl_comb <- function(DF, GROUP, THR, PRO, FILE = c("spatial", "csv")){
   ### define the levels and color of threat status and protection level categories
 
   ## define color mapping for threat statuses for use in the table display
-  threat_color_mapping <- c("Critically Endangered" = rgb(216, 30, 5, maxColorValue = 255),
-                            "Endangered" = rgb(252, 127, 63, maxColorValue = 255),
-                            "Vulnerable" = rgb(249, 232, 20, maxColorValue = 255),
-                            "Near Threatened" = rgb(204, 226, 38, maxColorValue = 255),
-                            "Least Concern" = rgb(180, 215, 158, maxColorValue = 255),
-                            "Data Deficient" = rgb(209, 209, 198, maxColorValue = 255),
-                            "Rare" = rgb(193, 181, 165, maxColorValue = 255),
-                            "Extinct" = rgb(0, 0, 0, maxColorValue = 255),
-                            "Extinct in the Wild" = rgb(84, 35, 68, maxColorValue = 255))
+  threat_color_mapping <- nbaR::NBA_colours
 
 
   ## specify the order for threat statuses and protection levels for consistent ordering
@@ -461,7 +453,7 @@ nba_tbl_comb <- function(DF, GROUP, THR, PRO, FILE = c("spatial", "csv")){
       font_size = 16
     ) %>%
     ## style the header row
-    kableExtra::row_spec(0, background = "lightgrey", color = "black",
+    kableExtra::row_spec(0, background = "white", color = "black",
              extra_css = "border-top: 2px solid black; border-bottom: 2px solid black; text-align: left; font-weight: normal;") %>%
     ## set general column styling (no borders, white background)
     kableExtra::column_spec(1:ncol(final_table), border_left = FALSE, border_right = FALSE, background = "white") %>%
@@ -470,7 +462,7 @@ nba_tbl_comb <- function(DF, GROUP, THR, PRO, FILE = c("spatial", "csv")){
     #          extra_css = "border-top: 2px solid black; border-bottom: 2px solid black",
     #          bold=T,hline_after = T) %>%
     ## grey out and add borders for the Percentage row and make bold
-    kableExtra::row_spec(nrow(final_table), background = "lightgrey", color = "black",
+    kableExtra::row_spec(nrow(final_table), background = "white", color = "black",
              extra_css = "border-top: 2px solid black; border-bottom: 2px solid black;",
              bold=T,hline_after = T)
 
@@ -480,20 +472,22 @@ nba_tbl_comb <- function(DF, GROUP, THR, PRO, FILE = c("spatial", "csv")){
 
 
   ## apply background colors for threat status rows
-  for (i in 1:(nrow(final_table) - 1)) {
-    thr_name <- final_table %>%
-      dplyr::select({{THR}}) %>%
-      dplyr::slice(i) %>%
-      as.data.frame()
-    thr_name <- thr_name[,1]
-    if (!is.na(thr_name) && thr_name %in% names(threat_color_mapping)) {
-      tbl_final <- tbl_final %>%
-        kableExtra::row_spec(i, background = threat_color_mapping[thr_name])
-    }
-  }
+  # for (i in 1:(nrow(final_table) - 1)) {
+  #   thr_name <- final_table %>%
+  #     dplyr::select({{THR}}) %>%
+  #     dplyr::slice(i) %>%
+  #     as.data.frame()
+  #   thr_name <- thr_name[,1]
+  #   if (!is.na(thr_name) && thr_name %in% names(threat_color_mapping)) {
+  #     tbl_final <- tbl_final %>%
+  #       kableExtra::row_spec(i, background = threat_color_mapping[thr_name])
+  #   }
+  # }
 
 
-
+    tbl_final <- tbl_final %>%
+      kableExtra::row_spec(1, background = c("#A93800", "#A87001"))%>%
+      kableExtra::row_spec(2, background = c("#E69800", "#FFEBB0"))
 
   ## ensure the Total column has no background color
   tbl_final <- tbl_final %>%
@@ -502,7 +496,7 @@ nba_tbl_comb <- function(DF, GROUP, THR, PRO, FILE = c("spatial", "csv")){
 
   ## apply background color to the total row
   tbl_final <- tbl_final %>%
-    kableExtra::row_spec(nrow(final_table), background = "lightgrey")  ## change color for the total row as needed
+    kableExtra::row_spec(nrow(final_table), background = "white")  ## change color for the total row as needed
 
   # apply bold to the heading
   tbl_final <- tbl_final %>%
