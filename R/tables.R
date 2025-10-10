@@ -444,77 +444,82 @@ nba_tbl_comb <- function(DF, GROUP, THR, PRO, FILE = c("spatial", "csv")){
   ### use the function to produce the correct table
 
   ## create and format the table using kableExtra
-  tbl_final <- knitr::kable(final_table,
-                            col.names = c("", colnames(final_table)[-1]),
-                            format = "html",
-                            escape = FALSE,
-                            align = c("l", rep("c", ncol(final_table) - 1))) %>%
-    ## apply table styling
-    kableExtra::kable_styling(
-      bootstrap_options = c("striped", "hover"),
-      full_width = FALSE,
-      position = "center",
-      font_size = 10,
-      html_font = "arial"
+  tbl_final <- gt(final_table) %>%
+    nbaR::nba_tbl_theme() %>%
+
+    gt::tab_style(
+      style = list(
+        gt::cell_fill(color = "white"),
+        gt::cell_borders(
+          sides = c("top", "bottom"),
+          color = "black",
+          weight = gt::px(2),
+          style = "solid"
+        ),
+        gt::cell_borders(
+          sides = c("left", "right"),
+          color = "lightgray"
+        ),
+        gt::cell_text(weight = "bold")
+      ),
+      locations = gt::cells_column_labels()
     ) %>%
-    ## style the header row
-    kableExtra::row_spec(0, background = "white", color = "black",
-                         extra_css = "border-top: 2px solid black; border-bottom: 2px solid black; text-align: left; font-weight: normal;") %>%
-    ## set general column styling (no borders, white background)
-    kableExtra::column_spec(1:ncol(final_table), border_left = FALSE, border_right = FALSE, background = "white") %>%
-    # ## grey out and add borders for the Total row and make bold
-    # row_spec(nrow(final_table) - 1, background = "lightgrey", color = "black",
-    #          extra_css = "border-top: 2px solid black; border-bottom: 2px solid black",
-    #          bold=T,hline_after = T) %>%
-    ## grey out and add borders for the Percentage row and make bold
-    kableExtra::row_spec(nrow(final_table), background = "white", color = "black",
-                         extra_css = "border-top: 2px solid black; border-bottom: 2px solid black;",
-                         bold=F, hline_after = T)
 
-  # ## rotate the header text to fit and enhance readability
-  # tbl_final <- tbl_final %>%
-  #   row_spec(0, extra_css = "text-align: left; writing-mode: vertical-rl; transform: rotate(180deg); white-space: nowrap; height: 170px;")
-
-
-  ## apply background colors for threat status rows
-  # for (i in 1:(nrow(final_table) - 1)) {
-  #   thr_name <- final_table %>%
-  #     dplyr::select({{THR}}) %>%
-  #     dplyr::slice(i) %>%
-  #     as.data.frame()
-  #   thr_name <- thr_name[,1]
-  #   if (!is.na(thr_name) && thr_name %in% names(threat_color_mapping)) {
-  #     tbl_final <- tbl_final %>%
-  #       kableExtra::row_spec(i, background = threat_color_mapping[thr_name])
-  #   }
-  # }
-
-
-  tbl_final <- tbl_final %>%
-    # kableExtra::cell_spec(tbl_final[2,2], background = "#A93800")%>%
-    # kableExtra::cell_spec(tbl_final[2,3], background = "#A87001")%>%
-    # kableExtra::cell_spec(tbl_final[3,2], background = "#E69800")%>%
-    # kableExtra::cell_spec(tbl_final[3,2], background = "#FFEBB0")
-    kableExtra::column_spec(2, background = c("#A93800","#E69800", "white", "white", "white", "white"))%>%
-    kableExtra::column_spec(3, background = c( "#A87001","#FFEBB0", "white", "white", "white", "white"))
-
-  ## ensure the Total column has no background color
-  tbl_final <- tbl_final %>%
-    kableExtra::column_spec(1, background = "white")%>%
-    kableExtra::column_spec(ncol(final_table), background = "white")
-
-  ## apply background color to the total row
-  tbl_final <- tbl_final %>%
-    kableExtra::row_spec(nrow(final_table), background = "white")  ## change color for the total row as needed
-
-  # apply bold to the heading
-  tbl_final <- tbl_final %>%
-    kableExtra::row_spec(0, bold=T,hline_after = T, align = "center")
-
-  # apply bold to the rownames
-  tbl_final <- tbl_final %>%
-    kableExtra::column_spec(1, bold=T)
-
+    # 3. Remove all vertical borders except first one
+    gt::tab_style(
+      style = list(
+        gt::cell_borders(
+          sides = c( "right"),
+          color = "black",
+          weight = gt::px(2),
+          style = "solid"
+        ),
+        gt::cell_text(weight = "bold")),
+      locations = gt::cells_body(
+        columns = threat_status
+      )
+    ) %>%
+    # 3. Remove first column heading
+    gt::cols_label(
+      threat_status = "" # Remove the heading for 'threat_status'
+    ) %>%
+    # 4. give cells colour
+    tab_style(
+      style = list(
+        gt::cell_fill(color = "#A93800")
+      ),
+      locations = gt::cells_body(
+        columns = "Not Protected",
+        rows = 1
+      )
+    ) %>%
+    tab_style(
+      style = list(
+        gt::cell_fill(color = "#E69800")
+      ),
+      locations = gt::cells_body(
+        columns = "Not Protected",
+        rows = 2
+      )
+    )%>%
+    tab_style(
+      style = list(
+        gt::cell_fill(color = "#A87001")
+      ),
+      locations = gt::cells_body(
+        columns = "Poorly Protected",
+        rows = 1
+      )
+    )%>%
+    tab_style(
+      style = list(
+        gt::cell_fill(color = "#FFEBB0")
+      ),
+      locations = gt::cells_body(
+        columns = "Poorly Protected",
+        rows = 2
+      )
+    )
 
   ## display the final table
   tbl_final ## render the final formatted table
