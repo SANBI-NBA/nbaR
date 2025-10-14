@@ -481,7 +481,7 @@ nba_tbl_comb <- function(DF, GROUP, THR, PRO, FILE = c("spatial", "csv")){
     ) %>%
     # 3. Remove first column heading
     gt::cols_label(
-      threat_status = "" # Remove the heading for 'threat_status'
+      THR = "" # Remove the heading for 'threat_status'
     ) %>%
     # 4. give cells colour
     tab_style(
