@@ -476,7 +476,7 @@ nba_tbl_comb <- function(DF, GROUP, THR, PRO, FILE = c("spatial", "csv")){
         ),
         gt::cell_text(weight = "bold")),
       locations = gt::cells_body(
-        columns = threat_status
+        columns = THR
       )
     ) %>%
     # 3. Remove first column heading
@@ -489,7 +489,7 @@ nba_tbl_comb <- function(DF, GROUP, THR, PRO, FILE = c("spatial", "csv")){
         gt::cell_fill(color = "#A93800")
       ),
       locations = gt::cells_body(
-        columns = "Not Protected",
+        columns = PRO,
         rows = 1
       )
     ) %>%
@@ -498,7 +498,7 @@ nba_tbl_comb <- function(DF, GROUP, THR, PRO, FILE = c("spatial", "csv")){
         gt::cell_fill(color = "#E69800")
       ),
       locations = gt::cells_body(
-        columns = "Not Protected",
+        columns = PRO,
         rows = 2
       )
     )%>%
@@ -507,7 +507,7 @@ nba_tbl_comb <- function(DF, GROUP, THR, PRO, FILE = c("spatial", "csv")){
         gt::cell_fill(color = "#A87001")
       ),
       locations = gt::cells_body(
-        columns = "Poorly Protected",
+        columns = PRO,
         rows = 1
       )
     )%>%
@@ -516,7 +516,7 @@ nba_tbl_comb <- function(DF, GROUP, THR, PRO, FILE = c("spatial", "csv")){
         gt::cell_fill(color = "#FFEBB0")
       ),
       locations = gt::cells_body(
-        columns = "Poorly Protected",
+        columns = PRO,
         rows = 2
       )
     )
