@@ -463,25 +463,25 @@ nba_tbl_comb <- function(DF, GROUP, THR, PRO, FILE = c("spatial", "csv")){
         gt::cell_text(weight = "bold")
       ),
       locations = gt::cells_column_labels()
-    ) %>%
+    )%>%
 
-    # 3. Remove all vertical borders except first one
-    gt::tab_style(
-      style = list(
-        gt::cell_borders(
-          sides = c( "right"),
-          color = "black",
-          weight = gt::px(2),
-          style = "solid"
-        ),
-        gt::cell_text(weight = "bold")),
-      locations = gt::cells_body(
-        columns = THR
-      )
-    ) %>%
+  # 3. Remove all vertical borders except first one
+  gt::tab_style(
+    style = list(
+      gt::cell_borders(
+        sides = c( "right"),
+        color = "black",
+        weight = gt::px(2),
+        style = "solid"
+      ),
+      gt::cell_text(weight = "bold")),
+    locations = gt::cells_body(
+      columns = {{THR}}
+    )
+  )%>%
     # 3. Remove first column heading
     gt::cols_label(
-      THR = "" # Remove the heading for 'threat_status'
+      {{THR}} := "" # Remove the heading for 'threat_status'
     ) %>%
     # 4. give cells colour
     tab_style(
