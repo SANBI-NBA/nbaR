@@ -256,7 +256,7 @@ nba_plot <- function(DF, GROUPS, COLS, CHRT = c("bar", "donut"), NUM = FALSE, LA
           ggplot2::labs(fill = "") + ## change the legend title here
           ggplot2::scale_y_continuous(labels = function(x) paste0(x, "%"), breaks = c(0, 50, 100)) + # set the y-axis to show 0%, 50%, and 100%
           ggplot2::theme_minimal() +
-          ggplot2::theme(legend.position = "left", # position legend to the bottom
+          ggplot2::theme(legend.position = "bottom", # position legend to the bottom
                          panel.grid.minor = element_blank(), # remove grid lines on every second x-axis value
                          axis.line = element_blank(), # remove all x-axis grid lines
                          panel.grid.major.y = element_blank(), # remove the horizontal lines only on 1st , 3rd and 5 ... x-axis
