@@ -123,10 +123,11 @@ NBA_categories <- c("Critically Endangered",
                     "Ecologically Sensitive Areas" ,
 
                     #priority ecosystems
-                    "Critically Endangared & Poorly Protected",
+
                      "Critically Endangared & Not Protected",
-                     "Endangared & Poorly Protected",
+                    "Critically Endangared & Poorly Protected",
                      "Endangared & Not Protected",
+                     "Endangared & Poorly Protected",
 
                     # Built up areas
                     "Cropland",
