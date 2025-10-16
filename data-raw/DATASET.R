@@ -73,6 +73,12 @@ NBA_categories <- c("Critically Endangered",
                     "Poorly Protected" ,
                     "Not Protected" ,
 
+                    #unluckies
+                    "Critically Endangared & Not Protected",
+                    "Critically Endangared & Poorly Protected" ,
+                    "Endangared & Poorly Protected",
+                    "Endangared & Not Protected",
+
                     #Pressures
                     "Low" ,
                     "Medium" ,
