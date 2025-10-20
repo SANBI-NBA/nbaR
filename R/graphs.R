@@ -460,6 +460,7 @@ nba_plot_RLI <- function(DF, YEAR, RLI, MIN, MAX, GROUP = NULL, summarise_by_yea
 #' @param LAB The x axis label of the plot
 #' @param GRP A choice of whether or not to plot the donut graphs by group, TRUE will plot a donut plot for each group.
 #' @param SAVE The name of the output file that will be saved to the output folder. If you do not have an outputs folder you will be prompted to make one.
+#'@param SCALE_TEXT scale the sizes of the plot text to fit your intended output. currently set at 1 as default. If you want to save it to 8 by 6 cm, set it to 0.5.
 #'
 #' @return Returns a plot
 #'
@@ -497,7 +498,8 @@ nba_plot_comb <- function(DF,
                           NUM = FALSE,
                           LAB,
                           GRP = FALSE,
-                          SAVE = NULL) {
+                          SAVE = NULL,
+                          SCALE_TEXT = 0.75) {
 
 
   plot_list2 <- list()
@@ -514,8 +516,8 @@ nba_plot_comb <- function(DF,
                        NUM = T,
                        GRP = GRP,
                        LAB = paste(LAB, m),
-                       SAVE=NULL)+
-         theme(axis.text.y = element_text(size = 6))
+                       SAVE=NULL,
+                       SCALE_TEXT = SCALE_TEXT)
     } else
 
       if(m == "extent"){
@@ -528,8 +530,8 @@ nba_plot_comb <- function(DF,
                          NUM = F,
                          GRP = GRP,
                          LAB = paste(LAB, m),
-                         SAVE=NULL)+
-        theme(axis.text.y = element_text(size = 6))
+                         SAVE=NULL,
+                         SCALE_TEXT = SCALE_TEXT)
 
       } else {
 
@@ -541,8 +543,8 @@ nba_plot_comb <- function(DF,
                            NUM = NUM,
                            GRP = GRP,
                            LAB = paste(LAB, m),
-                           SAVE=NULL)+
-          theme(axis.text.y = element_text(size = 6))
+                           SAVE=NULL,
+                           SCALE_TEXT = SCALE_TEXT)
 
     }
 

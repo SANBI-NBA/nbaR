@@ -14,7 +14,8 @@ nba_plot_comb(
   NUM = FALSE,
   LAB,
   GRP = FALSE,
-  SAVE = NULL
+  SAVE = NULL,
+  SCALE_TEXT = 0.75
 )
 }
 \arguments{
@@ -37,6 +38,8 @@ nba_plot_comb(
 \item{GRP}{A choice of whether or not to plot the donut graphs by group, TRUE will plot a donut plot for each group.}
 
 \item{SAVE}{The name of the output file that will be saved to the output folder. If you do not have an outputs folder you will be prompted to make one.}
+
+\item{SCALE_TEXT}{scale the sizes of the plot text to fit your intended output. currently set at 1 as default. If you want to save it to 8 by 6 cm, set it to 0.5.}
 }
 \value{
 Returns a plot
