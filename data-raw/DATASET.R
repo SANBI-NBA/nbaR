@@ -28,13 +28,36 @@ NBA_example_thr_data <- read_excel(
   slice_head(n =8) %>%
   mutate(across(2:6, as.numeric))
 
-##RLI graph
-NBA_example_RLI_data <- read_excel(
+## Index graph
+NBA_rlis_biome_example_data <- read_excel(
   dir("data-raw",
-      "Fig6_graph_part.xlsx",
+      "NBA_rlis_biome_example_data.xlsx",
       full.names = T,
-      recursive = T))%>%
-  select(-c(5:6))
+      recursive = T))
+
+NBA_rlis_example_data <- read_excel(
+  dir("data-raw",
+      "NBA_rlis_example_data.xlsx",
+      full.names = T,
+      recursive = T))
+
+NBA_rlie_example_data <- read_excel(
+  dir("data-raw",
+      "NBA_rlie_example_data.xlsx",
+      full.names = T,
+      recursive = T))
+
+NBA_epli2018_example_data <- read_excel(
+  dir("data-raw",
+      "NBA_epli2018_example_data.xlsx",
+      full.names = T,
+      recursive = T))
+
+NBA_epli2024_example_data <- read_excel(
+  dir("data-raw",
+      "NBA_epli2024_example_data.xlsx",
+      full.names = T,
+      recursive = T))
 
 
 ## protection level
@@ -303,7 +326,6 @@ NBA_example_bubble_data <- read.csv(
 
 ### turn into correct format
 usethis::use_data(NBA_example_thr_data)
-usethis::use_data(NBA_example_RLI_data)
 usethis::use_data(NBA_example_pro_data)
 usethis::use_data(NBA_example_comb_data)
 usethis::use_data(NBA_categories, overwrite = TRUE)
@@ -311,6 +333,11 @@ usethis::use_data(NBA_example_map_data, overwrite = TRUE)
 usethis::use_data(NBA_example_bubble_data, overwrite = TRUE)
 usethis::use_data(NBA_colours, overwrite = TRUE)
 usethis::use_data(NBA_press_bar_example_data)
+usethis::use_data(NBA_rlis_biome_example_data)
+usethis::use_data(NBA_rlis_example_data)
+usethis::use_data(NBA_rlie_example_data)
+usethis::use_data(NBA_epli2018_example_data)
+usethis::use_data(NBA_epli2024_example_data)
 
 
 

@@ -45,21 +45,88 @@
 "NBA_example_pro_data"
 
 
-#' NBA Redlist index data
+#' NBA index data (RLIs biome)
 #'
-#'This data is used to make a line plot of the redlist index across a number of years
+#'This data is used to make a line plot of the red list index across a number of years
 #'
-#' @format ## `NBA_example_RLI_data`
-#' A data frame with 26 rows and 4 columns:
+#' @format A data frame with 63 rows and 6 variables:
 #' \describe{
-#'   \item{Years}{years}
-#'   \item{min}{Minimum value}
-#'   \item{RLI}{Redlist index}
-#'   \item{max}{Maximum value}
+#'   \item{Year}{assessment year}
+#'   \item{RLI}{Red List Index value}
+#'   \item{min}{minimum value}
+#'   \item{max}{maximum value}
+#'   \item{Assessment_Year}{year of assessment}
+#'   \item{Biome}{biome name}
 #'   ...
 #' }
 #' @source SANBI
-"NBA_example_RLI_data"
+"NBA_rlis_biome_example_data"
+
+#' NBA index data (RLIs taxon)
+#'
+#'This data is used to make a line plot of the red list index across a number of years
+#'
+#' @format A data frame with 63 rows and 6 variables:
+#' \describe{
+#'   \item{Year}{assessment year}
+#'   \item{RLI}{Red List Index value}
+#'   \item{min}{minimum value}
+#'   \item{max}{maximum value}
+#'   \item{Assessment_Year}{year of assessment}
+#'   \item{Taxon}{taxon name}
+#'   ...
+#' }
+#' @source SANBI
+"NBA_rlis_example_data"
+
+#' NBA index data (RLIe)
+#'
+#'This data is used to make a line plot of the red list index across a number of years
+#'
+#' @format A data frame with 44 rows and 8 variables:
+#' \describe{
+#'   \item{Year}{assessment year}
+#'   \item{RLIE}{Red List Index value}
+#'   \item{lower}{minimum value}
+#'   \item{upper}{maximum value}
+#'   \item{criteria}{Overall}
+#'   \item{total_weight}{weight}
+#'   \item{total_count}{count}
+#'   \item{Biome}{biome name}
+#'   ...
+#' }
+#' @source SANBI
+"NBA_rlie_example_data"
+
+#' NBA index data (EPLI 2018)
+#'
+#'This data is used to make a line plot of the ecosystem protection level index across a number of years
+#'
+#' @format A data frame with 11 rows and 4 variables:
+#' \describe{
+#'   \item{X}{row number}
+#'   \item{T_BIOME}{biome name}
+#'   \item{Total}{total number}
+#'   \item{EPLI}{EPLI}
+#'   ...
+#' }
+#' @source SANBI
+"NBA_epli2018_example_data"
+
+#' NBA index data (EPLI 2024)
+#'
+#'This data is used to make a line plot of the ecosystem protection level index across a number of years
+#'
+#' @format A data frame with 11 rows and 4 variables:
+#' \describe{
+#'   \item{X}{row number}
+#'   \item{T_BIOME}{biome name}
+#'   \item{Total}{total number}
+#'   \item{EPLI}{EPLI}
+#'   ...
+#' }
+#' @source SANBI
+"NBA_epli2024_example_data"
 
 #' NBA category words/ phrases used in threat status/ protection level/ and condition
 #' categorisation

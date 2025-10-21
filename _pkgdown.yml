@@ -10,7 +10,7 @@ reference:
   contents:
   - nba_plot
   - nba_plot_comb
-  - nba_plot_RLI
+  - nba_index_plot
   - nba_plot_bubble
   - nba_plot_theme
   - nba_pressure_bar_plot

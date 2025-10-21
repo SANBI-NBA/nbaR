@@ -324,105 +324,398 @@ nba_plot <- function(DF, GROUPS, COLS, CHRT = c("bar", "donut"), NUM = FALSE, LA
 
 #######################################################################################################
 ###
-#' NBA Redlist index plot function
+#' NBA index plot function
 #'
-#'This function will create a line graph indicating the Red list index per period/year.
-#'Additionally, depending on the graph requirements it further creates a multiple line graph
-#'grouping the plot according to species, and creates a buffer parallel to the RLI
-#'line using the minimum and maximum values.
+#' Generates the Red List Index (RLI) plots for species and ecosystems, or the Ecosystem  Protection Level Index (EPLI).
+#' Supports multiple index types: RLIs (species), RLIe (ecosystems), and EPLI (protection level).
 #'
-#'Note: The graph can be used on other datasets as well, as long as it contains the same
-#'data structure as the Red List Index.
-#'There is an example dataset (NBA_example_RLI_data), available for users
-#'to reference if needed.
-#'
-#' @param DF The data frame that contains the information on the Red List Index
-#' @param YEAR The years
-#' @param RLI The Red List Index
-#' @param MIN The minimum values
-#' @param MAX The maximum values
-#' @param GROUP A choice to group the plot, if a column name is supplied will groupd, if left NULL will not group
-#' @param summarise_by_year **must be added**
-#' @param SAVE The name of the output file that will be saved to the output folder. If you do not have an outputs folder you will be prompted to make one.
-#'
-#'
-#' @return Returns a RLI plot
+#' @param TYPE Type of index to plot. Options: `"RLIs"`, `"RLIe"`, or `"EPLI"`.
+#' @param DF  Input dataset containing index data (depending on TYPE).
+#' @param YEAR Column name for year variable.
+#' @param RLI Column name for RLI (for TYPE = "RLIs").
+#' @param MIN Column name for lower bound (for TYPE = "RLIs").
+#' @param MAX Column name for upper bound (for TYPE = "RLIs").
+#' @param ASSESSMENT_YEAR Year to highlight assessment points (optional).
+#' @param GROUP Column name for taxon or biome grouping (for TYPE = "RLIs").
+#' @param RLIE Column name for ecosystem RLI (for TYPE = "RLIe").
+#' @param BIOME Column name for biome (for TYPE = "RLIe" or "EPLI").
+#' @param EPLI_list List of EPLI datasets keyed by year (for TYPE = "EPLI").
+#' @param PALETTE Choose color palette `"taxon"` or `"biome"`.
+#' @param AGGREGATE Whether to include an aggregate line. Default = TRUE.
+#' @param SAVE Optional filename to save the plot PNG in `outputs/`.
 #'
 #'
-#' @importFrom ggplot2  ggplot
-#' @importFrom ggplot2  geom_line
-#' @importFrom ggplot2  geom_ribbon
-#' @importFrom ggplot2  theme_classic
-#' @importFrom ggplot2  ylim
-#' @importFrom ggplot2  scale_fill_manual
-#' @importFrom ggplot2  labs
-#' @importFrom ggplot2  theme_void
-#' @importFrom ggplot2  theme
-#' @importFrom magrittr %>%
+#' @return Returns a multiple line plot with points
+#'
+#'
+#' @importFrom dplyr filter
 #' @importFrom dplyr group_by
 #' @importFrom dplyr summarise
+#' @importFrom dplyr mutate
+#' @importFrom dplyr arrange
+#' @importFrom dplyr ungroup
+#' @importFrom dplyr pull
+#' @importFrom dplyr distinct
+#' @importFrom dplyr rename
+#' @importFrom ggplot2 ggplot
+#' @importFrom ggplot2 geom_line
+#' @importFrom ggplot2 geom_point
+#' @importFrom ggplot2 scale_color_manual
+#' @importFrom ggplot2 scale_linetype_manual
+#' @importFrom ggplot2 scale_shape_manual
+#' @importFrom ggplot2 scale_x_continuous
+#' @importFrom ggplot2 labs
+#' @importFrom ggplot2 theme_classic
+#' @importFrom ggplot2 theme
+#' @importFrom ggplot2 coord_cartesian
+#' @importFrom ggplot2 element_text
+#' @importFrom ggplot2 guides
+#' @importFrom ggplot2 guide_legend
+#' @importFrom ggplot2 ggsave
+#' @importFrom RColorBrewer brewer.pal
+#' @importFrom purrr map2_dfr
+#' @importFrom rlang sym
 #' @importFrom rlang enquo
-#' @importFrom rlang quo_is_null
-#' @importFrom rlang !!
-#'
+#' @importFrom rlang enquos
+#' @importFrom rlang as_name
+#' @importFrom rlang :=
+#' @importFrom magrittr "%>%"
 #'
 #' @export
 #'
 #' @examples
-#' #RLI_plot <- nba_plot_RLI(NBA_example_RLI_data,
-#' #Years,
-#' #RLI,
-#' #MIN,
-#' #MAX)
+#' # Example 1: RLIs grouped by Biome
+#' nba_index_plot(
+#'   TYPE = "RLIs",
+#'   DF = NBA_rlis_biome_example_data,
+#'   YEAR = Year,
+#'   RLI = RLI,
+#'   ASSESSMENT_YEAR = Assessment_Year,
+#'   GROUP = Biome,
+#'   PALETTE = "biome",
+#'   AGGREGATE = TRUE,
+#'   SAVE = NULL
+#' )
 #'
-#' #RLI_plot
+#' # Example 2: RLIs grouped by Taxon
+#' nba_index_plot(
+#'   TYPE = "RLIs",
+#'   DF = NBA_rlis_example_data,
+#'   YEAR = Year,
+#'   RLI = RLI,
+#'   ASSESSMENT_YEAR = Assessment_Year,
+#'   GROUP = Taxon,
+#'   PALETTE = "taxon",
+#'   AGGREGATE = TRUE,
+#'   SAVE = NULL
+#' )
+#'
+#' # Example 3: RLIe
+#' nba_index_plot(
+#'   TYPE = "RLIe",
+#'   DF = NBA_rlie_example_data,
+#'   YEAR = "Year",
+#'   RLIE = "RLIE",
+#'   BIOME = "Biome",
+#'   PALETTE = "biome",
+#'   SAVE = NULL
+#' )
+#'
+#' # Example 4: EPLI
+#' nba_index_plot(
+#'   TYPE = "EPLI",
+#'   EPLI_list = list(
+#'     "2018" = NBA_epli2018_example_data,
+#'     "2024" = NBA_epli2024_example_data
+#'   ),
+#'   PALETTE = "biome",
+#'   SAVE = NULL
+#' )
 #'
 #'
-nba_plot_RLI <- function(DF, YEAR, RLI, MIN, MAX, GROUP = NULL, summarise_by_year = TRUE, SAVE = NULL) {
-  # Convert column names to symbols (quosures)
-  YEAR <- enquo(YEAR)
-  RLI <- enquo(RLI)
-  MIN <- enquo(MIN)
-  MAX <- enquo(MAX)
-  GROUP <- enquo(GROUP)
+nba_index_plot <- function(
+    TYPE = c("RLIs", "RLIe", "EPLI"),
+    DF = NULL,
+    YEAR = NULL,
+    RLI = NULL, MIN = NULL, MAX = NULL, ASSESSMENT_YEAR = NULL, GROUP = NULL,
+    RLIE = NULL, BIOME = NULL,
+    EPLI_list = NULL,
+    PALETTE = "taxon",
+    AGGREGATE = TRUE,
+    SAVE = NULL
+) {
 
-  # Summarisation
-  if (summarise_by_year && rlang::quo_is_null(GROUP)) {
-    DF <- DF %>%
-      group_by(!!YEAR) %>%
-      summarise(
-        !!MIN := mean(!!MIN, na.rm = TRUE),
-        !!MAX := mean(!!MAX, na.rm = TRUE),
-        !!RLI := mean(!!RLI, na.rm = TRUE),
-        .groups = "drop"
+  TYPE <- match.arg(TYPE)
+
+  # Biome Color Map
+  BIOME_COLORS <- c(
+    "Albany Thicket" = "#A6CEE3",
+    "Azonal Vegetation" = "#1F78B4",
+    "Desert" = "#B2DF8A",
+    "Forests" = "#33A02C",
+    "Fynbos" = "#FB9A99",
+    "Grassland" = "#E31A1C",
+    "Indian Ocean Coastal Belt" = "#FDBF6F",
+    "Nama-Karoo" = "#FF7F00",
+    "Savanna" = "#CAB2D6",
+    "Succulent Karoo" = "#6A3D9A"
+  )
+
+  # RLIs
+  if (TYPE == "RLIs") {
+
+    YEAR <- enquo(YEAR)
+    RLI <- enquo(RLI)
+    MIN <- enquo(MIN)
+    MAX <- enquo(MAX)
+    GROUP <- enquo(GROUP)
+    ASSESSMENT_YEAR <- enquo(ASSESSMENT_YEAR)
+
+    BIOME_MODE <- "Biome" %in% names(DF)
+
+    TAXON_COLORS <- c(
+      "Amphibians"="#17becf", "Anostraca"="#a6cee3", "Birds"="#ffcc66",
+      "Butterflies"="#1f78b4", "Coral"="#De1234", "Dragonflies & Damselflies"="#7570b3",
+      "Freshwater Crabs"="#66cc99", "Freshwater Fishes"="#e7298a", "Mammals"="#B15928",
+      "Plants*"="#66a61e", "Reptiles"="#fb9a99", "Spiders"="yellow2",
+      "Sparids"="#666666", "Sharks (incl. Rays & Chimaeras)"="#6a3d9a"
+    )
+
+    COLS <- switch(
+      PALETTE,
+      "taxon" = TAXON_COLORS,
+      "biome" = BIOME_COLORS %||% TAXON_COLORS,
+      stop("Invalid palette. Choose 'taxon' or 'biome'")
+    )
+
+    # Aggregate line
+    if (BIOME_MODE) {
+      if (AGGREGATE && "Aggregate" %in% DF$Biome) {
+        AGGREGATE_DF <- DF %>%
+          filter(Biome == "Aggregate") %>%
+          group_by(!!YEAR) %>%
+          summarise(RLI = mean(!!RLI, na.rm = TRUE), .groups = "drop") %>%
+          mutate(LineType = factor("Aggregate", levels = "Aggregate"))
+      } else {
+        AGGREGATE_DF <- NULL
+      }
+
+      SUMMARY_DF <- DF %>%
+        filter(Biome != "Aggregate") %>%
+        group_by(!!GROUP, !!YEAR) %>%
+        summarise(
+          RLI = mean(!!RLI, na.rm = TRUE),
+          MIN = mean(!!MIN, na.rm = TRUE),
+          MAX = mean(!!MAX, na.rm = TRUE),
+          .groups = "drop"
+        )
+
+    } else {
+      if (AGGREGATE && "Aggregate" %in% DF$Taxon) {
+        AGGREGATE_DF <- DF %>%
+          filter(Taxon == "Aggregate") %>%
+          group_by(!!YEAR) %>%
+          summarise(RLI = mean(!!RLI, na.rm = TRUE), .groups = "drop") %>%
+          mutate(LineType = factor("Aggregate", levels = "Aggregate"))
+      } else {
+        AGGREGATE_DF <- NULL
+      }
+
+      SUMMARY_DF <- DF %>%
+        filter(Taxon != "Aggregate") %>%
+        group_by(!!GROUP, !!YEAR) %>%
+        summarise(
+          RLI = mean(!!RLI, na.rm = TRUE),
+          MIN = mean(!!MIN, na.rm = TRUE),
+          MAX = mean(!!MAX, na.rm = TRUE),
+          .groups = "drop"
+        )
+    }
+
+    ASSESSMENT_POINTS <- NULL
+    if (!is.null(rlang::as_name(ASSESSMENT_YEAR))) {
+      ASSESSMENT_POINTS <- DF %>%
+        filter(!!YEAR == !!ASSESSMENT_YEAR) %>%
+        distinct(!!GROUP, !!YEAR, .keep_all = TRUE)
+    }
+
+    y_min <- ifelse(PALETTE == "biome", 0.8, 0.7)
+    y_max <- 1
+    padding <- 0.02 * (y_max - y_min)
+    y_min <- y_min - padding
+    y_max <- y_max + padding
+
+    P <- ggplot() +
+      geom_line(data = SUMMARY_DF, aes(x = !!YEAR, y = RLI, group = interaction(!!GROUP), color = !!GROUP), linewidth = 0.4)
+
+    if (!is.null(ASSESSMENT_POINTS)) {
+      P <- P + geom_point(
+        data = ASSESSMENT_POINTS,
+        aes(x = !!YEAR, y = !!RLI, group = !!GROUP, color = !!GROUP),
+        size = 2, shape = 20, fill = NA, stroke = 1.2, inherit.aes = FALSE
       )
+    }
+
+    if (!is.null(AGGREGATE_DF)) {
+      P <- P +
+        geom_line(data = AGGREGATE_DF, aes(x = !!YEAR, y = RLI, linetype = LineType), color = "black", linewidth = 0.4) +
+        scale_linetype_manual(values = c("Aggregate" = "dashed"), breaks = "Aggregate", labels = "Aggregate", name = NULL)
+    }
+
+    P <- P +
+      scale_color_manual(values = COLS) +
+      coord_cartesian(ylim = c(y_min, y_max)) +
+      labs(x = "Year", y = "Red List Index of Species", color = ifelse(PALETTE == "taxon", "Taxon", "Biome")) +
+      theme_classic() +
+      theme(
+        axis.title.x = element_text(size = 10, margin = margin(t = 12)),
+        axis.title.y = element_text(size = 10, margin = margin(r = 12)),
+        axis.text = element_text(size = 8),
+        legend.title = element_text(size = 10),
+        legend.text = element_text(size = 8),
+        legend.spacing.y = unit(0.5, "cm"),
+        legend.key.size = unit(0.5, "cm"),
+        legend.position = "right"
+      ) +
+      guides(linetype = guide_legend(order = 1), color = guide_legend(order = 2))
+
+    if (!is.null(SAVE)) {
+      ggsave(filename = paste0("outputs/", SAVE, ".png"), plot = P, height = 15, width = 20, units = "cm", dpi = 300)
+    }
+
+    return(P)
+
   }
 
-  # Base plot
-  p <- ggplot(DF, aes(x = !!YEAR, y = !!RLI))
+  # RLIe
+  else if (TYPE == "RLIe") {
 
-  # Add layers based on grouping
-  if (rlang::quo_is_null(GROUP)) {
-    p <- p +
-      geom_line() +
-      geom_ribbon(aes(ymin = !!MIN, ymax = !!MAX), alpha = 0.3, colour = NA)
-  } else {
-    p <- p +
-      geom_line(aes(group = !!GROUP, color = !!GROUP), linetype = "dashed") +
-      geom_ribbon(aes(ymin = !!MIN, ymax = !!MAX, group = !!GROUP), fill = "grey", alpha = 0.2, colour = NA)
+    YEAR_sym <- rlang::sym(YEAR)
+    RLIE_sym <- rlang::sym(RLIE)
+    BIOME_sym <- rlang::sym(BIOME)
+
+    # ---- Data Prep ----
+    biomes <- DF %>%
+      filter(!is.na(!!BIOME_sym)) %>%
+      pull(!!BIOME_sym) %>%
+      factor() %>%
+      droplevels() %>%
+      levels()
+
+    biome_data   <- DF %>% filter(!is.na(!!BIOME_sym))
+    overall_data <- DF %>% filter(is.na(!!BIOME_sym))
+
+    # Color Palette
+    biome_colors_used <- BIOME_COLORS[names(BIOME_COLORS) %in% biomes]
+
+    # Plot
+    P <- ggplot() +
+
+      # Biomes
+      geom_line(data = biome_data, aes(x = !!YEAR_sym, y = !!RLIE_sym, color = !!BIOME_sym), size = 1.0) +
+      geom_point(data = biome_data, aes(x = !!YEAR_sym, y = !!RLIE_sym, color = !!BIOME_sym), size = 4)
+
+    # Aggregate line if enabled
+    if (AGGREGATE & nrow(overall_data) > 0) {
+      P <- P +
+        geom_line(data = overall_data, aes(x = !!YEAR_sym, y = !!RLIE_sym, linetype = "Aggregate", shape = "Aggregate"),
+                  color = "black", size = 1.2) +
+        geom_point(data = overall_data, aes(x = !!YEAR_sym, y = !!RLIE_sym, shape = "Aggregate"),
+                   color = "black", size = 5.5) +
+        scale_linetype_manual(name = "", values = c("Aggregate" = "dotted"), guide = guide_legend(order = 2)) +
+        scale_shape_manual(name = "", values = c("Aggregate" = 20), guide = guide_legend(order = 2))
+    }
+
+    P <- P +
+      scale_color_manual(name = "Biome", values = biome_colors_used) +
+      scale_x_continuous(breaks = unique(DF[[rlang::as_name(YEAR_sym)]])) +
+      scale_y_continuous(limits = c(0.4, 1), breaks = seq(0.5, 1, 0.1)) +
+      labs(x = "Year", y = "Red List Index of ecosystems") +
+      theme_classic() +
+      theme(
+        legend.position    = "right",
+        legend.box         = "vertical",
+        legend.text        = element_text(size = 12),
+        legend.title       = element_text(size = 14),
+        legend.key.size    = unit(0.6, "cm"),
+        legend.key.height  = unit(0.8, "cm"),
+        legend.key.width   = unit(1.0, "cm"),
+        legend.spacing.x   = unit(0.5, "cm"),
+        legend.box.spacing = unit(1.0, "cm"),
+        axis.title.x       = element_text(size = 14, margin = margin(t = 25)),
+        axis.title.y       = element_text(size = 14, margin = margin(r = 25)),
+        axis.text          = element_text(size = 12)
+      )
+
+    if (!is.null(SAVE)) {
+      ggsave(filename = paste0("outputs/", SAVE, ".png"), plot = P, height = 15, width = 20, units = "cm", dpi = 300)
+    }
+
+    return(P)
   }
 
-  # Finalize plot
-  p <- p + theme_classic() + ylim(0.7, 1)
 
-  # Optional: save to file if SAVE is provided
-  if (!is.null(SAVE)) {
-    ggsave(filename = paste0("outputs/", SAVE, ".png"),
-           plot = p,
-           height = 10, width = 16, units = "cm", dpi = 300)
+  # EPLI
+  else if (TYPE == "EPLI") {
+
+    if (is.null(EPLI_list) || !is.list(EPLI_list)) {
+      stop("Please provide a list of EPLI datasets (EPLI_list = list('2018' = df1, '2024' = df2, ...))")
+    }
+
+    EPLI_ALL <- purrr::map2_dfr(EPLI_list, names(EPLI_list) %||% seq_along(EPLI_list),
+                                ~ mutate(.x, Year = as.numeric(.y))) %>%
+      rename(Biome = T_BIOME) %>%
+      filter(!is.na(Biome))
+
+    BIOME_DATA <- EPLI_ALL %>% filter(Biome != "Total")
+
+    AGGREGATE_DF <- NULL
+    if (AGGREGATE) {
+      AGGREGATE_DF <- EPLI_ALL %>% filter(Biome == "Total") %>%
+        mutate(LineType = "Aggregate")
+    }
+
+    # Color palette
+    BIOME_COLORS_USED <- setNames(RColorBrewer::brewer.pal(length(unique(BIOME_DATA$Biome)), "Paired"), unique(BIOME_DATA$Biome))
+
+    # Plot
+    P <- ggplot() +
+      geom_line(data = BIOME_DATA, aes(x = Year, y = EPLI, color = Biome), size = 1) +
+      geom_point(data = BIOME_DATA, aes(x = Year, y = EPLI, color = Biome), size = 4)
+
+    if (!is.null(AGGREGATE_DF)) {
+      P <- P +
+        geom_line(data = AGGREGATE_DF, aes(x = Year, y = EPLI, linetype = LineType), color = "black", size = 1.2) +
+        geom_point(data = AGGREGATE_DF, aes(x = Year, y = EPLI, shape = LineType), color = "black", size = 5.5) +
+        scale_linetype_manual(values = c("Aggregate" = "dotted")) +
+        scale_shape_manual(values = c("Aggregate" = 20))
+    }
+
+    P <- P +
+      scale_color_manual(values = BIOME_COLORS_USED) +
+      labs(x = "Year", y = "Ecosystem Protection Level Index") +
+      theme_classic() +
+      theme(legend.position    = "right",
+            legend.box         = "vertical",
+            legend.text        = element_text(size = 10),
+            legend.title       = element_text(size = 12),
+            legend.key.size    = unit(0.6, "cm"),
+            legend.key.height  = unit(0.8, "cm"),
+            legend.key.width   = unit(1.0, "cm"),
+            legend.spacing.x   = unit(0.5, "cm"),
+            legend.box.spacing = unit(1.0, "cm"),
+            axis.title.x       = element_text(size = 12, margin = margin(t = 15)),
+            axis.title.y       = element_text(size = 12, margin = margin(r = 15)),
+            axis.text          = element_text(size = 12))
+
+    if (!is.null(SAVE)) {
+      ggsave(filename = paste0("outputs/", SAVE, ".png"), plot = P, height = 15, width = 20, units = "cm", dpi = 300)
+    }
+
+    return(P)
+
   }
 
-  p
 }
 
 #######################################################################
