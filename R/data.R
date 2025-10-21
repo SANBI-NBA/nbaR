@@ -133,3 +133,18 @@
 #' }
 #' @source SANBI
 "NBA_example_bubble_data"
+
+#' NBA pressure bar plot example data
+#'
+#' A small example dataset used to demonstrate the `nba_pressure_bar_plot()` function.
+#'
+#' @format `NBA_press_bar_example_data`
+#' A data frame with 3 variables:
+#' \describe{
+#'   \item{Taxon}{Taxonomic group (e.g., Birds, Mammals, Plants)}
+#'   \item{pressure}{Name of the pressure category}
+#'   \item{percentage}{Percentage value for each pressure}
+#'  ...
+#' }
+#' @source SANBI
+"NBA_press_bar_example_data"

@@ -54,6 +54,12 @@ NBA_example_comb_data <- NBA_example_pro_data %>%
                      mutate(metric = "threat_status")) %>%
   dplyr::select(`OVERALL types`, metric, dplyr::everything())
 
+## pressure bar plot
+NBA_press_bar_example_data <- read_excel(
+  dir("data-raw",
+      "nba_pressure_bar_plot_example_data.xlsx",
+      full.names = T,
+      recursive = T))
 
 ##threat status/ protection level categories
 
@@ -304,6 +310,7 @@ usethis::use_data(NBA_categories, overwrite = TRUE)
 usethis::use_data(NBA_example_map_data, overwrite = TRUE)
 usethis::use_data(NBA_example_bubble_data, overwrite = TRUE)
 usethis::use_data(NBA_colours, overwrite = TRUE)
+usethis::use_data(NBA_press_bar_example_data)
 
 
 

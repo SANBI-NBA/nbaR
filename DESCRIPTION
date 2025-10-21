@@ -32,7 +32,8 @@ Imports:
     WikidataR,
     rlang,
     scales,
-    tidyterra
+    tidyterra,
+    stringr
 Suggests: 
     rmarkdown,
     learnr,
