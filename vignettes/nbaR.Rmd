@@ -141,9 +141,21 @@ NBA_example_bubble_data <- NBA_example_bubble_data
 
 ```
 
+**6. NBA pressure bar plot**
+```{r warning=FALSE}
+NBA_press_bar_example_data <- NBA_press_bar_example_data
 
 
-**6. NBA ggplot theme**
+birds_press_bar_plot <- nba_pressure_bar_plot(
+                           DF = NBA_press_bar_example_data,
+                           TAXON = "Birds")
+
+birds_press_bar_plot
+
+
+```
+
+**7. NBA ggplot theme**
 
 ```{r warning=FALSE}
 library(ggplot2)
@@ -166,7 +178,7 @@ Please note that these are designed to render on html outputs and so may not app
 
 
 
-**7. Basic table**
+**8. Basic table**
 ```{r}
 
 tbl <- nba_tbl(NBA_example_pro_data)
@@ -177,7 +189,7 @@ tbl
 
 
 
-**8. Coloured table**
+**9. Coloured table**
 
 ```{r}
 
@@ -194,7 +206,7 @@ tbl
 
 
 
-**9. gt table theme**
+**10. gt table theme**
 
 ```{r}
 library(gt)
@@ -211,7 +223,7 @@ gt_tbl
 
 
 
-**10. Threatened ecosystems protection level table**
+**11. Threatened ecosystems protection level table**
 
 ```{r}
 thr_pro_tbl <- NBA_example_map_data |>
@@ -228,7 +240,7 @@ thr_pro_tbl
 ## Map functions
 
 
-**11. Basic map**
+**12. Basic map**
 
 Please note this was modeled after the maps in the marine technical report 2018.
 

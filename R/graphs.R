@@ -760,3 +760,142 @@ nba_plot_bubble <- function(DF, GROUP, CAT, SUB_CAT, VALUE, SAVE = NULL){
 
 
 ###################################################################################################
+###
+#' horizontal bar plot of pressures
+#'
+#' This function generates a horizontal bar plot showing the percentage of pressures
+#' affecting taxa.
+#'
+#' @param DF A data frame containing at least the columns `Taxon`, `pressure`, and `percentage`.
+#' @param TAXON The name of the taxon to filter for.
+#' @param SAVE The name of the output file that will be saved to the output folder. If you do not have an outputs folder you will be prompted to make one.
+#'
+#' @return A horizontal bar plot.
+#'
+#' @importFrom dplyr filter
+#' @importFrom dplyr mutate
+#' @importFrom dplyr arrange
+#' @importFrom dplyr group_by
+#' @importFrom dplyr ungroup
+#' @importFrom ggplot2 ggplot
+#' @importFrom ggplot2 aes
+#' @importFrom ggplot2 geom_col
+#' @importFrom ggplot2 scale_fill_manual
+#' @importFrom ggplot2 scale_x_discrete
+#' @importFrom ggplot2 scale_y_continuous
+#' @importFrom ggplot2 labs
+#' @importFrom ggplot2 theme_classic
+#' @importFrom ggplot2 theme
+#' @importFrom ggplot2 element_text
+#' @importFrom ggplot2 element_blank
+#' @importFrom ggplot2 element_line
+#' @importFrom ggplot2 margin
+#' @importFrom ggplot2 coord_flip
+#' @importFrom ggplot2 facet_wrap
+#' @importFrom ggplot2 guides
+#' @importFrom ggplot2 guide_legend
+#' @importFrom stringr str_wrap
+#' @importFrom stats setNames
+#' @importFrom magrittr "%>%"
+#'
+#' @export
+#'
+#' @examples
+#'
+#' birds_press_bar_plot <- nba_pressure_bar_plot(
+#'                           DF = NBA_press_bar_example_data,
+#'                           TAXON = "Birds")
+#'
+#' birds_press_bar_plot
+#'
+nba_pressure_bar_plot <- function(DF, TAXON = NULL, SAVE = NULL) {
+
+  # Filter by TAXON if provided
+  if (!is.null(TAXON)) {
+    DF <- DF %>% filter(Taxon == TAXON)
+  }
+
+  # Filter 0% pressures
+  plot_data <- DF %>% filter(percentage > 0)
+
+  if (nrow(plot_data) == 0) stop("No data to plot after filtering by TAXON and percentage > 0.")
+
+  # Subset colours for pressures present
+  valid_pressure_colours <- nbaR::NBA_colours[names(nbaR::NBA_colours) %in% plot_data$pressure]
+
+  # --- Fix for ascending order per facet ---
+  if (is.null(TAXON)) {
+    # Create unique factor per Taxon to order bars ascending within each facet
+    plot_data <- plot_data %>%
+      group_by(Taxon) %>%
+      arrange(percentage) %>%
+      mutate(pressure_ordered = factor(paste0(Taxon, "_", pressure), levels = paste0(Taxon, "_", pressure))) %>%
+      ungroup()
+  } else {
+    # Single taxon plot, ascending order
+    plot_data <- plot_data %>%
+      arrange(percentage) %>%
+      mutate(pressure_ordered = factor(pressure, levels = unique(pressure)))
+  }
+
+  # Create plot
+  p <- ggplot(plot_data, aes(x = pressure_ordered, y = percentage, fill = pressure)) +
+    geom_col(width = 0.7) +
+    scale_fill_manual(values = valid_pressure_colours) +
+    scale_x_discrete(labels = ~ stringr::str_wrap(.x, width = 18)) +
+    scale_y_continuous(breaks = seq(0, 100, by = 10)) +
+    labs(x = "Pressure", y = "Percentage (%)") +
+    theme_classic() +
+    coord_flip()
+
+  # Facet & theme adjustments
+  if (is.null(TAXON)) {
+    p <- ggplot(plot_data, aes(x = pressure_ordered, y = percentage, fill = pressure)) +
+      geom_col(width = 0.7) +
+      scale_fill_manual(values = valid_pressure_colours) +
+      scale_y_continuous(breaks = seq(0, 100, by = 20)) +
+      labs(x = "Pressure", y = "Percentage (%)") +
+      theme_classic() +
+      coord_flip()
+    p <- p +
+      facet_wrap(~Taxon, scales = "free_y") +
+      theme(
+        axis.text.y = element_blank(),        # remove y-axis labels for facets
+        axis.text.x = element_text(size = 8, angle = 0, hjust = 1, vjust = 0.5 ),
+        axis.title.y = element_text(margin = margin(r = 15), size = 10),
+        legend.position = "bottom",
+        legend.title = element_blank(),
+        legend.text = element_text(size = 5),
+        panel.grid.minor = element_blank(),   # remove minor grid lines
+        axis.ticks.x = element_line(color = "black", size = 0.5),
+        axis.ticks.y = element_blank()# remove tick marks
+      ) +
+      guides(fill = guide_legend(ncol = 3))
+  } else {
+    p <- p +
+      theme(
+        axis.text.x = element_text(size = 9),
+        axis.text.y = element_text(size = 9),
+        axis.title.y = element_text(margin = margin(r = 15), size = 10),
+        legend.position = "none",
+        panel.grid.minor = element_blank(),
+        axis.ticks = element_blank()
+      )
+  }
+
+  # Save the plot if SAVE is provided
+  if (!is.null(SAVE)) {
+    if (!dir.exists("outputs")) dir.create("outputs", recursive = TRUE)
+    ggplot2::ggsave(
+      filename = file.path("outputs", paste0(SAVE, ".png")),
+      plot = p,
+      height = 16,
+      width = 20,
+      units = "cm",
+      dpi = 300
+    )
+  }
+
+  return(p)
+}
+##############################################################################
