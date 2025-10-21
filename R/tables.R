@@ -109,11 +109,11 @@ nba_tbl_colr <- function(DF, COL, HEADER = c("sanbi-green",
     gt::gt() %>%
     # Color the entire column cells by matching their values to the palette
     gt::data_color(
+      method = "factor",
       columns = tidyselect::all_of(col_name),
-      colors = scales::col_factor(
-        palette = value_colors,
-        domain = DF[[col_name]]
-      )
+      direction = c("column"),
+      palette = value_colors,
+      ordered = T
     ) %>%
     # Style the header row background colors according to header_col vector
     gt::tab_style(
