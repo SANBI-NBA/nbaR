@@ -154,21 +154,70 @@ plots.</p>
 <span></span>
 <span><span class="va">bar_plot_comb</span></span></code></pre></div>
 <p><img src="nbaR_files/figure-html/unnamed-chunk-4-1.png" width="700"></p>
-<p><strong>4. RLI plot</strong></p>
+<p><strong>4. Index plot</strong></p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">NBA_example_RLI_data</span> <span class="op">&lt;-</span> <span class="va">NBA_example_RLI_data</span></span>
+<code class="sourceCode R"><span><span class="va">NBA_rlis_example_data</span> <span class="op">&lt;-</span> <span class="va">NBA_rlis_example_data</span> </span>
+<span><span class="va">NBA_rlis_biome_example_data</span> <span class="op">&lt;-</span> <span class="va">NBA_rlis_biome_example_data</span></span>
+<span><span class="va">NBA_rlie_example_data</span> <span class="op">&lt;-</span> <span class="va">NBA_rlie_example_data</span></span>
+<span><span class="va">NBA_epli2018_example_data</span> <span class="op">&lt;-</span> <span class="va">NBA_epli2018_example_data</span></span>
+<span><span class="va">NBA_epli2024_example_data</span> <span class="op">&lt;-</span> <span class="va">NBA_epli2024_example_data</span></span>
 <span></span>
-<span></span>
-<span><span class="va">RLI_plot</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/NBA_plot_RLI.html">nba_plot_RLI</a></span><span class="op">(</span><span class="va">NBA_example_RLI_data</span>,</span>
-<span>                 <span class="va">Years</span>, </span>
-<span>                 <span class="va">RLI</span>, </span>
-<span>                 <span class="va">min</span>, </span>
-<span>                 <span class="va">max</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">RLI_plot</span></span></code></pre></div>
+<span><span class="co"># RLIs grouped by Biome</span></span>
+<span><span class="fu"><a href="../reference/nba_index_plot.html">nba_index_plot</a></span><span class="op">(</span></span>
+<span>    TYPE <span class="op">=</span> <span class="st">"RLIs"</span>,</span>
+<span>    DF <span class="op">=</span> <span class="va">NBA_rlis_biome_example_data</span>,</span>
+<span>    YEAR <span class="op">=</span> <span class="va">Year</span>,</span>
+<span>    RLI <span class="op">=</span> <span class="va">RLI</span>,</span>
+<span>    ASSESSMENT_YEAR <span class="op">=</span> <span class="va">Assessment_Year</span>,</span>
+<span>    GROUP <span class="op">=</span> <span class="va">Biome</span>,</span>
+<span>    PALETTE <span class="op">=</span> <span class="st">"biome"</span>,</span>
+<span>    AGGREGATE <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>    SAVE <span class="op">=</span> <span class="cn">NULL</span></span>
+<span>  <span class="op">)</span></span></code></pre></div>
 <p><img src="nbaR_files/figure-html/unnamed-chunk-5-1.png" width="700"></p>
-<p><strong>5. NBA bubble plot</strong></p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span> </span>
+<span><span class="co"># RLIs grouped by Taxon</span></span>
+<span><span class="fu"><a href="../reference/nba_index_plot.html">nba_index_plot</a></span><span class="op">(</span></span>
+<span>    TYPE <span class="op">=</span> <span class="st">"RLIs"</span>,</span>
+<span>    DF <span class="op">=</span> <span class="va">NBA_rlis_example_data</span>,</span>
+<span>    YEAR <span class="op">=</span> <span class="va">Year</span>,</span>
+<span>    RLI <span class="op">=</span> <span class="va">RLI</span>,</span>
+<span>    ASSESSMENT_YEAR <span class="op">=</span> <span class="va">Assessment_Year</span>,</span>
+<span>    GROUP <span class="op">=</span> <span class="va">Taxon</span>,</span>
+<span>    PALETTE <span class="op">=</span> <span class="st">"taxon"</span>,</span>
+<span>    AGGREGATE <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>    SAVE <span class="op">=</span> <span class="cn">NULL</span></span>
+<span>  <span class="op">)</span></span></code></pre></div>
+<p><img src="nbaR_files/figure-html/unnamed-chunk-5-2.png" width="700"></p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span> </span>
+<span><span class="co"># RLIe</span></span>
+<span><span class="fu"><a href="../reference/nba_index_plot.html">nba_index_plot</a></span><span class="op">(</span></span>
+<span>    TYPE <span class="op">=</span> <span class="st">"RLIe"</span>,</span>
+<span>    DF <span class="op">=</span> <span class="va">NBA_rlie_example_data</span>,</span>
+<span>    YEAR <span class="op">=</span> <span class="st">"Year"</span>,</span>
+<span>    RLIE <span class="op">=</span> <span class="st">"RLIE"</span>,</span>
+<span>    BIOME <span class="op">=</span> <span class="st">"Biome"</span>,</span>
+<span>    PALETTE <span class="op">=</span> <span class="st">"biome"</span>,</span>
+<span>    SAVE <span class="op">=</span> <span class="cn">NULL</span></span>
+<span>  <span class="op">)</span></span></code></pre></div>
+<p><img src="nbaR_files/figure-html/unnamed-chunk-5-3.png" width="700"></p>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span> </span>
+<span><span class="co"># EPLI</span></span>
+<span><span class="fu"><a href="../reference/nba_index_plot.html">nba_index_plot</a></span><span class="op">(</span></span>
+<span>    TYPE <span class="op">=</span> <span class="st">"EPLI"</span>,</span>
+<span>    EPLI_list <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
+<span>      <span class="st">"2018"</span> <span class="op">=</span> <span class="va">NBA_epli2018_example_data</span>,</span>
+<span>      <span class="st">"2024"</span> <span class="op">=</span> <span class="va">NBA_epli2024_example_data</span></span>
+<span>   <span class="op">)</span>,</span>
+<span>   PALETTE <span class="op">=</span> <span class="st">"biome"</span>,</span>
+<span>   SAVE <span class="op">=</span> <span class="cn">NULL</span></span>
+<span> <span class="op">)</span></span></code></pre></div>
+<p><img src="nbaR_files/figure-html/unnamed-chunk-5-4.png" width="700"></p>
+<p><strong>5. NBA bubble plot</strong></p>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">NBA_example_bubble_data</span> <span class="op">&lt;-</span> <span class="va">NBA_example_bubble_data</span></span>
 <span></span>
 <span></span>
@@ -182,7 +231,7 @@ plots.</p>
 <span> <span class="va">bubble_plot</span></span></code></pre></div>
 <p><img src="nbaR_files/figure-html/unnamed-chunk-6-1.png" width="864"></p>
 <p><strong>6. NBA pressure bar plot</strong></p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">NBA_press_bar_example_data</span> <span class="op">&lt;-</span> <span class="va">NBA_press_bar_example_data</span></span>
 <span></span>
 <span></span>
@@ -193,7 +242,7 @@ plots.</p>
 <span><span class="va">birds_press_bar_plot</span></span></code></pre></div>
 <p><img src="nbaR_files/figure-html/unnamed-chunk-7-1.png" width="700"></p>
 <p><strong>7. NBA ggplot theme</strong></p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
 <span><span class="va">NBA_example_pro_data</span> <span class="op">&lt;-</span> <span class="va">NBA_example_pro_data</span></span>
 <span></span>
@@ -211,7 +260,7 @@ plots.</p>
 <p>Please note that these are designed to render on html outputs and so
 may not appear correct in the vignette examples.</p>
 <p><strong>8. Basic table</strong></p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="va">tbl</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/NBA_tbl.html">nba_tbl</a></span><span class="op">(</span><span class="va">NBA_example_pro_data</span><span class="op">)</span></span>
 <span></span>
@@ -380,7 +429,7 @@ Terrestrial
 </tbody>
 </table>
 <p><strong>9. Coloured table</strong></p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
@@ -1018,7 +1067,7 @@ Terrestrial
 </table>
 </div>
 <p><strong>10. gt table theme</strong></p>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://gt.rstudio.com" class="external-link">gt</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
 <span></span>
@@ -1555,7 +1604,7 @@ Terrestrial
 </table>
 </div>
 <p><strong>11. Threatened ecosystems protection level table</strong></p>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">thr_pro_tbl</span> <span class="op">&lt;-</span> <span class="va">NBA_example_map_data</span> <span class="op">|&gt;</span></span>
 <span><span class="fu"><a href="../reference/NBA_tbl_comb.html">nba_tbl_comb</a></span><span class="op">(</span>GROUP <span class="op">=</span> <span class="va">P_EcosysType</span>,</span>
 <span>THR <span class="op">=</span> <span class="va">threat_status</span>,</span>
@@ -2080,7 +2129,7 @@ Terrestrial
 <p><strong>12. Basic map</strong></p>
 <p>Please note this was modeled after the maps in the marine technical
 report 2018.</p>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="va">map</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/NBA_map.html">nba_map</a></span><span class="op">(</span>DF <span class="op">=</span> <span class="va">NBA_example_map_data</span>,</span>
 <span>               GEOM <span class="op">=</span> <span class="st">"vector"</span>, </span>
