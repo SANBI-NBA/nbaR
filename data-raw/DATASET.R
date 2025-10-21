@@ -153,10 +153,10 @@ NBA_colours <- c(
   "Extinct in the Wild" = rgb(84, 35, 68, maxColorValue = 255),
 
   #Protection level
-  "Not Protected" = rgb(166, 166, 166, maxColorValue = 255),
-  "Poorly Protected" = rgb(213, 222, 196, maxColorValue = 255),
-  "Moderately Protected" = rgb(132, 171, 92, maxColorValue = 255),
   "Well Protected" = rgb(75, 110, 0, maxColorValue = 255),
+  "Moderately Protected" = rgb(132, 171, 92, maxColorValue = 255),
+  "Poorly Protected" = rgb(213, 222, 196, maxColorValue = 255),
+  "Not Protected" = rgb(166, 166, 166, maxColorValue = 255),
 
   #unluckies
   "Critically Endangared & Not Protected" = "#A93800",
