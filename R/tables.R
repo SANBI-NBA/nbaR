@@ -98,8 +98,13 @@ nba_tbl_colr <- function(DF, COL, HEADER = c("sanbi-green",
   # Extract header colors from nbaR palette
   header_col <- nbaR::NBA_colours[match(HEADER, names(nbaR::NBA_colours))]
 
-  # Extract colors for cell values in the target column
-  value_colors <- nbaR::NBA_colours[DF[[col_name]]]
+  # Extract unique values from the target column
+  unique_vals <- unique(DF[[col_name]])
+
+  # Build a *named* vector of colors
+  value_colors <- nbaR::NBA_colours[names(nbaR::NBA_colours) %in% unique_vals]
+  value_colors <- value_colors[match(unique_vals, names(value_colors))]
+  names(value_colors) <- unique_vals
 
   # last row
   last_row <- nrow(DF)
