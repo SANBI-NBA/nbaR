@@ -1,3 +1,6 @@
+# nbaR 2.3.0
+lots of minor updates to functions and colours as well as new functions by Shae-Lynn
+
 # nbaR 2.2.2
 Have made several minar changes to several of the functions
 
