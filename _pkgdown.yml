@@ -10,7 +10,7 @@ reference:
   contents:
   - nba_plot
   - nba_plot_comb
-  - nba_plot_RLI
+  - nba_index_plot
   - nba_plot_bubble
   - nba_plot_theme
   - nba_pressure_bar_plot
@@ -38,9 +38,13 @@ reference:
   - NBA_example_thr_data
   - NBA_example_pro_data
   - NBA_example_comb_data
-  - NBA_example_RLI_data
   - NBA_example_bubble_data
   - NBA_press_bar_example_data
+  - NBA_rlis_biome_example_data
+  - NBA_rlis_example_data
+  - NBA_rlie_example_data
+  - NBA_epli2018_example_data
+  - NBA_epli2024_example_data
   - NBA_example_map_data
   - NBA_categories
   - NBA_colours

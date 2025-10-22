@@ -104,19 +104,62 @@ bar_plot_comb
 
 
 
-**4. RLI plot**
+**4. Index plot**
 
 ```{r warning=FALSE}
-NBA_example_RLI_data <- NBA_example_RLI_data
+NBA_rlis_example_data <- NBA_rlis_example_data 
+NBA_rlis_biome_example_data <- NBA_rlis_biome_example_data
+NBA_rlie_example_data <- NBA_rlie_example_data
+NBA_epli2018_example_data <- NBA_epli2018_example_data
+NBA_epli2024_example_data <- NBA_epli2024_example_data
 
-
-RLI_plot <- nba_plot_RLI(NBA_example_RLI_data,
-                 Years, 
-                 RLI, 
-                 min, 
-                 max)
-
-RLI_plot
+# RLIs grouped by Biome
+nba_index_plot(
+    TYPE = "RLIs",
+    DF = NBA_rlis_biome_example_data,
+    YEAR = Year,
+    RLI = RLI,
+    ASSESSMENT_YEAR = Assessment_Year,
+    GROUP = Biome,
+    PALETTE = "biome",
+    AGGREGATE = TRUE,
+    SAVE = NULL
+  )
+ 
+# RLIs grouped by Taxon
+nba_index_plot(
+    TYPE = "RLIs",
+    DF = NBA_rlis_example_data,
+    YEAR = Year,
+    RLI = RLI,
+    ASSESSMENT_YEAR = Assessment_Year,
+    GROUP = Taxon,
+    PALETTE = "taxon",
+    AGGREGATE = TRUE,
+    SAVE = NULL
+  )
+ 
+# RLIe
+nba_index_plot(
+    TYPE = "RLIe",
+    DF = NBA_rlie_example_data,
+    YEAR = "Year",
+    RLIE = "RLIE",
+    BIOME = "Biome",
+    PALETTE = "biome",
+    SAVE = NULL
+  )
+ 
+# EPLI
+nba_index_plot(
+    TYPE = "EPLI",
+    EPLI_list = list(
+      "2018" = NBA_epli2018_example_data,
+      "2024" = NBA_epli2024_example_data
+   ),
+   PALETTE = "biome",
+   SAVE = NULL
+ )
 
 
 ```
