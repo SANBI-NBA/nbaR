@@ -130,10 +130,10 @@ NBA_categories <- c("Critically Endangered",
 
                     #priority ecosystems
 
-                     "Critically Endangared & Not Protected",
-                    "Critically Endangared & Poorly Protected",
-                     "Endangared & Not Protected",
-                     "Endangared & Poorly Protected",
+                     "Critically Endangered & Not Protected",
+                    "Critically Endangered & Poorly Protected",
+                     "Endangered & Not Protected",
+                     "Endangered & Poorly Protected",
 
                     # Built up areas
                     "Cropland",
@@ -165,10 +165,10 @@ NBA_colours <- c(
   "Not Protected" = rgb(166, 166, 166, maxColorValue = 255),
 
   #unluckies
-  "Critically Endangared & Not Protected" = "#A93800",
-  "Critically Endangared & Poorly Protected" = "#A87001",
-  "Endangared & Poorly Protected" = "#E69800",
-  "Endangared & Not Protected" = "#FFEBB0",
+  "Critically Endangered & Not Protected" = "#A93800",
+  "Critically Endangered & Poorly Protected" = "#A87001",
+  "Endangered & Poorly Protected" = "#E69800",
+  "Endangered & Not Protected" = "#FFEBB0",
 
   #Pressures
   "Low" = rgb(223, 220, 199, maxColorValue = 255),
