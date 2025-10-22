@@ -174,7 +174,7 @@ NBA_colours <- c(
   "Critically Endangered" = rgb(216, 30, 5, maxColorValue = 255),
   "Endangered" = rgb(252, 127, 63, maxColorValue = 255),
   "Vulnerable" = rgb(249, 232, 20, maxColorValue = 255),
-  "Near Threatened" = rgb(204, 226, 38, maxColorValue = 255),
+  "Near Threatened" = "#FFFFBE",
   "Least Concern" = rgb(180, 215, 158, maxColorValue = 255),
   "Data Deficient" = rgb(209, 209, 198, maxColorValue = 255),
   "Rare" = rgb(193, 181, 165, maxColorValue = 255),
