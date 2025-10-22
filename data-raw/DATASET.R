@@ -29,33 +29,27 @@ NBA_example_thr_data <- read_excel(
   mutate(across(2:6, as.numeric))
 
 ## Index graph
-NBA_rlis_biome_example_data <- read_excel(
+NBA_example_rlis_data <- read_excel(
   dir("data-raw",
-      "NBA_rlis_biome_example_data.xlsx",
+      "NBA_example_rlis_data.xlsx",
       full.names = T,
       recursive = T))
 
-NBA_rlis_example_data <- read_excel(
+NBA_example_rlie_data <- read_excel(
   dir("data-raw",
-      "NBA_rlis_example_data.xlsx",
+      "NBA_example_rlie_data.xlsx",
       full.names = T,
       recursive = T))
 
-NBA_rlie_example_data <- read_excel(
+NBA_example_epli2018_data <- read_excel(
   dir("data-raw",
-      "NBA_rlie_example_data.xlsx",
+      "NBA_example_epli2018_data.xlsx",
       full.names = T,
       recursive = T))
 
-NBA_epli2018_example_data <- read_excel(
+NBA_example_epli2024_data <- read_excel(
   dir("data-raw",
-      "NBA_epli2018_example_data.xlsx",
-      full.names = T,
-      recursive = T))
-
-NBA_epli2024_example_data <- read_excel(
-  dir("data-raw",
-      "NBA_epli2024_example_data.xlsx",
+      "NBA_example_epli2024_data.xlsx",
       full.names = T,
       recursive = T))
 
@@ -78,9 +72,9 @@ NBA_example_comb_data <- NBA_example_pro_data %>%
   dplyr::select(`OVERALL types`, metric, dplyr::everything())
 
 ## pressure bar plot
-NBA_press_bar_example_data <- read_excel(
+NBA_example_press_bar_data <- read_excel(
   dir("data-raw",
-      "nba_pressure_bar_plot_example_data.xlsx",
+      "nba_example_press_bar_data.xlsx",
       full.names = T,
       recursive = T))
 
@@ -332,12 +326,11 @@ usethis::use_data(NBA_categories, overwrite = TRUE)
 usethis::use_data(NBA_example_map_data, overwrite = TRUE)
 usethis::use_data(NBA_example_bubble_data, overwrite = TRUE)
 usethis::use_data(NBA_colours, overwrite = TRUE)
-usethis::use_data(NBA_press_bar_example_data)
-usethis::use_data(NBA_rlis_biome_example_data)
-usethis::use_data(NBA_rlis_example_data)
-usethis::use_data(NBA_rlie_example_data)
-usethis::use_data(NBA_epli2018_example_data)
-usethis::use_data(NBA_epli2024_example_data)
+usethis::use_data(NBA_example_press_bar_data)
+usethis::use_data(NBA_example_rlis_data)
+usethis::use_data(NBA_example_rlie_data)
+usethis::use_data(NBA_example_epli2018_data)
+usethis::use_data(NBA_example_epli2024_data)
 
 
 
