@@ -58,23 +58,12 @@ Generates the Red List Index (RLI) plots for species and ecosystems, or the Ecos
 Supports multiple index types: RLIs (species), RLIe (ecosystems), and EPLI (protection level).
 }
 \examples{
-# Example 1: RLIs grouped by Biome
-nba_index_plot(
-  TYPE = "RLIs",
-  DF = NBA_rlis_biome_example_data,
-  YEAR = Year,
-  RLI = RLI,
-  ASSESSMENT_YEAR = Assessment_Year,
-  GROUP = Biome,
-  PALETTE = "biome",
-  AGGREGATE = TRUE,
-  SAVE = NULL
-)
 
-# Example 2: RLIs grouped by Taxon
+
+# Example 1: RLIs grouped by Taxon
 nba_index_plot(
   TYPE = "RLIs",
-  DF = NBA_rlis_example_data,
+  DF = NBA_example_rlis_data,
   YEAR = Year,
   RLI = RLI,
   ASSESSMENT_YEAR = Assessment_Year,
@@ -84,10 +73,10 @@ nba_index_plot(
   SAVE = NULL
 )
 
-# Example 3: RLIe
+# Example 2: RLIe
 nba_index_plot(
   TYPE = "RLIe",
-  DF = NBA_rlie_example_data,
+  DF = NBA_example_rlie_data,
   YEAR = "Year",
   RLIE = "RLIE",
   BIOME = "Biome",
@@ -95,12 +84,12 @@ nba_index_plot(
   SAVE = NULL
 )
 
-# Example 4: EPLI
+# Example 3: EPLI
 nba_index_plot(
   TYPE = "EPLI",
   EPLI_list = list(
-    "2018" = NBA_epli2018_example_data,
-    "2024" = NBA_epli2024_example_data
+    "2018" = NBA_example_epli2018_data,
+    "2024" = NBA_example_epli2024_data
   ),
   PALETTE = "biome",
   SAVE = NULL

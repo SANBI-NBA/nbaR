@@ -23,7 +23,7 @@ affecting taxa.
 \examples{
 
 birds_press_bar_plot <- nba_pressure_bar_plot(
-                          DF = NBA_press_bar_example_data,
+                          DF = NBA_example_press_bar_data,
                           TAXON = "Birds")
 
 birds_press_bar_plot

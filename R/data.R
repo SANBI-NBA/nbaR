@@ -45,23 +45,6 @@
 "NBA_example_pro_data"
 
 
-#' NBA index data (RLIs biome)
-#'
-#'This data is used to make a line plot of the red list index across a number of years
-#'
-#' @format A data frame with 63 rows and 6 variables:
-#' \describe{
-#'   \item{Year}{assessment year}
-#'   \item{RLI}{Red List Index value}
-#'   \item{min}{minimum value}
-#'   \item{max}{maximum value}
-#'   \item{Assessment_Year}{year of assessment}
-#'   \item{Biome}{biome name}
-#'   ...
-#' }
-#' @source SANBI
-"NBA_rlis_biome_example_data"
-
 #' NBA index data (RLIs taxon)
 #'
 #'This data is used to make a line plot of the red list index across a number of years
@@ -77,7 +60,7 @@
 #'   ...
 #' }
 #' @source SANBI
-"NBA_rlis_example_data"
+"NBA_example_rlis_data"
 
 #' NBA index data (RLIe)
 #'
@@ -96,7 +79,7 @@
 #'   ...
 #' }
 #' @source SANBI
-"NBA_rlie_example_data"
+"NBA_example_rlie_data"
 
 #' NBA index data (EPLI 2018)
 #'
@@ -111,7 +94,7 @@
 #'   ...
 #' }
 #' @source SANBI
-"NBA_epli2018_example_data"
+"NBA_example_epli2018_data"
 
 #' NBA index data (EPLI 2024)
 #'
@@ -126,7 +109,7 @@
 #'   ...
 #' }
 #' @source SANBI
-"NBA_epli2024_example_data"
+"NBA_example_epli2024_data"
 
 #' NBA category words/ phrases used in threat status/ protection level/ and condition
 #' categorisation
@@ -205,7 +188,7 @@
 #'
 #' A small example dataset used to demonstrate the `nba_pressure_bar_plot()` function.
 #'
-#' @format `NBA_press_bar_example_data`
+#' @format `NBA_example_press_bar_data`
 #' A data frame with 3 variables:
 #' \describe{
 #'   \item{Taxon}{Taxonomic group (e.g., Birds, Mammals, Plants)}
@@ -214,4 +197,4 @@
 #'  ...
 #' }
 #' @source SANBI
-"NBA_press_bar_example_data"
+"NBA_example_press_bar_data"
