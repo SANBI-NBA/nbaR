@@ -103,8 +103,15 @@ nba_tbl_colr <- function(DF, COL, HEADER = c("sanbi-green",
 
   # Build a *named* vector of colors
   value_colors <- nbaR::NBA_colours[names(nbaR::NBA_colours) %in% unique_vals]
+
+  if (length(value_colors) != length(unique_vals)) {
+    missing_vals <- setdiff(unique_vals, names(value_colors))
+    stop("The values in your column do not match those in the function. These values have no matching colours: ", paste(missing_vals, collapse = ", "), ". Please run nbaR::NBA_colours to see available values to use.")
+  }
+
   value_colors <- value_colors[match(unique_vals, names(value_colors))]
   names(value_colors) <- unique_vals
+
 
   # last row
   last_row <- nrow(DF)
