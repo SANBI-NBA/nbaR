@@ -274,7 +274,7 @@ nba_citation <- function(META){
 
   # 4. ----------- Stitch the citation together -----------------------------
   cat(paste0(
-    author_str, " ", yr, ". ", title, ". ",subtitle, ". ",
+    author_str, " ", yr, ". ", title, ": ",subtitle, ". ",
     container, ". ", publisher, ". ", url, ".\n\n"
   ))
 
