@@ -137,10 +137,10 @@ nba_plot <- function(DF, GROUPS, COLS, CHRT = c("bar", "donut"), NUM = FALSE, LA
             ggplot2::labs(fill = "", title = LAB) + #this is the legend label
             ggplot2::theme_void() + ## removes the lines around chart and grey background
             ggplot2::theme(
-              panel.background = element_rect(fill = "white", color = NA),  ## set panel background to white
-              plot.background = element_rect(fill = "white", color = NA),
-              title = element_text(size = 10* SCALE_TEXT),
-              strip.text = element_blank()
+              panel.background = ggplot2::element_rect(fill = "transparent", color = NA),
+              plot.background = ggplot2::element_rect(fill = "transparent", color = NA),
+              title = ggplot2::element_text(size = 10* SCALE_TEXT),
+              strip.text = ggplot2::element_blank()
             )
 
         }
@@ -158,10 +158,10 @@ nba_plot <- function(DF, GROUPS, COLS, CHRT = c("bar", "donut"), NUM = FALSE, LA
             #ggplot2::xlab(LAB)+
             ggplot2::theme_void() + ## removes the lines around chart and grey background
             ggplot2::theme(
-              panel.background = element_rect(fill = "white", color = NA),  ## set panel background to white
-              plot.background = element_rect(fill = "white", color = NA),
-              title = element_text(size = 10),
-              strip.text = element_blank()
+              panel.background = ggplot2::element_rect(fill = "transparent", color = NA),
+              plot.background = ggplot2::element_rect(fill = "transparent", color = NA),
+              title = ggplot2::element_text(size = 10* SCALE_TEXT),
+              strip.text = ggplot2::element_blank()
             )
 
         }
@@ -193,10 +193,10 @@ nba_plot <- function(DF, GROUPS, COLS, CHRT = c("bar", "donut"), NUM = FALSE, LA
             #ggplot2::xlab(LAB)+
             ggplot2::theme_void() + ## removes the lines around chart and grey background
             ggplot2::theme(
-              panel.background = element_rect(fill = "white", color = NA),  ## set panel background to white
-              plot.background = element_rect(fill = "white", color = NA),
-              title = element_text(size = 10* SCALE_TEXT),
-              strip.text = element_blank()
+              panel.background = ggplot2::element_rect(fill = "transparent", color = NA),
+              plot.background = ggplot2::element_rect(fill = "transparent", color = NA),
+              title = ggplot2::element_text(size = 10* SCALE_TEXT),
+              strip.text = ggplot2::element_blank()
             )
         }
 
@@ -214,9 +214,10 @@ nba_plot <- function(DF, GROUPS, COLS, CHRT = c("bar", "donut"), NUM = FALSE, LA
             #ggplot2::xlab(LAB)+
             ggplot2::theme_void() + ## removes the lines around chart and grey background
             ggplot2::theme(
-              panel.background = element_rect(fill = "white", color = NA),  ## set panel background to white
-              plot.background = element_rect(fill = "white", color = NA),
-              title = element_text(size = 10* SCALE_TEXT)
+              panel.background = ggplot2::element_rect(fill = "transparent", color = NA),
+              plot.background = ggplot2::element_rect(fill = "transparent", color = NA),
+              title = ggplot2::element_text(size = 10* SCALE_TEXT),
+              strip.text = ggplot2::element_blank()
             )
 
         }
