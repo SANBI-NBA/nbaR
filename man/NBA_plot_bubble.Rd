@@ -29,6 +29,9 @@ percentage of taxa of ecological concern impacted by various pressures
 \details{
 Please use the example dataset NBA_bubble_plot_example_data to see how
 the data should be formatted.
+
+If you would only like to desplay once set of categories then you
+can set SUB_CAT or CAT = "" and it will not appear.
 }
 \examples{
 bubble_plot <- nba_plot_bubble(DF = NBA_example_bubble_data,

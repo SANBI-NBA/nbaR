@@ -917,6 +917,9 @@ nba_plot_theme <- function() {
 #'Please use the example dataset NBA_bubble_plot_example_data to see how
 #'the data should be formatted.
 #'
+#' If you would only like to desplay once set of categories then you
+#' can set SUB_CAT or CAT = "" and it will not appear.
+#'
 #' @param DF The data frame that contains the information
 #' @param GROUP The grouping variables (taxa group, etc)
 #' @param CAT The overall pressure category
