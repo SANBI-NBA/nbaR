@@ -11,7 +11,7 @@ nba_init_quarto_proj(
 )
 }
 \arguments{
-\item{path}{The destination directory for the project, the project will automatically be names templates}
+\item{path}{The destination directory for the project, the project will automatically be named templates}
 
 \item{overwrite}{Whether to overwrite existing files. Defaults to FALSE.}
 

@@ -3,7 +3,7 @@
 #'
 #' Copies a project named templates
 #'
-#' @param path The destination directory for the project, the project will automatically be names templates
+#' @param path The destination directory for the project, the project will automatically be named templates
 #' @param overwrite Whether to overwrite existing files. Defaults to FALSE.
 #' @param rename Named character vector to rename files on copy, e.g., c("scientific.qmd" = "index.qmd")
 #'
@@ -31,6 +31,8 @@ nba_init_quarto_proj <- function(path = "Path/To/My/Project/",
   file.copy(from = template_dir,
             to = path,
             recursive = TRUE)
+
+
 
   # Create a new RStudio project
     usethis::create_project(path = paste0(path, "/templates"), open = TRUE, rstudio = TRUE)
@@ -265,13 +267,14 @@ nba_citation <- function(META){
 
   # 3. ----------- Remaining pieces -----------------------------------------
   title     <- meta$title
+  subtitle <- meta$subtitle
   container <- meta$citation$`container-title`
   publisher <- meta$citation$publisher
   url       <- meta$citation$url
 
   # 4. ----------- Stitch the citation together -----------------------------
   cat(paste0(
-    author_str, " ", yr, ". ", title, ". ",
+    author_str, " ", yr, ". ", title, ". ",subtitle, ". ",
     container, ". ", publisher, ". ", url, ".\n\n"
   ))
 
