@@ -790,7 +790,7 @@ nba_plot_comb <- function(DF,
 
   for (m in METRICS) {
 
-    if(m == "count"){
+    if(m == "count" | m == "type"| m == "types"){
        figure <- nba_plot(DF = DF %>%
                          filter({{METRIC_COL}}== m),
                        GROUPS= {{GROUPS}},
