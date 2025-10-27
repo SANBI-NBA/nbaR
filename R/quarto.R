@@ -273,9 +273,19 @@ nba_citation <- function(META){
   url       <- meta$citation$url
 
   # 4. ----------- Stitch the citation together -----------------------------
+  if(nchar(subtitle) == 0 ){
+
   cat(paste0(
-    author_str, " ", yr, ". ", title, ": ",subtitle, ". ",
+    author_str, " ", yr, ". ", title, ". ",
     container, ". ", publisher, ". ", url, ".\n\n"
   ))
+  } else {
+
+    cat(paste0(
+      author_str, " ", yr, ". ", title, ": ",subtitle, ". ",
+      container, ". ", publisher, ". ", url, ".\n\n"
+    ))
+
+  }
 
 }
