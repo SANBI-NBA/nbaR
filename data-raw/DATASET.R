@@ -89,6 +89,8 @@ NBA_categories <- c("Critically Endangered",
                     "Rare" ,
                     "Extinct" ,
                     "Extinct in the Wild" ,
+                    "Regionally Extinct",
+                    "Critically Endangered (Possibly Extinct)",
 
                     #Protection level
                     "Well Protected" ,
@@ -174,6 +176,8 @@ NBA_colours <- c(
   "Rare" = rgb(193, 181, 165, maxColorValue = 255),
   "Extinct" = rgb(0, 0, 0, maxColorValue = 255),
   "Extinct in the Wild" = rgb(84, 35, 68, maxColorValue = 255),
+  "Regionally Extinct" = "#482B4D",
+  "Critically Endangered (Possibly Extinct)" = "#9B0411",
 
   #Protection level
   "Well Protected" = rgb(75, 110, 0, maxColorValue = 255),
