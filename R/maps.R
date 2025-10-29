@@ -119,11 +119,13 @@ if(LEGEND == TRUE){
                    legend.position = "inside",
                    legend.justification = c("right", "bottom"),
                    legend.title = element_blank(),
+                   legend.background = element_blank(),
                    plot.background = ggplot2::element_blank(),
                    panel.background = ggplot2::element_blank(),
                    panel.border = ggplot2::element_blank(),
                    axis.text = ggplot2::element_blank(),
-                   axis.ticks = ggplot2::element_blank())
+                   axis.ticks = ggplot2::element_blank(),
+                   panel.grid = element_blank())
 
 } else {
 
@@ -133,7 +135,8 @@ if(LEGEND == TRUE){
                    panel.background = ggplot2::element_blank(),
                    panel.border = ggplot2::element_blank(),
                    axis.text = ggplot2::element_blank(),
-                   axis.ticks = ggplot2::element_blank())
+                   axis.ticks = ggplot2::element_blank(),
+                   panel.grid = element_blank())
 
 }
 
