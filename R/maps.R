@@ -112,7 +112,8 @@ if(GEOM == "vector"){
 if(LEGEND == TRUE){
 
   map_leg <- map +
-    ggplot2::theme(legend.spacing.x   = unit(0.5, "cm"),
+    ggplot2::theme(legend.key.spacing.y = unit(0.5, 'cm'),
+                   legend.spacing.x   = unit(0.5, "cm"),
                    legend.box.spacing = unit(1.0, "cm"),
                    legend.key.size = ggplot2::unit(1* SCALE_TEXT,"line"),
                    legend.text = element_text(size = 13* SCALE_TEXT),
