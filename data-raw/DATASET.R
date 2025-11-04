@@ -80,7 +80,9 @@ NBA_example_press_bar_data <- read_excel(
 
 ##threat status/ protection level categories
 
-NBA_categories <- c("Critically Endangered",
+NBA_categories <- c(
+                    #Threat staus
+                    "Critically Endangered",
                     "Endangered" ,
                     "Vulnerable",
                     "Near Threatened" ,
