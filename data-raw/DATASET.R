@@ -224,13 +224,21 @@ NBA_colours <- c(
 
 
   # Condition
-  "Natural" = rgb(110, 159, 212, maxColorValue = 255),
-  "Natural / near natural" = rgb(110, 159, 212, maxColorValue = 255),
-  "Near natural" = rgb(110, 159, 212, maxColorValue = 255),
-  "Moderately modified" = rgb(165, 197, 199, maxColorValue = 255),
-  "Heavily / intensively modified" = rgb(129, 171, 167, maxColorValue = 255),
-  "Severely/critically modified" = rgb(136, 129, 78, maxColorValue = 255),
-  "Permanently / irreversibly modified" = rgb(136, 129, 78, maxColorValue = 255),
+  "Natural" = "#165C98",
+  "Near-natural" = "#59A4D8",
+  "Natural / near-natural" = "#59A4D8",
+  "Largely natural" = "#59A4D8",
+  "Moderately modified" = "#92C6C7",
+  "Heavily modified" = "#96AB83",
+  "Largely modified" = "#96AB83",
+  "Severely modified " = "#96AB83", #extra space because two colours mapped to the same name
+  "Severely modified" = "#7A7E4B",
+  "Critically modified" = "#7A7E4B",
+  "Critically modified (lost)" = "#7A7E4B",
+  "Severely / critically modified" = "#7A7E4B",
+  "Very severely modified" = "#7A7E4B",
+  "Highly degraded" = "#7A7E4B",
+  "Extremely degraded" = "#7A7E4B",
 
 
   # Responses
