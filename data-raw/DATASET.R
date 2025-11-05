@@ -129,11 +129,20 @@ NBA_categories <- c(
 
                     # Condition
                     "Natural" ,
-                    "Natural / near natural",
-                    "Near natural" ,
+                    "Near-natural" ,
+                    "Natural / near-natural",
+                    "Largely natural" ,
                     "Moderately modified" ,
-                    "Heavily / intensively modified" ,
-                    "Permanently / irreversibly modified" ,
+                    "Heavily modified",
+                    "Largely modified" ,
+                    "Severely modified " , #extra space because two colours mapped to the same name
+                    "Severely modified" ,
+                    "Critically modified",
+                    "Critically modified (lost)",
+                    "Severely / critically modified",
+                    "Very severely modified",
+                    "Highly degraded" ,
+                    "Extremely degraded" ,
 
 
                     # Responses

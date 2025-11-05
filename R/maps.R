@@ -101,7 +101,7 @@ if(GEOM == "vector"){
 
   map <- ggplot2::ggplot()+
     tidyterra::geom_spatraster(data=DF)+
-    ggplot2::scale_fill_manual(values = nbaR::NBA_colours, na.value = "transparent")
+    ggplot2::scale_fill_manual(values = nbaR::NBA_colours, na.value = "transparent", na.translate = FALSE)
 
 }
 
