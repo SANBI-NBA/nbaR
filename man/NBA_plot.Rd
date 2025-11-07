@@ -13,7 +13,8 @@ nba_plot(
   LAB,
   GRP = FALSE,
   SAVE = NULL,
-  SCALE_TEXT = 1
+  SCALE_TEXT = 1,
+  IS_PERCENT = FALSE
 )
 }
 \arguments{
@@ -34,6 +35,8 @@ nba_plot(
 \item{SAVE}{The name of the output file that will be saved to the output folder. If you do not have an outputs folder you will be prompted to make one.}
 
 \item{SCALE_TEXT}{scale the sizes of the plot text to fit your intended output. currently set at 1 as default. If you want to save it to 8 by 6 cm, set it to 0.5.}
+
+\item{IS_PERCENT}{a true false argument that tells the function to add a \% sign next to the numbers if is_percet = T. The default is set to FALSE}
 }
 \value{
 Returns a plot
