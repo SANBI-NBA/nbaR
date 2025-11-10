@@ -95,9 +95,6 @@ nba_tbl_colr <- function(DF, COL, HEADER = c("sanbi-green",
   # Capture column name as string
   col_name <- rlang::as_name(enquo(COL))
 
-  # Extract header colors from nbaR palette
-  header_col <- nbaR::NBA_colours[match(HEADER, names(nbaR::NBA_colours))]
-
   # Extract unique values from the target column
   unique_vals <- unique(DF[[col_name]])
 
@@ -127,64 +124,7 @@ nba_tbl_colr <- function(DF, COL, HEADER = c("sanbi-green",
       palette = value_colors,
       ordered = T
     ) %>%
-    # Style the header row background colors according to header_col vector
-    gt::tab_style(
-      style = list(
-        gt::cell_fill(color = header_col[1]),
-        gt::cell_text(weight = "bold", color = "black")
-      ),
-      locations = gt::cells_column_labels(columns = tidyselect::everything())
-    ) %>%
-    # Center the table
-    gt::tab_options(table.align = "center") %>%
-    # 1. Header shading and borders
-    gt::tab_style(
-      style = list(
-        gt::cell_borders(
-          sides = c("top", "bottom"),
-          color = "black",
-          weight = gt::px(2),
-          style = "solid"
-        ),
-        gt::cell_borders(
-          sides = c("left", "right"),
-          color = "lightgray"
-        ),
-        gt::cell_text(weight = "bold")
-      ),
-      locations = gt::cells_column_labels()
-    ) %>%
-
-    # 2. Data row borders (dotted top and bottom, no vertical)
-    gt::tab_style(
-      style = gt::cell_borders(
-        sides = c("top", "bottom"),
-        color = "gray50",
-        weight = gt::px(1),
-        style = "dotted"
-      ),
-      locations = gt::cells_body()
-    ) %>%
-
-    # 3. Remove all vertical borders
-    gt::tab_style(
-      style = gt::cell_borders(
-        sides = c("left", "right"),
-        color = "transparent"
-      ),
-      locations = gt::cells_body()
-    ) %>%
-
-    # 4. Bottom border for whole table
-    gt::tab_style(
-      style = gt::cell_borders(
-        sides = "bottom",
-        color = "black",
-        weight = gt::px(2),
-        style = "solid"
-      ),
-      locations = gt::cells_body(rows = last_row)  # last row only
-    )
+    nbaR::nba_tbl_theme(HEADER = HEADER)
 
   return(gt_tbl)
 }
