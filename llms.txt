@@ -1,0 +1,153 @@
+# nbaR
+
+The nbaR houses functions that enable easy creation of standardised
+graphs, plots and maps for SANBI’s National Biodiversity Assessment
+(NBA) content.
+
+## Installation
+
+You can install the development version of nbaR from
+[GitHub](https://github.com/) with:
+
+``` r
+# if (!require("devtools")) install.packages("devtools")
+#devtools::install_github("SANBI-NBA/nbaR")
+```
+
+You can then do a tutorial on the package using:
+
+``` r
+#
+# if (!require("learnr")) install.packages("learnr")
+# learnr::run_tutorial("nba_package_tutorial", package = "nbaR")
+```
+
+## Usage
+
+The package is intended for use in r and quarto by the NBA team to
+assist with the creation of the NBA website pages and reports. The goal
+of the functions is to simplify the processes of creating plots, tables,
+and maps in the reports and to standardise the outputs of all realms.
+
+## Data
+
+The data used should be read in from csv’s, excel documents, or sql (or
+created within r). The data structure accepted by the functions are
+explained in the help files of each function. There are also a number of
+example datasets to help users understand and visually see the required
+data structure. Please refer to the help files and vignettes for these
+example datasets. Having extra columns in not a problem for the
+functions as they are mostly bulit with the ability to select the
+columns you wish to use in the function.
+
+Along with the example datasets there is a list of all possible names to
+be used in the categories columns (**NBA_categories**), please pay
+attention to spelling and cases as the functions are case sensitive. The
+categories examples are ‘Well Protected’ or ‘Least Concern’, and are
+used to assign the correct colours to the correct categories.
+
+## Issues
+
+If you find any issues with the package or functions, or if you have any
+suggestions for improvements to the package please go to the git
+repository and log an issue so it can be dealt with.
+
+## How to cite this package
+
+You can cite this package like this “tables and figures were produced
+using the nbaR R package (Besseling et al., 2024)”. Here is the full
+bibliographic reference to include in your reference list (don’t forget
+to update the ‘last accessed’ date):
+
+To cite package ‘nbaR’ in publications use:
+
+Besseling N, Bull L, Monyeki M, Hendricks S, von Staden L (2024).
+“Package for creation of the NBA.” *NA*, *1*(1), 1.
+<doi:10.5281/zenodo.15310061> <https://doi.org/10.5281/zenodo.15310061>.
+
+A BibTeX entry for LaTeX users is
+
+@Article{, title = {Package for creation of the NBA}, author = {Natasha
+Besseling and Lauryn Bull and Maphale Monyeki and Shae-Lynn Hendricks
+and Lize {von Staden}}, journal = {NA}, year = {2024}, volume = {1},
+number = {1}, pages = {1}, doi =
+{<https://doi.org/10.5281/zenodo.15310061>}, }
+
+# Package index
+
+## Plot functions
+
+- [`nba_plot()`](https://sanbi-nba.github.io/nbaR/reference/NBA_plot.md)
+  : NBA plot function
+- [`nba_plot_comb()`](https://sanbi-nba.github.io/nbaR/reference/NBA_plot_comb.md)
+  : NBA multi plot function
+- [`nba_index_plot()`](https://sanbi-nba.github.io/nbaR/reference/nba_index_plot.md)
+  : NBA index plot function
+- [`nba_plot_bubble()`](https://sanbi-nba.github.io/nbaR/reference/NBA_plot_bubble.md)
+  : Bubble plot
+- [`nba_plot_theme()`](https://sanbi-nba.github.io/nbaR/reference/NBA_plot_theme.md)
+  : NBA theme for a ggplot object
+- [`nba_pressure_bar_plot()`](https://sanbi-nba.github.io/nbaR/reference/nba_pressure_bar_plot.md)
+  : horizontal bar plot of pressures
+
+## Table functions
+
+- [`nba_tbl()`](https://sanbi-nba.github.io/nbaR/reference/NBA_tbl.md) :
+  Basic NBA table
+- [`nba_tbl_colr()`](https://sanbi-nba.github.io/nbaR/reference/NBA_tbl_colr.md)
+  : Coloured table
+- [`nba_tbl_theme()`](https://sanbi-nba.github.io/nbaR/reference/NBA_tbl_theme.md)
+  : gt table theme
+- [`nba_tbl_comb()`](https://sanbi-nba.github.io/nbaR/reference/NBA_tbl_comb.md)
+  : Table of protection level of threatened ecosystems.
+
+## Map functions
+
+- [`nba_map()`](https://sanbi-nba.github.io/nbaR/reference/NBA_map.md) :
+  NBA map function
+
+## Quarto functions
+
+- [`nba_init_quarto_docs()`](https://sanbi-nba.github.io/nbaR/reference/nba_init_quarto_docs.md)
+  : Create template quarto documents to get an NBA html page up and
+  running
+- [`nba_init_quarto_proj()`](https://sanbi-nba.github.io/nbaR/reference/nba_init_quarto_proj.md)
+  : Create template quarto project to get an NBA html page up and
+  running
+- [`nba_citation()`](https://sanbi-nba.github.io/nbaR/reference/nba_citation.md)
+  : NBA citation function
+
+## Built in datasets
+
+- [`NBA_example_thr_data`](https://sanbi-nba.github.io/nbaR/reference/NBA_example_thr_data.md)
+  : NBA ecosystem type threat status data
+- [`NBA_example_pro_data`](https://sanbi-nba.github.io/nbaR/reference/NBA_example_pro_data.md)
+  : NBA ecosystem type protection level data
+- [`NBA_example_comb_data`](https://sanbi-nba.github.io/nbaR/reference/NBA_example_comb_data.md)
+  : NBA combined ecosystem type protection level and threat level
+  example data
+- [`NBA_example_bubble_data`](https://sanbi-nba.github.io/nbaR/reference/NBA_example_bubble_data.md)
+  : NBA bubble example data
+- [`NBA_example_press_bar_data`](https://sanbi-nba.github.io/nbaR/reference/NBA_example_press_bar_data.md)
+  : NBA pressure bar plot example data
+- [`NBA_example_rlis_data`](https://sanbi-nba.github.io/nbaR/reference/NBA_example_rlis_data.md)
+  : NBA index data (RLIs taxon)
+- [`NBA_example_rlie_data`](https://sanbi-nba.github.io/nbaR/reference/NBA_example_rlie_data.md)
+  : NBA index data (RLIe)
+- [`NBA_example_epli2018_data`](https://sanbi-nba.github.io/nbaR/reference/NBA_example_epli2018_data.md)
+  : NBA index data (EPLI 2018)
+- [`NBA_example_epli2024_data`](https://sanbi-nba.github.io/nbaR/reference/NBA_example_epli2024_data.md)
+  : NBA index data (EPLI 2024)
+- [`NBA_example_map_data`](https://sanbi-nba.github.io/nbaR/reference/NBA_example_map_data.md)
+  : NBA map example data, mem (marine ecosystem map) 2023
+- [`NBA_categories`](https://sanbi-nba.github.io/nbaR/reference/NBA_categories.md)
+  : NBA category words/ phrases used in threat status/ protection level/
+  and condition categorisation
+- [`NBA_colours`](https://sanbi-nba.github.io/nbaR/reference/NBA_colours.md)
+  : NBA colours for every category
+
+# Articles
+
+### All vignettes
+
+- [nbaR](https://sanbi-nba.github.io/nbaR/articles/nbaR.md):
