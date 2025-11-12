@@ -37,7 +37,7 @@
 #' @param GRP A choice of whether or not to plot the donut graphs by group, TRUE will plot a donut plot for each group.
 #' @param SAVE The name of the output file that will be saved to the output folder. If you do not have an outputs folder you will be prompted to make one.
 #' @param SCALE_TEXT scale the sizes of the plot text to fit your intended output. currently set at 1 as default. If you want to save it to 8 by 6 cm, set it to 0.5.
-#' @param IS_PERCENT a true false argument that tells the function to add a % sign next to the numbers if is_percet = T. The default is set to FALSE
+#' @param MAKE_PERCENT a true false argument that tells the function to add a % sign next to the numbers if is_percet = T. The default is set to FALSE
 #'
 #' @return Returns a plot
 #'
@@ -109,7 +109,7 @@
 #'
 
 nba_plot <- function(DF, GROUPS, COLS, CHRT = c("bar", "donut"), NUM = FALSE, LAB, GRP = FALSE, SAVE = NULL,
-                            SCALE_TEXT = 1, IS_PERCENT = FALSE){
+                            SCALE_TEXT = 1, MAKE_PERCENT = FALSE){
 
 
     if(CHRT == "donut"){
@@ -130,11 +130,11 @@ nba_plot <- function(DF, GROUPS, COLS, CHRT = c("bar", "donut"), NUM = FALSE, LA
         if(NUM == FALSE){
 
 
-          plot <- ggplot2::ggplot(dat, aes(ymax = ymax, ymin = ymin,xmax = 4, xmin = 3,  fill = FILL)) +
+          plot <- ggplot2::ggplot(dat, aes(ymax = ymax, ymin = ymin, xmax = 4, xmin = 3,  fill = FILL)) +
             ggplot2::geom_rect() +
             #ggplot2::geom_text(aes(x = 3.5, y = (ymin + ymax) / 2, label = COUNT), color = "black", size = 5) +  ## Add this line to include count values
             ggplot2::coord_polar(theta = "y") + ## convert to polar coordinates
-            ggplot2::xlim(c(2, 4)) + ## limit x-axis to create a donut chart
+            ggplot2::xlim(c(2, 5)) + ## limit x-axis to create a donut chart
             ggplot2::scale_fill_manual(values = nbaR::NBA_colours) +
             #ggplot2::ggtitle(LAB)+
             ggplot2::labs(fill = "", title = LAB) + #this is the legend label
@@ -151,10 +151,13 @@ nba_plot <- function(DF, GROUPS, COLS, CHRT = c("bar", "donut"), NUM = FALSE, LA
         #if NUm is true
         else{
 
-          if(IS_PERCENT == TRUE){ ##make percentage signs if its a percent
+          if(MAKE_PERCENT == TRUE){ ##make percentage signs if its a percent
 
             dat_perc <- dat %>%
-              dplyr::mutate(LABEL = paste0(COUNT, "%"))
+              mutate(perc = round(COUNT/ sum(COUNT)*100)) %>%
+              dplyr::mutate(LABEL = paste0(perc, "%"))
+
+
 
             plot <- ggplot2::ggplot(dat_perc, aes(ymax = ymax, ymin = ymin,xmax = 4, xmin = 3,  fill = FILL)) +
               ggplot2::geom_rect() +
@@ -177,9 +180,9 @@ nba_plot <- function(DF, GROUPS, COLS, CHRT = c("bar", "donut"), NUM = FALSE, LA
 
             plot <- ggplot2::ggplot(dat, aes(ymax = ymax, ymin = ymin,xmax = 4, xmin = 3,  fill = FILL)) +
               ggplot2::geom_rect() +
-              ggplot2::geom_text(aes(x = 3.5, y = (ymin + ymax) / 2, label = COUNT), color = "black", size = 5* SCALE_TEXT) +  ## Add this line to include count values
+              ggplot2::geom_text(aes(x = text_x, y = text_y, label = COUNT), color = "black", size = 5* SCALE_TEXT) +  ## Add this line to include count values
               ggplot2::coord_polar(theta = "y") + ## convert to polar coordinates
-              ggplot2::xlim(c(2, 4)) + ## limit x-axis to create a donut chart
+              ggplot2::xlim(c(2, 5)) + ## limit x-axis to create a donut chart
               ggplot2::scale_fill_manual(values = nbaR::NBA_colours) +
               ggplot2::labs(fill = "", title = LAB)+
               #ggplot2::xlab(LAB)+
@@ -215,7 +218,7 @@ nba_plot <- function(DF, GROUPS, COLS, CHRT = c("bar", "donut"), NUM = FALSE, LA
             ggplot2::facet_wrap(vars({{GROUPS}}))+
             #ggplot2::geom_text(aes(x = 3.5, y = (ymin + ymax) / 2, label = COUNT), color = "black", size = 3) +  ## Add this line to include count values
             ggplot2::coord_polar(theta = "y") + ## convert to polar coordinates
-            ggplot2::xlim(c(2, 4)) + ## limit x-axis to create a donut chart
+            ggplot2::xlim(c(2, 5)) + ## limit x-axis to create a donut chart
             ggplot2::scale_fill_manual(values = nbaR::NBA_colours) +
             ggplot2::labs(fill = "", title = LAB)+
             #ggplot2::xlab(LAB)+
@@ -231,10 +234,11 @@ nba_plot <- function(DF, GROUPS, COLS, CHRT = c("bar", "donut"), NUM = FALSE, LA
         #if Num is true
         else{
 
-          if(IS_PERCENT == TRUE){ ##make percentage signs if its a percent
+          if(MAKE_PERCENT == TRUE){ ##make percentage signs if its a percent
 
             dat_perc <- dat %>%
-              dplyr::mutate(LABEL = paste0(COUNT, "%"))
+              mutate(perc = round(COUNT/ sum(COUNT)*100)) %>%
+              dplyr::mutate(LABEL = paste0(perc, "%"))
 
 
           plot <-ggplot2::ggplot(dat_perc, aes(ymax = ymax, ymin = ymin,xmax = 4, xmin = 3,  fill = FILL)) +
@@ -242,7 +246,7 @@ nba_plot <- function(DF, GROUPS, COLS, CHRT = c("bar", "donut"), NUM = FALSE, LA
             ggplot2::facet_wrap(vars({{GROUPS}}))+
             ggplot2::geom_text(aes(x = text_x, y = text_y, label = LABEL), color = "black", size = 3* SCALE_TEXT) +  ## Add this line to include count values
             ggplot2::coord_polar(theta = "y") + ## convert to polar coordinates
-            ggplot2::xlim(c(2, 4)) + ## limit x-axis to create a donut chart
+            ggplot2::xlim(c(2, 5)) + ## limit x-axis to create a donut chart
             ggplot2::scale_fill_manual(values = nbaR::NBA_colours) +
             ggplot2::labs(fill = "", title = LAB)+
             #ggplot2::xlab(LAB)+
@@ -260,7 +264,7 @@ nba_plot <- function(DF, GROUPS, COLS, CHRT = c("bar", "donut"), NUM = FALSE, LA
               ggplot2::facet_wrap(vars({{GROUPS}}))+
               ggplot2::geom_text(aes(x = text_x, y = text_y, label = COUNT), color = "black", size = 3* SCALE_TEXT) +  ## Add this line to include count values
               ggplot2::coord_polar(theta = "y") + ## convert to polar coordinates
-              ggplot2::xlim(c(2, 4)) + ## limit x-axis to create a donut chart
+              ggplot2::xlim(c(2, 5)) + ## limit x-axis to create a donut chart
               ggplot2::scale_fill_manual(values = nbaR::NBA_colours) +
               ggplot2::labs(fill = "", title = LAB)+
               #ggplot2::xlab(LAB)+
