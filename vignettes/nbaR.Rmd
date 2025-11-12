@@ -70,7 +70,7 @@ donut_plot <- nba_plot(NBA_example_pro_data,
                  LAB = "Percentage of ecosystem types",
                  GRP = F,
                 SAVE = NULL,
-                IS_PERCENT = F)
+                MAKE_PERCENT = F)
 
 donut_plot
 
