@@ -129,20 +129,21 @@ NBA_categories <- c(
 
                     # Condition
                     "Natural" ,
+                    "Natural / near-natural" ,
+                    "Natural / near-natural ", #space for anti-rule
                     "Near-natural" ,
-                    "Natural / near-natural",
-                    "Largely natural" ,
-                    "Moderately modified" ,
-                    "Heavily modified",
-                    "Largely modified" ,
-                    "Severely modified " , #extra space because two colours mapped to the same name
+                    "Near-natural / moderately modified" ,
+                    "Near-natural / moderately modified " , #space for anti-rule
+                    "Moderately modified",
+                    "Moderately / heavily modified" ,
+                    "Moderately / heavily modified " , #space for anti-rule
+                    "Heavily modified" ,
+                    "Heavily / severely modified" ,
+                    "Heavily / severely modified " , #space for anti-rule
                     "Severely modified" ,
-                    "Critically modified",
-                    "Critically modified (lost)",
-                    "Severely / critically modified",
-                    "Very severely modified",
-                    "Highly degraded" ,
-                    "Extremely degraded" ,
+                    "Severely / critically modified" ,
+                    "Severely / critically modified " ,#space for anti-rule
+                    "Critically modified" ,
 
 
                     # Responses
@@ -233,21 +234,22 @@ NBA_colours <- c(
 
 
   # Condition
-  "Natural" = "#165C98",
-  "Near-natural" = "#59A4D8",
-  "Natural / near-natural" = "#59A4D8",
-  "Largely natural" = "#59A4D8",
-  "Moderately modified" = "#92C6C7",
-  "Heavily modified" = "#96AB83",
-  "Largely modified" = "#96AB83",
-  "Severely modified " = "#96AB83", #extra space because two colours mapped to the same name
-  "Severely modified" = "#7A7E4B",
-  "Critically modified" = "#7A7E4B",
-  "Critically modified (lost)" = "#7A7E4B",
-  "Severely / critically modified" = "#7A7E4B",
-  "Very severely modified" = "#7A7E4B",
-  "Highly degraded" = "#7A7E4B",
-  "Extremely degraded" = "#7A7E4B",
+  "Natural" = "#345F91",
+  "Natural / near-natural" = "#345F91",
+  "Natural / near-natural " = "#6D9FD4", #space for anti-rule
+  "Near-natural" = "#6D9FD4",
+  "Near-natural / moderately modified" = "#6D9FD4",
+  "Near-natural / moderately modified " = "#A5C5C7", #space for anti-rule
+  "Moderately modified" = "#A5C5C7",
+  "Moderately / heavily modified" = "#A5C5C7",
+  "Moderately / heavily modified " = "#A7AB81", #space for anti-rule
+  "Heavily modified" = "#A7AB81",
+  "Heavily / severely modified" = "#A7AB81",
+  "Heavily / severely modified " = "#88814D", #space for anti-rule
+  "Severely modified" = "#88814D",
+  "Severely / critically modified" = "#88814D",
+  "Severely / critically modified " = "#736D41",#space for anti-rule
+  "Critically modified" = "#736D41",
 
 
   # Responses
