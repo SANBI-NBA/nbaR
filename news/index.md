@@ -1,5 +1,9 @@
 # Changelog
 
+## nbaR 2.3.2
+
+Updated condition colours
+
 ## nbaR 2.3.1
 
 Added some additional features to some functions.
