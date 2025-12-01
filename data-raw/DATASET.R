@@ -204,9 +204,9 @@ NBA_colours <- c(
   "Endangered & Not Protected" = "#FFEBB0",
 
   #Pressures
-  "Low" = "#EDC31C", #rgb(223, 220, 199, maxColorValue = 255),
-  "Medium" = "#F58026", #rgb(175, 168, 117, maxColorValue = 255),
-  "High" = "#FE0C0C", #rgb(122, 116, 70, maxColorValue = 255),
+  "Low" = "#83F3FE", #rgb(223, 220, 199, maxColorValue = 255),
+  "Medium" = "#F8B363", #rgb(175, 168, 117, maxColorValue = 255),
+  "High" = "#CE4E0F", #rgb(122, 116, 70, maxColorValue = 255),
   "Very high" = "#BC0906", #rgb(88, 82, 50, maxColorValue = 255),
 
 
