@@ -1190,7 +1190,7 @@ nba_pressure_bar_plot <- function(DF, TAXON = NULL, SAVE = NULL) {
     scale_fill_manual(values = valid_pressure_colours) +
     scale_x_discrete(labels = ~ stringr::str_wrap(.x, width = 18)) +
     scale_y_continuous(breaks = seq(0, 100, by = 10)) +
-    labs(x = "Pressure", y = "Percentage (%)") +
+    labs(x = "Pressure", y = "% of impacted threatened and Near Threatened species") +
     theme_classic() +
     coord_flip()
 
