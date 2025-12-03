@@ -1,8 +1,9 @@
 # Changelog
 
-## nbaR 2.3.3
+## nbaR 2.4.0
 
-Updated pressure colours.
+official version used in the NBA 2025 \# nbaR 2.3.3 Updated pressure
+colours.
 
 ## nbaR 2.3.2
 
