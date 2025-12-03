@@ -17,17 +17,14 @@
 Source:
 [`inst/CITATION`](https://github.com/TashBes/NBA.package/blob/master/inst/CITATION)
 
-Besseling N, Bull L, Monyeki M, Hendricks S, von Staden L (2024).
-“Package for creation of the NBA.” *NA*, **1**(1), 1.
-[doi:10.5281/zenodo.15310061](https://doi.org/10.5281/zenodo.15310061).
+Besseling N, Hendricks S, Bull L, Monyeki M, von Staden L (2025).
+“Package for creation of the NBA.”
+[doi:10.5281/zenodo.14899426](https://doi.org/10.5281/zenodo.14899426).
 
-    @Article{,
+    @Misc{,
       title = {Package for creation of the NBA},
-      author = {Natasha Besseling and Lauryn Bull and Maphale Monyeki and Shae-Lynn Hendricks and Lize {von Staden}},
+      author = {Natasha Besseling and Shae-Lynn Hendricks and Lauryn Bull and Maphale Monyeki and Lize {von Staden}},
       journal = {NA},
-      year = {2024},
-      volume = {1},
-      number = {1},
-      pages = {1},
-      doi = {https://doi.org/10.5281/zenodo.15310061},
+      year = {2025},
+      doi = {https://doi.org/10.5281/zenodo.14899426},
     }
