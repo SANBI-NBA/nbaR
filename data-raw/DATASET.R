@@ -82,17 +82,17 @@ NBA_example_press_bar_data <- read_excel(
 
 NBA_categories <- c(
                     #Threat staus
-                    "Critically Endangered",
-                    "Endangered" ,
-                    "Vulnerable",
-                    "Near Threatened" ,
-                    "Least Concern" ,
-                    "Data Deficient" ,
-                    "Rare" ,
-                    "Extinct" ,
-                    "Extinct in the Wild" ,
+                    "Extinct",
+                    "Extinct in the Wild",
                     "Regionally Extinct",
                     "Critically Endangered (Possibly Extinct)",
+                    "Critically Endangered",
+                    "Endangered",
+                    "Vulnerable",
+                    "Near Threatened",
+                    "Data Deficient",
+                    "Rare",
+                    "Least Concern",
 
                     #Protection level
                     "Well Protected" ,
@@ -172,24 +172,54 @@ NBA_categories <- c(
                     "Built up",
                     "Mine",
                     "Artificial waterbody",
-                    "Landcover Natural")
+                    "Landcover Natural",
+
+                    ## species
+                    "Albany Thicket",
+                    "Azonal Vegetation" ,
+                    "Desert" ,
+                    "Forests" ,
+                    "Fynbos" ,
+                    "Grassland" ,
+                    "Indian Ocean Coastal Belt",
+                    "Nama-Karoo" ,
+                    "Savanna" ,
+                    "Succulent Karoo" ,
+                    "Amphibians",
+                    "Anostraca",
+                    "Birds",
+                    "Butterflies",
+                    "Coral",
+                    "Dragonflies & damselflies",
+                    "Freshwater crabs",
+                    "Freshwater fishes",
+                    "Mammals",
+                    "Plants*",
+                    "Reptiles",
+                    "Spiders",
+                    "Sparids",
+                    "Sharks (incl. rays & chimaeras)",
+                    "Sharks (incl. rays & chimaeras)_global" ,
+                    "Sharks (incl. rays & chimaeras)_national")
 
 
 ##colour mapping
 NBA_colours <- c(
 
   ##Threat status
-  "Critically Endangered" = rgb(216, 30, 5, maxColorValue = 255),
-  "Endangered" = rgb(252, 127, 63, maxColorValue = 255),
-  "Vulnerable" = rgb(249, 232, 20, maxColorValue = 255),
-  "Near Threatened" = "#FFFFBE",
-  "Least Concern" = rgb(180, 215, 158, maxColorValue = 255),
-  "Data Deficient" = rgb(209, 209, 198, maxColorValue = 255),
-  "Rare" = rgb(193, 181, 165, maxColorValue = 255),
+
   "Extinct" = rgb(0, 0, 0, maxColorValue = 255),
   "Extinct in the Wild" = rgb(84, 35, 68, maxColorValue = 255),
   "Regionally Extinct" = "#482B4D",
   "Critically Endangered (Possibly Extinct)" = "#9B0411",
+  "Critically Endangered" = rgb(216, 30, 5, maxColorValue = 255),
+  "Endangered" = rgb(252, 127, 63, maxColorValue = 255),
+  "Vulnerable" = rgb(249, 232, 20, maxColorValue = 255),
+  "Near Threatened" = "#FFFFBE",
+  "Data Deficient" = rgb(209, 209, 198, maxColorValue = 255),
+  "Rare" = rgb(193, 181, 165, maxColorValue = 255),
+  "Least Concern" = rgb(180, 215, 158, maxColorValue = 255),
+
 
   #Protection level
   "Well Protected" = rgb(75, 110, 0, maxColorValue = 255),
@@ -283,7 +313,25 @@ NBA_colours <- c(
   "Estuarine" = "#028A85",
   "Terrestrial"=  "#617016",
   "Genetics" =  "#DE2104",
-  "PEI" =  "#481C66"
+  "PEI" =  "#481C66",
+
+  ## species
+  "Albany Thicket" = "#A6CEE3",
+  "Azonal Vegetation" = "#1F78B4",
+  "Desert" = "#B2DF8A",
+  "Forests" = "#33A02C",
+  "Fynbos" = "#FB9A99",
+  "Grassland" = "#E31A1C",
+  "Indian Ocean Coastal Belt" = "#FDBF6F",
+  "Nama-Karoo" = "#FF7F00",
+  "Savanna" = "#CAB2D6",
+  "Succulent Karoo" = "#6A3D9A",
+  "Amphibians"="#17becf", "Anostraca"="#a6cee3", "Birds"="#ffcc66",
+  "Butterflies"="#1f78b4", "Coral"="#De1234", "Dragonflies & damselflies"="#7570b3",
+  "Freshwater crabs"="#66cc99", "Freshwater fishes"="#e7298a", "Mammals"="#B15928",
+  "Plants*"="#66a61e", "Reptiles"="#fb9a99", "Spiders"="yellow2",
+  "Sparids"="#666666", "Sharks (incl. rays & chimaeras)"="#6a3d9a", "Sharks (incl. rays & chimaeras)_global" = "#ffcc66",
+  "Sharks (incl. rays & chimaeras)_national" = "#6a3d9a"
 
 )
 
