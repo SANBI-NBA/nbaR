@@ -29,7 +29,6 @@ Imports:
     gt,
     ggh4x,
     usethis,
-    WikidataR,
     rlang,
     scales,
     tidyterra,
