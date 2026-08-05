@@ -212,7 +212,7 @@ nba_init_quarto_docs <- function(path = ".",
 #' @return Returns a citation string
 #'
 #'
-#' @importFrom WikidataR initials
+#'
 #' @importFrom knitr current_input
 #'
 #' @export
