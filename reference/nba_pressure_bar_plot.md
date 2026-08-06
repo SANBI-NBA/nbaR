@@ -32,6 +32,7 @@ A horizontal bar plot.
 ## Examples
 
 ``` r
+
 birds_press_bar_plot <- nba_pressure_bar_plot(
                           DF = NBA_example_press_bar_data,
                           TAXON = "Birds")

@@ -25,11 +25,11 @@ tbl
 #>  <thead>
 #> <tr><th style="empty-cells: hide;border-bottom:hidden;" colspan="5"></th></tr>
 #>   <tr>
-#>    <th style="text-align:left;font-weight: bold;color: black !important;background-color: rgba(137, 155, 225, 255) !important;border: 1px solid black"> OVERALL types </th>
-#>    <th style="text-align:right;font-weight: bold;color: black !important;background-color: rgba(137, 155, 225, 255) !important;border: 1px solid black"> Well Protected </th>
-#>    <th style="text-align:right;font-weight: bold;color: black !important;background-color: rgba(137, 155, 225, 255) !important;border: 1px solid black"> Moderately Protected </th>
-#>    <th style="text-align:right;font-weight: bold;color: black !important;background-color: rgba(137, 155, 225, 255) !important;border: 1px solid black"> Poorly Protected </th>
-#>    <th style="text-align:right;font-weight: bold;color: black !important;background-color: rgba(137, 155, 225, 255) !important;border: 1px solid black"> Not Protected </th>
+#>    <th style="text-align:left;font-weight: bold;color: black !important;background-color: rgba(137, 155, 225, 1) !important;border: 1px solid black"> OVERALL types </th>
+#>    <th style="text-align:right;font-weight: bold;color: black !important;background-color: rgba(137, 155, 225, 1) !important;border: 1px solid black"> Well Protected </th>
+#>    <th style="text-align:right;font-weight: bold;color: black !important;background-color: rgba(137, 155, 225, 1) !important;border: 1px solid black"> Moderately Protected </th>
+#>    <th style="text-align:right;font-weight: bold;color: black !important;background-color: rgba(137, 155, 225, 1) !important;border: 1px solid black"> Poorly Protected </th>
+#>    <th style="text-align:right;font-weight: bold;color: black !important;background-color: rgba(137, 155, 225, 1) !important;border: 1px solid black"> Not Protected </th>
 #>   </tr>
 #>  </thead>
 #> <tbody>

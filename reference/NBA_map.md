@@ -73,6 +73,7 @@ accessed for reference).
 ## Examples
 
 ``` r
+
 map <- nba_map(DF = NBA_example_map_data,
 GEOM = "vector",
 FILL = protection_level,

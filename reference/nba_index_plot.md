@@ -91,6 +91,7 @@ Returns a multiple line plot with points
 
 ``` r
 
+
 # Example 1: RLIs grouped by Taxon
 nba_index_plot(
   TYPE = "RLIs",
@@ -106,7 +107,7 @@ nba_index_plot(
 #> Warning: There were 62 warnings in `summarise()`.
 #> The first warning was:
 #> ℹ In argument: `MIN = mean(NULL, na.rm = TRUE)`.
-#> ℹ In group 1: `Taxon = "Amphibians"` `Year = 1990`.
+#> ℹ In group 1: `Taxon = "Amphibians"`, `Year = 1990`.
 #> Caused by warning in `mean.default()`:
 #> ! argument is not numeric or logical: returning NA
 #> ℹ Run `dplyr::last_dplyr_warnings()` to see the 61 remaining warnings.

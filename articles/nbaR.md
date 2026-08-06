@@ -1,6 +1,7 @@
 # nbaR
 
 ``` r
+
 library(nbaR)
 ```
 
@@ -47,6 +48,7 @@ plots.
 **1. bar plot**
 
 ``` r
+
 NBA_example_thr_data <- NBA_example_thr_data
 
 
@@ -66,6 +68,7 @@ bar_plot
 **2. donut plot**
 
 ``` r
+
 NBA_example_pro_data <- NBA_example_pro_data
 
 
@@ -87,6 +90,7 @@ donut_plot
 **3. Combined plot**
 
 ``` r
+
 NBA_example_pro_data <- NBA_example_pro_data
 NBA_example_thr_data <- NBA_example_thr_data
 NBA_example_comb_data <- NBA_example_comb_data
@@ -111,6 +115,7 @@ bar_plot_comb
 **4. Index plot**
 
 ``` r
+
 NBA_example_rlis_data <- NBA_example_rlis_data 
 NBA_example_rlie_data <- NBA_example_rlie_data
 NBA_example_epli2018_data <- NBA_example_epli2018_data
@@ -134,6 +139,7 @@ nba_index_plot(
 ![](nbaR_files/figure-html/unnamed-chunk-5-1.png)
 
 ``` r
+
  
 # RLIe
 nba_index_plot(
@@ -150,6 +156,7 @@ nba_index_plot(
 ![](nbaR_files/figure-html/unnamed-chunk-5-2.png)
 
 ``` r
+
  
 # EPLI
 nba_index_plot(
@@ -168,6 +175,7 @@ nba_index_plot(
 **5. NBA bubble plot**
 
 ``` r
+
 NBA_example_bubble_data <- NBA_example_bubble_data
 
 
@@ -186,6 +194,7 @@ NBA_example_bubble_data <- NBA_example_bubble_data
 **6. NBA pressure bar plot**
 
 ``` r
+
 NBA_example_press_bar_data <- NBA_example_press_bar_data
 
 
@@ -201,6 +210,7 @@ birds_press_bar_plot
 **7. NBA ggplot theme**
 
 ``` r
+
 library(ggplot2)
 NBA_example_pro_data <- NBA_example_pro_data
 
@@ -223,26 +233,28 @@ not appear correct in the vignette examples.
 
 ``` r
 
+
 tbl <- nba_tbl(NBA_example_pro_data)
 
 tbl
 ```
 
-|                |                |                      |                  |               |
-|:---------------|---------------:|---------------------:|-----------------:|--------------:|
-| OVERALL types  | Well Protected | Moderately Protected | Poorly Protected | Not Protected |
-| subAntarctic   |             15 |                   14 |                1 |             4 |
-| Coastal        |             65 |                   28 |               52 |            41 |
-| Estuarine      |              4 |                    8 |                7 |             3 |
-| Marine         |             47 |                   62 |               22 |            19 |
-| Wetland        |              8 |                    4 |               41 |            82 |
-| River          |             29 |                   33 |               66 |            94 |
-| Inland Aquatic |             37 |                   37 |              107 |           176 |
-| Terrestrial    |            118 |                   59 |              166 |           115 |
+|  |  |  |  |  |
+|:---|---:|---:|---:|---:|
+| OVERALL types | Well Protected | Moderately Protected | Poorly Protected | Not Protected |
+| subAntarctic | 15 | 14 | 1 | 4 |
+| Coastal | 65 | 28 | 52 | 41 |
+| Estuarine | 4 | 8 | 7 | 3 |
+| Marine | 47 | 62 | 22 | 19 |
+| Wetland | 8 | 4 | 41 | 82 |
+| River | 29 | 33 | 66 | 94 |
+| Inland Aquatic | 37 | 37 | 107 | 176 |
+| Terrestrial | 118 | 59 | 166 | 115 |
 
 **9. Coloured table**
 
 ``` r
+
 
 library(dplyr)
 #> 
@@ -300,6 +312,7 @@ tbl
 **10. gt table theme**
 
 ``` r
+
 library(gt)
 library(dplyr)
 
@@ -325,23 +338,37 @@ gt_tbl
 **11. Threatened ecosystems protection level table**
 
 ``` r
+
 thr_pro_tbl <- NBA_example_map_data |>
 nba_tbl_comb(GROUP = P_EcosysType,
 THR = threat_status,
 PRO = protection_level, 
 FILE = "spatial")
+#> Warning: There was 1 warning in `dplyr::mutate()`.
+#> ℹ In argument: `dplyr::across(tidyselect::all_of(count_columns), round, 0)`.
+#> Caused by warning:
+#> ! The `...` argument of `across()` is deprecated as of dplyr 1.1.0.
+#> Supply arguments directly to `.fns` through an anonymous function instead.
+#> 
+#>   # Previously
+#>   across(a:b, mean, na.rm = TRUE)
+#> 
+#>   # Now
+#>   across(a:b, \(x) mean(x, na.rm = TRUE))
+#> ℹ The deprecated feature was likely used in the nbaR package.
+#>   Please report the issue at <https://github.com/TashBes/NBA.package/issues>.
 
 thr_pro_tbl
 ```
 
-|                       | Not Protected | Poorly Protected | Moderately Protected | Well Protected | Total |
-|:----------------------|:-------------:|:----------------:|:--------------------:|:--------------:|:-----:|
-| Critically Endangered |       0       |        1         |          1           |       1        |   3   |
-| Endangered            |       0       |        1         |          0           |       1        |   2   |
-| Vulnerable            |       1       |        0         |          1           |       1        |   3   |
-| Near Threatened       |       0       |        0         |          1           |       1        |   2   |
-| Least Concern         |       0       |        1         |          1           |       1        |   3   |
-| Total (n)             |       1       |        3         |          4           |       5        |  13   |
+|  | Not Protected | Poorly Protected | Moderately Protected | Well Protected | Total |
+|:---|:--:|:--:|:--:|:--:|:--:|
+| Critically Endangered | 0 | 1 | 1 | 1 | 3 |
+| Endangered | 0 | 1 | 0 | 1 | 2 |
+| Vulnerable | 1 | 0 | 1 | 1 | 3 |
+| Near Threatened | 0 | 0 | 1 | 1 | 2 |
+| Least Concern | 0 | 1 | 1 | 1 | 3 |
+| Total (n) | 1 | 3 | 4 | 5 | 13 |
 
 ## Map functions
 
@@ -351,6 +378,7 @@ Please note this was modeled after the maps in the marine technical
 report 2018.
 
 ``` r
+
 
 map <- nba_map(DF = NBA_example_map_data,
                GEOM = "vector", 

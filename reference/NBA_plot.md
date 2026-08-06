@@ -99,6 +99,7 @@ accessed for reference).
 ## Examples
 
 ``` r
+
 bar_plot <- nba_plot(NBA_example_thr_data,
 `OVERALL types`,
 2:5,

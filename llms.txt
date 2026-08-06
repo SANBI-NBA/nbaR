@@ -10,6 +10,7 @@ You can install the development version of nbaR from
 [GitHub](https://github.com/) with:
 
 ``` r
+
 # if (!require("devtools")) install.packages("devtools")
 #devtools::install_github("SANBI-NBA/nbaR")
 ```
@@ -17,6 +18,7 @@ You can install the development version of nbaR from
 You can then do a tutorial on the package using:
 
 ``` r
+
 #
 # if (!require("learnr")) install.packages("learnr")
 # learnr::run_tutorial("nba_package_tutorial", package = "nbaR")
